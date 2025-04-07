@@ -5,7 +5,11 @@ apis:
   - aid: fabric-origin:fabric-origin
     name: Fabric Origin
     tags:
-      - API
+      - Entertainment
+      - Trailers
+      - Movies
+      - Television
+      - Games
     humanURL: https://developer.iva-api.com
     properties:
       - url: https://developer.iva-api.com
@@ -24,12 +28,16 @@ apis:
       entertainment platform.
 name: Fabric Origin
 tags:
-  - API
+  - Entertainment
+  - Trailers
+  - Movies
+  - Television
+  - Games
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-03-01T00:00:00.000Z'
-modified: '2025-03-30'
+modified: '2025-04-07'
 position: Consuming
 description: >-
   Welcome to the Fabric Origin Developer Portal  your gateway to building
