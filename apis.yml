@@ -6,10 +6,10 @@ apis:
     name: Fabric Origin
     tags:
       - Entertainment
-      - Trailers
+      - Games
       - Movies
       - Television
-      - Games
+      - Trailers
     humanURL: https://developer.iva-api.com
     properties:
       - url: https://developer.iva-api.com
@@ -29,10 +29,10 @@ apis:
 name: Fabric Origin
 tags:
   - Entertainment
-  - Trailers
+  - Games
   - Movies
   - Television
-  - Games
+  - Trailers
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
