@@ -1,0 +1,221 @@
+openapi: 3.1.0
+info:
+  title: Fabric Origin Entertainment Data APIs
+  description: |
+    Fabric Origin (formerly IVA) is an entertainment metadata platform.
+    The Entertainment, Image, and Video APIs share the host
+    api.origin.fabricdata.com. Authentication uses an Azure API
+    Management subscription key sent as either the
+    Ocp-Apim-Subscription-Key header or the subscription-key query
+    parameter.
+  version: "1.0.0"
+  contact:
+    name: Fabric Origin Knowledge Base
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+servers:
+  - url: https://api.origin.fabricdata.com
+    description: Fabric Origin production
+paths:
+  /api/Entertainment/Search/:
+    get:
+      summary: Search entertainment metadata
+      operationId: entertainmentSearch
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+        - name: type
+          in: query
+          schema: { type: string, enum: [Movie, Show, Season, Episode, Game, Celebrity] }
+      responses:
+        "200": { description: Search results }
+    post:
+      summary: Search entertainment metadata (POST body)
+      operationId: entertainmentSearchPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        "200": { description: Search results }
+  /api/Entertainment/Match/:
+    get:
+      summary: Match entertainment record by external IDs
+      operationId: entertainmentMatch
+      responses:
+        "200": { description: Match }
+    post:
+      summary: Match (POST body)
+      operationId: entertainmentMatchPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        "200": { description: Match }
+  /api/Entertainment/GetEntertainmentMatchCandidates:
+    get:
+      summary: Get candidate matches
+      operationId: getEntertainmentMatchCandidates
+      responses:
+        "200": { description: Candidates }
+    post:
+      summary: Get candidate matches (POST)
+      operationId: getEntertainmentMatchCandidatesPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        "200": { description: Candidates }
+  /api/Entertainment/MatchSeasonBySequence:
+    get:
+      summary: Match a season by sequence number
+      operationId: matchSeasonBySequence
+      responses:
+        "200": { description: Season }
+  /api/Entertainment/MatchEpisodeBySequence:
+    get:
+      summary: Match an episode by sequence number
+      operationId: matchEpisodeBySequence
+      responses:
+        "200": { description: Episode }
+  /api/Entertainment/MovieRatings:
+    get:
+      summary: Get movie ratings
+      operationId: getMovieRatings
+      responses:
+        "200": { description: Ratings }
+  /api/Entertainment/ShowRatings:
+    get:
+      summary: Get show ratings
+      operationId: getShowRatings
+      responses:
+        "200": { description: Ratings }
+  /api/Entertainment/CelebrityRatings:
+    get:
+      summary: Get celebrity ratings
+      operationId: getCelebrityRatings
+      responses:
+        "200": { description: Ratings }
+  /api/Entertainment/Autocomplete/:
+    get:
+      summary: Autocomplete suggestions
+      operationId: autocomplete
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+      responses:
+        "200": { description: Suggestions }
+  /api/Entertainment/AutocompleteTitle/:
+    get:
+      summary: Autocomplete title suggestions
+      operationId: autocompleteTitle
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+      responses:
+        "200": { description: Suggestions }
+  /api/Entertainment/Changes/Movies/History/:
+    get:
+      summary: Movie change history
+      operationId: moviesChangeHistory
+      responses:
+        "200": { description: Change history }
+  /api/Entertainment/Changes/Shows/History/:
+    get:
+      summary: Show change history
+      operationId: showsChangeHistory
+      responses:
+        "200": { description: Change history }
+  /api/Entertainment/Changes/Seasons/History/:
+    get:
+      summary: Season change history
+      operationId: seasonsChangeHistory
+      responses:
+        "200": { description: Change history }
+  /api/Entertainment/Changes/Episodes/History/:
+    get:
+      summary: Episode change history
+      operationId: episodesChangeHistory
+      responses:
+        "200": { description: Change history }
+  /api/Images/{filePath}/Redirect:
+    parameters:
+      - name: filePath
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Redirect to an image file
+      operationId: imageRedirect
+      responses:
+        "302": { description: Redirect to CDN URL }
+  /api/Images/ScreenCaptures/Redirect:
+    get:
+      summary: Redirect to a screen capture image
+      operationId: screenCaptureRedirect
+      responses:
+        "302": { description: Redirect to CDN URL }
+  /api/Images/Batch:
+    post:
+      summary: Batch image lookup
+      operationId: imagesBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        "200": { description: Image batch response }
+  /api/Images/ScreenCaptures/Batch:
+    post:
+      summary: Batch screen-capture lookup
+      operationId: screenCapturesBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        "200": { description: Batch response }
+  /api/Videos/GetVideo/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a video by ID
+      operationId: getVideo
+      responses:
+        "200": { description: Video metadata }
+  /api/Videos/ClosedCaptions/{videoId}:
+    parameters:
+      - name: videoId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get closed captions for a video
+      operationId: getClosedCaptions
+      responses:
+        "200": { description: Closed captions }
+components:
+  securitySchemes:
+    SubscriptionKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+    SubscriptionKeyQuery:
+      type: apiKey
+      in: query
+      name: subscription-key
+security:
+  - SubscriptionKeyHeader: []
+  - SubscriptionKeyQuery: []
