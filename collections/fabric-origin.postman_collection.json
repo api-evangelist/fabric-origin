@@ -1,0 +1,1876 @@
+{
+  "item": [
+    {
+      "id": "11368dd1-99f4-4788-acb5-91e73b917cdd",
+      "name": "Search entertainment metadata",
+      "request": {
+        "name": "Search entertainment metadata",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Search",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "type",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d2134a22-178f-49ba-9bdf-de3fd03ffcfd",
+          "name": "Search results",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Search",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "f38ca2e4-b85f-4f0e-95ce-cc8e7ab1ba56",
+      "name": "Search entertainment metadata (POST body)",
+      "request": {
+        "name": "Search entertainment metadata (POST body)",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Search",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "07fa18af-29ed-47a3-85a0-8a212e0b1c71",
+          "name": "Search results",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Search",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "352142d4-d5ab-4087-b444-561a84cf0469",
+      "name": "Match entertainment record by external IDs",
+      "request": {
+        "name": "Match entertainment record by external IDs",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Match",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c7c1a536-7be7-4ddc-b061-86fddbce5b13",
+          "name": "Match",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Match",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9496b555-4b1b-4bb0-858b-d4fcb1b7c187",
+      "name": "Match (POST body)",
+      "request": {
+        "name": "Match (POST body)",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Match",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "f9fbb957-0e4b-4c46-8862-68cc7152c2f8",
+          "name": "Match",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Match",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d5801790-bf63-4946-93fb-1bd4a58f312b",
+      "name": "Get candidate matches",
+      "request": {
+        "name": "Get candidate matches",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "GetEntertainmentMatchCandidates"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6ecbbfb0-2cba-48f9-9e85-c16ace9d4f66",
+          "name": "Candidates",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "GetEntertainmentMatchCandidates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "31363514-c36f-4390-a2ba-d48bd417186f",
+      "name": "Get candidate matches (POST)",
+      "request": {
+        "name": "Get candidate matches (POST)",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "GetEntertainmentMatchCandidates"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "be500d02-7ef6-4018-9210-d5360b5297c4",
+          "name": "Candidates",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "GetEntertainmentMatchCandidates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "09129ecc-8dfe-44f6-90f1-3a694d05b550",
+      "name": "Match a season by sequence number",
+      "request": {
+        "name": "Match a season by sequence number",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "MatchSeasonBySequence"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "72b90554-f1a6-408f-b8ba-33e7ce069c4d",
+          "name": "Season",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "MatchSeasonBySequence"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "80549ed9-3400-4aba-861d-d6da1fed664b",
+      "name": "Match an episode by sequence number",
+      "request": {
+        "name": "Match an episode by sequence number",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "MatchEpisodeBySequence"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "20ffb16b-276f-473f-a411-d50b0a1860fc",
+          "name": "Episode",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "MatchEpisodeBySequence"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "09454d42-361e-45e1-a36b-3b2d5971236f",
+      "name": "Get movie ratings",
+      "request": {
+        "name": "Get movie ratings",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "MovieRatings"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "db358a41-210b-4e91-94f8-e8bcbc5f6fc3",
+          "name": "Ratings",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "MovieRatings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7effa828-5863-4d21-8c05-a2031bf77ca8",
+      "name": "Get show ratings",
+      "request": {
+        "name": "Get show ratings",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "ShowRatings"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "cf62ffc7-fdb8-47f6-8371-0f41e336287c",
+          "name": "Ratings",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "ShowRatings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c1624af4-33e6-4d00-a6e4-6f976d1afe2e",
+      "name": "Get celebrity ratings",
+      "request": {
+        "name": "Get celebrity ratings",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "CelebrityRatings"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "29f62911-1446-42aa-bd63-33383d12088f",
+          "name": "Ratings",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "CelebrityRatings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5bd96029-9f62-421e-8f3a-9d9b9862708a",
+      "name": "Autocomplete suggestions",
+      "request": {
+        "name": "Autocomplete suggestions",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Autocomplete",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "425897fc-061b-4b1e-8fad-544df1febe2b",
+          "name": "Suggestions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Autocomplete",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "afe85d09-bc31-4fc5-b86d-987bca3230ca",
+      "name": "Autocomplete title suggestions",
+      "request": {
+        "name": "Autocomplete title suggestions",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "AutocompleteTitle",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "bb8e278b-f4c1-4567-8f99-b2270ff90ea6",
+          "name": "Suggestions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "AutocompleteTitle",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1aff155b-a715-42c1-8b8b-f6dbc020eb44",
+      "name": "Movie change history",
+      "request": {
+        "name": "Movie change history",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Changes",
+            "Movies",
+            "History",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b1c5aab9-f3e3-43ac-8b82-2e9d14760f68",
+          "name": "Change history",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Changes",
+                "Movies",
+                "History",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "502972b3-5ff9-45c0-875d-124ca602e61d",
+      "name": "Show change history",
+      "request": {
+        "name": "Show change history",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Changes",
+            "Shows",
+            "History",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c8be2fbe-7001-47b3-96da-38add0b1c3d4",
+          "name": "Change history",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Changes",
+                "Shows",
+                "History",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9ce23cf5-aced-44bc-ab6b-abe467fa7f8f",
+      "name": "Season change history",
+      "request": {
+        "name": "Season change history",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Changes",
+            "Seasons",
+            "History",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "39cd124e-646f-4199-8484-39e711834082",
+          "name": "Change history",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Changes",
+                "Seasons",
+                "History",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3ce43a39-3540-4c1f-be9e-3b311b9b63f6",
+      "name": "Episode change history",
+      "request": {
+        "name": "Episode change history",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Entertainment",
+            "Changes",
+            "Episodes",
+            "History",
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "82793c50-e246-47b4-a213-f108364c429a",
+          "name": "Change history",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Entertainment",
+                "Changes",
+                "Episodes",
+                "History",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ef52fd88-3384-4807-89c8-b527b1dc9e5c",
+      "name": "Redirect to an image file",
+      "request": {
+        "name": "Redirect to an image file",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Images",
+            ":filePath",
+            "Redirect"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "filePath",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2298d83e-4a5d-4f28-a6bd-8b94b0ef30f1",
+          "name": "Redirect to CDN URL",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                ":filePath",
+                "Redirect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Found",
+          "code": 302,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ed94dcf8-78c2-45be-818f-15fdfd3b7de9",
+      "name": "Redirect to a screen capture image",
+      "request": {
+        "name": "Redirect to a screen capture image",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Images",
+            "ScreenCaptures",
+            "Redirect"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "526a65a3-d3c5-44dc-ac83-80335c83361a",
+          "name": "Redirect to CDN URL",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "ScreenCaptures",
+                "Redirect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Found",
+          "code": 302,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "51e3fb89-4740-4bf0-9645-4e582c23a7c4",
+      "name": "Batch image lookup",
+      "request": {
+        "name": "Batch image lookup",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Images",
+            "Batch"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "af3467c0-c4b7-4a71-be87-8a5adb4c28fd",
+          "name": "Image batch response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "Batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ee90561d-7d56-4bc1-937e-ed6b6be7447e",
+      "name": "Batch screen-capture lookup",
+      "request": {
+        "name": "Batch screen-capture lookup",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Images",
+            "ScreenCaptures",
+            "Batch"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "2dfa44f7-a04e-4b22-93b4-db0e7adb0e4a",
+          "name": "Batch response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "ScreenCaptures",
+                "Batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ab51b000-b399-470d-8a07-25a486b39bd2",
+      "name": "Get a video by ID",
+      "request": {
+        "name": "Get a video by ID",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Videos",
+            "GetVideo",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "18a2dd76-9799-42d2-9ee1-567d35654a9c",
+          "name": "Video metadata",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Videos",
+                "GetVideo",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "08fe22ad-0cd0-444d-a6cd-47eea0b63252",
+      "name": "Get closed captions for a video",
+      "request": {
+        "name": "Get closed captions for a video",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "Videos",
+            "ClosedCaptions",
+            ":videoId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "videoId",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d41eb6d4-e398-4773-8273-52d56a8410db",
+          "name": "Closed captions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "Videos",
+                "ClosedCaptions",
+                ":videoId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "videoId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Ocp-Apim-Subscription-Key",
+                "value": "<API Key>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.origin.fabricdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a43d207-51bf-4825-8031-853e34e13b45",
+    "name": "Fabric Origin Entertainment Data APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Fabric Origin (formerly IVA) is an entertainment metadata platform.\nThe Entertainment, Image, and Video APIs share the host\napi.origin.fabricdata.com. Authentication uses an Azure API\nManagement subscription key sent as either the\nOcp-Apim-Subscription-Key header or the subscription-key query\nparameter.\n\n\nContact Support:\n Name: Fabric Origin Knowledge Base",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fabric Origin Entertainment Data APIs",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search entertainment metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Search/",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "type",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Search entertainment metadata"
+    },
+    {
+      "info": {
+        "name": "Search entertainment metadata (POST body)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Search/",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Search entertainment metadata (POST body)"
+    },
+    {
+      "info": {
+        "name": "Match entertainment record by external IDs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Match/"
+      },
+      "docs": "Match entertainment record by external IDs"
+    },
+    {
+      "info": {
+        "name": "Match (POST body)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Match/",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Match (POST body)"
+    },
+    {
+      "info": {
+        "name": "Get candidate matches",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/GetEntertainmentMatchCandidates"
+      },
+      "docs": "Get candidate matches"
+    },
+    {
+      "info": {
+        "name": "Get candidate matches (POST)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/GetEntertainmentMatchCandidates",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Get candidate matches (POST)"
+    },
+    {
+      "info": {
+        "name": "Match a season by sequence number",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/MatchSeasonBySequence"
+      },
+      "docs": "Match a season by sequence number"
+    },
+    {
+      "info": {
+        "name": "Match an episode by sequence number",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/MatchEpisodeBySequence"
+      },
+      "docs": "Match an episode by sequence number"
+    },
+    {
+      "info": {
+        "name": "Get movie ratings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/MovieRatings"
+      },
+      "docs": "Get movie ratings"
+    },
+    {
+      "info": {
+        "name": "Get show ratings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/ShowRatings"
+      },
+      "docs": "Get show ratings"
+    },
+    {
+      "info": {
+        "name": "Get celebrity ratings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/CelebrityRatings"
+      },
+      "docs": "Get celebrity ratings"
+    },
+    {
+      "info": {
+        "name": "Autocomplete suggestions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Autocomplete/",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Autocomplete suggestions"
+    },
+    {
+      "info": {
+        "name": "Autocomplete title suggestions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/AutocompleteTitle/",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Autocomplete title suggestions"
+    },
+    {
+      "info": {
+        "name": "Movie change history",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Changes/Movies/History/"
+      },
+      "docs": "Movie change history"
+    },
+    {
+      "info": {
+        "name": "Show change history",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Changes/Shows/History/"
+      },
+      "docs": "Show change history"
+    },
+    {
+      "info": {
+        "name": "Season change history",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Changes/Seasons/History/"
+      },
+      "docs": "Season change history"
+    },
+    {
+      "info": {
+        "name": "Episode change history",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Entertainment/Changes/Episodes/History/"
+      },
+      "docs": "Episode change history"
+    },
+    {
+      "info": {
+        "name": "Redirect to an image file",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Images/:filePath/Redirect",
+        "params": [
+          {
+            "name": "filePath",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Redirect to an image file"
+    },
+    {
+      "info": {
+        "name": "Redirect to a screen capture image",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Images/ScreenCaptures/Redirect"
+      },
+      "docs": "Redirect to a screen capture image"
+    },
+    {
+      "info": {
+        "name": "Batch image lookup",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.origin.fabricdata.com/api/Images/Batch",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Batch image lookup"
+    },
+    {
+      "info": {
+        "name": "Batch screen-capture lookup",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.origin.fabricdata.com/api/Images/ScreenCaptures/Batch",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Batch screen-capture lookup"
+    },
+    {
+      "info": {
+        "name": "Get a video by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Videos/GetVideo/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a video by ID"
+    },
+    {
+      "info": {
+        "name": "Get closed captions for a video",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.origin.fabricdata.com/api/Videos/ClosedCaptions/:videoId",
+        "params": [
+          {
+            "name": "videoId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get closed captions for a video"
+    }
+  ],
+  "bundled": true
+}
