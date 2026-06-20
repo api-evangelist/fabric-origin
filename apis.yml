@@ -9,7 +9,7 @@ description: >-
   and tailored products for every stage of the release cycle, Fabric Origin
   is an affordable, scalable solution trusted by startups and Fortune 50
   companies alike.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: >-
   https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml
 created: '2025-03-01'
@@ -34,7 +34,7 @@ apis:
       videos and images from sibling APIs. Responses are available in JSON,
       XML, CSV, and HTML formats via Accept headers or the format query
       parameter.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
     baseURL: https://ee.iva-api.com/api/
     tags:
@@ -54,7 +54,7 @@ apis:
       The Celebrity API serves metadata about celebrities, including actors,
       directors, and other entertainment industry figures, with cross
       references to titles served by the Entertainment API.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
     baseURL: https://ee.iva-api.com/api/
     tags:
@@ -71,7 +71,7 @@ apis:
       assets using video identifiers returned from the Entertainment API,
       allowing customers to embed Fabric Origin video content into their
       content discovery experiences.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
     baseURL: https://ee.iva-api.com/api/
     tags:
@@ -88,7 +88,7 @@ apis:
       servers, including posters, stills, and promotional artwork referenced
       from the Entertainment and Celebrity APIs. Customers are encouraged to
       host and serve images from their own infrastructure for production use.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
     baseURL: https://ee.iva-api.com/api/
     tags:
@@ -105,7 +105,7 @@ apis:
       product family, including country codes, image type lookups, and video
       type lookups required when working with the Entertainment, Celebrity,
       Video, and Image APIs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
     baseURL: https://ee.iva-api.com/api/
     tags:
