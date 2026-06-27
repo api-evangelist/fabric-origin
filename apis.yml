@@ -121,7 +121,7 @@ common:
     url: https://knowledgebase.fabricdata.com/origin
   - type: Solutions
     url: https://knowledgebase.fabricdata.com/origin/solutions
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.origin.fabricdata.com/portal/login
   - type: Documentation
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
