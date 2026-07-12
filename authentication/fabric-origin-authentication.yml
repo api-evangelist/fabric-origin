@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fabric-origin-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: SubscriptionKeyHeader
+  type: apiKey
+  in: header
+  parameter: Ocp-Apim-Subscription-Key
+  sources:
+  - openapi/fabric-origin-openapi.yml
+- name: SubscriptionKeyQuery
+  type: apiKey
+  in: query
+  parameter: subscription-key
+  sources:
+  - openapi/fabric-origin-openapi.yml
