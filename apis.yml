@@ -115,6 +115,8 @@ apis:
       - type: Documentation
         url: https://knowledgebase.fabricdata.com/origin/apis-all/
 common:
+  - type: AgenticAccess
+    url: agentic-access/fabric-origin-agentic-access.yml
   - type: DomainSecurity
     url: security/fabric-origin-domain-security.yml
   - type: Authentication
