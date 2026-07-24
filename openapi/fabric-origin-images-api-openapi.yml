@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Fabric Origin Data APIs Entertainment Images API
+  description: 'Fabric Origin (formerly IVA) is an entertainment metadata platform.
+
+    The Entertainment, Image, and Video APIs share the host
+
+    api.origin.fabricdata.com. Authentication uses an Azure API
+
+    Management subscription key sent as either the
+
+    Ocp-Apim-Subscription-Key header or the subscription-key query
+
+    parameter.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Fabric Origin Knowledge Base
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+servers:
+- url: https://api.origin.fabricdata.com
+  description: Fabric Origin production
+security:
+- SubscriptionKeyHeader: []
+- SubscriptionKeyQuery: []
+tags:
+- name: Images
+paths:
+  /api/Images/{filePath}/Redirect:
+    parameters:
+    - name: filePath
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Redirect to an image file
+      operationId: imageRedirect
+      responses:
+        '302':
+          description: Redirect to CDN URL
+      tags:
+      - Images
+  /api/Images/ScreenCaptures/Redirect:
+    get:
+      summary: Redirect to a screen capture image
+      operationId: screenCaptureRedirect
+      responses:
+        '302':
+          description: Redirect to CDN URL
+      tags:
+      - Images
+  /api/Images/Batch:
+    post:
+      summary: Batch image lookup
+      operationId: imagesBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Image batch response
+      tags:
+      - Images
+  /api/Images/ScreenCaptures/Batch:
+    post:
+      summary: Batch screen-capture lookup
+      operationId: screenCapturesBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Batch response
+      tags:
+      - Images
+components:
+  securitySchemes:
+    SubscriptionKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+    SubscriptionKeyQuery:
+      type: apiKey
+      in: query
+      name: subscription-key

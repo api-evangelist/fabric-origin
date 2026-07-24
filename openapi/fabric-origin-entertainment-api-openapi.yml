@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: Fabric Origin Data APIs Entertainment API
+  description: 'Fabric Origin (formerly IVA) is an entertainment metadata platform.
+
+    The Entertainment, Image, and Video APIs share the host
+
+    api.origin.fabricdata.com. Authentication uses an Azure API
+
+    Management subscription key sent as either the
+
+    Ocp-Apim-Subscription-Key header or the subscription-key query
+
+    parameter.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Fabric Origin Knowledge Base
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+servers:
+- url: https://api.origin.fabricdata.com
+  description: Fabric Origin production
+security:
+- SubscriptionKeyHeader: []
+- SubscriptionKeyQuery: []
+tags:
+- name: Entertainment
+paths:
+  /api/Entertainment/Search/:
+    get:
+      summary: Search entertainment metadata
+      operationId: entertainmentSearch
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - Movie
+          - Show
+          - Season
+          - Episode
+          - Game
+          - Celebrity
+      responses:
+        '200':
+          description: Search results
+      tags:
+      - Entertainment
+    post:
+      summary: Search entertainment metadata (POST body)
+      operationId: entertainmentSearchPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Search results
+      tags:
+      - Entertainment
+  /api/Entertainment/Match/:
+    get:
+      summary: Match entertainment record by external IDs
+      operationId: entertainmentMatch
+      responses:
+        '200':
+          description: Match
+      tags:
+      - Entertainment
+    post:
+      summary: Match (POST body)
+      operationId: entertainmentMatchPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Match
+      tags:
+      - Entertainment
+  /api/Entertainment/GetEntertainmentMatchCandidates:
+    get:
+      summary: Get candidate matches
+      operationId: getEntertainmentMatchCandidates
+      responses:
+        '200':
+          description: Candidates
+      tags:
+      - Entertainment
+    post:
+      summary: Get candidate matches (POST)
+      operationId: getEntertainmentMatchCandidatesPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Candidates
+      tags:
+      - Entertainment
+  /api/Entertainment/MatchSeasonBySequence:
+    get:
+      summary: Match a season by sequence number
+      operationId: matchSeasonBySequence
+      responses:
+        '200':
+          description: Season
+      tags:
+      - Entertainment
+  /api/Entertainment/MatchEpisodeBySequence:
+    get:
+      summary: Match an episode by sequence number
+      operationId: matchEpisodeBySequence
+      responses:
+        '200':
+          description: Episode
+      tags:
+      - Entertainment
+  /api/Entertainment/MovieRatings:
+    get:
+      summary: Get movie ratings
+      operationId: getMovieRatings
+      responses:
+        '200':
+          description: Ratings
+      tags:
+      - Entertainment
+  /api/Entertainment/ShowRatings:
+    get:
+      summary: Get show ratings
+      operationId: getShowRatings
+      responses:
+        '200':
+          description: Ratings
+      tags:
+      - Entertainment
+  /api/Entertainment/CelebrityRatings:
+    get:
+      summary: Get celebrity ratings
+      operationId: getCelebrityRatings
+      responses:
+        '200':
+          description: Ratings
+      tags:
+      - Entertainment
+  /api/Entertainment/Autocomplete/:
+    get:
+      summary: Autocomplete suggestions
+      operationId: autocomplete
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Suggestions
+      tags:
+      - Entertainment
+  /api/Entertainment/AutocompleteTitle/:
+    get:
+      summary: Autocomplete title suggestions
+      operationId: autocompleteTitle
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Suggestions
+      tags:
+      - Entertainment
+  /api/Entertainment/Changes/Movies/History/:
+    get:
+      summary: Movie change history
+      operationId: moviesChangeHistory
+      responses:
+        '200':
+          description: Change history
+      tags:
+      - Entertainment
+  /api/Entertainment/Changes/Shows/History/:
+    get:
+      summary: Show change history
+      operationId: showsChangeHistory
+      responses:
+        '200':
+          description: Change history
+      tags:
+      - Entertainment
+  /api/Entertainment/Changes/Seasons/History/:
+    get:
+      summary: Season change history
+      operationId: seasonsChangeHistory
+      responses:
+        '200':
+          description: Change history
+      tags:
+      - Entertainment
+  /api/Entertainment/Changes/Episodes/History/:
+    get:
+      summary: Episode change history
+      operationId: episodesChangeHistory
+      responses:
+        '200':
+          description: Change history
+      tags:
+      - Entertainment
+components:
+  securitySchemes:
+    SubscriptionKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+    SubscriptionKeyQuery:
+      type: apiKey
+      in: query
+      name: subscription-key
