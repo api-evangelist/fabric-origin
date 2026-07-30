@@ -9,7 +9,20 @@ description: >-
   and tailored products for every stage of the release cycle, Fabric Origin
   is an affordable, scalable solution trusted by startups and Fortune 50
   companies alike.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fabric-origin.png
 url: >-
   https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml
 created: '2025-03-01'
@@ -26,94 +39,118 @@ tags:
   - Trailers
   - Metadata
 apis:
-  - aid: fabric-origin:entertainment-api
-    name: Fabric Origin Entertainment API
-    description: >-
-      The Entertainment API ingests and serves metadata for movies, television
-      shows, and games, including identifiers used to retrieve associated
-      videos and images from sibling APIs. Responses are available in JSON,
-      XML, CSV, and HTML formats via Accept headers or the format query
-      parameter.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-    baseURL: https://ee.iva-api.com/api/
-    tags:
-      - Entertainment
-      - Metadata
-      - Movies
-      - Television
-      - Games
-    properties:
-      - type: Documentation
-        url: https://knowledgebase.fabricdata.com/origin/apis-all/
-      - type: Knowledge Base
-        url: https://knowledgebase.fabricdata.com/origin
-  - aid: fabric-origin:celebrity-api
-    name: Fabric Origin Celebrity API
-    description: >-
-      The Celebrity API serves metadata about celebrities, including actors,
-      directors, and other entertainment industry figures, with cross
-      references to titles served by the Entertainment API.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-    baseURL: https://ee.iva-api.com/api/
-    tags:
-      - Celebrities
-      - People
-      - Metadata
-    properties:
-      - type: Documentation
-        url: https://knowledgebase.fabricdata.com/origin/apis-all/
-  - aid: fabric-origin:video-api
-    name: Fabric Origin Video API
-    description: >-
-      The Video API generates playable links for trailers and other video
-      assets using video identifiers returned from the Entertainment API,
-      allowing customers to embed Fabric Origin video content into their
-      content discovery experiences.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-    baseURL: https://ee.iva-api.com/api/
-    tags:
-      - Video
-      - Trailers
-      - Streaming
-    properties:
-      - type: Documentation
-        url: https://knowledgebase.fabricdata.com/origin/apis-all/
-  - aid: fabric-origin:image-api
-    name: Fabric Origin Image API
-    description: >-
-      The Image API provides access to images hosted on Fabric Origin's
-      servers, including posters, stills, and promotional artwork referenced
-      from the Entertainment and Celebrity APIs. Customers are encouraged to
-      host and serve images from their own infrastructure for production use.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-    baseURL: https://ee.iva-api.com/api/
-    tags:
-      - Images
-      - Posters
-      - Artwork
-    properties:
-      - type: Documentation
-        url: https://knowledgebase.fabricdata.com/origin/apis-all/
-  - aid: fabric-origin:common-data-api
-    name: Fabric Origin Common Data API
-    description: >-
-      The Common Data API exposes reference data used across the Fabric Origin
-      product family, including country codes, image type lookups, and video
-      type lookups required when working with the Entertainment, Celebrity,
-      Video, and Image APIs.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-    baseURL: https://ee.iva-api.com/api/
-    tags:
-      - Reference Data
-      - Lookups
-    properties:
-      - type: Documentation
-        url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- aid: fabric-origin:entertainment-api
+  name: Fabric Origin Entertainment API
+  description: >-
+    The Entertainment API ingests and serves metadata for movies, television shows, and games, including
+    identifiers used to retrieve associated videos and images from sibling APIs. Responses are available
+    in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Entertainment
+  - Metadata
+  - Movies
+  - Television
+  - Games
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: Knowledge Base
+    url: https://knowledgebase.fabricdata.com/origin
+- aid: fabric-origin:celebrity-api
+  name: Fabric Origin Celebrity API
+  description: >-
+    The Celebrity API serves metadata about celebrities, including actors, directors, and other entertainment
+    industry figures, with cross references to titles served by the Entertainment API.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Celebrities
+  - People
+  - Metadata
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- aid: fabric-origin:video-api
+  name: Fabric Origin Video API
+  description: >-
+    The Video API generates playable links for trailers and other video assets using video identifiers
+    returned from the Entertainment API, allowing customers to embed Fabric Origin video content into
+    their content discovery experiences.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Video
+  - Trailers
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- aid: fabric-origin:image-api
+  name: Fabric Origin Image API
+  description: >-
+    The Image API provides access to images hosted on Fabric Origin's servers, including posters, stills,
+    and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are encouraged
+    to host and serve images from their own infrastructure for production use.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Images
+  - Posters
+  - Artwork
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- aid: fabric-origin:common-data-api
+  name: Fabric Origin Common Data API
+  description: >-
+    The Common Data API exposes reference data used across the Fabric Origin product family, including
+    country codes, image type lookups, and video type lookups required when working with the Entertainment,
+    Celebrity, Video, and Image APIs.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Reference Data
+  - Lookups
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- aid: fabric-origin:fabric-origin-entertainment-api
+  name: Fabric Origin Entertainment API
+  description: The Entertainment API from Fabric Origin — 14 operation(s) for entertainment.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Entertainment
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-entertainment-api-openapi.yml
+- aid: fabric-origin:fabric-origin-images-api
+  name: Fabric Origin Images API
+  description: The Images API from Fabric Origin — 4 operation(s) for images.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-images-api-openapi.yml
+- aid: fabric-origin:fabric-origin-videos-api
+  name: Fabric Origin Videos API
+  description: The Videos API from Fabric Origin — 2 operation(s) for videos.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
+  baseURL: https://ee.iva-api.com/api/
+  tags:
+  - Videos
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-videos-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/fabric-origin-agentic-access.yml
