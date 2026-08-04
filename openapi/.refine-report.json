@@ -1,0 +1,18 @@
+{
+  "provider": "fabric-origin",
+  "sources": [
+    "fabric-origin-entertainment-api-openapi.yml",
+    "fabric-origin-images-api-openapi.yml",
+    "fabric-origin-videos-api-openapi.yml"
+  ],
+  "outputs": [
+    "fabric-origin-entertainment-api-openapi.yml",
+    "fabric-origin-images-api-openapi.yml",
+    "fabric-origin-videos-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
