@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fabric Origin Data APIs Entertainment Images API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Redirect to an image file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.origin.fabricdata.com/api/Images/:filePath/Redirect",
+            "params": [
+              {
+                "name": "filePath",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Redirect to an image file"
+        },
+        {
+          "info": {
+            "name": "Redirect to a screen capture image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.origin.fabricdata.com/api/Images/ScreenCaptures/Redirect"
+          },
+          "docs": "Redirect to a screen capture image"
+        },
+        {
+          "info": {
+            "name": "Batch image lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.origin.fabricdata.com/api/Images/Batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch image lookup"
+        },
+        {
+          "info": {
+            "name": "Batch screen-capture lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.origin.fabricdata.com/api/Images/ScreenCaptures/Batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch screen-capture lookup"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

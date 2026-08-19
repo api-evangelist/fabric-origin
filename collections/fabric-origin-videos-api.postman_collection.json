@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "38920410-8c92-4590-b9d4-4c896bd6a7ac",
+      "name": "Videos",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84dcdc28-8534-4f28-909e-3db91bd880a4",
+          "name": "Get a video by ID",
+          "request": {
+            "name": "Get a video by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Videos",
+                "GetVideo",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2384edbd-c695-49fa-998d-ead20f9f2c93",
+              "name": "Video metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Videos",
+                    "GetVideo",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bf3a869-a8ae-449d-bf2b-1959087df612",
+          "name": "Get closed captions for a video",
+          "request": {
+            "name": "Get closed captions for a video",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Videos",
+                "ClosedCaptions",
+                ":videoId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "videoId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1180f64e-85e1-404d-aa72-dea23a89ef3b",
+              "name": "Closed captions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Videos",
+                    "ClosedCaptions",
+                    ":videoId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "videoId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.origin.fabricdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "619d12df-3782-483d-a23a-67c7884cd51a",
+    "name": "Fabric Origin Data APIs Entertainment Videos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Fabric Origin (formerly IVA) is an entertainment metadata platform.\nThe Entertainment, Image, and Video APIs share the host\napi.origin.fabricdata.com. Authentication uses an Azure API\nManagement subscription key sent as either the\nOcp-Apim-Subscription-Key header or the subscription-key query\nparameter.\n\n\nContact Support:\n Name: Fabric Origin Knowledge Base",
+      "type": "text/plain"
+    }
+  }
+}

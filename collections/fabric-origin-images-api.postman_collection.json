@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "c02419a7-3c9b-435e-ad1c-82e34ac50c63",
+      "name": "Images",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b477db64-5561-4d79-aac9-e14d83ef701e",
+          "name": "Redirect to an image file",
+          "request": {
+            "name": "Redirect to an image file",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                ":filePath",
+                "Redirect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26c34677-a280-4f34-97a0-d57d7721f92c",
+              "name": "Redirect to CDN URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Images",
+                    ":filePath",
+                    "Redirect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e202adf2-db51-4dd3-b752-5666154cbf1a",
+          "name": "Redirect to a screen capture image",
+          "request": {
+            "name": "Redirect to a screen capture image",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "ScreenCaptures",
+                "Redirect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6c53759-716a-4f90-86d1-2b22c2a5e9d2",
+              "name": "Redirect to CDN URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Images",
+                    "ScreenCaptures",
+                    "Redirect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bf30f31-2cca-466a-b37c-12919b00934a",
+          "name": "Batch image lookup",
+          "request": {
+            "name": "Batch image lookup",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "Batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdbad8b2-d90a-40dc-9890-2e7f8b972d07",
+              "name": "Image batch response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Images",
+                    "Batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4687f1fd-4cb0-4cea-af93-9c0804053d89",
+          "name": "Batch screen-capture lookup",
+          "request": {
+            "name": "Batch screen-capture lookup",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Images",
+                "ScreenCaptures",
+                "Batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f15317f2-a781-4aa8-ba57-f944c5457171",
+              "name": "Batch response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Images",
+                    "ScreenCaptures",
+                    "Batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.origin.fabricdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c6ff778a-fcb3-41fb-9ae2-d1f992f9b79f",
+    "name": "Fabric Origin Data APIs Entertainment Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Fabric Origin (formerly IVA) is an entertainment metadata platform.\nThe Entertainment, Image, and Video APIs share the host\napi.origin.fabricdata.com. Authentication uses an Azure API\nManagement subscription key sent as either the\nOcp-Apim-Subscription-Key header or the subscription-key query\nparameter.\n\n\nContact Support:\n Name: Fabric Origin Knowledge Base",
+      "type": "text/plain"
+    }
+  }
+}
