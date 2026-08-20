@@ -100,6 +100,10 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
   baseURL: https://ee.iva-api.com/api/
   tags:
+  - Image
+  - Posters
+  - Artwork
+  tags_raw:
   - Images
   - Posters
   - Artwork
@@ -137,6 +141,8 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
   baseURL: https://ee.iva-api.com/api/
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
