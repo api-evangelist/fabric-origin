@@ -9,6 +9,17 @@ description: >-
   and tailored products for every stage of the release cycle, Fabric Origin
   is an affordable, scalable solution trusted by startups and Fortune 50
   companies alike.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
