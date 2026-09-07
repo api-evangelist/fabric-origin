@@ -1,0 +1,1822 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Common Metadata API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "common"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/Common/Characteristics/BasedOn": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Based On",
+        "description": "Get characteristic types for the Based On",
+        "operationId": "GetBasedOnCharacteristicsBasedOn_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Characteristics/FilmingLocations": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Filming Location",
+        "description": "Get characteristic types for the Filming Location",
+        "operationId": "GetFilmingLocationsCharacteristicsFilmingLocations_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Characteristics/MoodAndTone": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Mood And Tone",
+        "description": "Get characteristic types for the Mood And Tone",
+        "operationId": "GetMoodAndToneCharacteristicsMoodAndTone_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Characteristics/NarrativeLocations": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Narrative Location",
+        "description": "Get characteristic types for the Narrative Location",
+        "operationId": "GetNarrativeLocationsCharacteristicsNarrativeLocations_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Characteristics/SettingAndContext": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Setting And Context",
+        "description": "Get characteristic types for the Setting And Context",
+        "operationId": "GetSettingAndContextCharacteristicsSettingAndContext_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Characteristics/SubjectAndTrope": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get characteristic types for the Subject And Trope",
+        "description": "Get characteristic types for the Subject And Trope",
+        "operationId": "GetSubjectAndTropeCharacteristicsSubjectAndTrope_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacteristicsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Collections/{CollectionId}/Items/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Gets DbCollectionItems by CollectionId.",
+        "description": "Gets DbCollectionItems by CollectionId.",
+        "operationId": "GetDbCollectionItemsCollectionsCollectionIdItems_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "CollectionId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbCollectionItemResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbCollectionItemResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Collections/Children": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Gets all Child Collections of a given Collection.",
+        "description": "Gets all Child Collections of a given Collection.",
+        "operationId": "GetCollectionChildrenCollectionsChildren_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "CollectionId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbCollectionResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbCollectionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Collections/Program": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Gets all Collections containing a specific program.",
+        "description": "Gets all Collections containing a specific program.",
+        "operationId": "GetProgramCollectionsCollectionsProgram_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ProgramId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbCollectionResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbCollectionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Collections/Search/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Search collections.",
+        "description": "Search collection data.",
+        "operationId": "SearchCollectionCollectionsSearch_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Skip",
+            "in": "query",
+            "description": "Rows to skip, used for paging. Default is 0.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Take",
+            "in": "query",
+            "description": "Rows to return, used for paging. Default is 10, limit is 50.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Ids",
+            "in": "query",
+            "description": "List of collection Ids.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ParentCollectionIds",
+            "in": "query",
+            "description": "List of Parent Collection Ids.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "AnyIds",
+            "in": "query",
+            "description": "ID or ParentIDs matches.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ProgramIds",
+            "in": "query",
+            "description": "Filter collections containing these ProgramIds. Ex: Movie/123",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "NameSearch",
+            "in": "query",
+            "description": "Search for collections by name, description.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Types",
+            "in": "query",
+            "description": "Filter collections by collection types.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "SearchAllTerms",
+            "in": "query",
+            "description": "Search collections across all data points for recommendations.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "NextPageToken",
+            "in": "query",
+            "description": "Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "SortBy",
+            "in": "query",
+            "description": "Sort order of results.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "ModifiedRecordsSince",
+            "in": "query",
+            "description": "Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchCollectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Search collections.",
+        "description": "Search collection data.",
+        "operationId": "SearchCollectionCollectionsSearch_Post",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchCollectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Skip": {
+                    "type": "integer",
+                    "description": "Rows to skip, used for paging. Default is 0.",
+                    "format": "int32"
+                  },
+                  "Take": {
+                    "type": "integer",
+                    "description": "Rows to return, used for paging. Default is 10, limit is 50.",
+                    "format": "int32"
+                  },
+                  "Ids": {
+                    "type": "array",
+                    "description": "List of collection Ids."
+                  },
+                  "ParentCollectionIds": {
+                    "type": "array",
+                    "description": "List of Parent Collection Ids."
+                  },
+                  "AnyIds": {
+                    "type": "array",
+                    "description": "ID or ParentIDs matches."
+                  },
+                  "ProgramIds": {
+                    "type": "array",
+                    "description": "Filter collections containing these ProgramIds. Ex: Movie/123"
+                  },
+                  "NameSearch": {
+                    "type": "string",
+                    "description": "Search for collections by name, description."
+                  },
+                  "Types": {
+                    "type": "array",
+                    "description": "Filter collections by collection types."
+                  },
+                  "SearchAllTerms": {
+                    "type": "array",
+                    "description": "Search collections across all data points for recommendations."
+                  },
+                  "NextPageToken": {
+                    "type": "string",
+                    "description": "Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided."
+                  },
+                  "SortBy": {
+                    "type": "string",
+                    "description": "Sort order of results."
+                  },
+                  "ModifiedRecordsSince": {
+                    "type": "string",
+                    "description": "Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.",
+                    "format": "date-time"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Common/Collections/Suggestions": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Gets Collection suggestions for a specific program.",
+        "description": "Gets Collection suggestions for a specific program.",
+        "operationId": "GetCollectionSuggestionsCollectionsSuggestions_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ProgramId",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Take",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchCollectionResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/CollectionTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Returns Collection Types.",
+        "description": "Returns Collection Types.",
+        "operationId": "GetCollectionTypesCollectionTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<CollectionType>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Countries/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Countries.",
+        "description": "List of Countries, ISO codes and Country IDs used throughout the API.",
+        "operationId": "GetCountriesCountries_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<CountryResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Countries/{Id}": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get Country by ID.",
+        "description": "Requires a valid Country ID.",
+        "operationId": "GetCountryCountriesId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountryResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/DataDemoFilters": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of filter options available in data demo.",
+        "description": "List of filter options available in data demo.",
+        "operationId": "GetDataDemoFiltersDataDemoFilters_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataDemoFilters"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/EncodeTypes/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Gets all EncodeTypes.",
+        "description": "Videos are encoded in various formats and bitrates to reach any screen and work with any player.",
+        "operationId": "GetEncodeTypesEncodeTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<EncodeTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EncodeTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetCommonEnumerators": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Common Enumerators.",
+        "description": "Provider enumerator has values added regularly. Update your SDK to refresh these values.",
+        "operationId": "GetCommonEnumeratorsGetCommonEnumerators_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonEnumerators"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetCurrencyTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of CurrencyTypes.",
+        "description": "List of CurrencyTypes.",
+        "operationId": "GetCurrencyTypesGetCurrencyTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<CurrencyType>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetDeliveryMethods": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of DeliveryMethods.",
+        "description": "List of DeliveryMethods.",
+        "operationId": "GetDeliveryMethodsGetDeliveryMethods_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DeliveryMethod>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetOfferTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of OfferTypes.",
+        "description": "List of OfferTypes.",
+        "operationId": "GetOfferTypesGetOfferTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<OfferType>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetProviders": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Providers.",
+        "description": "List of Providers.",
+        "operationId": "GetProvidersGetProviders_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<Provider>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/GetVideoQualities": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of VideoQualities.",
+        "description": "Returns Providers.",
+        "operationId": "GetVideoQualitiesGetVideoQualities_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<VideoQuality>",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Images/{Id}/Changes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Returns full history of the Images Changes, or partial history when FromDate is included.",
+        "description": "Requires a valid ImageId, with optional FromDate.",
+        "operationId": "GetDbImageChangesImagesIdChanges_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "query",
+            "description": "Required ID of Image.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "FromDate",
+            "in": "query",
+            "description": "Optional FromDate to return partial history of Image changes. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbImageChangeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbImageChangeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Images/{Id}/Tags": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Returns Tags for an Image.",
+        "description": "Requires a valid Image Id.",
+        "operationId": "GetDbImageTagsImagesIdTags_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "query",
+            "description": "Required ID of Image.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbImageTagResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbImageTagResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/ImageTypes/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Image Types.",
+        "description": "A list of image types available in the IVA database. EX: Poster.",
+        "operationId": "GetImageTypesImageTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<ImageTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImageTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Languages/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Languages.",
+        "description": "Returns a list of languages used in the API as well as the ISO code and language ID.",
+        "operationId": "GetLanguagesLanguages_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<LanguageResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LanguageResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Languages/{Id}": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Get Language by ID.",
+        "description": "Requires a valid Language ID.",
+        "operationId": "GetLanguageLanguagesId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguageResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/MovieAlternateIdTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "Returns all MovieAlternateIdTypes",
+        "description": "No parameters",
+        "operationId": "GetMovieAlternateIdTypesMovieAlternateIdTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<MovieAlternateIdTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovieAlternateIdTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/MovieCertifications": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Movie Certifications.",
+        "description": "Returns all Movie Certifications used in a movie response with the Releases object.",
+        "operationId": "GetMovieCertificationsMovieCertifications_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<MovieCertificationResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovieCertificationResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/MovieGenres": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Movie Genres.",
+        "description": "List of all movie genres used in the API.",
+        "operationId": "GetMovieGenresMovieGenres_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbMovieGenre>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbMovieGenre"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/MovieReleaseTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Movie Release Types",
+        "description": "No parameters",
+        "operationId": "GetMovieReleaseTypesMovieReleaseTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<MovieReleaseTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovieReleaseTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/OriginatingNetworks/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Originating Networks.",
+        "description": "Returns a list of originating networks associated with shows in the IVA database.",
+        "operationId": "GetOriginatingNetworksOriginatingNetworks_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<OriginatingNetworkResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OriginatingNetworkResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/ShowAlternateIdTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of External Id Types",
+        "description": "No parameters",
+        "operationId": "GetShowAlternateIdTypesShowAlternateIdTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<ShowAlternateIdTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShowAlternateIdTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/ShowCertifications": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Show Certifications.",
+        "description": "List of Show Certifications and definitions.",
+        "operationId": "GetDbShowCertificationsShowCertifications_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbShowCertification>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbShowCertification"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/ShowGenres": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Show Genres.",
+        "description": "Returns a list of all the show genres used in the IVA database.",
+        "operationId": "GetShowGenresShowGenres_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<DbShowGenre>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DbShowGenre"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/ShowReleaseTypes": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Show Release Types",
+        "description": "No parameters",
+        "operationId": "GetDbShowReleaseTypesShowReleaseTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<ShowReleaseTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ShowReleaseTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/Tags/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Tags (with paging).",
+        "description": "Paged list of all tags used in the API.",
+        "operationId": "GetTagsTags_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Skip",
+            "in": "query",
+            "description": "Offset for paging. Default is 0.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Take",
+            "in": "query",
+            "description": "Maximum number of rows returned. Default is 1,000.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TagResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TagResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/TrendSources": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Trend Sources.",
+        "description": "List of Trend Sources.",
+        "operationId": "GetTrendSourcesTrendSources_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TrendSourceResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrendSourceResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Common/VideoTypes/": {
+      "get": {
+        "tags": [
+          "common"
+        ],
+        "summary": "List of Video Types.",
+        "description": "Returns a list of the types of videos that can be associated to a title.",
+        "operationId": "GetVideoTypesVideoTypes_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<VideoTypeResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VideoTypeResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CharacteristicsResponse": {
+        "title": "CharacteristicsResponse",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          }
+        },
+        "description": "CharacteristicsResponse",
+        "type": "object"
+      },
+      "SearchCollectionResponse": {
+        "title": "SearchCollectionResponse",
+        "properties": {
+          "Took": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "MaxScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "Hits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CollectionHit"
+            }
+          },
+          "Message": {
+            "type": "string"
+          },
+          "NextPageToken": {
+            "type": "string"
+          }
+        },
+        "description": "SearchCollectionResponse",
+        "type": "object"
+      },
+      "CollectionHit": {
+        "title": "CollectionHit",
+        "properties": {
+          "Score": {
+            "type": "number",
+            "format": "double"
+          },
+          "Source": {
+            "$ref": "#/components/schemas/EntertainmentCollection"
+          },
+          "Id": {
+            "type": "string"
+          }
+        },
+        "description": "CollectionHit",
+        "type": "object"
+      },
+      "EntertainmentCollection": {
+        "title": "EntertainmentCollection",
+        "properties": {
+          "Id": {
+            "description": "ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.",
+            "type": "string"
+          },
+          "Name": {
+            "description": "Name of collection.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of collection.",
+            "type": "string"
+          },
+          "Types": {
+            "description": "List of Types of collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ParentCollectionIds": {
+            "description": "List of collection ParentIds.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Items": {
+            "description": "Programs in the collection.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntertainmentCollectionItem"
+            }
+          },
+          "Tags": {
+            "description": "Significant Term tags from programs in the collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "MicroGenres": {
+            "description": "Micro genres from programs in the collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Subjects": {
+            "description": "Subjects from programs in the collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "BasedOns": {
+            "description": "Based Ons from programs in the collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Characters": {
+            "description": "Characters from programs in the collection.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Timestamp": {
+            "description": "DateTime where collection was last modified.",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "EntertainmentCollection",
+        "type": "object"
+      },
+      "EntertainmentCollectionItem": {
+        "title": "EntertainmentCollectionItem",
+        "properties": {
+          "ProgramId": {
+            "description": "ID of program in collection.",
+            "type": "string"
+          },
+          "Sequence": {
+            "description": "Nullable sequence used to order some collections.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "Modified": {
+            "description": "DateTime collection item was last modified.",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "EntertainmentCollectionItem",
+        "type": "object"
+      },
+      "CountryResponse": {
+        "title": "CountryResponse",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "FabricId": {
+            "description": "Fabric Language Id.",
+            "type": "string"
+          },
+          "IsoCode": {
+            "description": "ISO code for a Country.",
+            "type": "string"
+          },
+          "IsoCodeA3": {
+            "description": "ISO 3 character code for a Country.",
+            "type": "string"
+          },
+          "Name": {
+            "description": "Name of the Country.",
+            "type": "string"
+          },
+          "AlternateNames": {
+            "description": "Alternate names of the Country.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "CountryResponse",
+        "type": "object"
+      },
+      "DataDemoFilters": {
+        "title": "DataDemoFilters",
+        "properties": {
+          "SortBy": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "CollectionSortBys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "ProgramTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Packages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "AvailableOn": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Genres": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Themes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Countries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "TrendSources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "TrendBrands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "TrendListClassifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "MissingExternalIdNames": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "Languages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "OriginatingNetworks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "CollectionTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "YearRange": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "AwardYears": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "AwardTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "AwardCategoryTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "SubjectsAndTrope": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "FilmingLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "BasedOn": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "SettingAndContext": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "NarrativeLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "MoodAndTones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameValueFilter"
+            }
+          },
+          "RemoteIp": {
+            "type": "string"
+          }
+        },
+        "description": "DataDemoFilters",
+        "type": "object"
+      },
+      "NameValueFilter": {
+        "title": "NameValueFilter",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Value": {
+            "type": "string"
+          }
+        },
+        "description": "NameValueFilter",
+        "type": "object"
+      },
+      "CommonEnumerators": {
+        "title": "CommonEnumerators",
+        "properties": {
+          "Provider": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "DeliveryMethod": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "OfferType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "VideoQuality": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "CurrencyType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "CommonEnumerators",
+        "type": "object"
+      },
+      "LanguageResponse": {
+        "title": "LanguageResponse",
+        "properties": {
+          "Id": {
+            "description": "Unique ID of a Language.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "IsoCode": {
+            "description": "ISO code for this Language.",
+            "type": "string"
+          },
+          "Name": {
+            "description": "Name of the Language.",
+            "type": "string"
+          },
+          "FabricId": {
+            "description": "Fabric Language Id.",
+            "type": "string"
+          },
+          "IETFCode": {
+            "description": "IETF BCP 47 code for this language.",
+            "type": "string"
+          }
+        },
+        "description": "LanguageResponse",
+        "type": "object"
+      }
+    }
+  }
+}

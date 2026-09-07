@@ -13,6 +13,11 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "fabric-origin-entertainment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "fabric-origin-images-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "fabric-origin-videos-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

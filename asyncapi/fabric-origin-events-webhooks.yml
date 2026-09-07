@@ -1,0 +1,69 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/events-and-webhooks
+provider: Fabric Origin
+providerId: fabric-origin
+type: Webhooks
+asyncapi_spec_published: false
+description: >-
+  Origin Studio publishes an event surface. Change notifications are delivered over AWS SNS to a
+  subscriber endpoint configured per tenant, and the provider documents the envelope, the headers and
+  the double-parse required to reach the event body. No AsyncAPI document is published, and no event
+  surface exists for Origin Nexus (read-only) or either MCP server.
+transport:
+  mechanism: AWS Simple Notification Service (SNS)
+  delivery: HTTPS POST to a subscriber endpoint configured for the tenant
+  topic_shape: 'arn:aws:sns:<region>:<account>:events-tenant-<tenantId>'
+  region_observed: us-west-2
+  self_serve_subscription: false
+  subscription_note: >-
+    The SNS topic and subscription are provisioned for the tenant; the docs describe no self-serve
+    endpoint registration API or UI.
+  signature_verification:
+    mechanism: SNS message signature
+    fields: [SignatureVersion, Signature, SigningCertURL]
+    documented_procedure: false
+    note: >-
+      The SNS envelope carries a signature and a SigningCertURL, but Fabric does not document a
+      verification procedure — a consumer must fall back to AWS's own SNS signature-verification
+      guidance.
+envelope:
+  outer: AWS SNS Notification JSON
+  outer_fields: [Type, MessageId, TopicArn, Message, Timestamp, SignatureVersion, Signature, SigningCertURL, UnsubscribeURL]
+  inner: 'the Origin Studio event, carried as a JSON STRING inside Message'
+  double_parse_required: true
+  gotcha: >-
+    The provider calls this out explicitly — the Message field is a JSON string, not a nested object,
+    and must be parsed a second time. This is the single most likely integration error on the surface.
+  headers:
+  - x-amz-sns-message-type
+  - x-amz-sns-message-id
+  - x-amz-sns-topic-arn
+  - x-amz-sns-subscription-arn
+  - x-amzn-trace-id
+  example_inner_payload: '{"event":"record.created","id":"fab1d489645ef281","new":{"workflowStatus":"draft"}}'
+events:
+- name: record.created
+  description: A new record has been created.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/events-and-webhooks
+- name: record.updated
+  description: Workflow status changed.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/events-and-webhooks
+event_catalog_completeness: partial
+event_catalog_note: >-
+  The provider labels its event table "Examples" and lists only two types. The full event vocabulary
+  is not published, so a consumer cannot enumerate what it may receive. Recorded as an honest partial
+  catalog rather than padded out.
+use_cases:
+- trigger downstream workflows
+- synchronize external systems
+- react to record lifecycle changes
+- automate enrichment or publishing pipelines
+gaps:
+- No AsyncAPI document.
+- No published retry, ordering or at-least-once delivery semantics beyond what SNS provides.
+- No event schema registry; the inner payload shape is shown only by example.
+- No event surface at all for Origin Nexus or the MCP servers.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

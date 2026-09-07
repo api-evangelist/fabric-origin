@@ -1,0 +1,152 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Rabbit Recommendations API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "rabbitrecommendations"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/RabbitRecommendations/recommendations": {
+      "get": {
+        "tags": [
+          "rabbitrecommendations"
+        ],
+        "summary": "List of Entertainment Program Recommendations for movies or shows.",
+        "description": "",
+        "operationId": "GetXroadMediaRecommendationsrecommendations_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "MovieId",
+            "in": "query",
+            "description": "Source MovieId for recommendations.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "ShowId",
+            "in": "query",
+            "description": "Source ShowId for recommendations.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "similar",
+                "similarShowsOnly",
+                "similarMoviesOnly"
+              ]
+            },
+            "name": "Type",
+            "in": "query",
+            "description": "Type of recommendation response.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/XRoadMediaRecommendationResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "XRoadMediaRecommendationResponse": {
+        "title": "XRoadMediaRecommendationResponse",
+        "properties": {
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Recommendation"
+            }
+          }
+        },
+        "description": "XRoadMediaRecommendationResponse",
+        "type": "object"
+      },
+      "Recommendation": {
+        "title": "Recommendation",
+        "properties": {
+          "explanations": {
+            "description": "List of reasons for recommendation.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Explanation"
+            }
+          },
+          "score": {
+            "description": "Quality of the recommendation relative to other recommendations.",
+            "type": "number",
+            "format": "float"
+          },
+          "program": {
+            "$ref": "#/components/schemas/Program",
+            "description": "The ID and Type of IVA Program."
+          }
+        },
+        "description": "Recommendation",
+        "type": "object"
+      },
+      "Explanation": {
+        "title": "Explanation",
+        "properties": {
+          "originator": {
+            "description": "Origination of the explanation.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The granularity of recommendation match.",
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "description": "Explanation",
+        "type": "object"
+      },
+      "Program": {
+        "title": "Program",
+        "properties": {
+          "Id": {
+            "description": "The ID of the program (show or movie)",
+            "type": "integer",
+            "format": "int64"
+          },
+          "Type": {
+            "description": "The type of IVA program (show or movie).",
+            "type": "string"
+          }
+        },
+        "description": "Program",
+        "type": "object"
+      }
+    }
+  }
+}

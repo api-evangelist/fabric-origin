@@ -1,0 +1,2800 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Tv Grid API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "tvgrid"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/TvGrid/genres/movies": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets list of movie genres.",
+        "operationId": "GetTvMediaMovieGenresgenresmovies_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaGenreResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaGenreResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/genres/shows": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets list of show genres.",
+        "operationId": "GetTvMediaShowGenresgenresshows_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaGenreResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaGenreResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/genres/sports": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets list of sports genres.",
+        "operationId": "GetTvMediaSportGenresgenressports_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaGenreResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaGenreResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/leagues": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets list of sports leagues.",
+        "operationId": "GetTvMediaLeaguesleagues_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaLeagueResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaLeagueResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/leagues/{LeagueID}/listings": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Retrieve listings for a given leagueID.",
+        "operationId": "GetTvMediaLeagueListingsleaguesLeagueIDlistings_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LeagueID",
+            "in": "path",
+            "description": "League ID. See /leagues for a list of all available sports leagues.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "query",
+            "description": "Lineup ID. Lineups can be found through the /TvMedia/lineups method.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Channel",
+            "in": "query",
+            "description": "Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeChan",
+            "in": "query",
+            "description": "Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "StartChan",
+            "in": "query",
+            "description": "Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "EndChan",
+            "in": "query",
+            "description": "Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the 'maxchan' parameter.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Station",
+            "in": "query",
+            "description": "Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeStation",
+            "in": "query",
+            "description": "Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "SportEventsOnly",
+            "in": "query",
+            "description": "Get sporting events only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaListingResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaListingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/leagues/{LeagueID}/teams": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets list of teams in a league.",
+        "operationId": "GetTvMediaTeamsleaguesLeagueIDteams_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LeagueID",
+            "in": "path",
+            "description": "League ID. See /TvMedia/leagues for a list of all available sports leagues.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaTeamResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaTeamResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "summary": "",
+        "description": "Get lineups by postal code.",
+        "operationId": "GetTvMediaLineupsByPostalCodelineups_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "PostalCode",
+            "in": "query",
+            "description": "Postal code.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OTA",
+                "SAT",
+                "CAB",
+                "IPTV"
+              ]
+            },
+            "name": "LineupType",
+            "in": "query",
+            "description": "Filter by lineup type, valid types are OTA, SAT, CAB, IPTV.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ProviderId",
+            "in": "query",
+            "description": "Filter by provider ID",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaLineupResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaLineupResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/{LineupID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Get lineups by specific LineupID.",
+        "operationId": "GetTvMediaLineupByIDlineupsLineupID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "path",
+            "description": "Lineup ID.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvMediaLineupResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/{LineupID}/listings": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Retrieve individual listings for a given lineup ordered by start time (listDateTime) and channel number; unless using the search parameter, in which case they will be ordered by search term relevance.",
+        "operationId": "GetTvMediaLineupListingslineupsLineupIDlistings_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "path",
+            "description": "Lineup ID.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Channel",
+            "in": "query",
+            "description": "Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeChan",
+            "in": "query",
+            "description": "Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "StartChan",
+            "in": "query",
+            "description": "Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "EndChan",
+            "in": "query",
+            "description": "Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the 'maxchan' parameter.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Station",
+            "in": "query",
+            "description": "Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeStation",
+            "in": "query",
+            "description": "Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "SportType",
+            "in": "query",
+            "description": "Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "League",
+            "in": "query",
+            "description": "Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Team",
+            "in": "query",
+            "description": "Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "SportEventsOnly",
+            "in": "query",
+            "description": "Get sporting events only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NewShowsOnly",
+            "in": "query",
+            "description": "Get new shows only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaListingResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaListingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/{LineupID}/listings/grid": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "A collection of listings grouped by channel and ordered by listDateTime. The grid dimensions ( time x channels ) can be modified by using the start, end, startchan and maxchan parameters. Channels without any listings will be returned with an empty listings collection.",
+        "operationId": "GetTvMediaLineupListingsGridlineupsLineupIDlistingsgrid_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "path",
+            "description": "Lineup ID.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Channel",
+            "in": "query",
+            "description": "Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeChan",
+            "in": "query",
+            "description": "Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "StartChan",
+            "in": "query",
+            "description": "Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "EndChan",
+            "in": "query",
+            "description": "Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the 'maxchan' parameter.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Station",
+            "in": "query",
+            "description": "Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeStation",
+            "in": "query",
+            "description": "Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Show",
+            "in": "query",
+            "description": "Get listings for a specific showID, or array of showID's. ShowID's represent a single episode, movie, or event. a showID, episodeID and movieID are all valid parameters.\t",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Series",
+            "in": "query",
+            "description": "Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "SportType",
+            "in": "query",
+            "description": "Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "League",
+            "in": "query",
+            "description": "Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Team",
+            "in": "query",
+            "description": "Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "SportEventsOnly",
+            "in": "query",
+            "description": "Get sporting events only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NewShowsOnly",
+            "in": "query",
+            "description": "Get new shows only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaGridResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaGridResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/{LineupID}/listings/highlights": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Retrieves featured listings. setting a start and/or end time for every request is a highly recommended.",
+        "operationId": "GetTvMediaLineupListingsHighlightslineupsLineupIDlistingshighlights_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "path",
+            "description": "Lineup ID.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Channel",
+            "in": "query",
+            "description": "Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeChan",
+            "in": "query",
+            "description": "Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "StartChan",
+            "in": "query",
+            "description": "Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "EndChan",
+            "in": "query",
+            "description": "Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the 'maxchan' parameter.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Station",
+            "in": "query",
+            "description": "Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeStation",
+            "in": "query",
+            "description": "Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Series",
+            "in": "query",
+            "description": "Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NewShowstsOnly",
+            "in": "query",
+            "description": "Get new shows only. no value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "IncludeNewShows",
+            "in": "query",
+            "description": "Get new shows only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaListingResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaListingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/browse": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Starting point for lineup browser, returns available countries.",
+        "operationId": "GetTvMediaCountrieslineupsbrowse_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaCountryResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaCountryResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/browse/{CountryID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Browse regions by country.",
+        "operationId": "GetTvMediaRegionslineupsbrowseCountryID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "CountryID",
+            "in": "path",
+            "description": "Country abbreviation. See TvMedia/lineups/browse for a list of supported countries.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaRegionResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaRegionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/browse/{CountryID}/{RegionID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Get service areas for a specific country and region.",
+        "operationId": "GetTvMediaServiceAreaslineupsbrowseCountryIDRegionID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "CountryID",
+            "in": "path",
+            "description": "Country abbreviation. See TvMedia/lineups/browse for a list of supported countries.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "RegionID",
+            "in": "path",
+            "description": "Region abbreviation. See TvMedia/lineups/browse/{CountryID} for a list of regions.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaServiceAreaResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaServiceAreaResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/browse/{CountryID}/{RegionID}/{AreaID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Get lineups by AreaID.",
+        "operationId": "GetTvMediaLineupsByAreaIDlineupsbrowseCountryIDRegionIDAreaID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "CountryID",
+            "in": "path",
+            "description": "Country abbreviation. See TvMedia/lineups/browse for a list of supported countries.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "RegionID",
+            "in": "path",
+            "description": "Region abbreviation. See TvMedia/lineups/browse/{CountryID} for a list of regions.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "AreaID",
+            "in": "path",
+            "description": "Service area ID. See TvMedia/lineups/browse/{CountryID}/{RegionID} for a list of service areas.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OTA",
+                "SAT",
+                "CAB",
+                "IPTV"
+              ]
+            },
+            "name": "LineupType",
+            "in": "query",
+            "description": "Filter by lineup type, valid types are OTA, SAT, CAB, IPTV.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ProviderId",
+            "in": "query",
+            "description": "Filter by provider ID",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaLineupResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaLineupResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/lineups/geo": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Get lineups by latitude and longitude.",
+        "operationId": "GetTvMediaLineupsByLatitudeLongitudelineupsgeo_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "format": "float"
+            },
+            "name": "Latitude",
+            "in": "query",
+            "description": "Latitude (geographic coordinate).",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "format": "float"
+            },
+            "name": "Longitude",
+            "in": "query",
+            "description": "Longitude (geographic coordinate).",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OTA",
+                "SAT",
+                "CAB",
+                "IPTV"
+              ]
+            },
+            "name": "LineupType",
+            "in": "query",
+            "description": "Filter by lineup type, valid types are OTA, SAT, CAB, IPTV.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ProviderId",
+            "in": "query",
+            "description": "Filter by provider ID",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaLineupResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaLineupResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/reference/lineups": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "summary": "",
+        "description": "Get list of generic lineup IDs that can be used.  A 'generic' lineup is not a real lineup, but a collection of stations defined by TV Media.  Any listing retrieved using a generic lineup will not return any channel number information, as it is irrelevant.",
+        "operationId": "GetTvMediaGenericLineupsreferencelineups_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaLineupResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaLineupResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/stations/{StationID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets station details by ID.",
+        "operationId": "GetTvMediaStationstationsStationID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "StationID",
+            "in": "path",
+            "description": "Station ID. Station ID's can be found in listings, or by using the Tvmedia/lineups API",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TvMediaStationResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/stations/{StationID}/listings": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "summary": "Stations are not tied to lineups, therefore no channel numbers will be present in the response, unlike most other listing operations.",
+        "description": "Get listings for a given station.",
+        "operationId": "GetTvMediaListingsByStationstationsStationIDlistings_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "StationID",
+            "in": "path",
+            "description": "Station ID. Station ID's can be found in listings, or by using the Tvmedia/lineups API",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Show",
+            "in": "query",
+            "description": "Get listings for a specific showID, or array of showID's. ShowID's represent a single episode, movie, or event. a showID, episodeID and movieID are all valid parameters.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Series",
+            "in": "query",
+            "description": "Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "SportType",
+            "in": "query",
+            "description": "Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "League",
+            "in": "query",
+            "description": "Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Team",
+            "in": "query",
+            "description": "Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "SportEventsOnly",
+            "in": "query",
+            "description": "Get sporting events only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NewShowsOnly",
+            "in": "query",
+            "description": "Get new shows only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaShortListingResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaShortListingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/teams/{TeamID}": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Gets details for a specific team.",
+        "operationId": "GetTvMediaTeamByIdteamsTeamID_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TeamID",
+            "in": "path",
+            "description": "Team ID.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaTeamResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaTeamResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/TvGrid/teams/{TeamID}/listings": {
+      "get": {
+        "tags": [
+          "tvgrid"
+        ],
+        "description": "Retrieve listings for a given TeamID.",
+        "operationId": "GetTvMediaTeamListingsteamsTeamIDlistings_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "TvMediaApiKey",
+            "in": "query",
+            "description": "API Key supplied by TvMedia.ca",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TeamID",
+            "in": "path",
+            "description": "Team ID. See /teams for a list of all available sports teams.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "LineupID",
+            "in": "query",
+            "description": "Lineup ID. Lineups can be found through the /TvMedia/lineups method.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "UTC start time in ISO8601. Defaults to current date and time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "UTC end time in ISO8601. Defaults to 'start' time +4 hours.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "TimeZone",
+            "in": "query",
+            "description": "Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Channel",
+            "in": "query",
+            "description": "Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeChan",
+            "in": "query",
+            "description": "Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "StartChan",
+            "in": "query",
+            "description": "Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "EndChan",
+            "in": "query",
+            "description": "Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the 'maxchan' parameter.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Station",
+            "in": "query",
+            "description": "Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeStation",
+            "in": "query",
+            "description": "Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "Search",
+            "in": "query",
+            "description": "search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ShowType",
+            "in": "query",
+            "description": "Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "ExcludeShowType",
+            "in": "query",
+            "description": "Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "name": "Id",
+            "in": "query",
+            "description": "ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "NotYetStarted",
+            "in": "query",
+            "description": "Only displays listings which are starting on or after the given start time. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "SportEventsOnly",
+            "in": "query",
+            "description": "Get sporting events only. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DescriptiveVideoOnly",
+            "in": "query",
+            "description": "Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "LiveOnly",
+            "in": "query",
+            "description": "Only displays live listings. No value necessary.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "AdultContent",
+            "in": "query",
+            "description": "Defaults to 1 (allowed). Set to 0 to hide adult content.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "DisplayArtwork",
+            "in": "query",
+            "description": "Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "brief"
+              ]
+            },
+            "name": "Detail",
+            "in": "query",
+            "description": "Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<TvMediaListingResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TvMediaListingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TvMediaLineupResponse": {
+        "title": "TvMediaLineupResponse",
+        "properties": {
+          "lineupID": {
+            "type": "string"
+          },
+          "lineupName": {
+            "type": "string"
+          },
+          "lineupType": {
+            "type": "string"
+          },
+          "providerID": {
+            "type": "string"
+          },
+          "providerName": {
+            "type": "string"
+          },
+          "serviceArea": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Station"
+            }
+          }
+        },
+        "description": "TvMediaLineupResponse",
+        "type": "object"
+      },
+      "Station": {
+        "title": "Station",
+        "properties": {
+          "_CallSign": {
+            "type": "string"
+          },
+          "_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "_Type": {
+            "type": "string"
+          },
+          "_Affiliate": {
+            "type": "string"
+          },
+          "_LogoPathURL": {
+            "type": "string"
+          },
+          "_Media": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "_MediaInfoSpecified": {
+            "type": "boolean"
+          },
+          "_StationDetailsSpecified": {
+            "type": "boolean"
+          },
+          "_StationDetails": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "_AiringsSpecified": {
+            "type": "boolean"
+          },
+          "_Airings": {
+            "$ref": "#/components/schemas/Object"
+          }
+        },
+        "description": "Station",
+        "type": "object"
+      },
+      "Object": {
+        "properties": {},
+        "description": "Object",
+        "type": "object"
+      },
+      "TvMediaStationResponse": {
+        "title": "TvMediaStationResponse",
+        "properties": {
+          "stationID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "callsign": {
+            "type": "string"
+          },
+          "network": {
+            "type": "string"
+          },
+          "stationType": {
+            "type": "string"
+          },
+          "NTSC_TSID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "DTV_TSID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Twitter": {
+            "type": "string"
+          },
+          "webLink": {
+            "type": "string"
+          },
+          "logoFilename": {
+            "type": "string"
+          },
+          "stationHD": {
+            "type": "boolean"
+          }
+        },
+        "description": "TvMediaStationResponse",
+        "type": "object"
+      }
+    }
+  }
+}

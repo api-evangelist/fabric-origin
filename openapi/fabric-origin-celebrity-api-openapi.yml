@@ -1,0 +1,1402 @@
+openapi: 3.1.1
+info:
+  title: Celebrity API
+  version: '1.0'
+tags:
+- name: celebrity
+servers:
+- url: https://api.origin.fabricdata.com
+paths:
+  /Celebrity/RankedSearch/:
+    get:
+      tags:
+      - celebrity
+      summary: Find Celebrity by Name ordered by rank.
+      description: Find celebrity using name ordered by rank.
+      operationId: GetCelebrityRankedRankedSearch_Get
+      parameters:
+      - schema:
+          type: string
+        name: StartsWith
+        in: query
+      - schema:
+          type: integer
+          format: int32
+        name: LimitResultsTo
+        in: query
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<CelebrityRankedResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/CelebrityRankedResponse'
+      deprecated: false
+  /Celebrity/Search/:
+    get:
+      tags:
+      - celebrity
+      summary: Search celebrities.
+      description: Search celebrity meta data and images.  Each image in our database is related to a specific movie,
+        TV or game title and is promotional of that title.  If you have title pages or articles about that title,
+        then offering an image gallery on that page is obviously promotional.  If you are doing editorial about
+        another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film,
+        TV show or game so as to be promotional.
+      operationId: SearchCelebritySearch_Get
+      parameters:
+      - schema:
+          type: string
+        name: Package
+        in: query
+        description: Package is based on subscription which will be set at the customer level.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Ids
+        in: query
+        description: 'Search person using one or more Ids.  Ex:  Person/123'
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Rows to skip, used for paging. Default is 0.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Rows to return, used for paging. Default is 10, limit is 10.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Images
+            - ExternalIds
+            - Descriptions
+            - AlternateNames
+            - Awards
+            - Summary
+        style: form
+        explode: true
+        name: Includes
+        in: query
+        description: Include sub objects from the person
+        required: false
+      - schema:
+          type: string
+        name: Name
+        in: query
+        description: Filter results based on Name.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - NOT_SET
+          - English_US
+          - English_CA
+          - English_UK
+          - English_AU
+        name: Culture
+        in: query
+        description: Specify the country and language
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: FaceDetails_Age
+        in: query
+        description: People with images with estimated age.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_Beard
+        in: query
+        description: People images with a beard.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_Mustache
+        in: query
+        description: People images with a mustache.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - UNKNOWN
+            - HAPPY
+            - SAD
+            - ANGRY
+            - CONFUSED
+            - DISGUSTED
+            - SURPRISED
+            - CALM
+        style: form
+        explode: true
+        name: FaceDetails_Emotions
+        in: query
+        description: Filter People images by emotions.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_Eyeglasses
+        in: query
+        description: People images wearing eyeglasses.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_Sunglasses
+        in: query
+        description: People images wearing sunglasses.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_EyesOpen
+        in: query
+        description: People images with eyes open.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_MouthOpen
+        in: query
+        description: People images with mouth open.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - UNKNOWN
+          - Male
+          - Female
+        name: FaceDetails_Gender
+        in: query
+        description: People images based on gender.
+        required: false
+      - schema:
+          type: boolean
+        name: FaceDetails_Smile
+        in: query
+        description: People images with smile.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: MinImageHeight
+        in: query
+        description: People with images greater than or equal to image height.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: MinImageWidth
+        in: query
+        description: People with images greater than or equal to image width.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - UNKNOWN
+          - Poster
+          - Photo
+          - Portrait
+          - Headshot
+          - Tile
+          - TheatricalPoster
+          - BoxArt
+        name: ImageType
+        in: query
+        description: People with images of type.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+        style: form
+        explode: true
+        name: ImageViolence
+        in: query
+        description: People with image violence scores.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Minimum_IvaRating
+        in: query
+        description: Filter results with a minimum Rating greater than or equal to this value. (0 to 100)
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+        style: form
+        explode: true
+        name: ImageSexuality
+        in: query
+        description: People with image sexuality scores.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: ImageTags
+        in: query
+        description: People with image containing tags.
+        required: false
+      - schema:
+          type: boolean
+        name: OfficialImage
+        in: query
+        description: Limit People with official images.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: ImageEntertainmentIds
+        in: query
+        description: 'People with images from EntertainmentIds.  Ex: Movie/1234'
+        required: false
+      - schema:
+          type: string
+        name: BirthName
+        in: query
+        description: Filter by birth name.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - m
+          - f
+        name: Gender
+        in: query
+        description: Filter people by gender. (m or f)
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: BirthDate
+        in: query
+        description: Birth Date
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: BirthYear
+        in: query
+        description: Birth Year
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: BirthDayOfMonth
+        in: query
+        description: Birth Day of Month
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: BirthMonthOfYear
+        in: query
+        description: Birth Month of Year
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: DeathDayOfMonth
+        in: query
+        description: Birth Day of Month
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: DeathMonthOfYear
+        in: query
+        description: Birth Month of Year
+        required: false
+      - schema:
+          type: string
+        name: ExternalId
+        in: query
+        description: Filter results matching external Id
+        required: false
+      - schema:
+          type: string
+          enum:
+          - IVA
+          - TMDB
+          - IMDB
+          - Facebook
+          - Instagram
+          - Twitter
+          - Freebase_MID
+          - Freebase_ID
+          - TvRage
+        name: ExternalIdType
+        in: query
+        description: Filter results matching external Id
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ModifiedRecordsSince
+        in: query
+        description: Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.
+        required: false
+      - schema:
+          type: boolean
+        name: SortByTimeStamp
+        in: query
+        description: Sort results based on last modified descending.  Default is sorted by _score
+        required: false
+      - schema:
+          type: boolean
+        name: IncludeDeleted
+        in: query
+        description: Include Soft Deleted Records. Default (false)
+        required: false
+      - schema:
+          type: string
+        name: SortBy
+        in: query
+        description: SortBy
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        style: form
+        explode: true
+        name: AwardYears
+        in: query
+        description: List of award years to filter on.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Academy
+            - GoldenGlobe
+            - Emmy
+            - AACTAAwards
+            - AmericanFilmInstituteAwards
+            - ALMAAwards
+            - AfricaMovieAcademyAwards
+            - AfricaMagicViewersChoiceAwards
+            - AndhrapradeshNandiAwards
+            - AnnieAwards
+            - ApsaraAwards
+            - ArtDirectorsGuildAwards
+            - AsianFilmAwards
+            - BaeksangArtsAwards
+            - BAFTAFilmAwards
+            - BAFTATelevisionAwards
+            - BAFTATVCraftAwards
+            - BayerischerFilmpreis
+            - BCNSportsFilm
+            - BCNSportsFilmFestival
+            - BestofNollywoodAwards
+            - BigStarEntertainmentAwards
+            - BlueDragonFilmAwards
+            - BlueRibbonAwards
+            - BodilPrisen
+            - BritishAcademyChildrensAwards
+            - BritishIndependentFilmAwards
+            - CairoInternationalFilmFestival
+            - CanadianScreenAwards
+            - CartagenaFilmFestival
+            - CesarAwards
+            - CesarDuCinema
+            - CondorDePlata
+            - CriticsChoiceAwards
+            - CriticsChoiceSuperAwards
+            - CrunchyrollAnimeAwards
+            - DaviddiDonatello
+            - DeutscherFilmpreis
+            - DiosasdePlata
+            - EuropeanFilmAwards
+            - FantasportoInternationalFilmFestival
+            - FestivaldeCannes
+            - FestivalDeCineDeLima
+            - FestivalDeCineIberoamericanoDeHuelva
+            - FestivaldeGramado
+            - FestivaldeSanSebastian
+            - FestivaldoRio
+            - FestivalDuCinemaAmericainDeDeauville
+            - FestivalduCinemaEspagnoldeNantes
+            - FestivalInternacionaldeCinedeGijon
+            - FestivalInternacionaldeCinedeGuadalajara
+            - FestivalInternacionaldeCinedeLebu
+            - FestivalInternacionaldeCinedeMardelPlata
+            - FestivalInternacionaldeCinedeMonterrey
+            - FestivalInternacionaldeCinedeMorelia
+            - FestivalInternacionaldeCinedeValdivia
+            - FestivalInternacionaldeCinedeViñadelMar
+            - FestivalInternacionaldeCinedelNortedeChile
+            - FestivalInternacionaldeCineenGuadalajara
+            - FestivalInternacionaldeCineUNAM
+            - FestivalInternacionaldeCinemadaFigueiradaFoz
+            - FestivalInternacionaldeCinemaFantasticdeCatalunya
+            - FestivalInternacionaldelNuevoCineLatinoamericanodeLaHabana
+            - FestivalInternationalDuCourtMetrageDeClermontFerrand
+            - FestivalLaFiladeCortometrajes
+            - FestivalinternationaldufilmdanimationdAnnecy
+            - FilmfareAwards
+            - InternationalDocumentaryFestival
+            - GawadUrianAward
+            - GermanFilmCriticsAssociationAwards
+            - GLAADMediaAwards
+            - GoldenHorseAwards
+            - GoldenKelaAwards
+            - GoldenMovieAwards
+            - GoldenReelAwards
+            - GothamAwards
+            - GrandBellAwards
+            - GrandePremiodoCinemaBrasileiro
+            - GrimmePreis
+            - HochiFilmAward
+            - HollywoodFilmAwards
+            - HongKongFilmAward
+            - IbicinePremiosAstarte
+            - InternationalDocumentaryAssociationAward
+            - IDFAAwards
+            - InternationalFilmFestivalRotterdam
+            - IndependentSpiritAwards
+            - IndianNationalFilmAwards
+            - IndieLisboaFestivalInternacionaldeCinema
+            - InternationalIndianFilmAcademyAwards
+            - InternationalIndianFilmAcademyDigitalAwards
+            - InternationaleFilmfestspieleBerlin
+            - JapanAcademyFilmPrize
+            - KidsChoiceAwards
+            - KidscreenAwards
+            - KinemaJunpoAwards
+            - TheInternationalFestivalofFilmsonArt
+            - LionsGoldAwards
+            - LocarnoFilmFestival
+            - LosAngelesFilmCriticsAssociationAwards
+            - Lumieresdelapresseinternationale
+            - LuxStyleAwards
+            - MumbaiAcademyoftheMovingImage
+            - MartinFierro
+            - MartinFierroCine
+            - MartinFierroLatino
+            - MedallasdelCirculodeEscritoresCinematograficos
+            - MeliesAwards
+            - MezinarodnifilmovyfestivalKarlovyVary
+            - MoscowInternationalFilmFestival
+            - MostraInternacionaldeCinemadeSaoPaulo
+            - MostraInternazionaledArteCinematograficadellaBiennalediVenezia
+            - MTVMovieTVAwards
+            - MuestraInternacionaldeCineyDiversidadSexualCINHOMO
+            - NAACPImageAwards
+            - NationalBoardofReviewAwards
+            - NationalSocietyofFilmCriticsAwards
+            - NederlandsFilmFestival
+            - NewYorkFilmCriticsCircleAwards
+            - PeabodyAwards
+            - PeoplesChoiceAwards
+            - ProducersGuildAwards
+            - PremioAriel
+            - PremiosALCINE
+            - PremiosCANACINE
+            - PremiosFeroz
+            - PremiosForque
+            - PremiosGoya
+            - PremiosIndiaCatalina
+            - PremiosIris
+            - PremiosMacondo
+            - PremiosMestreMateo
+            - PremiosPedroSienna
+            - PremiosPlatinodelCineIberoamericano
+            - PremiosProdu
+            - PremiosSophia
+            - PremiosSur
+            - PremiosTuria
+            - PremisGaudi
+            - PrixGemeaux
+            - PrixLouisDelluc
+            - RazzieAwards
+            - RosedOrLatinos
+            - ScreenActorsGuildAwards
+            - SaturnAwards
+            - SemanaInternacionaldeCinedeValladolid
+            - SeoulInternationalDramaAwards
+            - StarScreenAwards
+            - StardustAwards
+            - SundanceFilmFestival
+            - SXSWFilmFestival
+            - TeenChoiceAwards
+            - TokyoAnimeAward
+            - TorontoInternationalFilmFestival
+            - TribecaFilmFestival
+            - TurinFilmFestival
+            - VancouverFilmCriticsCircleAwards
+            - ViennaInternationalFilmFestival
+            - WestBengalFilmJournalistsAssociationAwards
+            - WritersGuildAwards
+            - ZeeCineAwards
+            - ZurichFilmFestival
+        style: form
+        explode: true
+        name: AwardTypes
+        in: query
+        description: 'List of award types Ex: Academy, GoldenGlobe, etc.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - BestPicture
+            - BestSeries
+            - BestActor
+            - BestActress
+            - BestDirector
+            - BestSupportingActor
+            - BestSupportingActress
+            - BestPictureOther
+            - BestSeriesOther
+        style: form
+        explode: true
+        name: AwardCategoryTypes
+        in: query
+        description: 'List of award category types Ex: BestPicture, BestActor, etc.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AwardProgramIds
+        in: query
+        description: Limit to awards based on ProgramIds.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AwardPersonIds
+        in: query
+        description: Limit to awards based on PersonIds.
+        required: false
+      - schema:
+          type: boolean
+        name: AwardWinners
+        in: query
+        description: Limit to award winners.
+        required: false
+      - schema:
+          type: boolean
+        name: ExcludeFaceDetails
+        in: query
+        description: Exclude face details.
+        required: false
+      - schema:
+          type: string
+        name: NextPageToken
+        in: query
+        description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken returned
+          from search results when using Timestamp sorting for optimal performance while paging large result sets.
+          Skip is ignored when this parameter is provided.
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCelebrityResponse'
+      deprecated: false
+    post:
+      tags:
+      - celebrity
+      summary: Search celebrities.
+      description: Search celebrity meta data and images.  Each image in our database is related to a specific movie,
+        TV or game title and is promotional of that title.  If you have title pages or articles about that title,
+        then offering an image gallery on that page is obviously promotional.  If you are doing editorial about
+        another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film,
+        TV show or game so as to be promotional.
+      operationId: SearchCelebritySearch_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCelebrityResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Package:
+                  type: string
+                  description: Package is based on subscription which will be set at the customer level.
+                Ids:
+                  type: array
+                  description: 'Search person using one or more Ids.  Ex:  Person/123'
+                Skip:
+                  type: integer
+                  description: Rows to skip, used for paging. Default is 0.
+                  format: int32
+                Take:
+                  type: integer
+                  description: Rows to return, used for paging. Default is 10, limit is 10.
+                  format: int32
+                Includes:
+                  type: array
+                  description: Include sub objects from the person
+                Name:
+                  type: string
+                  description: Filter results based on Name.
+                Culture:
+                  type: string
+                  description: Specify the country and language
+                FaceDetails_Age:
+                  type: integer
+                  description: People with images with estimated age.
+                  format: int32
+                FaceDetails_Beard:
+                  type: boolean
+                  description: People images with a beard.
+                FaceDetails_Mustache:
+                  type: boolean
+                  description: People images with a mustache.
+                FaceDetails_Emotions:
+                  type: array
+                  description: Filter People images by emotions.
+                FaceDetails_Eyeglasses:
+                  type: boolean
+                  description: People images wearing eyeglasses.
+                FaceDetails_Sunglasses:
+                  type: boolean
+                  description: People images wearing sunglasses.
+                FaceDetails_EyesOpen:
+                  type: boolean
+                  description: People images with eyes open.
+                FaceDetails_MouthOpen:
+                  type: boolean
+                  description: People images with mouth open.
+                FaceDetails_Gender:
+                  type: string
+                  description: People images based on gender.
+                FaceDetails_Smile:
+                  type: boolean
+                  description: People images with smile.
+                MinImageHeight:
+                  type: integer
+                  description: People with images greater than or equal to image height.
+                  format: int32
+                MinImageWidth:
+                  type: integer
+                  description: People with images greater than or equal to image width.
+                  format: int32
+                ImageType:
+                  type: string
+                  description: People with images of type.
+                ImageViolence:
+                  type: array
+                  description: People with image violence scores.
+                Minimum_IvaRating:
+                  type: integer
+                  description: Filter results with a minimum Rating greater than or equal to this value. (0 to 100)
+                  format: int32
+                ImageSexuality:
+                  type: array
+                  description: People with image sexuality scores.
+                ImageTags:
+                  type: array
+                  description: People with image containing tags.
+                OfficialImage:
+                  type: boolean
+                  description: Limit People with official images.
+                ImageEntertainmentIds:
+                  type: array
+                  description: 'People with images from EntertainmentIds.  Ex: Movie/1234'
+                BirthName:
+                  type: string
+                  description: Filter by birth name.
+                Gender:
+                  type: string
+                  description: Filter people by gender. (m or f)
+                BirthDate:
+                  type: string
+                  description: Birth Date
+                  format: date-time
+                BirthYear:
+                  type: integer
+                  description: Birth Year
+                  format: int32
+                BirthDayOfMonth:
+                  type: integer
+                  description: Birth Day of Month
+                  format: int32
+                BirthMonthOfYear:
+                  type: integer
+                  description: Birth Month of Year
+                  format: int32
+                DeathDayOfMonth:
+                  type: integer
+                  description: Birth Day of Month
+                  format: int32
+                DeathMonthOfYear:
+                  type: integer
+                  description: Birth Month of Year
+                  format: int32
+                ExternalId:
+                  type: string
+                  description: Filter results matching external Id
+                ExternalIdType:
+                  type: string
+                  description: Filter results matching external Id
+                ModifiedRecordsSince:
+                  type: string
+                  description: Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.
+                  format: date-time
+                SortByTimeStamp:
+                  type: boolean
+                  description: Sort results based on last modified descending.  Default is sorted by _score
+                IncludeDeleted:
+                  type: boolean
+                  description: Include Soft Deleted Records. Default (false)
+                SortBy:
+                  type: string
+                  description: SortBy
+                AwardYears:
+                  type: array
+                  description: List of award years to filter on.
+                AwardTypes:
+                  type: array
+                  description: 'List of award types Ex: Academy, GoldenGlobe, etc.'
+                AwardCategoryTypes:
+                  type: array
+                  description: 'List of award category types Ex: BestPicture, BestActor, etc.'
+                AwardProgramIds:
+                  type: array
+                  description: Limit to awards based on ProgramIds.
+                AwardPersonIds:
+                  type: array
+                  description: Limit to awards based on PersonIds.
+                AwardWinners:
+                  type: boolean
+                  description: Limit to award winners.
+                ExcludeFaceDetails:
+                  type: boolean
+                  description: Exclude face details.
+                NextPageToken:
+                  type: string
+                  description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken
+                    returned from search results when using Timestamp sorting for optimal performance while paging
+                    large result sets. Skip is ignored when this parameter is provided.
+              required: []
+components:
+  schemas:
+    SearchCelebrityResponse:
+      title: SearchCelebrityResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonSearchHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchCelebrityResponse
+      type: object
+    PersonSearchHit:
+      title: PersonSearchHit
+      properties:
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/DiscoverPerson'
+        Id:
+          type: string
+      description: PersonSearchHit
+      type: object
+    DiscoverPerson:
+      title: DiscoverPerson
+      properties:
+        Id:
+          description: Unique ID of thePerson in the form of Person/1
+          type: string
+        ProgramType:
+          description: 'Defines the type of data this is.  Ex: Person'
+          type: string
+        Packages:
+          type: array
+          items:
+            type: string
+        Name:
+          description: Full Name of this Person.
+          type: string
+        Gender:
+          description: Gender of Person.
+          type: string
+        BirthDate:
+          $ref: '#/components/schemas/FlexDate'
+          description: Date Person was born.
+        BirthDayOfMonth:
+          description: Day of month Person was born.
+          type: integer
+          format: int32
+        BirthMonthOfYear:
+          description: Month of Year Person was born.
+          type: integer
+          format: int32
+        DeathDayOfMonth:
+          description: Day of month Person died.
+          type: integer
+          format: int32
+        DeathMonthOfYear:
+          description: Month of Year Person died.
+          type: integer
+          format: int32
+        BirthName:
+          description: Name of Person at birth.
+          type: string
+        IvaRating:
+          description: IVA Rating for Person.
+          type: integer
+          format: int32
+        IvaRatingSort:
+          description: IVA Rating for Person including decimal places for accurate sorting.
+          type: number
+          format: double
+        DeathDate:
+          $ref: '#/components/schemas/FlexDate'
+          description: Date Person died.
+        Modified:
+          description: Datetime Person was last modified.
+          type: string
+          format: date-time
+        AlternateNames:
+          description: List of PersonName associated with this Person.
+          type: array
+          items:
+            type: string
+        Images:
+          description: List of Images associated with this Person.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramPersonImage'
+        ExternalIds:
+          description: List of alternate Ids associated with this person.
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalId'
+        VersionId:
+          description: Record Version Id
+          type: integer
+          format: int64
+        Descriptions:
+          description: List of biographies for this person.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramDescription'
+        Tags:
+          description: List of tags associated with person.
+          type: array
+          items:
+            type: string
+        TimeStamp:
+          description: Time of last change to overall object.
+          type: string
+          format: date-time
+        Awards:
+          description: Awards associated with this Person.
+          type: array
+          items:
+            $ref: '#/components/schemas/Award'
+        Summary:
+          $ref: '#/components/schemas/PersonSummary'
+      description: DiscoverPerson
+      type: object
+    FlexDate:
+      title: FlexDate
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Type:
+          type: string
+        Estimated:
+          type: boolean
+      description: FlexDate
+      type: object
+    ProgramPersonImage:
+      title: ProgramPersonImage
+      properties:
+        FaceDetails:
+          $ref: '#/components/schemas/FaceDetails'
+          description: Details of the person's face in the image.
+        EntertainmentId:
+          description: Entertainment ID of the movie, show, episode this image is promoting.  If you are doing editorial
+            about another topic and use an image from IVA, you need to reference or otherwise indicate the title
+            of the film, TV show or game so as to be promotional.
+          type: string
+        ImageType:
+          type: string
+        Attribution:
+          type: string
+        Width:
+          type: integer
+          format: int32
+        Height:
+          type: integer
+          format: int32
+        Violence:
+          type: integer
+          format: int32
+        Sexuality:
+          type: integer
+          format: int32
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+        Tags:
+          type: array
+          items:
+            type: string
+        Official:
+          type: boolean
+        FilePath:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Created:
+          type: string
+          format: date-time
+      description: ProgramPersonImage
+      type: object
+    FaceDetails:
+      title: FaceDetails
+      properties:
+        AgeRange:
+          $ref: '#/components/schemas/FaceDetailsAgerange'
+          description: Age range of the person.
+        Beard:
+          $ref: '#/components/schemas/FaceDetailsBeard'
+          description: Details on whether the person has a beard.
+        BoundingBox:
+          $ref: '#/components/schemas/FaceDetailsBoundingbox'
+          description: Details on position of the face, expressed as ratios of the image width/height.
+        BoundingBoxPixel:
+          $ref: '#/components/schemas/FaceDetailsBoundingboxPixel'
+          description: Details on position of the face, in pixels.
+        Confidence:
+          description: Confidence value on this face being the correct person.
+          type: number
+          format: float
+        Emotions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceDetailsEmotion'
+        Eyeglasses:
+          $ref: '#/components/schemas/FaceDetailsEyeglasses'
+          description: Details on whether the person is wearing glasses.
+        EyesOpen:
+          $ref: '#/components/schemas/FaceDetailsEyesopen'
+          description: Details on whether the person's eyes are open.
+        Gender:
+          $ref: '#/components/schemas/FaceDetailsGender'
+          description: Details on the person's gender.
+        Landmarks:
+          description: Details on positions of facial features, expressed as ratios of the image width/height.
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceDetailsLandmark'
+        LandmarksPixel:
+          description: Details on positions of facial features, in pixels.
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceDetailsLandmarkPixel'
+        MouthOpen:
+          $ref: '#/components/schemas/FaceDetailsMouthopen'
+          description: Details on whether the person's mouth is open.
+        Mustache:
+          $ref: '#/components/schemas/FaceDetailsMustache'
+          description: Details on whether the person has a mustache.
+        Pose:
+          $ref: '#/components/schemas/FaceDetailsPose'
+          description: Details on the positioning of the person's head.
+        Quality:
+          $ref: '#/components/schemas/FaceDetailsQuality'
+          description: Details on the quality of the image.
+        Smile:
+          $ref: '#/components/schemas/FaceDetailsSmile'
+          description: Details on whether the person is smiling.
+        Sunglasses:
+          $ref: '#/components/schemas/FaceDetailsSunglasses'
+          description: Details on whether the person is wearing sunglasses.
+      description: FaceDetails
+      type: object
+    FaceDetailsAgerange:
+      title: FaceDetailsAgerange
+      properties:
+        High:
+          description: Upper age estimate.
+          type: integer
+          format: int32
+        Low:
+          description: Lower age estimate.
+          type: integer
+          format: int32
+      description: FaceDetailsAgerange
+      type: object
+    FaceDetailsBeard:
+      title: FaceDetailsBeard
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has beard.
+          type: boolean
+      description: FaceDetailsBeard
+      type: object
+    FaceDetailsBoundingbox:
+      title: FaceDetailsBoundingbox
+      properties:
+        Height:
+          description: Height of face box.
+          type: number
+          format: float
+        Left:
+          description: How far from left of image to start face box.
+          type: number
+          format: float
+        Top:
+          description: How far from top of image to start face box.
+          type: number
+          format: float
+        Width:
+          description: Width of face box.
+          type: number
+          format: float
+      description: FaceDetailsBoundingbox
+      type: object
+    FaceDetailsBoundingboxPixel:
+      title: FaceDetailsBoundingboxPixel
+      properties:
+        Height:
+          description: Height of face box.
+          type: integer
+          format: int32
+        Left:
+          description: How far from left of image to start face box.
+          type: integer
+          format: int32
+        Top:
+          description: How far from top of image to start face box.
+          type: integer
+          format: int32
+        Width:
+          description: Width of face box.
+          type: integer
+          format: int32
+      description: FaceDetailsBoundingboxPixel
+      type: object
+    FaceDetailsEmotion:
+      title: FaceDetailsEmotion
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Type:
+          description: Type of emotion.
+          type: string
+      description: FaceDetailsEmotion
+      type: object
+    FaceDetailsEyeglasses:
+      title: FaceDetailsEyeglasses
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has glasses.
+          type: boolean
+      description: FaceDetailsEyeglasses
+      type: object
+    FaceDetailsEyesopen:
+      title: FaceDetailsEyesopen
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has eyes open.
+          type: boolean
+      description: FaceDetailsEyesopen
+      type: object
+    FaceDetailsGender:
+      title: FaceDetailsGender
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: Estimated gender.
+          type: string
+      description: FaceDetailsGender
+      type: object
+    FaceDetailsLandmark:
+      title: FaceDetailsLandmark
+      properties:
+        Type:
+          description: Type of facial landmark.
+          type: string
+        X:
+          description: Position from left of image.
+          type: number
+          format: float
+        Y:
+          description: Position from top of image.
+          type: number
+          format: float
+      description: FaceDetailsLandmark
+      type: object
+    FaceDetailsLandmarkPixel:
+      title: FaceDetailsLandmarkPixel
+      properties:
+        Type:
+          description: Type of facial landmark.
+          type: string
+        X:
+          description: Position from left of image.
+          type: integer
+          format: int32
+        Y:
+          description: Position from top of image.
+          type: integer
+          format: int32
+      description: FaceDetailsLandmarkPixel
+      type: object
+    FaceDetailsMouthopen:
+      title: FaceDetailsMouthopen
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has mouth open.
+          type: boolean
+      description: FaceDetailsMouthopen
+      type: object
+    FaceDetailsMustache:
+      title: FaceDetailsMustache
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has mustache.
+          type: boolean
+      description: FaceDetailsMustache
+      type: object
+    FaceDetailsPose:
+      title: FaceDetailsPose
+      properties:
+        Pitch:
+          description: Pitch of face.
+          type: number
+          format: float
+        Roll:
+          description: Roll of face.
+          type: number
+          format: float
+        Yaw:
+          description: Yaw of face.
+          type: number
+          format: float
+      description: FaceDetailsPose
+      type: object
+    FaceDetailsQuality:
+      title: FaceDetailsQuality
+      properties:
+        Brightness:
+          description: Brightness of image.
+          type: number
+          format: float
+        Sharpness:
+          description: Sharpness of image.
+          type: number
+          format: float
+      description: FaceDetailsQuality
+      type: object
+    FaceDetailsSmile:
+      title: FaceDetailsSmile
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person is smiling.
+          type: boolean
+      description: FaceDetailsSmile
+      type: object
+    FaceDetailsSunglasses:
+      title: FaceDetailsSunglasses
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has sunglasses.
+          type: boolean
+      description: FaceDetailsSunglasses
+      type: object
+    LanguageDetail:
+      title: LanguageDetail
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageDetail
+      type: object
+    ExternalId:
+      title: ExternalId
+      properties:
+        Name:
+          type: string
+        Id:
+          type: string
+      description: ExternalId
+      type: object
+    ProgramDescription:
+      title: ProgramDescription
+      properties:
+        Description:
+          type: string
+        DescriptionType:
+          type: string
+        Attribution:
+          type: string
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramDescription
+      type: object
+    Award:
+      title: Award
+      properties:
+        Year:
+          type: integer
+          format: int32
+        Type:
+          type: string
+        Category:
+          type: string
+        CategoryType:
+          type: string
+        ProgramId:
+          type: string
+        PersonIds:
+          type: array
+          items:
+            type: string
+        Winner:
+          type: boolean
+        Modified:
+          type: string
+          format: date-time
+      description: Award
+      type: object
+    PersonSummary:
+      title: PersonSummary
+      properties:
+        Image:
+          $ref: '#/components/schemas/ProgramPersonImage'
+        Description:
+          $ref: '#/components/schemas/ProgramDescription'
+        ImageCount:
+          type: integer
+          format: int32
+        AwardCount:
+          type: integer
+          format: int32
+        ExternalIdCount:
+          type: integer
+          format: int32
+        DescriptionCount:
+          type: integer
+          format: int32
+        AlternateNameCount:
+          type: integer
+          format: int32
+      description: PersonSummary
+      type: object

@@ -1,0 +1,326 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "fabric Origin API",
+    "version": "3.0"
+  },
+  "tags": [
+    {
+      "name": "videos"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/Videos/ClosedCaptions/{VideoId}": {
+      "get": {
+        "tags": [
+          "videos"
+        ],
+        "summary": "Returns a WebVTT closed caption file for the specified video.",
+        "description": "Requires the Id of a video that has an associated closed caption track.",
+        "operationId": "GetClosedCaptionClosedCaptionsVideoId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "VideoId",
+            "in": "path",
+            "description": "Id of the video whose closed caption track should be returned.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClosedCaption"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Videos/GetVideo/{Id}": {
+      "get": {
+        "tags": [
+          "videos"
+        ],
+        "summary": "Returns a signed redirect URL to stream the requested video.",
+        "description": "Requires the Id of a MovieVideo, ShowVideo, SeasonVideo, or EpisodeVideo object, along with the desired format and expiry time.",
+        "operationId": "GetVideoGetVideoId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "description": "Id of the Video from either MovieVideo, ShowVideo, SeasonVideo, or EpisodeVideo object.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mp4",
+                "hls",
+                "hss",
+                "hds",
+                "dash"
+              ]
+            },
+            "name": "Format",
+            "in": "query",
+            "description": "Video delivery format. Allowed values: mp4, hls, hss, hds, dash.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NOT_SET",
+                "mp4_80",
+                "mp4_212",
+                "mp4_450",
+                "mp4_750",
+                "mp4_1500",
+                "mp4_2500",
+                "mp4_5000",
+                "mp4_8000"
+              ]
+            },
+            "name": "KbRate",
+            "in": "query",
+            "description": "Video bit-rate in Kbps. Required for MP4 format. Allowed values: 80, 212, 450, 750, 1500, 2500, 5000, 8000.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": "Expires",
+            "in": "query",
+            "description": "UTC expiry time for the signed video URL. ISO 8601 Format: yyyy-MM-dd HH:mm:ss.fffffffZ",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ReportTag",
+            "in": "query",
+            "description": "Report tag used for video analytics tracking.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Start",
+            "in": "query",
+            "description": "Position in seconds at which to start video playback.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "End",
+            "in": "query",
+            "description": "Position in seconds at which to end video playback.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "adap_212000",
+                "adap_350000",
+                "adap_600000",
+                "adap_1200000",
+                "adap_2000000",
+                "adap_2500000",
+                "adap_3500000"
+              ]
+            },
+            "name": "MinRate",
+            "in": "query",
+            "description": "Deprecated. Adaptive minimum bit-rate in bps. Use AdaptiveMinimumResolution instead.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "adap_212000",
+                "adap_350000",
+                "adap_600000",
+                "adap_1200000",
+                "adap_2000000",
+                "adap_2500000",
+                "adap_3500000"
+              ]
+            },
+            "name": "MaxRate",
+            "in": "query",
+            "description": "Deprecated. Adaptive maximum bit-rate in bps. Use AdaptiveMaximumResolution instead.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "RESOLUTION_QVGA",
+                "RESOLUTION_HVGA",
+                "RESOLUTION_480P",
+                "RESOLUTION_720P",
+                "RESOLUTION_1080P"
+              ]
+            },
+            "name": "AdaptiveMinimumResolution",
+            "in": "query",
+            "description": "Adaptive streaming minimum resolution. Default is QVGA (320px wide, 212 Kbps). Allowed values: RESOLUTION_QVGA, RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "RESOLUTION_QVGA",
+                "RESOLUTION_HVGA",
+                "RESOLUTION_480P",
+                "RESOLUTION_720P",
+                "RESOLUTION_1080P"
+              ]
+            },
+            "name": "AdaptiveMaximumResolution",
+            "in": "query",
+            "description": "Adaptive streaming maximum resolution. Default is 1080P (1920px wide). Allowed values: RESOLUTION_QVGA, RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "AdaptiveClientManifestVersion",
+            "in": "query",
+            "description": "HLS client manifest version. Default is 3.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "AdaptiveStartIndex",
+            "in": "query",
+            "description": "Adaptive streaming start quality index. Default is 4 (480P resolution).",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Two",
+                "Three",
+                "Four",
+                "Five",
+                "Six",
+                "Seven",
+                "Eight",
+                "Nine",
+                "Ten",
+                "Fifteen",
+                "Twenty",
+                "Thirty"
+              ]
+            },
+            "name": "AdaptiveMinimumFragmentLength",
+            "in": "query",
+            "description": "Adaptive streaming minimum fragment length in seconds. Default is 10 seconds. Allowed values: 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30.",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "HlsNoAudioOnly",
+            "in": "query",
+            "description": "HLS no audio-only mode. Default is false.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ClosedCaption": {
+        "title": "ClosedCaption",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "VideoID": {
+            "description": "ID of the Video associated with Closed Caption",
+            "type": "integer",
+            "format": "int32"
+          },
+          "CCFileData": {
+            "type": "string"
+          },
+          "LanguageId": {
+            "description": "ID of language of Closed Caption.",
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "ClosedCaption",
+        "type": "object"
+      },
+      "VideoResponse": {
+        "title": "VideoResponse",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "Expires": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "VideoResponse",
+        "type": "object"
+      }
+    }
+  }
+}

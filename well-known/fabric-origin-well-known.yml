@@ -1,0 +1,374 @@
+generated: '2026-09-07'
+method: probed
+source: direct HTTPS probe of the named /.well-known/ paths on every host in this record
+provider: Fabric Origin
+providerId: fabric-origin
+description: 'Probe log of the named /.well-known/ discovery paths across every host Fabric Origin is known to operate.
+  Four real documents were returned: RFC 8414 authorization-server metadata and RFC 9728 protected-resource metadata
+  on both of the Origin MCP servers. Every other path 404s, 403s at the Azure API Management gateway, or redirects
+  into the GitBook auth wall.'
+summary:
+  hosts_probed: 14
+  paths_probed: 9
+  documents_found: 4
+  found:
+  - https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  - https://mcp-api.studio.fabricdata.com/.well-known/oauth-protected-resource
+  - https://insights.fabric-mcp.link/.well-known/oauth-authorization-server
+  - https://insights.fabric-mcp.link/.well-known/oauth-protected-resource
+  security_txt: none published by Fabric
+  api_catalog: none published
+  agent_card: none published on any host
+hosts:
+- host: fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/openid-configuration
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-authorization-server
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-protected-resource
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/api-catalog
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/ai-plugin.json
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent-card.json
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent.json
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/aauth-resource.json
+    status: 308
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+- host: www.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+- host: api.origin.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/openid-configuration
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/api-catalog
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent-card.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+- host: knowledgebase.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/openid-configuration
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-authorization-server
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-protected-resource
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/api-catalog
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/ai-plugin.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent-card.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/aauth-resource.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+- host: developer.origin.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/openid-configuration
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-authorization-server
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-protected-resource
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/api-catalog
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/ai-plugin.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent-card.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/aauth-resource.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+- host: api.studio.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/openid-configuration
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/api-catalog
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent-card.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+- host: mcp-api.studio.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: fabric-origin-studio-mcp-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: fabric-origin-studio-mcp-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+- host: insights.fabric-mcp.link
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: fabric-origin-insights-mcp-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: fabric-origin-insights-mcp-oauth-protected-resource.json
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+  - path: /.well-known/aauth-resource.json
+    status: 401
+- host: ee.iva-api.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/openid-configuration
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/api-catalog
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent-card.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/agent.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    note: Azure API Management gateway rejects unauthenticated requests to any path on this host
+- host: developer.iva-api.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/openid-configuration
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-authorization-server
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/oauth-protected-resource
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/api-catalog
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/ai-plugin.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent-card.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/agent.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+  - path: /.well-known/aauth-resource.json
+    status: 307
+    note: redirect; followed target returns 401 (GitBook auth wall) or the site root
+- host: status.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: '200, but the document is Atlassian''s own security.txt (Canonical: https://www.atlassian.com/.well-known/security.txt)
+      served by the hosted Statuspage — it is NOT published by Fabric and is not counted as a Fabric security.txt.'
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+- host: fabricorigin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+- host: api.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+- host: helpcenter.fabricdata.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

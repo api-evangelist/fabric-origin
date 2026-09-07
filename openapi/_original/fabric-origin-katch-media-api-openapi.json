@@ -1,0 +1,252 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Katch Media",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "katchmedia"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/KatchMedia/MetaData": {
+      "get": {
+        "tags": [
+          "katchmedia"
+        ],
+        "summary": "Get Katch program Metadata by Origin Id",
+        "description": "Get Katch program Metadata by Origin Id",
+        "operationId": "GetKatchProgramMetaDataMetaData_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "EntertainmentId",
+            "in": "query",
+            "description": "Id of an Entertainment program.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KatchProgramData"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "KatchProgramData": {
+        "title": "KatchProgramData",
+        "properties": {
+          "KatchId": {
+            "type": "string"
+          },
+          "OriginId": {
+            "type": "string"
+          },
+          "ProgramAndTraits": {
+            "$ref": "#/components/schemas/KattchProgram"
+          },
+          "Clusters": {
+            "$ref": "#/components/schemas/Datum"
+          }
+        },
+        "description": "KatchProgramData",
+        "type": "object"
+      },
+      "KattchProgram": {
+        "title": "KattchProgram",
+        "properties": {
+          "total_rows": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "katch_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "box_office": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "budget": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "content_advisory": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "logline": {
+            "type": "string"
+          },
+          "poster": {
+            "type": "string"
+          },
+          "release_year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "universal_traits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UniversalTraits"
+            }
+          },
+          "organizations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Organization"
+            }
+          },
+          "crew": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Crew"
+            }
+          },
+          "cast": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Cast"
+            }
+          }
+        },
+        "description": "KattchProgram",
+        "type": "object"
+      },
+      "Object": {
+        "properties": {},
+        "description": "Object",
+        "type": "object"
+      },
+      "UniversalTraits": {
+        "title": "UniversalTraits",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "subcategory": {
+            "type": "string"
+          },
+          "universal_trait": {
+            "type": "string"
+          },
+          "activation_score": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "UniversalTraits",
+        "type": "object"
+      },
+      "Organization": {
+        "title": "Organization",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "organization": {
+            "type": "string"
+          }
+        },
+        "description": "Organization",
+        "type": "object"
+      },
+      "Crew": {
+        "title": "Crew",
+        "properties": {
+          "job": {
+            "type": "string"
+          },
+          "individual": {
+            "type": "string"
+          }
+        },
+        "description": "Crew",
+        "type": "object"
+      },
+      "Cast": {
+        "title": "Cast",
+        "properties": {
+          "character": {
+            "type": "string"
+          },
+          "individual": {
+            "type": "string"
+          }
+        },
+        "description": "Cast",
+        "type": "object"
+      },
+      "Datum": {
+        "title": "Datum",
+        "properties": {
+          "internal_id": {
+            "type": "string"
+          },
+          "top_clusters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopClusters"
+            }
+          }
+        },
+        "description": "Datum",
+        "type": "object"
+      },
+      "TopClusters": {
+        "title": "TopClusters",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cluster_id": {
+            "type": "string"
+          },
+          "cluster_name": {
+            "type": "string"
+          },
+          "proximity_score": {
+            "type": "number",
+            "format": "float"
+          },
+          "cluster_definition": {
+            "type": "string"
+          }
+        },
+        "description": "TopClusters",
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,189 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/origin/getting-started
+docs:
+- https://knowledgebase.fabricdata.com/origin/getting-started
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/requests-and-responses
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/errors
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- https://knowledgebase.fabricdata.com/origin/release-notes
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  Cross-cutting runtime semantics for the Fabric Origin API surface. Two REST families with
+  different conventions sit under one brand — Origin Nexus (Azure API Management, subscription key,
+  Skip/Take paging, multi-format responses) and Origin Studio (JSON:API 1.1, bearer API key) — plus
+  two OAuth-governed MCP servers.
+auth_style:
+  origin_nexus: apiKey — Ocp-Apim-Subscription-Key header, or subscription-key query parameter
+  origin_studio_rest: 'http bearer — Authorization: Bearer <API key>'
+  origin_mcp: OAuth 2.0 authorization code + PKCE (S256); API key bearer accepted on Origin Studio MCP
+  see: authentication/fabric-origin-authentication.yml
+idempotency:
+  coverage: none
+  supported: false
+  header: null
+  scope: []
+  note: >-
+    No idempotency mechanism is documented anywhere on the Fabric Origin surface. No
+    Idempotency-Key header, no client-supplied request key, no documented replay window. Origin
+    Nexus is read-only, so the exposure is confined to Origin Studio's write surface and the Origin
+    Studio MCP tools — where the provider's own guidance is explicitly best-effort rather than
+    protocol-backed: "For writes, re-query before retrying. If a write times out, check whether it
+    landed before sending it again." That instruction is the tell — it exists because there is no
+    key to make the retry safe.
+  evidence: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+pagination:
+  origin_nexus:
+    style: offset
+    params:
+      skip: Skip
+      take: Take
+    defaults:
+      Skip: 0
+      Take: 10
+    max_take: 10
+    max_take_note: >-
+      Reduced from 50 to 10 on 2026-02-10 to keep responses under the API Gateway's 10MB hard limit.
+      A Take greater than 10 now returns 400 Bad Request. See changelog/.
+    response_fields: [Total]
+    source: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs/entertainment
+  origin_studio:
+    style: json-api
+    note: JSON:API 1.1 links/meta envelope.
+    source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/requests-and-responses
+content_negotiation:
+  origin_nexus:
+    formats: [JSON, XML, CSV, HTML]
+    mechanisms:
+    - 'query parameter: format={json|xml|csv|html}'
+    - 'Accept header: application/json'
+    html_note: >-
+      format=html was upgraded 2026-05-20 to render both a formatted JSON block and a table view for
+      debugging.
+    compression:
+      gzip: true
+      request_header: 'Accept-Encoding: gzip'
+      enabled: '2026-02-04'
+      claimed_reduction: ~70% payload reduction
+  origin_studio:
+    formats: [JSON]
+    media_type: application/json (JSON:API 1.1)
+    required_request_headers: ['Accept: application/json', 'Content-Type: application/json on POST/PUT/PATCH']
+field_expansion:
+  supported: false
+  note: >-
+    Origin Nexus has no expand/fields parameter. Related assets are fetched by following identifiers
+    across APIs — a VideoId from the Entertainment API into the Video API, an image identifier into
+    the Image API. Origin Studio inherits JSON:API `relationships` and `included`.
+metadata:
+  enumerators:
+    endpoint: /Common/GetCommonEnumerators
+    description: >-
+      Returns enumerators used across the APIs (Provider, DeliveryMethod, OfferType and more). The
+      Common Metadata API carries 40 published lookup operations.
+    source: https://knowledgebase.fabricdata.com/origin/getting-started
+  taxonomies:
+  - /Common/Characteristics/BasedOn
+  - /Common/Characteristics/FilmingLocations
+  - /Common/Characteristics/MoodAndTone
+  - /Common/Characteristics/NarrativeLocation
+  - /Common/Characteristics/SettingsAndContext
+  - /Common/Characteristics/SubjectsAndTropes
+request_id_tracing:
+  documented: false
+  note: >-
+    No request-id or correlation header is documented on either REST family. Origin Studio's SNS
+    webhook envelope does carry x-amz-sns-message-id and an x-amzn-trace-id, but those identify the
+    notification, not the originating API call.
+versioning:
+  origin_nexus:
+    scheme: unversioned-path
+    note: >-
+      No version segment in the path; the provider's own OpenAPI documents declare info.version 1.0
+      (3.0 on the Image/Video/Analytics documents). Change is communicated through the dated release
+      notes rather than a version bump.
+  origin_studio:
+    scheme: path
+    current: v1
+    base: https://api.studio.fabricdata.com/v1
+  origin_mcp:
+    scheme: server-version
+    current: 1.10.0 (studio-mcp-server, read from /info on 2026-09-07)
+  see: lifecycle/fabric-origin-lifecycle.yml
+error_envelope:
+  origin_studio:
+    format: json-api-errors
+    shape: '{"jsonapi":{"version":"1.1"},"errors":[{"status":"401","title":"Unauthorized","detail":"..."}]}'
+    rfc9457: false
+    source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/errors
+  origin_nexus:
+    documented: false
+    note: >-
+      The 14 published Origin Nexus OpenAPI documents declare only 200 responses; no error schema is
+      published. Two failure modes are documented in prose in the release notes — 400 Bad Request on
+      Take > 10, and a gateway-level 500 when a response exceeds the 10MB API Gateway limit (which
+      the provider notes is NOT detectable by standard monitoring because it happens after a
+      successful server response).
+  see: errors/fabric-origin-problem-types.yml
+rate_limit_signaling:
+  documented_headers: []
+  status_on_exhaustion: 429
+  note: >-
+    Limits are published as numbers but NO rate-limit response headers are documented on either
+    family. An agent cannot read remaining quota from a response; it learns it is throttled only by
+    receiving a 429. This is the single largest runtime-semantics gap on the surface.
+  see: rate-limits/fabric-origin-rate-limits.yml
+reversibility:
+  grade: na
+  na_reason: >-
+    Origin Nexus — the API family this record's 14 published OpenAPI documents describe — is
+    entirely read-only. All 121 operations are retrieval, search, match and lookup; there is no
+    create, update or delete, so there is nothing to reverse.
+  write_surfaces:
+  - surface: Origin Studio REST API / Origin Studio MCP
+    write_capable: true
+    reversal_documented: partial
+    reversal_paths:
+    - operation: lifecycle transition
+      mechanism: >-
+        Record state changes are made by applying an available lifecycle transition, not by editing
+        metadata. The provider instructs clients to read a record's available transitions and apply
+        one.
+      reverse_operation: unknown
+      window: not stated
+      source: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+    window_stated: false
+    note: >-
+      No cancel, refund, void, undo, rollback or restore operation is documented, and no reversal
+      window is stated anywhere in the public Origin Studio documentation. The Origin Studio REST
+      reference is a client-rendered Stoplight instance whose OpenAPI is not retrievable
+      anonymously, so the write surface cannot be enumerated to check. Graded `na` for the contract
+      this record actually holds; the Studio write surface is UNMEASURED, not verified. No window is
+      asserted because the provider states none.
+dry_run_mode:
+  supported: false
+  note: >-
+    No preview/validate/dry-run parameter is documented on either REST family or either MCP server.
+  sandbox: sandbox/fabric-origin-sandbox.yml
+safety_conventions:
+  source: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  rules:
+  - find_* tools are read-only and always safe to retry
+  - for writes, re-query before retrying — there is no idempotency key
+  - resolve tenant-specific metadata field and dataset keys before writing, rather than guessing
+  - lifecycle changes use lifecycle transitions, not metadata updates
+  - file imports upload client-side via a server-issued presigned URL; file contents never pass through the agent
+  - begin every Origin Studio MCP session with `whoami` to confirm identity, tenant and effective permissions
+  - Origin Insights answers "Not available in the Origin Insights catalog" verbatim rather than inventing data
+cross_links:
+  errors: errors/fabric-origin-problem-types.yml
+  lifecycle: lifecycle/fabric-origin-lifecycle.yml
+  authentication: authentication/fabric-origin-authentication.yml
+  rate_limits: rate-limits/fabric-origin-rate-limits.yml
+  changelog: changelog/fabric-origin-changelog.yml
+  conformance: conformance/fabric-origin-conformance.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

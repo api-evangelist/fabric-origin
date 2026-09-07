@@ -1,22 +1,29 @@
-generated: '2026-07-15'
+generated: '2026-09-07'
 method: generated
-source: openapi/fabric-origin-openapi.yml
+source: openapi/fabric-origin-captions-translations-api-openapi.yml, openapi/fabric-origin-celebrity-api-openapi.yml,
+  openapi/fabric-origin-common-metadata-api-openapi.yml, openapi/fabric-origin-common-sense-media-api-openapi.yml,
+  openapi/fabric-origin-entertainment-api-openapi.yml, openapi/fabric-origin-fandango-api-openapi.yml,
+  openapi/fabric-origin-images-api-openapi.yml, openapi/fabric-origin-katch-media-api-openapi.yml,
+  openapi/fabric-origin-metacritic-api-openapi.yml, openapi/fabric-origin-rabbit-recommendations-api-openapi.yml,
+  openapi/fabric-origin-rotten-tomatoes-api-openapi.yml, openapi/fabric-origin-tv-grid-online-api-openapi.yml,
+  openapi/fabric-origin-video-analytics-api-openapi.yml, openapi/fabric-origin-videos-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 23
+  operations: 121
   by_action_class:
-    connected: 18
-    acting: 5
+    connected: 109
+    acting: 12
   by_consequence:
-    read: 18
-    write: 5
+    read: 109
+    physical: 1
+    write: 11
   human_in_the_loop_required: 0
 operations:
-- path: /api/Entertainment/Search/
+- path: /Rev/{Id}/Attachments/{Type}/content
   method: get
-  operationId: entertainmentSearch
+  operationId: GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -24,9 +31,57 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/Entertainment/Search/
+- path: /Rev/Orders
   method: post
-  operationId: entertainmentSearchPost
+  operationId: CreateRevCaptionOrderOrders_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Rev/Orders/All
+  method: get
+  operationId: GetRevCaptionsOrdersAll_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Celebrity/RankedSearch/
+  method: get
+  operationId: GetCelebrityRankedRankedSearch_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Celebrity/Search/
+  method: get
+  operationId: SearchCelebritySearch_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Celebrity/Search/
+  method: post
+  operationId: SearchCelebritySearch_Post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -40,9 +95,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/Entertainment/Match/
+- path: /Common/Characteristics/BasedOn
   method: get
-  operationId: entertainmentMatch
+  operationId: GetBasedOnCharacteristicsBasedOn_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -50,9 +105,99 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/Entertainment/Match/
+- path: /Common/Characteristics/FilmingLocations
+  method: get
+  operationId: GetFilmingLocationsCharacteristicsFilmingLocations_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Characteristics/MoodAndTone
+  method: get
+  operationId: GetMoodAndToneCharacteristicsMoodAndTone_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Characteristics/NarrativeLocations
+  method: get
+  operationId: GetNarrativeLocationsCharacteristicsNarrativeLocations_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Characteristics/SettingAndContext
+  method: get
+  operationId: GetSettingAndContextCharacteristicsSettingAndContext_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Characteristics/SubjectAndTrope
+  method: get
+  operationId: GetSubjectAndTropeCharacteristicsSubjectAndTrope_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Collections/{CollectionId}/Items/
+  method: get
+  operationId: GetDbCollectionItemsCollectionsCollectionIdItems_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Collections/Children
+  method: get
+  operationId: GetCollectionChildrenCollectionsChildren_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Collections/Program
+  method: get
+  operationId: GetProgramCollectionsCollectionsProgram_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Collections/Search/
+  method: get
+  operationId: SearchCollectionCollectionsSearch_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Collections/Search/
   method: post
-  operationId: entertainmentMatchPost
+  operationId: SearchCollectionCollectionsSearch_Post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -66,9 +211,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/Entertainment/GetEntertainmentMatchCandidates
+- path: /Common/Collections/Suggestions
   method: get
-  operationId: getEntertainmentMatchCandidates
+  operationId: GetCollectionSuggestionsCollectionsSuggestions_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -76,9 +221,299 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/Entertainment/GetEntertainmentMatchCandidates
+- path: /Common/CollectionTypes
+  method: get
+  operationId: GetCollectionTypesCollectionTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Countries/
+  method: get
+  operationId: GetCountriesCountries_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Countries/{Id}
+  method: get
+  operationId: GetCountryCountriesId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/DataDemoFilters
+  method: get
+  operationId: GetDataDemoFiltersDataDemoFilters_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/EncodeTypes/
+  method: get
+  operationId: GetEncodeTypesEncodeTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetCommonEnumerators
+  method: get
+  operationId: GetCommonEnumeratorsGetCommonEnumerators_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetCurrencyTypes
+  method: get
+  operationId: GetCurrencyTypesGetCurrencyTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetDeliveryMethods
+  method: get
+  operationId: GetDeliveryMethodsGetDeliveryMethods_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetOfferTypes
+  method: get
+  operationId: GetOfferTypesGetOfferTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetProviders
+  method: get
+  operationId: GetProvidersGetProviders_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/GetVideoQualities
+  method: get
+  operationId: GetVideoQualitiesGetVideoQualities_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Images/{Id}/Changes
+  method: get
+  operationId: GetDbImageChangesImagesIdChanges_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Images/{Id}/Tags
+  method: get
+  operationId: GetDbImageTagsImagesIdTags_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/ImageTypes/
+  method: get
+  operationId: GetImageTypesImageTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Languages/
+  method: get
+  operationId: GetLanguagesLanguages_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Languages/{Id}
+  method: get
+  operationId: GetLanguageLanguagesId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/MovieAlternateIdTypes
+  method: get
+  operationId: GetMovieAlternateIdTypesMovieAlternateIdTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/MovieCertifications
+  method: get
+  operationId: GetMovieCertificationsMovieCertifications_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/MovieGenres
+  method: get
+  operationId: GetMovieGenresMovieGenres_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/MovieReleaseTypes
+  method: get
+  operationId: GetMovieReleaseTypesMovieReleaseTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/OriginatingNetworks/
+  method: get
+  operationId: GetOriginatingNetworksOriginatingNetworks_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/ShowAlternateIdTypes
+  method: get
+  operationId: GetShowAlternateIdTypesShowAlternateIdTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/ShowCertifications
+  method: get
+  operationId: GetDbShowCertificationsShowCertifications_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/ShowGenres
+  method: get
+  operationId: GetShowGenresShowGenres_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/ShowReleaseTypes
+  method: get
+  operationId: GetDbShowReleaseTypesShowReleaseTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/Tags/
+  method: get
+  operationId: GetTagsTags_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/TrendSources
+  method: get
+  operationId: GetTrendSourcesTrendSources_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Common/VideoTypes/
+  method: get
+  operationId: GetVideoTypesVideoTypes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /CommonSense/Movie/{Id}
+  method: get
+  operationId: GetCommonSenseMovieMovieId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /CommonSense/Movie/{Id}
   method: post
-  operationId: getEntertainmentMatchCandidatesPost
+  operationId: GetCommonSenseMovieMovieId_Post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -92,9 +527,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/Entertainment/MatchSeasonBySequence
+- path: /CommonSense/TV/{Id}
   method: get
-  operationId: matchSeasonBySequence
+  operationId: GetCommonSenseTVTVId_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -102,129 +537,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/Entertainment/MatchEpisodeBySequence
-  method: get
-  operationId: matchEpisodeBySequence
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/MovieRatings
-  method: get
-  operationId: getMovieRatings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/ShowRatings
-  method: get
-  operationId: getShowRatings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/CelebrityRatings
-  method: get
-  operationId: getCelebrityRatings
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/Autocomplete/
-  method: get
-  operationId: autocomplete
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/AutocompleteTitle/
-  method: get
-  operationId: autocompleteTitle
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/Changes/Movies/History/
-  method: get
-  operationId: moviesChangeHistory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/Changes/Shows/History/
-  method: get
-  operationId: showsChangeHistory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/Changes/Seasons/History/
-  method: get
-  operationId: seasonsChangeHistory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Entertainment/Changes/Episodes/History/
-  method: get
-  operationId: episodesChangeHistory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Images/{filePath}/Redirect
-  method: get
-  operationId: imageRedirect
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Images/ScreenCaptures/Redirect
-  method: get
-  operationId: screenCaptureRedirect
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/Images/Batch
+- path: /CommonSense/TV/{Id}
   method: post
-  operationId: imagesBatch
+  operationId: GetCommonSenseTVTVId_Post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -238,9 +553,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/Images/ScreenCaptures/Batch
+- path: /Entertainment/Search/
+  method: get
+  operationId: SearchEntertainmentSearch_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Search/
   method: post
-  operationId: screenCapturesBatch
+  operationId: SearchEntertainmentSearch_Post
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -254,9 +579,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/Videos/GetVideo/{id}
+- path: /Entertainment/Autocomplete/
   method: get
-  operationId: getVideo
+  operationId: SearchEntertainmentAutoCompleteAutocomplete_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -264,9 +589,715 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/Videos/ClosedCaptions/{videoId}
+- path: /Entertainment/AutocompleteTitle/
   method: get
-  operationId: getClosedCaptions
+  operationId: SearchEntertainmentAutoCompleteTitleAutocompleteTitle_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/CelebrityRatings
+  method: get
+  operationId: GetCelebrityIvaRatingsCelebrityRatings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Episodes/History/
+  method: get
+  operationId: GetEpisodeChangeHistoryChangesEpisodesHistory_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Episodes/HistoryWithEntity/
+  method: get
+  operationId: GetEpisodeChangeHistoryWithEntityChangesEpisodesHistoryWithEntity_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Movies/History/
+  method: get
+  operationId: GetMovieChangeHistoryChangesMoviesHistory_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Movies/HistoryWithEntity/
+  method: get
+  operationId: GetMovieChangeHistoryWithEntityChangesMoviesHistoryWithEntity_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Seasons/History/
+  method: get
+  operationId: GetSeasonChangeHistoryChangesSeasonsHistory_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Seasons/HistoryWithEntity/
+  method: get
+  operationId: GetSeasonChangeHistoryWithEntityChangesSeasonsHistoryWithEntity_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Shows/History/
+  method: get
+  operationId: GetShowChangeHistoryChangesShowsHistory_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Changes/Shows/HistoryWithEntity/
+  method: get
+  operationId: GetShowChangeHistoryWithEntityChangesShowsHistoryWithEntity_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/GetEntertainmentMatchCandidates
+  method: get
+  operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/GetEntertainmentMatchCandidates
+  method: post
+  operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Entertainment/Match/
+  method: get
+  operationId: MatchToEntertainmentProgramMatch_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/Match/
+  method: post
+  operationId: MatchToEntertainmentProgramMatch_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Entertainment/MatchEpisodeBySequence
+  method: get
+  operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/MatchEpisodeBySequence
+  method: post
+  operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Entertainment/MatchSeasonBySequence
+  method: get
+  operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/MatchSeasonBySequence
+  method: post
+  operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Entertainment/MovieRatings
+  method: get
+  operationId: GetMovieIvaRatingsMovieRatings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Entertainment/ShowRatings
+  method: get
+  operationId: GetShowIvaRatingsShowRatings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/GeoLocation/ByCity
+  method: get
+  operationId: GetFandangoGeoLocationCityGeoLocationByCity_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/GeoLocation/ByPostalCode
+  method: get
+  operationId: GetFandangoGeoLocationPostalCodeGeoLocationByPostalCode_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Movie/display-dates
+  method: get
+  operationId: GetFandangoMovieDisplayDatesMoviedisplay-dates_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Movie/showtime-groupings
+  method: get
+  operationId: GetFandangoMovieShowtimeGroupingsMovieshowtime-groupings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/MovieById
+  method: get
+  operationId: GetFandangoMovieByIdMovieById_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Movies
+  method: get
+  operationId: GetFandangoMoviesMovies_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/ShowtimeById
+  method: get
+  operationId: GetFandangoShowtimeByIdShowtimeById_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Showtimes
+  method: get
+  operationId: GetFandangoShowtimesShowtimes_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Theater/display-dates
+  method: get
+  operationId: GetFandangoTheaterDisplayDatesTheaterdisplay-dates_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Theater/showtime-groupings
+  method: get
+  operationId: GetFandangoTheaterShowtimeGroupingsTheatershowtime-groupings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/TheaterById
+  method: get
+  operationId: GetFandangoTheaterTheaterById_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Fandango/Theaters
+  method: get
+  operationId: GetFandangoTheatersTheaters_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Images/{FilePath}/Redirect
+  method: get
+  operationId: GetImageRedirectFilePathRedirect_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Images/Batch
+  method: post
+  operationId: GetImageBatchBatch_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Images/ScreenCaptures/Batch
+  method: post
+  operationId: GetScreenCaptureBatchScreenCapturesBatch_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Images/ScreenCaptures/Redirect
+  method: get
+  operationId: GetScreenCaptureRedirectScreenCapturesRedirect_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /KatchMedia/MetaData
+  method: get
+  operationId: GetKatchProgramMetaDataMetaData_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Metacritic/Movie/{Id}
+  method: get
+  operationId: GetMetacriticMovieMovieId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Metacritic/TV/{Id}
+  method: get
+  operationId: GetMetacriticTvTVId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /RabbitRecommendations/recommendations
+  method: get
+  operationId: GetXroadMediaRecommendationsrecommendations_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /RottenTomatoes/Episode
+  method: get
+  operationId: GetRottenTomatoesEpisodeEpisode_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /RottenTomatoes/Movie
+  method: get
+  operationId: GetRottenTomatoesMovieMovie_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /RottenTomatoes/Season
+  method: get
+  operationId: GetRottenTomatoesSeasonSeason_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /RottenTomatoes/Show
+  method: get
+  operationId: GetRottenTomatoesShowShow_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/genres/movies
+  method: get
+  operationId: GetTvMediaMovieGenresgenresmovies_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/genres/shows
+  method: get
+  operationId: GetTvMediaShowGenresgenresshows_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/genres/sports
+  method: get
+  operationId: GetTvMediaSportGenresgenressports_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/leagues
+  method: get
+  operationId: GetTvMediaLeaguesleagues_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/leagues/{LeagueID}/listings
+  method: get
+  operationId: GetTvMediaLeagueListingsleaguesLeagueIDlistings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/leagues/{LeagueID}/teams
+  method: get
+  operationId: GetTvMediaTeamsleaguesLeagueIDteams_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups
+  method: get
+  operationId: GetTvMediaLineupsByPostalCodelineups_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/{LineupID}
+  method: get
+  operationId: GetTvMediaLineupByIDlineupsLineupID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/{LineupID}/listings
+  method: get
+  operationId: GetTvMediaLineupListingslineupsLineupIDlistings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/{LineupID}/listings/grid
+  method: get
+  operationId: GetTvMediaLineupListingsGridlineupsLineupIDlistingsgrid_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/{LineupID}/listings/highlights
+  method: get
+  operationId: GetTvMediaLineupListingsHighlightslineupsLineupIDlistingshighlights_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/browse
+  method: get
+  operationId: GetTvMediaCountrieslineupsbrowse_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/browse/{CountryID}
+  method: get
+  operationId: GetTvMediaRegionslineupsbrowseCountryID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/browse/{CountryID}/{RegionID}
+  method: get
+  operationId: GetTvMediaServiceAreaslineupsbrowseCountryIDRegionID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/browse/{CountryID}/{RegionID}/{AreaID}
+  method: get
+  operationId: GetTvMediaLineupsByAreaIDlineupsbrowseCountryIDRegionIDAreaID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/lineups/geo
+  method: get
+  operationId: GetTvMediaLineupsByLatitudeLongitudelineupsgeo_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/reference/lineups
+  method: get
+  operationId: GetTvMediaGenericLineupsreferencelineups_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/stations/{StationID}
+  method: get
+  operationId: GetTvMediaStationstationsStationID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/stations/{StationID}/listings
+  method: get
+  operationId: GetTvMediaListingsByStationstationsStationIDlistings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/teams/{TeamID}
+  method: get
+  operationId: GetTvMediaTeamByIdteamsTeamID_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /TvGrid/teams/{TeamID}/listings
+  method: get
+  operationId: GetTvMediaTeamListingsteamsTeamIDlistings_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Analytics/GBUsage/
+  method: get
+  operationId: GetGBUsageGBUsage_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Videos/ClosedCaptions/{VideoId}
+  method: get
+  operationId: GetClosedCaptionClosedCaptionsVideoId_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Videos/GetVideo/{Id}
+  method: get
+  operationId: GetVideoGetVideoId_Get
   x-agentic-access:
     action-class: connected
     consequence: read

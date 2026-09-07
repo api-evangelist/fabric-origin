@@ -1,0 +1,70 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  registry searches against registry.npmjs.org, pypi.org, azuresearch-usnc.nuget.org and
+  rubygems.org, plus the Fabric documentation and the Fabricdata GitHub organization
+provider: Fabric Origin
+providerId: fabric-origin
+package_count: 0
+official_package_count: 0
+description: >-
+  Fabric publishes NO first-party client libraries for any Origin product. Every public registry was
+  searched and every Fabric documentation surface was read; the Origin knowledge base contains no SDK
+  or client-library section, and the Fabricdata GitHub organization exists but is empty. The one
+  installable artifact in the agent path is a third-party bridge Fabric points at, not a Fabric
+  package.
+packages: []
+third_party_referenced:
+- name: mcp-remote
+  registry: npm
+  url: https://www.npmjs.com/package/mcp-remote
+  official: false
+  first_party: false
+  version: 0.8.3
+  published: '2026-08-31'
+  version_source: https://registry.npmjs.org/mcp-remote
+  role: >-
+    Generic community bridge that lets a local stdio MCP client reach a remote Streamable HTTP
+    server. Fabric's Origin Insights MCP access page prescribes it verbatim for the manual Claude
+    Desktop setup — `npx -y mcp-remote https://insights.fabric-mcp.link --client-name origin-insights`
+    — but the package is not authored, maintained or namespaced by Fabric.
+  referenced_by: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/mcp-access
+first_party_distributions:
+- name: Origin Insights MCP desktop installer
+  registry: cdn
+  url: https://download.fabric-mcp.link/
+  official: true
+  platforms: [macOS, Windows]
+  version: null
+  published: null
+  note: >-
+    A first-party installer that writes the Claude Desktop configuration for the Origin Insights MCP
+    connection. It is a downloadable binary behind an unversioned URL — there is no registry, no
+    manifest and no version string exposed at the download page, so a consumer cannot tell which
+    build they are getting and neither can we. Recorded as an honest null rather than guessed.
+registries_searched:
+- registry: npm
+  queries: [fabricdata, xytech, fabric-origin, origin-nexus, iva-api]
+  first_party_hits: 0
+- registry: PyPI
+  queries: [origin-nexus, fabricdata, iva-api]
+  first_party_hits: 0
+- registry: NuGet
+  queries: [fabric origin entertainment]
+  first_party_hits: 0
+- registry: RubyGems
+  queries: [origin-nexus]
+  first_party_hits: 0
+- registry: GitHub
+  org: https://github.com/Fabricdata
+  public_repos: 0
+  probed: '2026-09-07'
+  note: The organization exists (created 2025-07-31) but publishes no public repositories.
+integration_path:
+  note: >-
+    Fabric's stated integration path is direct HTTP — subscription key on Origin Nexus, bearer key on
+    Origin Studio — or an MCP client pointed at one of the two hosted servers. For an agent that is
+    arguably a better posture than a stale SDK; for a human integrator it means writing the client.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

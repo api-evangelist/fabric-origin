@@ -1,0 +1,123 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+docs:
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/errors
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
+- https://knowledgebase.fabricdata.com/origin/release-notes
+- https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+provider: Fabric Origin
+providerId: fabric-origin
+format: json-api-errors
+media_type: application/vnd.api+json
+rfc9457: false
+description: >-
+  Error catalog for the Fabric Origin surface. Origin Studio publishes a JSON:API 1.1 errors
+  envelope and a status-code reference; Origin Nexus publishes NO error schema — all 121 of its
+  first-party OpenAPI operations declare a 200 response and nothing else — so the Nexus rows below
+  come from prose in the release notes and the MCP troubleshooting table, and are marked as such.
+envelope:
+  shape: |
+    {
+      "jsonapi": { "version": "1.1" },
+      "errors": [
+        { "status": "401", "title": "Unauthorized", "detail": "You are not authorized to perform this action." }
+      ]
+    }
+  fields:
+    status: HTTP status as a string
+    title: short, human-readable summary
+    detail: explanation specific to this occurrence
+  applies_to: Origin Studio Production API
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/errors
+problem_types:
+- status: 400
+  title: Bad Request
+  api: Origin Studio
+  causes: [missing fields, invalid format]
+  remediation: Validate the JSON:API document shape and required attributes before resending.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- status: 400
+  title: Bad Request — Take limit exceeded
+  api: Origin Nexus
+  causes: ['Take parameter greater than 10 on /Entertainment/Search or /Celebrity/Search']
+  remediation: >-
+    Cap Take at 10 and page with Skip. The ceiling was reduced from 50 to 10 effective 2026-02-10 to
+    keep responses under the API Gateway's 10MB limit.
+  source: https://knowledgebase.fabricdata.com/origin/release-notes
+- status: 401
+  title: Unauthorized
+  api: Origin Studio / Origin Nexus / Origin MCP
+  causes: [missing API key, invalid API key, missing or expired bearer token]
+  remediation: >-
+    On REST, send a valid key. On MCP, refresh the token or re-run the OAuth flow; the 401 carries a
+    WWW-Authenticate Bearer challenge with a resource_metadata pointer.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- status: 403
+  title: Forbidden
+  api: Origin Studio
+  causes: [permission denied for the acting identity]
+  remediation: The identity's Studio role and permission groups govern tool and endpoint access; widen the role, not the request.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- status: 403
+  title: Origin not allowed
+  api: Origin Studio MCP
+  causes: [browser-based MCP client sending a non-allowlisted Origin header — DNS-rebinding protection]
+  remediation: Ask the Fabric account team to allowlist the origin. Server-side clients send no Origin header and are unaffected.
+  source: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+- status: 403
+  title: Forbidden (gateway)
+  api: Origin Nexus
+  causes: [unauthenticated request to any path on api.origin.fabricdata.com or ee.iva-api.com]
+  remediation: Supply Ocp-Apim-Subscription-Key. The Azure API Management gateway returns {"message":"Forbidden"} for every unauthenticated path, including /.well-known/*.
+  observed: probed 403 on 2026-09-07
+- status: 404
+  title: Not Found
+  api: Origin Studio
+  causes: [resource does not exist]
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- status: 429
+  title: Too Many Requests
+  api: Origin Studio
+  causes: [more than 100 requests in a single second, or the undisclosed per-day threshold]
+  remediation: >-
+    Back off and retry. NO rate-limit headers are published, so remaining quota is not observable —
+    an agent must infer capacity from its own request accounting.
+  envelope_example: '{"jsonapi":{"version":"1.1"},"errors":[{"status":"429","title":"Too Many Requests","detail":"Rate limit exceeded."}]}'
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
+- status: 500
+  title: Server Error
+  api: Origin Studio
+  causes: [unexpected error]
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/status-codes
+- status: 500
+  title: Gateway payload-limit failure
+  api: Origin Nexus
+  causes: ['response body exceeds the API Gateway 10MB hard limit']
+  remediation: >-
+    Reduce Take and enable gzip (Accept-Encoding: gzip). The provider explicitly warns this failure
+    occurs AFTER a successful server response and is therefore NOT detectable via standard
+    monitoring — agents should treat an unexplained 500 on a large search as a paging problem.
+  source: https://knowledgebase.fabricdata.com/origin/release-notes
+oauth_errors:
+- code: invalid_token
+  api: Origin Studio MCP / Origin Insights MCP
+  detail: 'Missing or invalid Authorization: Bearer header.'
+  observed: probed on 2026-09-07 against POST tools/list
+- code: invalid_client
+  api: Origin Studio MCP
+  detail: Unknown or expired client_id at /authorize. Re-register, or use the client issued to you.
+  source: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+- code: redirect_uri does not match
+  api: Origin Studio MCP
+  detail: Redirect URIs are exact-match; wildcards and differing paths are rejected at /authorize.
+  source: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+gaps:
+- >-
+  Origin Nexus publishes no 4xx/5xx responses in any of its 14 OpenAPI documents. An agent reading
+  the contract alone would not know a 400, 403, 429 or 500 is possible.
+- No error code registry, no machine-readable error type URIs, no RFC 9457 problem+json.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -6,12 +6,15 @@ artifacts:
   agentic-access/fabric-origin-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
-  authentication/fabric-origin-authentication.yml:
-    method: derived
+  asyncapi/fabric-origin-events-webhooks.yml:
+    method: searched
     evidence: declared in the artifact
-  capabilities/fabric-origin-capability-edges.yml:
-    method: unknown
-    evidence: no authorship recorded
+  authentication/fabric-origin-authentication.yml:
+    method: searched
+    evidence: declared in the artifact
+  changelog/fabric-origin-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/fabric-origin-entertainment-api.opencollection.json:
     method: derived
     evidence: openapi/fabric-origin-entertainment-api
@@ -36,76 +39,22 @@ artifacts:
   collections/fabric-origin.postman_collection.json:
     method: derived
     evidence: openapi/fabric-origin
+  conformance/fabric-origin-conformance.yml:
+    method: searched
+    evidence: declared in the artifact
+  conventions/fabric-origin-conventions.yml:
+    method: searched
+    evidence: declared in the artifact
+  data-model/fabric-origin-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/fabric-origin-problem-types.yml:
+    method: searched
+    evidence: declared in the artifact
   finops/fabric-origin-finops.yml:
     method: generated
     evidence: declared in the artifact
-  kin/checks-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T094130.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T182523.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-26T223651.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T083119.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T190208.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T115055.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T170848.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T172558.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T192327.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T200725.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T133250.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T151044.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T162206.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T202106.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163141.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163302.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T171935.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T113057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T161012.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-04T083143.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-05T153418.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
+  kin/checks-2026-09-06T224210.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-07T135032.yml:
@@ -186,21 +135,261 @@ artifacts:
   kin/score-2026-08-28T221322.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/fabric-origin-entertainment-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/fabric-origin-images-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/fabric-origin-videos-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  plans/fabric-origin-plans-pricing.yml:
+  kin/score-2026-08-29T213958.yml:
     method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-29T230545.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T203505.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T220315.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-31T223420.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T063623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T210448.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T222808.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T224043.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T161828.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T174231.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T062714.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T212454.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T224856.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T055819.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T072335.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/fabric-origin-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/fabric-origin-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/fabric-origin-mcp.yml:
+    method: searched
+    evidence: declared in the artifact
+  mcp/fabric-origin-tool-crosswalk.yml:
+    method: derived
+    evidence: declared in the artifact
+  openapi/_original/fabric-origin-captions-translations-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-celebrity-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-common-metadata-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-common-sense-media-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-entertainment-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-fandango-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-images-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-katch-media-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-metacritic-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-openapi.yml.superseded:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-rabbit-recommendations-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-rotten-tomatoes-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-tv-grid-online-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-video-analytics-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/fabric-origin-videos-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/fabric-origin-captions-translations-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-celebrity-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-common-metadata-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-common-sense-media-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-entertainment-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-fandango-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-images-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-katch-media-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-metacritic-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-rabbit-recommendations-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-rotten-tomatoes-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-tv-grid-online-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-video-analytics-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/fabric-origin-videos-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  overlays/fabric-origin-captions-translations-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-celebrity-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-common-metadata-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-common-sense-media-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-entertainment-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-fandango-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-images-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-katch-media-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-metacritic-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-rabbit-recommendations-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-rotten-tomatoes-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-tv-grid-online-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-video-analytics-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/fabric-origin-videos-api-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  packages/fabric-origin-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  plans/fabric-origin-plans-pricing.yml:
+    method: searched
     evidence: declared in the artifact
   rate-limits/fabric-origin-rate-limits.yml:
+    method: searched
+    evidence: declared in the artifact
+  sandbox/fabric-origin-sandbox.yml:
+    method: searched
+    evidence: declared in the artifact
+  scopes/fabric-origin-scopes.yml:
+    method: unknown
+    evidence: no authorship recorded
+  security/fabric-origin-domain-security.yml:
+    method: unknown
+    evidence: no authorship recorded
+  skills/_index.yml:
     method: generated
     evidence: declared in the artifact
-  security/fabric-origin-domain-security.yml:
+  skills/fabric-origin-catalog-change-tracking.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/fabric-origin-mcp-agent-access.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/fabric-origin-showtimes-and-ticketing.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/fabric-origin-title-lookup-and-enrichment.md:
+    method: generated
+    evidence: declared in the artifact
+  well-known/fabric-origin-insights-mcp-oauth-authorization-server.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/fabric-origin-insights-mcp-oauth-protected-resource.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/fabric-origin-studio-mcp-oauth-authorization-server.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/fabric-origin-studio-mcp-oauth-protected-resource.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/fabric-origin-well-known.yml:
     method: unknown
     evidence: no authorship recorded

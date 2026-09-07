@@ -1,0 +1,2217 @@
+generated: '2026-09-07'
+method: derived
+source: openapi/_original/*.json — 14 first-party Origin Nexus OpenAPI 3.1.1 documents
+provider: Fabric Origin
+providerId: fabric-origin
+description: 'Entity graph derived from the components.schemas and $ref links of the 14 Origin Nexus OpenAPI documents Fabric
+  publishes. The catalog is title-centric: an entertainment record (Movie, Show, Season, Episode, Game) is the hub, and images,
+  videos, availabilities, ratings, reviews and celebrity credits hang off it by identifier. Cross-API navigation is by identifier,
+  not by hyperlink — an Entertainment response carries a VideoId that the Video API resolves, and an image identifier that
+  the Image API resolves.'
+id_conventions:
+  entertainment_id_form: Type/Number, e.g. Movie/123 — the Ids query parameter on Search documents this form
+  cross_api: Identifiers returned by the Entertainment API are the join keys into the Video, Image, Metacritic, Rotten Tomatoes,
+    Common Sense Media and Katch Media APIs
+  external_ids: Alternate-id types are enumerated by /Common/MovieAlternateIdTypes and /Common/ShowAlternateIdTypes
+entity_count: 189
+relationship_count: 185
+entities:
+- name: CaptionOrderResponse
+  apis:
+  - captions-translations-api
+  fields: 2
+  id_fields:
+  - Id
+- name: AllRevCaptionsResponse
+  apis:
+  - captions-translations-api
+  fields: 4
+  id_fields: []
+- name: RevCaptionsResponse
+  apis:
+  - captions-translations-api
+  fields: 10
+  id_fields:
+  - Id
+  - VideoId
+  - ReferenceId
+- name: RevOrderComment
+  apis:
+  - captions-translations-api
+  fields: 3
+  id_fields: []
+- name: RevCaptionItem
+  apis:
+  - captions-translations-api
+  fields: 3
+  id_fields: []
+- name: SearchCelebrityResponse
+  apis:
+  - celebrity-api
+  fields: 6
+  id_fields: []
+- name: PersonSearchHit
+  apis:
+  - celebrity-api
+  fields: 3
+  id_fields:
+  - Id
+- name: DiscoverPerson
+  apis:
+  - celebrity-api
+  fields: 24
+  id_fields:
+  - Id
+  - ExternalIds
+  - VersionId
+- name: FlexDate
+  apis:
+  - celebrity-api
+  fields: 3
+  id_fields: []
+- name: ProgramPersonImage
+  apis:
+  - celebrity-api
+  fields: 15
+  id_fields:
+  - EntertainmentId
+- name: FaceDetails
+  apis:
+  - celebrity-api
+  fields: 17
+  id_fields: []
+- name: FaceDetailsAgerange
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsBeard
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsBoundingbox
+  apis:
+  - celebrity-api
+  fields: 4
+  id_fields: []
+- name: FaceDetailsBoundingboxPixel
+  apis:
+  - celebrity-api
+  fields: 4
+  id_fields: []
+- name: FaceDetailsEmotion
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsEyeglasses
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsEyesopen
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsGender
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsLandmark
+  apis:
+  - celebrity-api
+  fields: 3
+  id_fields: []
+- name: FaceDetailsLandmarkPixel
+  apis:
+  - celebrity-api
+  fields: 3
+  id_fields: []
+- name: FaceDetailsMouthopen
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsMustache
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsPose
+  apis:
+  - celebrity-api
+  fields: 3
+  id_fields: []
+- name: FaceDetailsQuality
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsSmile
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: FaceDetailsSunglasses
+  apis:
+  - celebrity-api
+  fields: 2
+  id_fields: []
+- name: LanguageDetail
+  apis:
+  - celebrity-api
+  - entertainment-api
+  fields: 5
+  id_fields:
+  - Id
+  - FabricId
+- name: ExternalId
+  apis:
+  - celebrity-api
+  - entertainment-api
+  fields: 2
+  id_fields:
+  - Id
+- name: ProgramDescription
+  apis:
+  - celebrity-api
+  - entertainment-api
+  fields: 5
+  id_fields: []
+- name: Award
+  apis:
+  - celebrity-api
+  - entertainment-api
+  fields: 8
+  id_fields:
+  - ProgramId
+  - PersonIds
+- name: PersonSummary
+  apis:
+  - celebrity-api
+  fields: 7
+  id_fields: []
+- name: CharacteristicsResponse
+  apis:
+  - common-metadata-api
+  fields: 2
+  id_fields: []
+- name: SearchCollectionResponse
+  apis:
+  - common-metadata-api
+  fields: 6
+  id_fields: []
+- name: CollectionHit
+  apis:
+  - common-metadata-api
+  fields: 3
+  id_fields:
+  - Id
+- name: EntertainmentCollection
+  apis:
+  - common-metadata-api
+  - entertainment-api
+  fields: 12
+  id_fields:
+  - Id
+  - ParentCollectionIds
+- name: EntertainmentCollectionItem
+  apis:
+  - common-metadata-api
+  - entertainment-api
+  fields: 3
+  id_fields:
+  - ProgramId
+- name: CountryResponse
+  apis:
+  - common-metadata-api
+  fields: 6
+  id_fields:
+  - Id
+  - FabricId
+- name: DataDemoFilters
+  apis:
+  - common-metadata-api
+  fields: 27
+  id_fields: []
+- name: NameValueFilter
+  apis:
+  - common-metadata-api
+  fields: 2
+  id_fields: []
+- name: CommonEnumerators
+  apis:
+  - common-metadata-api
+  fields: 5
+  id_fields: []
+- name: LanguageResponse
+  apis:
+  - common-metadata-api
+  fields: 5
+  id_fields:
+  - Id
+  - FabricId
+- name: CommonSenseProgram
+  apis:
+  - common-sense-media-api
+  fields: 28
+  id_fields:
+  - Uuid
+  - Id
+  - ContentGrid
+- name: Product
+  apis:
+  - common-sense-media-api
+  fields: 15
+  id_fields:
+  - Uuid
+  - Id
+- name: Dictionary_String_String_
+  apis:
+  - common-sense-media-api
+  fields: 0
+  id_fields: []
+- name: ReleaseDate
+  apis:
+  - common-sense-media-api
+  fields: 4
+  id_fields:
+  - ReleaseTypeId
+- name: Image
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: Reference
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: Rating
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Object
+  apis:
+  - common-sense-media-api
+  - katch-media-api
+  - tv-grid-online-api
+  fields: 0
+  id_fields: []
+- name: Video
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: Thumbnail
+  apis:
+  - common-sense-media-api
+  fields: 4
+  id_fields: []
+- name: File
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Alternative
+  apis:
+  - common-sense-media-api
+  fields: 4
+  id_fields:
+  - id
+  - uuid
+- name: Contentgrid
+  apis:
+  - common-sense-media-api
+  fields: 9
+  id_fields: []
+- name: Educational
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Message
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: RoleModel
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Violence
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Sex
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Language
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Consumerism
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Drugs
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Diversity
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Stats
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields: []
+- name: Stars
+  apis:
+  - common-sense-media-api
+  fields: 1
+  id_fields: []
+- name: Avg
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: UserReviewCount
+  apis:
+  - common-sense-media-api
+  fields: 1
+  id_fields: []
+- name: Count
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: RecommendedAge
+  apis:
+  - common-sense-media-api
+  fields: 1
+  id_fields: []
+- name: Avg1
+  apis:
+  - common-sense-media-api
+  fields: 2
+  id_fields: []
+- name: ReviewTopPicks
+  apis:
+  - common-sense-media-api
+  fields: 3
+  id_fields:
+  - id
+  - uuid
+- name: GetCommonSenseMovie
+  apis:
+  - common-sense-media-api
+  fields: 1
+  id_fields:
+  - Id
+- name: GetCommonSenseTV
+  apis:
+  - common-sense-media-api
+  fields: 1
+  id_fields:
+  - Id
+- name: SearchEntertainmentResponse
+  apis:
+  - entertainment-api
+  fields: 6
+  id_fields: []
+- name: SearchHit
+  apis:
+  - entertainment-api
+  fields: 3
+  id_fields:
+  - Id
+- name: DiscoverProgram
+  apis:
+  - entertainment-api
+  fields: 51
+  id_fields:
+  - Id
+  - ShowId
+  - SeasonId
+  - ExternalIds
+  - VersionId
+- name: ShowEpisode
+  apis:
+  - entertainment-api
+  fields: 4
+  id_fields:
+  - EpisodeId
+  - SeasonId
+- name: CountryDetail
+  apis:
+  - entertainment-api
+  fields: 6
+  id_fields:
+  - Id
+  - FabricId
+- name: ProgramRelease
+  apis:
+  - entertainment-api
+  fields: 7
+  id_fields:
+  - CountryId
+  - FabricCountryId
+- name: ProgramContributor
+  apis:
+  - entertainment-api
+  fields: 5
+  id_fields:
+  - PersonId
+- name: ProgramAlternateTitle
+  apis:
+  - entertainment-api
+  fields: 6
+  id_fields:
+  - CountryId
+  - CountryFabricId
+- name: Company
+  apis:
+  - entertainment-api
+  fields: 6
+  id_fields:
+  - Id
+  - CompanyId
+- name: ProgramVideo
+  apis:
+  - entertainment-api
+  fields: 25
+  id_fields:
+  - Id
+  - CaptionID
+- name: VideoScreenCapture
+  apis:
+  - entertainment-api
+  fields: 4
+  id_fields: []
+- name: ProgramVideoTargetCountry
+  apis:
+  - entertainment-api
+  fields: 4
+  id_fields:
+  - CountryId
+  - FabricId
+- name: ProgramImage
+  apis:
+  - entertainment-api
+  fields: 13
+  id_fields: []
+- name: ProgramAvailability
+  apis:
+  - entertainment-api
+  fields: 12
+  id_fields: []
+- name: OfferLink
+  apis:
+  - entertainment-api
+  fields: 2
+  id_fields: []
+- name: ProgramTrend
+  apis:
+  - entertainment-api
+  fields: 9
+  id_fields:
+  - Id
+- name: ProgramChangeHistory
+  apis:
+  - entertainment-api
+  fields: 3
+  id_fields:
+  - Id
+- name: Summary
+  apis:
+  - entertainment-api
+  fields: 15
+  id_fields: []
+- name: EntertainmentMatchCandidatesResponse
+  apis:
+  - entertainment-api
+  fields: 4
+  id_fields: []
+- name: MatchCandidate
+  apis:
+  - entertainment-api
+  fields: 16
+  id_fields:
+  - EntertainmentId
+- name: DataComparison
+  apis:
+  - entertainment-api
+  fields: 3
+  id_fields: []
+- name: TitleMods
+  apis:
+  - entertainment-api
+  fields: 3
+  id_fields: []
+- name: MatchToEntertainmentProgramResponse
+  apis:
+  - entertainment-api
+  fields: 9
+  id_fields:
+  - EntertainmentId
+- name: MatchToEntertainmentEpisodeBySequenceResponse
+  apis:
+  - entertainment-api
+  fields: 6
+  id_fields:
+  - EpisodeId
+- name: MatchToEntertainmentSeasonBySequenceResponse
+  apis:
+  - entertainment-api
+  fields: 4
+  id_fields:
+  - SeasonId
+- name: FandangoGeoLocationCity
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoGeoCity
+  apis:
+  - fandango-api
+  fields: 6
+  id_fields: []
+- name: FandangoGeoLocationPostalCode
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoGeoPostalCode
+  apis:
+  - fandango-api
+  fields: 7
+  id_fields: []
+- name: FandangoDisplayDates
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoDisplayDatesData
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoShowtimeGroupings
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoShowtimeGroupingsData
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields:
+  - movieIds
+- name: FandangoTheaterDisplaydate
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoTheaterGroup
+  apis:
+  - fandango-api
+  fields: 7
+  id_fields:
+  - id
+  - theaterIds
+- name: FandangoTheaterid
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoMovievariant
+  apis:
+  - fandango-api
+  fields: 4
+  id_fields:
+  - formatId
+  - movieVariantId
+- name: FandangoAmenitygroup
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoAmenity
+  apis:
+  - fandango-api
+  fields: 4
+  id_fields:
+  - id
+- name: FandangoShowtime
+  apis:
+  - fandango-api
+  fields: 5
+  id_fields:
+  - id
+- name: FandangoLink
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoDatetime
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoMovieidGroup
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoMovie
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoMovieItem
+  apis:
+  - fandango-api
+  fields: 14
+  id_fields:
+  - id
+  - movieIds
+- name: FandangoMovieid
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoPoster
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoPerson
+  apis:
+  - fandango-api
+  fields: 3
+  id_fields:
+  - id
+  - IvaPersonId
+- name: FandangoImage
+  apis:
+  - fandango-api
+  fields: 5
+  id_fields:
+  - id
+- name: FandangoMovies
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoMovieData
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoPage
+  apis:
+  - fandango-api
+  fields: 3
+  id_fields: []
+- name: FandangoShowtimeDetails
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoShowtimeDetailsData
+  apis:
+  - fandango-api
+  fields: 17
+  id_fields:
+  - id
+  - movieId
+  - theaterId
+  - auditoriumId
+- name: FandangoShowtimes
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoShowtimeItems
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: ShowtimeItemDetail
+  apis:
+  - fandango-api
+  fields: 17
+  id_fields:
+  - id
+  - movieId
+  - theaterId
+  - auditoriumId
+- name: FandangoTheaterShowtimeGroupings
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoTheaterShowtimeGroupingsData
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields:
+  - theaterIds
+- name: FandangoMovieDisplaydate
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoTheaterResponse
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: FandangoTheater
+  apis:
+  - fandango-api
+  fields: 17
+  id_fields:
+  - id
+  - theaterIds
+- name: FandangoGeo
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoTheaters
+  apis:
+  - fandango-api
+  fields: 2
+  id_fields: []
+- name: FandangoTheaterItems
+  apis:
+  - fandango-api
+  fields: 1
+  id_fields: []
+- name: ImageRedirectResponse
+  apis:
+  - images-api
+  fields: 2
+  id_fields: []
+- name: ScreenCaptureRedirectResponse
+  apis:
+  - images-api
+  fields: 2
+  id_fields: []
+- name: KatchProgramData
+  apis:
+  - katch-media-api
+  fields: 4
+  id_fields:
+  - KatchId
+  - OriginId
+- name: KattchProgram
+  apis:
+  - katch-media-api
+  fields: 16
+  id_fields:
+  - katch_id
+- name: UniversalTraits
+  apis:
+  - katch-media-api
+  fields: 4
+  id_fields: []
+- name: Organization
+  apis:
+  - katch-media-api
+  fields: 2
+  id_fields: []
+- name: Crew
+  apis:
+  - katch-media-api
+  fields: 2
+  id_fields: []
+- name: Cast
+  apis:
+  - katch-media-api
+  fields: 2
+  id_fields: []
+- name: Datum
+  apis:
+  - katch-media-api
+  fields: 2
+  id_fields:
+  - internal_id
+- name: TopClusters
+  apis:
+  - katch-media-api
+  fields: 5
+  id_fields:
+  - cluster_id
+- name: MetacriticMovieResponse
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticMovieResponseObj
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticMovieResponseProduct
+  apis:
+  - metacritic-api
+  fields: 7
+  id_fields: []
+- name: MetacriticMovieResponseProductMetascore
+  apis:
+  - metacritic-api
+  fields: 5
+  id_fields: []
+- name: MetacriticMovieResponseProductUserscore
+  apis:
+  - metacritic-api
+  fields: 5
+  id_fields: []
+- name: MetacriticMovieResponseProductReviews
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticMovieResponseProductReviewsReview
+  apis:
+  - metacritic-api
+  fields: 6
+  id_fields: []
+- name: MetacriticMovieResponseProductReviewsReviewPublication
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticMovieResponseProductReviewsReviewCritic
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticTvResponse
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticTvResponseObj
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticTvResponseProduct
+  apis:
+  - metacritic-api
+  fields: 6
+  id_fields: []
+- name: MetacriticTvResponseProductMetascore
+  apis:
+  - metacritic-api
+  fields: 5
+  id_fields: []
+- name: MetacriticTvResponseProductUserscore
+  apis:
+  - metacritic-api
+  fields: 5
+  id_fields: []
+- name: MetacriticTvResponseProductReviews
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticTvResponseProductReviewsReview
+  apis:
+  - metacritic-api
+  fields: 6
+  id_fields: []
+- name: MetacriticTvResponseProductReviewsReviewPublication
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: MetacriticTvResponseProductReviewsReviewCritic
+  apis:
+  - metacritic-api
+  fields: 1
+  id_fields: []
+- name: XRoadMediaRecommendationResponse
+  apis:
+  - rabbit-recommendations-api
+  fields: 1
+  id_fields: []
+- name: Recommendation
+  apis:
+  - rabbit-recommendations-api
+  fields: 3
+  id_fields: []
+- name: Explanation
+  apis:
+  - rabbit-recommendations-api
+  fields: 3
+  id_fields: []
+- name: Program
+  apis:
+  - rabbit-recommendations-api
+  fields: 2
+  id_fields:
+  - Id
+- name: ReviewData
+  apis:
+  - rotten-tomatoes-api
+  fields: 4
+  id_fields: []
+- name: FanSummary
+  apis:
+  - rotten-tomatoes-api
+  fields: 2
+  id_fields: []
+- name: SummaryScore
+  apis:
+  - rotten-tomatoes-api
+  fields: 5
+  id_fields: []
+- name: CriticSummary
+  apis:
+  - rotten-tomatoes-api
+  fields: 4
+  id_fields: []
+- name: SummaryFreshness
+  apis:
+  - rotten-tomatoes-api
+  fields: 3
+  id_fields: []
+- name: RottenTomatoesReview
+  apis:
+  - rotten-tomatoes-api
+  fields: 8
+  id_fields:
+  - Id
+- name: ReviewFreshness
+  apis:
+  - rotten-tomatoes-api
+  fields: 2
+  id_fields: []
+- name: Critic
+  apis:
+  - rotten-tomatoes-api
+  fields: 5
+  id_fields:
+  - Id
+- name: Publication
+  apis:
+  - rotten-tomatoes-api
+  fields: 3
+  id_fields:
+  - Id
+- name: RottenTomatoesRating
+  apis:
+  - rotten-tomatoes-api
+  fields: 5
+  id_fields:
+  - UserId
+- name: RatingScore
+  apis:
+  - rotten-tomatoes-api
+  fields: 2
+  id_fields: []
+- name: TvMediaLineupResponse
+  apis:
+  - tv-grid-online-api
+  fields: 8
+  id_fields:
+  - lineupID
+  - providerID
+- name: Station
+  apis:
+  - tv-grid-online-api
+  fields: 11
+  id_fields:
+  - _ID
+- name: TvMediaStationResponse
+  apis:
+  - tv-grid-online-api
+  fields: 11
+  id_fields:
+  - stationID
+  - NTSC_TSID
+  - DTV_TSID
+- name: GBUsageResponse
+  apis:
+  - video-analytics-api
+  fields: 4
+  id_fields: []
+- name: GBUsageDay
+  apis:
+  - video-analytics-api
+  fields: 5
+  id_fields: []
+- name: ClosedCaption
+  apis:
+  - videos-api
+  fields: 4
+  id_fields:
+  - Id
+  - VideoID
+  - LanguageId
+- name: VideoResponse
+  apis:
+  - videos-api
+  fields: 2
+  id_fields: []
+relationships:
+- from: AllRevCaptionsResponse
+  to: RevCaptionsResponse
+  via: $ref
+  type: has_many
+  api: captions-translations-api
+- from: RevCaptionsResponse
+  to: RevOrderComment
+  via: $ref
+  type: has_many
+  api: captions-translations-api
+- from: RevCaptionsResponse
+  to: RevCaptionItem
+  via: $ref
+  type: has_many
+  api: captions-translations-api
+- from: SearchCelebrityResponse
+  to: PersonSearchHit
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: PersonSearchHit
+  to: DiscoverPerson
+  via: $ref
+  type: has_one
+  api: celebrity-api
+- from: DiscoverPerson
+  to: Award
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: DiscoverPerson
+  to: ProgramDescription
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: DiscoverPerson
+  to: ExternalId
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: DiscoverPerson
+  to: PersonSummary
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: DiscoverPerson
+  to: FlexDate
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: DiscoverPerson
+  to: ProgramPersonImage
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: ProgramPersonImage
+  to: FaceDetails
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: ProgramPersonImage
+  to: LanguageDetail
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsBoundingboxPixel
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsPose
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsSunglasses
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsLandmarkPixel
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsBoundingbox
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsGender
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsMustache
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsEmotion
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsEyesopen
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsSmile
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsMouthopen
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsQuality
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsAgerange
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsLandmark
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsEyeglasses
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: FaceDetails
+  to: FaceDetailsBeard
+  via: $ref
+  type: has_many
+  api: celebrity-api
+- from: ProgramDescription
+  to: LanguageDetail
+  via: $ref
+  type: has_one
+  api: celebrity-api
+- from: PersonSummary
+  to: ProgramDescription
+  via: $ref
+  type: has_one
+  api: celebrity-api
+- from: PersonSummary
+  to: ProgramPersonImage
+  via: $ref
+  type: has_one
+  api: celebrity-api
+- from: SearchCollectionResponse
+  to: CollectionHit
+  via: $ref
+  type: has_many
+  api: common-metadata-api
+- from: CollectionHit
+  to: EntertainmentCollection
+  via: $ref
+  type: has_one
+  api: common-metadata-api
+- from: EntertainmentCollection
+  to: EntertainmentCollectionItem
+  via: $ref
+  type: has_many
+  api: common-metadata-api
+- from: DataDemoFilters
+  to: NameValueFilter
+  via: $ref
+  type: has_many
+  api: common-metadata-api
+- from: CommonSenseProgram
+  to: Alternative
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Product
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Video
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Contentgrid
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: ReviewTopPicks
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Dictionary_String_String_
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Object
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: CommonSenseProgram
+  to: Stats
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: Image
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: Reference
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: Dictionary_String_String_
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: Object
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: Rating
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Product
+  to: ReleaseDate
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Video
+  to: Thumbnail
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Video
+  to: File
+  via: $ref
+  type: has_many
+  api: common-sense-media-api
+- from: Contentgrid
+  to: RoleModel
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Diversity
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Message
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Violence
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Sex
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Educational
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Consumerism
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Drugs
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Contentgrid
+  to: Language
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Stats
+  to: RecommendedAge
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Stats
+  to: Stars
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Stats
+  to: UserReviewCount
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: Stars
+  to: Avg
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: UserReviewCount
+  to: Count
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: RecommendedAge
+  to: Avg1
+  via: $ref
+  type: has_one
+  api: common-sense-media-api
+- from: SearchEntertainmentResponse
+  to: SearchHit
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: SearchHit
+  to: DiscoverProgram
+  via: $ref
+  type: has_one
+  api: entertainment-api
+- from: DiscoverProgram
+  to: Award
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramDescription
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramAlternateTitle
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramContributor
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramImage
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: Summary
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ExternalId
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: CountryDetail
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ShowEpisode
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramVideo
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramTrend
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: Company
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramChangeHistory
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: LanguageDetail
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramRelease
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: EntertainmentCollection
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: DiscoverProgram
+  to: ProgramAvailability
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramAlternateTitle
+  to: LanguageDetail
+  via: $ref
+  type: has_one
+  api: entertainment-api
+- from: ProgramVideo
+  to: VideoScreenCapture
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramVideo
+  to: LanguageDetail
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramVideo
+  to: ProgramVideoTargetCountry
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramImage
+  to: LanguageDetail
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramAvailability
+  to: OfferLink
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: ProgramAvailability
+  to: CountryDetail
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: Summary
+  to: ProgramImage
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: Summary
+  to: ProgramDescription
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: Summary
+  to: ProgramVideo
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: Summary
+  to: ProgramContributor
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: EntertainmentMatchCandidatesResponse
+  to: MatchCandidate
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: EntertainmentMatchCandidatesResponse
+  to: TitleMods
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: MatchCandidate
+  to: DataComparison
+  via: $ref
+  type: has_one
+  api: entertainment-api
+- from: MatchToEntertainmentProgramResponse
+  to: TitleMods
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: MatchToEntertainmentProgramResponse
+  to: DiscoverProgram
+  via: $ref
+  type: has_many
+  api: entertainment-api
+- from: FandangoGeoLocationCity
+  to: FandangoGeoCity
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoGeoLocationPostalCode
+  to: FandangoGeoPostalCode
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoDisplayDates
+  to: FandangoDisplayDatesData
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoShowtimeGroupings
+  to: FandangoShowtimeGroupingsData
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoShowtimeGroupingsData
+  to: FandangoMovieidGroup
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtimeGroupingsData
+  to: FandangoTheaterDisplaydate
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterDisplaydate
+  to: FandangoTheaterGroup
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterGroup
+  to: FandangoTheaterid
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterGroup
+  to: FandangoMovievariant
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovievariant
+  to: FandangoAmenitygroup
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoAmenitygroup
+  to: FandangoShowtime
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoAmenitygroup
+  to: FandangoAmenity
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtime
+  to: FandangoLink
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtime
+  to: FandangoDatetime
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovie
+  to: FandangoMovieItem
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoMovieItem
+  to: FandangoMovieid
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovieItem
+  to: FandangoImage
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovieItem
+  to: FandangoPoster
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovieItem
+  to: FandangoMovievariant
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovieItem
+  to: FandangoPerson
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovies
+  to: FandangoMovieData
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoMovies
+  to: FandangoPage
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoMovieData
+  to: FandangoMovieItem
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtimeDetails
+  to: FandangoShowtimeDetailsData
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoShowtimeDetailsData
+  to: FandangoDatetime
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtimeDetailsData
+  to: FandangoAmenity
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoShowtimes
+  to: FandangoShowtimeItems
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoShowtimes
+  to: FandangoPage
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoShowtimeItems
+  to: ShowtimeItemDetail
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: ShowtimeItemDetail
+  to: FandangoDatetime
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: ShowtimeItemDetail
+  to: FandangoAmenity
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterShowtimeGroupings
+  to: FandangoTheaterShowtimeGroupingsData
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoTheaterShowtimeGroupingsData
+  to: FandangoTheaterid
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterShowtimeGroupingsData
+  to: FandangoMovieDisplaydate
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoMovieDisplaydate
+  to: FandangoMovieItem
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaterResponse
+  to: FandangoTheater
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoTheater
+  to: FandangoTheaterid
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheater
+  to: FandangoAmenity
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheater
+  to: FandangoGeo
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: FandangoTheaters
+  to: FandangoTheaterItems
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoTheaters
+  to: FandangoPage
+  via: $ref
+  type: has_one
+  api: fandango-api
+- from: FandangoTheaterItems
+  to: FandangoTheater
+  via: $ref
+  type: has_many
+  api: fandango-api
+- from: KatchProgramData
+  to: KattchProgram
+  via: $ref
+  type: has_one
+  api: katch-media-api
+- from: KatchProgramData
+  to: Datum
+  via: $ref
+  type: has_one
+  api: katch-media-api
+- from: KattchProgram
+  to: Organization
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: KattchProgram
+  to: UniversalTraits
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: KattchProgram
+  to: Crew
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: KattchProgram
+  to: Object
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: KattchProgram
+  to: Cast
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: Datum
+  to: TopClusters
+  via: $ref
+  type: has_many
+  api: katch-media-api
+- from: MetacriticMovieResponse
+  to: MetacriticMovieResponseObj
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseObj
+  to: MetacriticMovieResponseProduct
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseProduct
+  to: MetacriticMovieResponseProductReviews
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseProduct
+  to: MetacriticMovieResponseProductMetascore
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseProduct
+  to: MetacriticMovieResponseProductUserscore
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseProductReviews
+  to: MetacriticMovieResponseProductReviewsReview
+  via: $ref
+  type: has_many
+  api: metacritic-api
+- from: MetacriticMovieResponseProductReviewsReview
+  to: MetacriticMovieResponseProductReviewsReviewPublication
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticMovieResponseProductReviewsReview
+  to: MetacriticMovieResponseProductReviewsReviewCritic
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponse
+  to: MetacriticTvResponseObj
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseObj
+  to: MetacriticTvResponseProduct
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseProduct
+  to: MetacriticTvResponseProductUserscore
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseProduct
+  to: MetacriticTvResponseProductMetascore
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseProduct
+  to: MetacriticTvResponseProductReviews
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseProductReviews
+  to: MetacriticTvResponseProductReviewsReview
+  via: $ref
+  type: has_many
+  api: metacritic-api
+- from: MetacriticTvResponseProductReviewsReview
+  to: MetacriticTvResponseProductReviewsReviewPublication
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: MetacriticTvResponseProductReviewsReview
+  to: MetacriticTvResponseProductReviewsReviewCritic
+  via: $ref
+  type: has_one
+  api: metacritic-api
+- from: XRoadMediaRecommendationResponse
+  to: Recommendation
+  via: $ref
+  type: has_many
+  api: rabbit-recommendations-api
+- from: Recommendation
+  to: Program
+  via: $ref
+  type: has_many
+  api: rabbit-recommendations-api
+- from: Recommendation
+  to: Explanation
+  via: $ref
+  type: has_many
+  api: rabbit-recommendations-api
+- from: ReviewData
+  to: RottenTomatoesRating
+  via: $ref
+  type: has_many
+  api: rotten-tomatoes-api
+- from: ReviewData
+  to: RottenTomatoesReview
+  via: $ref
+  type: has_many
+  api: rotten-tomatoes-api
+- from: ReviewData
+  to: FanSummary
+  via: $ref
+  type: has_many
+  api: rotten-tomatoes-api
+- from: ReviewData
+  to: CriticSummary
+  via: $ref
+  type: has_many
+  api: rotten-tomatoes-api
+- from: FanSummary
+  to: SummaryScore
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: CriticSummary
+  to: SummaryFreshness
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: CriticSummary
+  to: SummaryScore
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: RottenTomatoesReview
+  to: ReviewFreshness
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: RottenTomatoesReview
+  to: Critic
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: RottenTomatoesReview
+  to: Publication
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: RottenTomatoesRating
+  to: RatingScore
+  via: $ref
+  type: has_one
+  api: rotten-tomatoes-api
+- from: TvMediaLineupResponse
+  to: Station
+  via: $ref
+  type: has_many
+  api: tv-grid-online-api
+- from: Station
+  to: Object
+  via: $ref
+  type: has_one
+  api: tv-grid-online-api
+- from: GBUsageResponse
+  to: GBUsageDay
+  via: $ref
+  type: has_many
+  api: video-analytics-api
+schemas_by_api:
+  captions-translations-api:
+  - AllRevCaptionsResponse
+  - CaptionOrderResponse
+  - RevCaptionItem
+  - RevCaptionsResponse
+  - RevOrderComment
+  celebrity-api:
+  - Award
+  - DiscoverPerson
+  - ExternalId
+  - FaceDetails
+  - FaceDetailsAgerange
+  - FaceDetailsBeard
+  - FaceDetailsBoundingbox
+  - FaceDetailsBoundingboxPixel
+  - FaceDetailsEmotion
+  - FaceDetailsEyeglasses
+  - FaceDetailsEyesopen
+  - FaceDetailsGender
+  - FaceDetailsLandmark
+  - FaceDetailsLandmarkPixel
+  - FaceDetailsMouthopen
+  - FaceDetailsMustache
+  - FaceDetailsPose
+  - FaceDetailsQuality
+  - FaceDetailsSmile
+  - FaceDetailsSunglasses
+  - FlexDate
+  - LanguageDetail
+  - PersonSearchHit
+  - PersonSummary
+  - ProgramDescription
+  - ProgramPersonImage
+  - SearchCelebrityResponse
+  common-metadata-api:
+  - CharacteristicsResponse
+  - CollectionHit
+  - CommonEnumerators
+  - CountryResponse
+  - DataDemoFilters
+  - EntertainmentCollection
+  - EntertainmentCollectionItem
+  - LanguageResponse
+  - NameValueFilter
+  - SearchCollectionResponse
+  common-sense-media-api:
+  - Alternative
+  - Avg
+  - Avg1
+  - CommonSenseProgram
+  - Consumerism
+  - Contentgrid
+  - Count
+  - Dictionary_String_String_
+  - Diversity
+  - Drugs
+  - Educational
+  - File
+  - GetCommonSenseMovie
+  - GetCommonSenseTV
+  - Image
+  - Language
+  - Message
+  - Object
+  - Product
+  - Rating
+  - RecommendedAge
+  - Reference
+  - ReleaseDate
+  - ReviewTopPicks
+  - RoleModel
+  - Sex
+  - Stars
+  - Stats
+  - Thumbnail
+  - UserReviewCount
+  - Video
+  - Violence
+  entertainment-api:
+  - Award
+  - Company
+  - CountryDetail
+  - DataComparison
+  - DiscoverProgram
+  - EntertainmentCollection
+  - EntertainmentCollectionItem
+  - EntertainmentMatchCandidatesResponse
+  - ExternalId
+  - LanguageDetail
+  - MatchCandidate
+  - MatchToEntertainmentEpisodeBySequenceResponse
+  - MatchToEntertainmentProgramResponse
+  - MatchToEntertainmentSeasonBySequenceResponse
+  - OfferLink
+  - ProgramAlternateTitle
+  - ProgramAvailability
+  - ProgramChangeHistory
+  - ProgramContributor
+  - ProgramDescription
+  - ProgramImage
+  - ProgramRelease
+  - ProgramTrend
+  - ProgramVideo
+  - ProgramVideoTargetCountry
+  - SearchEntertainmentResponse
+  - SearchHit
+  - ShowEpisode
+  - Summary
+  - TitleMods
+  - VideoScreenCapture
+  fandango-api:
+  - FandangoAmenity
+  - FandangoAmenitygroup
+  - FandangoDatetime
+  - FandangoDisplayDates
+  - FandangoDisplayDatesData
+  - FandangoGeo
+  - FandangoGeoCity
+  - FandangoGeoLocationCity
+  - FandangoGeoLocationPostalCode
+  - FandangoGeoPostalCode
+  - FandangoImage
+  - FandangoLink
+  - FandangoMovie
+  - FandangoMovieData
+  - FandangoMovieDisplaydate
+  - FandangoMovieItem
+  - FandangoMovieid
+  - FandangoMovieidGroup
+  - FandangoMovies
+  - FandangoMovievariant
+  - FandangoPage
+  - FandangoPerson
+  - FandangoPoster
+  - FandangoShowtime
+  - FandangoShowtimeDetails
+  - FandangoShowtimeDetailsData
+  - FandangoShowtimeGroupings
+  - FandangoShowtimeGroupingsData
+  - FandangoShowtimeItems
+  - FandangoShowtimes
+  - FandangoTheater
+  - FandangoTheaterDisplaydate
+  - FandangoTheaterGroup
+  - FandangoTheaterItems
+  - FandangoTheaterResponse
+  - FandangoTheaterShowtimeGroupings
+  - FandangoTheaterShowtimeGroupingsData
+  - FandangoTheaterid
+  - FandangoTheaters
+  - ShowtimeItemDetail
+  images-api:
+  - ImageRedirectResponse
+  - ScreenCaptureRedirectResponse
+  katch-media-api:
+  - Cast
+  - Crew
+  - Datum
+  - KatchProgramData
+  - KattchProgram
+  - Object
+  - Organization
+  - TopClusters
+  - UniversalTraits
+  metacritic-api:
+  - MetacriticMovieResponse
+  - MetacriticMovieResponseObj
+  - MetacriticMovieResponseProduct
+  - MetacriticMovieResponseProductMetascore
+  - MetacriticMovieResponseProductReviews
+  - MetacriticMovieResponseProductReviewsReview
+  - MetacriticMovieResponseProductReviewsReviewCritic
+  - MetacriticMovieResponseProductReviewsReviewPublication
+  - MetacriticMovieResponseProductUserscore
+  - MetacriticTvResponse
+  - MetacriticTvResponseObj
+  - MetacriticTvResponseProduct
+  - MetacriticTvResponseProductMetascore
+  - MetacriticTvResponseProductReviews
+  - MetacriticTvResponseProductReviewsReview
+  - MetacriticTvResponseProductReviewsReviewCritic
+  - MetacriticTvResponseProductReviewsReviewPublication
+  - MetacriticTvResponseProductUserscore
+  rabbit-recommendations-api:
+  - Explanation
+  - Program
+  - Recommendation
+  - XRoadMediaRecommendationResponse
+  rotten-tomatoes-api:
+  - Critic
+  - CriticSummary
+  - FanSummary
+  - Publication
+  - RatingScore
+  - ReviewData
+  - ReviewFreshness
+  - RottenTomatoesRating
+  - RottenTomatoesReview
+  - SummaryFreshness
+  - SummaryScore
+  tv-grid-online-api:
+  - Object
+  - Station
+  - TvMediaLineupResponse
+  - TvMediaStationResponse
+  video-analytics-api:
+  - GBUsageDay
+  - GBUsageResponse
+  videos-api:
+  - ClosedCaption
+  - VideoResponse
+note: Derived mechanically from $ref edges. Origin Studio and Origin Insights are excluded — neither publishes a retrievable
+  schema.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

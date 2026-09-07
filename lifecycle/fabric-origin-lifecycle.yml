@@ -1,0 +1,110 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/origin/release-notes
+docs:
+- https://knowledgebase.fabricdata.com/origin/release-notes
+- https://status.fabricdata.com/
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/environments
+provider: Fabric Origin
+providerId: fabric-origin
+description: Versioning, change communication, deprecation practice and operational status for the Fabric Origin
+  surface.
+versioning:
+  origin_nexus:
+    scheme: unversioned
+    in_url: false
+    spec_version: 1.0 (3.0 on the Image, Video and Video Analytics documents)
+    note: No version segment and no version header. Breaking changes are announced in the dated release notes with
+      an effective date, and then applied in place.
+  origin_studio:
+    scheme: path
+    current: v1
+    base: https://api.studio.fabricdata.com/v1
+  origin_studio_mcp:
+    scheme: semver server version
+    current: 1.10.0
+    observable_at: https://mcp-api.studio.fabricdata.com/info
+    probed: '2026-09-07'
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  practice: Fabric DOES give advance notice of breaking changes in the release notes, with an explicit "BREAKING
+    CHANGE" label, an effective date and a stated action for integrators — but there is no standing deprecation
+    policy document, no notice-period commitment, and no Sunset or Deprecation response header. Notice is editorial,
+    not contractual, and an agent cannot detect it at runtime.
+  deprecated_operations:
+  - name: Charts API
+    date: '2026-01-05'
+    replacement: Trending (via /Entertainment/Search trending)
+    source: https://knowledgebase.fabricdata.com/origin/release-notes
+  - name: YouTube trending chart
+    date: '2026-01-05'
+    replacement: trending in Search
+    source: https://knowledgebase.fabricdata.com/origin/release-notes
+  - name: /Entertainment/FindProgramByImage
+    date: '2026-01-05'
+    replacement: null
+    source: https://knowledgebase.fabricdata.com/origin/release-notes
+  deprecated_operations_note: 'No operation in any of the 14 published OpenAPI documents carries deprecated: true.
+    The three retirements above are announced only in the release notes, and the endpoints are already absent from
+    the current specs — an agent holding an older copy of the contract has no runtime signal that they went away.'
+  observed_breaking_changes:
+  - date: '2026-02-09'
+    effective: '2026-02-10'
+    change: Take parameter maximum reduced from 50 to 10 on /Entertainment/Search and /Celebrity/Search
+    notice_period: 1 day
+    impact: Requests with Take > 10 return 400 Bad Request
+    source: https://knowledgebase.fabricdata.com/origin/release-notes
+  - date: '2026-01-05'
+    effective: '2026-01-05'
+    change: AWS migration — 17 Fandango and Common endpoint paths renamed in place
+    notice_period: announced at release, not in advance
+    impact: Old paths stop resolving; the release notes publish an old-path -> new-path table with example URLs
+      and endpoint names
+    source: https://knowledgebase.fabricdata.com/origin/release-notes
+  observed_retirements:
+  - date: '2026-02-04'
+    change: Provider iTunes migrated to Apple TV
+  - date: '2026-02-04'
+    change: HBO and Max availability data migrated to HBOMax; legacy providers removed (8,644 titles affected)
+  - date: '2026-02-04'
+    change: imdbTv provider removed from 79 shows — service discontinued
+  host_migration:
+    legacy_host: ee.iva-api.com
+    current_host: api.origin.fabricdata.com
+    note: The provider's 14 published OpenAPI documents all declare servers[] as https://api.origin.fabricdata.com,
+      while the getting-started page still shows curl examples against the legacy IVA host https://ee.iva-api.com/api/.
+      Both hosts answer (403 unauthenticated). A January 2026 AWS migration is recorded in the release notes. No
+      formal cutover date for the legacy host is published.
+status_page:
+  url: https://status.fabricdata.com/
+  provider: Atlassian Statuspage
+  probed_status: 200
+  state_at_probe: All Systems Operational
+  machine_readable: https://status.fabricdata.com/api/v2/summary.json
+  feeds:
+  - https://status.fabricdata.com/history.atom
+  - https://status.fabricdata.com/history.rss
+  components:
+  - Fabric Services
+  scope: All Fabric services (Xytech and Origin), not per-API
+sla:
+  published: false
+  note: No public SLA, uptime commitment or credit schedule is published.
+environments:
+  production: https://api.studio.fabricdata.com/
+  sandbox: https://api.stg.studio.fabricdata.com/
+  sandbox_qualifier: provider labels it "Sandbox (if available)"
+  origin_nexus_sandbox: none — Origin Nexus has no separate test host; the 30-day free trial is the evaluation path
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/environments
+support:
+  service_desk: https://fabric.atlassian.net/servicedesk/customer/portal/336
+  origin_service_desk: https://metahive.atlassian.net/servicedesk/customer/portal/2
+  help_center: https://helpcenter.fabricdata.com/
+  email: originsupport@fabricdata.com
+  contact: https://www.fabricdata.com/contact-us
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

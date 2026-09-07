@@ -1,0 +1,55 @@
+generated: '2026-09-07'
+method: probed
+source: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+docs:
+- https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+- https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/mcp-access
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  OAuth scopes advertised by Fabric Origin's two MCP authorization servers, read from their live
+  RFC 8414 discovery documents. Both servers publish only OIDC identity scopes — there is no
+  resource-permission scope vocabulary. Authorization is not scope-based: Origin Studio derives
+  tenant and permissions from the identity in the token against the same RBAC model that governs
+  human users, and Origin Insights is read-only and catalog-scoped.
+authorization_servers:
+- id: origin-studio-mcp
+  issuer: https://mcp-api.studio.fabricdata.com
+  discovery: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  probed_status: 200
+  scopes:
+  - name: openid
+    description: OIDC — issue an ID token for the signed-in Studio user.
+  - name: profile
+    description: OIDC — basic profile claims for the signed-in user.
+  - name: email
+    description: OIDC — email claim for the signed-in user.
+  - name: offline_access
+    description: >-
+      Issue a refresh token. Provider warns these are long-lived and NON-ROTATING; store encrypted
+      and revoke on user offboarding.
+  pkce_methods: [S256]
+  token_endpoint_auth_methods: [none]
+- id: origin-insights-mcp
+  issuer: https://insights.fabric-mcp.link/
+  discovery: https://insights.fabric-mcp.link/.well-known/oauth-authorization-server
+  probed_status: 200
+  scopes:
+  - name: openid
+    description: OIDC — issue an ID token.
+  - name: email
+    description: OIDC — email claim.
+  - name: profile
+    description: OIDC — basic profile claims.
+  bearer_methods_supported: [header]
+permission_model:
+  scope_based: false
+  note: >-
+    Tool-level access on Origin Studio maps to the identity's Studio role and permission groups,
+    enforced server-side on every call. Tenant is inferred from the token and client-supplied tenant
+    hints are ignored. Origin Insights is read-only. The Xytech X2 MCP server (a different Fabric
+    product family) is documented as scoping OAuth grants to the individual tool level.
+  source: https://www.fabricdata.com/agent-governance
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

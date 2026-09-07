@@ -1,0 +1,34 @@
+# Fabric Data
+
+> Fabric delivers agent-ready data, metadata, and operations software for media and entertainment. Two product families: Xytech (media operations ERP: scheduling, media orders, transmission) and Origin (Studio: metadata source of truth; Nexus: enrichment APIs; Insights: market intelligence). All product lines expose MCP servers with OAuth-governed access — each agent identity's permissions determine which tools it can use — plus REST APIs with machine-readable schemas and documentation published for agent consumption.
+
+## MCP Servers (agent execution surfaces)
+
+- [Xytech X2 MCP](https://knowledgebase.fabricdata.com/xytech/xytech-x2-mcp-server): Orders, media workflows, resource scheduling, transmission. OAuth, tool-level scoping.
+- [Origin Studio MCP](https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server): Unified server spanning Origin Studio and Nexus. Metadata records, catalog operations, availability. OAuth rights dictate tool access.
+- [Origin Insights MCP](https://knowledgebase.fabricdata.com/insights/origin-insights-mcp): Market intelligence: streaming availability, pricing & plans, demand, Pay TV, consumer surveys. OAuth-based, usage-based consumption.
+
+## API Documentation
+
+- [Xytech REST API v3](https://knowledgebase.fabricdata.com/xytech/rest-api-v3/): Latest, standards-aligned. Machine-readable schemas.
+- [Xytech Webhooks](https://knowledgebase.fabricdata.com/xytech/webhooks/): Real-time change events.
+- [Xytech docs index (llms.txt)](https://knowledgebase.fabricdata.com/xytech/llms.txt): Full markdown documentation index.
+- [Origin Studio API](https://api.fabricdata.com/docs/fabric/83d3097deedd5-introduction): REST API reference.
+- [Origin Nexus API](https://developer.iva-api.com/): Metadata enrichment REST API.
+
+## Governance & Trust
+
+- [Agent Governance](https://www.fabricdata.com/agent-governance): OAuth-governed, identity-scoped access, RBAC, service accounts, audit logging, ISO/IEC 27001.
+- [Pricing](https://www.fabricdata.com/pricing-models): Commercial models tailored to deployment and consumption, including agent and machine workloads.
+
+## Products
+
+- [Xytech](https://www.fabricdata.com/xytech-media): Media operations ERP for broadcast, production, sports, live events.
+- [Origin Studio](https://www.fabricdata.com/origin-studio): Metadata source of truth; catalog management and distribution.
+- [Origin Nexus](https://www.fabricdata.com/origin-nexus): Metadata enrichment, images, trailers, availability APIs.
+- [Origin Insights](https://www.fabricdata.com/origin-insights): Market intelligence, 1,000+ platforms, 249 countries.
+
+## Company
+
+- [About Fabric](https://www.fabricdata.com/about)
+- [Agent-Ready Platform Strategy](https://www.fabricdata.com/trends/fabrics-agent-ready-platform-strategy)

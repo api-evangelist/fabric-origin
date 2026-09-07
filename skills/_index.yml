@@ -1,0 +1,43 @@
+generated: '2026-09-07'
+method: generated
+source: >-
+  openapi/*.yml (14 first-party Origin Nexus OpenAPI documents), mcp/fabric-origin-mcp.yml,
+  conventions/fabric-origin-conventions.yml, errors/fabric-origin-problem-types.yml
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  Packaged Agent Skills for the Fabric Origin surface. Every operationId referenced was read out of
+  the provider's own published OpenAPI documents; every constraint and error was read out of the
+  provider's own documentation. Nothing here is invented.
+skills:
+- name: fabric-origin-title-lookup-and-enrichment
+  file: fabric-origin-title-lookup-and-enrichment.md
+  api: Origin Nexus — Entertainment, Image, Video, Metacritic, Rotten Tomatoes
+  summary: >-
+    Resolve a title to an Origin identifier, then pull metadata, images, trailers, captions and
+    third-party ratings off that one key.
+  operations: 8
+- name: fabric-origin-catalog-change-tracking
+  file: fabric-origin-catalog-change-tracking.md
+  api: Origin Nexus — Entertainment, Common Metadata
+  summary: >-
+    Keep a cached copy of the catalog current by polling the change-history operations, since Origin
+    Nexus emits no events.
+  operations: 9
+- name: fabric-origin-mcp-agent-access
+  file: fabric-origin-mcp-agent-access.md
+  api: Origin Studio MCP, Origin Insights MCP
+  summary: >-
+    Connect and operate both hosted MCP servers, including the read-back-before-retry discipline the
+    absence of an idempotency key forces.
+  operations: 2
+- name: fabric-origin-showtimes-and-ticketing
+  file: fabric-origin-showtimes-and-ticketing.md
+  api: Origin Nexus — Fandango
+  summary: >-
+    Location to theaters to showtime groupings, linked back to Origin title identifiers, with the
+    January 2026 path-rename trap called out.
+  operations: 12
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

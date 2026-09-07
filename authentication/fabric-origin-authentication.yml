@@ -1,22 +1,123 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/fabric-origin-openapi.yml
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/origin/getting-started
+docs:
+- https://knowledgebase.fabricdata.com/origin/getting-started
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/authentication
+- https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+- https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/mcp-access
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  Fabric Origin runs three distinct authentication models across the Origin family. Origin Nexus
+  (the entertainment metadata REST APIs) uses an Azure API Management subscription key. Origin Studio
+  uses a bearer API key on its JSON:API REST surface. Both Origin MCP servers use OAuth 2.0 with PKCE,
+  each acting as its own authorization server, with an API key accepted as a bearer alternative on
+  Origin Studio MCP for unattended workloads.
 summary:
-  types:
-  - apiKey
-  api_key_in:
-  - header
-  - query
-schemes:
-- name: SubscriptionKeyHeader
-  type: apiKey
-  in: header
-  parameter: Ocp-Apim-Subscription-Key
-  sources:
-  - openapi/fabric-origin-openapi.yml
-- name: SubscriptionKeyQuery
-  type: apiKey
-  in: query
-  parameter: subscription-key
-  sources:
-  - openapi/fabric-origin-openapi.yml
+  types: [apiKey, http, oauth2]
+  api_key_in: [header, query]
+  oauth2_flows: [authorization_code]
+  pkce: required on both MCP servers (S256 only)
+  note: >-
+    The 14 first-party Origin Nexus OpenAPI documents the provider publishes carry NO
+    components.securitySchemes block. The subscription-key requirement is documented in prose on the
+    getting-started page and is captured here and in overlays/ rather than injected into the
+    provider's spec.
+profiles:
+- id: origin-nexus
+  name: Origin Nexus entertainment APIs
+  hosts: [api.origin.fabricdata.com, ee.iva-api.com]
+  schemes:
+  - name: SubscriptionKeyHeader
+    type: apiKey
+    in: header
+    parameter: Ocp-Apim-Subscription-Key
+    gateway: Azure API Management
+    source: https://knowledgebase.fabricdata.com/origin/getting-started
+  - name: SubscriptionKeyQuery
+    type: apiKey
+    in: query
+    parameter: subscription-key
+    source: https://knowledgebase.fabricdata.com/origin/getting-started
+    note: >-
+      A key in the query string is logged by intermediaries; the header form is the safer of the two
+      the provider offers.
+  key_issuance:
+    self_serve: false
+    portal: https://developer.origin.fabricdata.com/portal/login
+    trial: 30-day free trial requested through https://www.fabricdata.com/contact-us
+    note: Keys are retrieved from the Origin Service Portal once a subscription exists.
+  server_to_server: true
+- id: origin-studio-rest
+  name: Origin Studio Production API
+  hosts: [api.studio.fabricdata.com, api.stg.studio.fabricdata.com]
+  schemes:
+  - name: StudioApiKey
+    type: http
+    scheme: bearer
+    header: Authorization
+    format: 'Authorization: Bearer YOUR_API_KEY'
+    source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/authentication
+  key_issuance:
+    self_serve: false
+    issued_by: [Origin Studio administrator, Fabric Support]
+    admin_path: Administrator -> Security -> API Keys -> Generate Key
+  required_headers: ['Authorization: Bearer <key>', 'Accept: application/json', 'Content-Type: application/json (POST/PUT/PATCH)']
+- id: origin-studio-mcp
+  name: Origin Studio MCP Server
+  hosts: [mcp-api.studio.fabricdata.com]
+  schemes:
+  - name: StudioMcpOAuth
+    type: oauth2
+    flow: authorization_code
+    pkce: required (S256 only; `plain` and missing code_challenge are rejected)
+    client_auth: none (public clients)
+    issuer: https://mcp-api.studio.fabricdata.com
+    authorization_endpoint: https://mcp-api.studio.fabricdata.com/authorize
+    token_endpoint: https://mcp-api.studio.fabricdata.com/token
+    registration_endpoint: https://mcp-api.studio.fabricdata.com/register
+    dynamic_client_registration: true
+    scopes: [openid, profile, email, offline_access]
+    refresh_tokens: 'issued with offline_access; long-lived and NON-ROTATING — the provider explicitly warns to store them encrypted and revoke on offboarding'
+    organization_selection: required at login; a client cannot pre-select the tenant
+    discovery: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+    probed_status: 200
+  - name: StudioMcpApiKey
+    type: http
+    scheme: bearer
+    note: >-
+      Any non-JWT bearer is treated as an Origin Studio API key and validated server-side. This is
+      the supported headless path; there is no client-credentials flow for third parties.
+  protected_resource_metadata: https://mcp-api.studio.fabricdata.com/.well-known/oauth-protected-resource
+  challenge: 'HTTP 401 with WWW-Authenticate: Bearer error="invalid_token", resource_metadata=<RFC 9728 URL>'
+  broker_note: >-
+    Origin Studio brokers login with Auth0 internally but the MCP server is its own authorization
+    server. Clients never talk to Auth0 directly; Auth0 DCR is disabled and rejects registration.
+- id: origin-insights-mcp
+  name: Origin Insights MCP Server
+  hosts: [insights.fabric-mcp.link]
+  schemes:
+  - name: InsightsMcpOAuth
+    type: oauth2
+    flow: authorization_code
+    issuer: https://insights.fabric-mcp.link/
+    authorization_endpoint: https://insights.fabric-mcp.link/oauth/authorize
+    token_endpoint: https://insights.fabric-mcp.link/oauth/token
+    registration_endpoint: https://insights.fabric-mcp.link/oauth/register
+    jwks_uri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_V84pL7JUo/.well-known/jwks.json
+    dynamic_client_registration: true
+    scopes: [openid, email, profile]
+    discovery: https://insights.fabric-mcp.link/.well-known/oauth-authorization-server
+    probed_status: 200
+  protected_resource_metadata: https://insights.fabric-mcp.link/.well-known/oauth-protected-resource
+  challenge: 'HTTP 401 with WWW-Authenticate: Bearer realm="fabric-mcp", resource_metadata=<RFC 9728 URL>'
+governance:
+  source: https://www.fabricdata.com/agent-governance
+  machine_identity: agents authenticate as first-class OAuth identities; service accounts supported
+  no_shared_human_credentials: true
+  rbac: agent permissions map to the same RBAC model that governs human users
+  audit: agent actions are logged and attributable to the acting identity
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

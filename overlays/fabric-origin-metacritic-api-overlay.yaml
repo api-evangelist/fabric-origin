@@ -1,0 +1,49 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay — Fabric Origin Metacritic API
+  version: 1.0.0
+extends: openapi/fabric-origin-metacritic-api-openapi.yml
+x-generated: '2026-09-07'
+x-method: generated
+x-source: API Evangelist enrichment pass; every value below is sourced from Fabric documentation cited in the action description
+actions:
+- target: $.components
+  description: 'Add the securitySchemes Fabric documents in prose but does not declare in the spec: an Azure API Management
+    subscription key sent as the Ocp-Apim-Subscription-Key header or the subscription-key query parameter. Source: https://knowledgebase.fabricdata.com/origin/getting-started'
+  update:
+    securitySchemes:
+      SubscriptionKeyHeader:
+        type: apiKey
+        in: header
+        name: Ocp-Apim-Subscription-Key
+        description: Azure API Management subscription key. Issued from the Origin Service Portal.
+      SubscriptionKeyQuery:
+        type: apiKey
+        in: query
+        name: subscription-key
+        description: Same key as a query parameter. Logged by intermediaries; prefer the header form.
+- target: $
+  description: Apply the documented subscription-key requirement to the whole API.
+  update:
+    security:
+    - SubscriptionKeyHeader: []
+    - SubscriptionKeyQuery: []
+- target: $.servers
+  description: 'Record the legacy IVA host alongside the production host the provider declares. Both answer; the getting-started
+    page still shows curl examples against the legacy host. Source: https://knowledgebase.fabricdata.com/origin/getting-started
+    and https://knowledgebase.fabricdata.com/origin/release-notes (January 5, 2026 AWS migration).'
+  update:
+  - url: https://ee.iva-api.com/api
+    description: Legacy IVA host, still shown in provider examples. No cutover date published.
+- target: $.info
+  description: Attach contact and terms the provider publishes on its own site but omits from the spec.
+  update:
+    contact:
+      name: Fabric Origin Support
+      email: originsupport@fabricdata.com
+      url: https://knowledgebase.fabricdata.com/origin/
+    x-status-page: https://status.fabricdata.com/
+    x-release-notes: https://knowledgebase.fabricdata.com/origin/release-notes
+    x-rate-limits: rate-limits/fabric-origin-rate-limits.yml
+    x-error-catalog: errors/fabric-origin-problem-types.yml
+    x-conventions: conventions/fabric-origin-conventions.yml

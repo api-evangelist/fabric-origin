@@ -1,0 +1,147 @@
+generated: '2026-09-07'
+method: searched
+source: https://www.fabricdata.com/agent-governance
+docs:
+- https://www.fabricdata.com/agent-governance
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/requests-and-responses
+- https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  Standards and compliance claims asserted by Fabric Origin, each with the evidence that supports or
+  refutes it. Where a claim was verifiable by probe rather than prose, the probe result is recorded.
+conformance:
+- id: oauth2
+  name: OAuth 2.0 Authorization Code with PKCE
+  conforms: true
+  evidence: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  detail: >-
+    Live discovery document declares response_types_supported [code], grant_types_supported
+    [authorization_code, refresh_token], code_challenge_methods_supported [S256],
+    token_endpoint_auth_methods_supported [none]. Probed 200 on 2026-09-07.
+- id: rfc8414
+  name: RFC 8414 — OAuth 2.0 Authorization Server Metadata
+  conforms: true
+  evidence: https://insights.fabric-mcp.link/.well-known/oauth-authorization-server
+  detail: Served anonymously at the well-known path on BOTH Origin MCP servers. Probed 200.
+- id: rfc9728
+  name: RFC 9728 — OAuth 2.0 Protected Resource Metadata
+  conforms: true
+  evidence: https://mcp-api.studio.fabricdata.com/.well-known/oauth-protected-resource
+  detail: >-
+    Served anonymously on both MCP servers, and correctly referenced from the WWW-Authenticate
+    challenge on an unauthenticated tools/list. Probed 200.
+- id: rfc7636
+  name: RFC 7636 — PKCE
+  conforms: true
+  evidence: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  detail: >-
+    "PKCE is mandatory and only S256 is accepted; requests without code_challenge, or using plain,
+    are rejected." Corroborated by the live discovery document.
+- id: rfc7591
+  name: RFC 7591 — OAuth Dynamic Client Registration
+  conforms: true
+  evidence: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  detail: registration_endpoint published by both MCP servers; provider documents that spec-compliant MCP clients register automatically.
+- id: oidc
+  name: OpenID Connect scopes
+  conforms: partial
+  evidence: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  detail: >-
+    openid/profile/email/offline_access scopes are advertised, but no OIDC discovery document is
+    served — /.well-known/openid-configuration 404s on every Fabric host probed.
+- id: mcp-authorization
+  name: Model Context Protocol authorization specification
+  conforms: true
+  evidence: https://mcp-api.studio.fabricdata.com/
+  detail: >-
+    An unauthenticated POST of tools/list returns HTTP 401 with a standards-compliant
+    WWW-Authenticate Bearer challenge carrying a resource_metadata pointer, exactly as the MCP
+    authorization spec requires. Verified on both servers.
+- id: mcp-streamable-http
+  name: MCP Streamable HTTP transport
+  conforms: true
+  evidence: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  detail: Both servers are documented as Streamable HTTP; Origin Studio serves MCP traffic on the root path.
+- id: json-api
+  name: 'JSON:API 1.1'
+  conforms: true
+  evidence: https://api.studio.fabricdata.com/v1
+  detail: >-
+    DOMAIN-STANDARD SIGNATURE — the live Origin Studio API answers an unauthenticated request with a
+    JSON:API error document, {"jsonapi":{"version":"1.1"},"errors":[...]}, probed HTTP 400 on
+    2026-09-07. The contract declares the standard about itself, not just the marketing page. The
+    documentation confirms the request and response shape (data / attributes / relationships / meta
+    / links / jsonapi) and the error envelope.
+- id: rfc9457
+  name: RFC 9457 — Problem Details for HTTP APIs
+  conforms: false
+  evidence: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/errors
+  detail: >-
+    Origin Studio uses the JSON:API errors envelope, not application/problem+json. Origin Nexus
+    publishes no error schema at all — all 121 published operations declare only a 200 response.
+- id: openapi
+  name: OpenAPI 3.1.1
+  conforms: true
+  evidence: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs/entertainment.md
+  detail: >-
+    Fabric publishes machine-readable OpenAPI 3.1.1 for the Origin Nexus family, embedded in the
+    knowledge-base pages and served anonymously as markdown. 14 documents, 121 operations, every
+    operation carrying operationId, summary, typed parameters and component schemas.
+- id: eidr
+  name: EIDR — Entertainment Identifier Registry
+  conforms: claimed
+  evidence: https://www.fabricdata.com/agent-governance
+  detail: >-
+    "EIDR compatibility" is named by the provider in the Origin Studio MCP documentation's see-also
+    block. EIDR also appears as an external identifier scheme in the Origin Insights content domain
+    (TMDb, IMDb, TVDB, EIDR). No conformance statement or identifier profile is published; recorded
+    as a claim, not a verified conformance.
+- id: iso-27001
+  name: ISO/IEC 27001
+  conforms: claimed
+  evidence: https://www.fabricdata.com/trends/fabric-achieves-iso-iec-27001-certification-5-strategic-impacts-on-secure-media-operations
+  detail: >-
+    "Fabric is ISO/IEC 27001 certified, with enterprise-grade security architecture across the
+    platform." Announced by the company; no certificate number, auditor, scope statement or trust
+    center is published, and no SOC 2 / PCI / HIPAA / FedRAMP claim is made anywhere.
+- id: rfc9116
+  name: RFC 9116 — security.txt
+  conforms: false
+  evidence: well-known/fabric-origin-well-known.yml
+  detail: >-
+    No security.txt on any Fabric host. The one 200 found — status.fabricdata.com — returns
+    ATLASSIAN's security.txt (Canonical https://www.atlassian.com/.well-known/security.txt) from the
+    hosted Statuspage, and is not Fabric's document.
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence: well-known/fabric-origin-well-known.yml
+  detail: >-
+    /.well-known/agent-card.json and /.well-known/agent.json probed on all 14 known hosts. No card.
+    Fabric's agent strategy is MCP-first, not A2A.
+- id: llms-txt
+  name: llms.txt
+  conforms: true
+  evidence: https://www.fabricdata.com/llms.txt
+  detail: >-
+    Served at the company root, and again per documentation section
+    (/origin/llms.txt, /studio/llms.txt, /insights/llms.txt, /xytech/llms.txt), all HTTP 200. The
+    root index names every MCP server and API reference.
+compliance:
+  certifications:
+  - name: ISO/IEC 27001
+    status: certified (company claim)
+    source: https://www.fabricdata.com/agent-governance
+  trust_center: null
+  soc2: not claimed
+  pci: not claimed
+  hipaa: not claimed
+  fedramp: not claimed
+  privacy_policy: https://www.fabricdata.com/privacy-policy
+  note: >-
+    No dedicated trust center or compliance portal is published; the ISO/IEC 27001 claim lives on the
+    agent-governance page and a company blog post.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

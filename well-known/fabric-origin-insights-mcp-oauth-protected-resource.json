@@ -1,0 +1,15 @@
+{
+  "resource": "https://insights.fabric-mcp.link/",
+  "authorization_servers": [
+    "https://insights.fabric-mcp.link/"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "scopes_supported": [
+    "openid",
+    "email",
+    "profile"
+  ],
+  "logo_uri": "https://framerusercontent.com/images/JNNPWPjBPv6bg45JiATT6BsL5PY.png"
+}

@@ -1,0 +1,1356 @@
+generated: '2026-09-07'
+method: derived
+source: mcp/fabric-origin-mcp.yml + openapi/_original/*.json (14 first-party Origin Nexus OpenAPI 3.1.1 documents harvested
+  from the provider knowledge base)
+provider: Fabric Origin
+providerId: fabric-origin
+description: 'Crosswalk between Fabric Origin''s MCP tool surface and its published REST operations. The headline finding
+  is a PRODUCT-LINE GAP rather than a per-operation mismatch: the two MCP servers Fabric publishes serve Origin Studio and
+  Origin Insights, while all 121 published REST operations belong to Origin Nexus. An agent can call Nexus over REST or call
+  Studio/Insights over MCP, but no single surface spans the Origin family.'
+surfaces:
+  openapi:
+    files:
+    - fabric-origin-captions-translations-api-openapi.yml
+    - fabric-origin-celebrity-api-openapi.yml
+    - fabric-origin-common-metadata-api-openapi.yml
+    - fabric-origin-common-sense-media-api-openapi.yml
+    - fabric-origin-entertainment-api-openapi.yml
+    - fabric-origin-fandango-api-openapi.yml
+    - fabric-origin-images-api-openapi.yml
+    - fabric-origin-katch-media-api-openapi.yml
+    - fabric-origin-metacritic-api-openapi.yml
+    - fabric-origin-rabbit-recommendations-api-openapi.yml
+    - fabric-origin-rotten-tomatoes-api-openapi.yml
+    - fabric-origin-tv-grid-online-api-openapi.yml
+    - fabric-origin-video-analytics-api-openapi.yml
+    - fabric-origin-videos-api-openapi.yml
+    operations: 121
+    host: https://api.origin.fabricdata.com
+    gated: contract public; calls require an Ocp-Apim-Subscription-Key
+  graphql:
+    endpoint: null
+    note: Fabric publishes no GraphQL surface.
+  mcp:
+  - url: https://mcp-api.studio.fabricdata.com
+    product: Origin Studio
+    gated: true
+    note: tools/list 401 — tool names and inputSchemas not enumerable anonymously
+  - url: https://insights.fabric-mcp.link
+    product: Origin Insights
+    gated: true
+    note: tools/list 401 — tool NAMES published in the docs, inputSchemas not
+crosswalk:
+- tool: titles
+  action: find_title
+  category: title resolution
+  rest:
+  - SearchEntertainmentSearch_Get
+  binding: semantic
+  confidence: low
+  note: 'Both resolve a title from a keyword, but against DIFFERENT data cores: the Insights MCP resolves a uid inside the
+    Origin Insights market-intelligence catalog, while SearchEntertainmentSearch_Get searches the Origin Nexus metadata catalog.
+    Ids are not documented as interchangeable. Mapped by semantics only; the live MCP inputSchema is auth-gated.'
+- tool: titles
+  action: get_title_external_ids
+  category: identifier crosswalk
+  rest:
+  - GetEntertainmentMatchCandidatesEntertainmentGetEntertainmentMatchCandidates_Get
+  binding: semantic
+  confidence: low
+  note: Both surface external-identifier crosswalks (TMDb/IMDb/TVDB/EIDR on the Insights side, Nexus match candidates on the
+    REST side). Not the same operation; recorded so the overlap is not silently dropped.
+mcp_only:
+- tool: titles
+  action: browse_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: show_title_profile
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: find_title_artwork
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: show_title_awards
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: rank_titles_by_quality
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: find_filmography
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: find_studio_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: find_frequent_collaborators
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: find_industry_awards
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: show_box_office
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: titles
+  action: rank_awards_leaders
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_where_to_watch
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_streaming_availability
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_season_availability
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_availability_timeline
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_title_across_platforms
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_title_lifecycle
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_availability_history
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_season_platform_changes
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_season_distribution
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_title_staying_power
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_season_staying_power
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_availability_duration
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: summarize_platform_coverage
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: summarize_season_coverage
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_global_reach
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_season_global_reach
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_whats_streaming
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_platform_exclusives
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: find_departing_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_catalog_growth
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: track_catalog_evolution
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: measure_global_catalog_size
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: export_whats_streaming_to_csv
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: availability
+  action: export_whats_streaming_to_excel
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: find_trending_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: rank_titles_by_demand
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: find_global_hits
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: measure_title_popularity
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: track_genre_trends
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: find_top_10_charts
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: discover_hyped_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: break_down_demand_scores
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: demand
+  action: whats_coming_soon
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: list_streaming_services
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: find_platforms
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: find_platforms_by_owner
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: find_platform_logos
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: check_platform_status
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: platforms
+  action: compare_platform_across_countries
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: pricing
+  action: show_title_price
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: pricing
+  action: track_price_drops
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: pricing
+  action: break_down_title_price
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: subscriptions
+  action: compare_subscription_plans
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: subscriptions
+  action: find_best_plans
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: subscriptions
+  action: find_promotional_offers
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: subscriptions
+  action: track_plan_prices
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: compare_platforms
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: compare_catalog_overlap
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: compare_country_catalogs
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: find_audience_gaps
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: spot_hidden_gems
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: analyze_studio_strategy
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: get_the_quick_pitch
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: market_intelligence
+  action: generate_market_intelligence_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: compare_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: find_similar_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: calculate_platform_value
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: build_content_calendar
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: build_market_brief
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: build_acquisition_brief
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: evaluate_license_renewal
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: find_underexploited_titles
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: playbooks
+  action: build_content_gap_brief
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: generate_title_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: generate_country_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: generate_platform_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: generate_people_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: generate_top_titles_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: who_watches_this
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: complete_audience_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports
+  action: add_executive_insights
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_trends_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_market_radar
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_box_office_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_comingsoon_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_release_calendar_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_subscription_plans_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_bundle_analysis_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_promotional_offers_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_overlap_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_awards_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_price_history_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: reports_market
+  action: generate_genre_catalog_distribution_report
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: list_available_data
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: check_data_freshness
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: explain_demand_scores
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: summarize_data_catalog
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: show_partition_keys_guide
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: confirm_title_match
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: data_guide
+  action: ask_knowledge_base
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: raw_data
+  action: execute_sql
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: raw_data
+  action: query_raw_data
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: raw_data
+  action: export_full_query_to_csv
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: raw_data
+  action: list_tables
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: raw_data
+  action: get_table_schema
+  reason: Origin Insights market-intelligence capability. No public Origin Nexus REST operation implements it; Origin Insights
+    publishes no REST contract.
+- tool: (Origin Studio MCP)
+  action: '*'
+  reason: The Origin Studio MCP tool list is auth-gated (tools/list returns 401), and the Origin Studio REST API reference
+    is a client-rendered Stoplight instance whose OpenAPI is not retrievable anonymously. Neither side of that crosswalk can
+    be enumerated without credentials.
+rest_only:
+- operationId: GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get
+  api: captions-translations-api
+  method: GET
+  path: /Rev/{Id}/Attachments/{Type}/content
+  summary: Caption text.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: CreateRevCaptionOrderOrders_Post
+  api: captions-translations-api
+  method: POST
+  path: /Rev/Orders
+  summary: Creates a caption order for given Video Ids.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetRevCaptionsOrdersAll_Get
+  api: captions-translations-api
+  method: GET
+  path: /Rev/Orders/All
+  summary: List of Caption Orders.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCelebrityRankedRankedSearch_Get
+  api: celebrity-api
+  method: GET
+  path: /Celebrity/RankedSearch/
+  summary: Find Celebrity by Name ordered by rank.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchCelebritySearch_Get
+  api: celebrity-api
+  method: GET
+  path: /Celebrity/Search/
+  summary: Search celebrities.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchCelebritySearch_Post
+  api: celebrity-api
+  method: POST
+  path: /Celebrity/Search/
+  summary: Search celebrities.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetBasedOnCharacteristicsBasedOn_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/BasedOn
+  summary: Get characteristic types for the Based On
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFilmingLocationsCharacteristicsFilmingLocations_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/FilmingLocations
+  summary: Get characteristic types for the Filming Location
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMoodAndToneCharacteristicsMoodAndTone_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/MoodAndTone
+  summary: Get characteristic types for the Mood And Tone
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetNarrativeLocationsCharacteristicsNarrativeLocations_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/NarrativeLocations
+  summary: Get characteristic types for the Narrative Location
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetSettingAndContextCharacteristicsSettingAndContext_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/SettingAndContext
+  summary: Get characteristic types for the Setting And Context
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetSubjectAndTropeCharacteristicsSubjectAndTrope_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Characteristics/SubjectAndTrope
+  summary: Get characteristic types for the Subject And Trope
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDbCollectionItemsCollectionsCollectionIdItems_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Collections/{CollectionId}/Items/
+  summary: Gets DbCollectionItems by CollectionId.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCollectionChildrenCollectionsChildren_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Collections/Children
+  summary: Gets all Child Collections of a given Collection.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetProgramCollectionsCollectionsProgram_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Collections/Program
+  summary: Gets all Collections containing a specific program.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchCollectionCollectionsSearch_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Collections/Search/
+  summary: Search collections.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchCollectionCollectionsSearch_Post
+  api: common-metadata-api
+  method: POST
+  path: /Common/Collections/Search/
+  summary: Search collections.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCollectionSuggestionsCollectionsSuggestions_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Collections/Suggestions
+  summary: Gets Collection suggestions for a specific program.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCollectionTypesCollectionTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/CollectionTypes
+  summary: Returns Collection Types.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCountriesCountries_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Countries/
+  summary: List of Countries.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCountryCountriesId_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Countries/{Id}
+  summary: Get Country by ID.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDataDemoFiltersDataDemoFilters_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/DataDemoFilters
+  summary: List of filter options available in data demo.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetEncodeTypesEncodeTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/EncodeTypes/
+  summary: Gets all EncodeTypes.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCommonEnumeratorsGetCommonEnumerators_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetCommonEnumerators
+  summary: List of Common Enumerators.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCurrencyTypesGetCurrencyTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetCurrencyTypes
+  summary: List of CurrencyTypes.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDeliveryMethodsGetDeliveryMethods_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetDeliveryMethods
+  summary: List of DeliveryMethods.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetOfferTypesGetOfferTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetOfferTypes
+  summary: List of OfferTypes.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetProvidersGetProviders_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetProviders
+  summary: List of Providers.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetVideoQualitiesGetVideoQualities_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/GetVideoQualities
+  summary: List of VideoQualities.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDbImageChangesImagesIdChanges_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Images/{Id}/Changes
+  summary: Returns full history of the Images Changes, or partial history when FromDate is included.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDbImageTagsImagesIdTags_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Images/{Id}/Tags
+  summary: Returns Tags for an Image.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetImageTypesImageTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/ImageTypes/
+  summary: List of Image Types.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetLanguagesLanguages_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Languages/
+  summary: List of Languages.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetLanguageLanguagesId_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Languages/{Id}
+  summary: Get Language by ID.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieAlternateIdTypesMovieAlternateIdTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/MovieAlternateIdTypes
+  summary: Returns all MovieAlternateIdTypes
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieCertificationsMovieCertifications_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/MovieCertifications
+  summary: List of Movie Certifications.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieGenresMovieGenres_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/MovieGenres
+  summary: List of Movie Genres.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieReleaseTypesMovieReleaseTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/MovieReleaseTypes
+  summary: List of Movie Release Types
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetOriginatingNetworksOriginatingNetworks_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/OriginatingNetworks/
+  summary: List of Originating Networks.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetShowAlternateIdTypesShowAlternateIdTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/ShowAlternateIdTypes
+  summary: List of External Id Types
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDbShowCertificationsShowCertifications_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/ShowCertifications
+  summary: List of Show Certifications.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetShowGenresShowGenres_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/ShowGenres
+  summary: List of Show Genres.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetDbShowReleaseTypesShowReleaseTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/ShowReleaseTypes
+  summary: List of Show Release Types
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTagsTags_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/Tags/
+  summary: List of Tags (with paging).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTrendSourcesTrendSources_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/TrendSources
+  summary: List of Trend Sources.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetVideoTypesVideoTypes_Get
+  api: common-metadata-api
+  method: GET
+  path: /Common/VideoTypes/
+  summary: List of Video Types.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCommonSenseMovieMovieId_Get
+  api: common-sense-media-api
+  method: GET
+  path: /CommonSense/Movie/{Id}
+  summary: Get Common Sense data for a Movie.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCommonSenseMovieMovieId_Post
+  api: common-sense-media-api
+  method: POST
+  path: /CommonSense/Movie/{Id}
+  summary: Get Common Sense data for a Movie.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCommonSenseTVTVId_Get
+  api: common-sense-media-api
+  method: GET
+  path: /CommonSense/TV/{Id}
+  summary: Get Common Sense data for a TV program
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCommonSenseTVTVId_Post
+  api: common-sense-media-api
+  method: POST
+  path: /CommonSense/TV/{Id}
+  summary: Get Common Sense data for a TV program
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchEntertainmentSearch_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Search/
+  summary: Search all entertainment programs.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchEntertainmentSearch_Post
+  api: entertainment-api
+  method: POST
+  path: /Entertainment/Search/
+  summary: Search all entertainment programs.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchEntertainmentAutoCompleteAutocomplete_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Autocomplete/
+  summary: Get suggestions based on prefix and field selection.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: SearchEntertainmentAutoCompleteTitleAutocompleteTitle_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/AutocompleteTitle/
+  summary: Get suggestions based on prefix and field selection.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetCelebrityIvaRatingsCelebrityRatings_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/CelebrityRatings
+  summary: Get a paged list of IVA Celebrity Ratings
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetEpisodeChangeHistoryChangesEpisodesHistory_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Episodes/History/
+  summary: Returns list of unique EpisodeId changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetEpisodeChangeHistoryWithEntityChangesEpisodesHistoryWithEntity_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Episodes/HistoryWithEntity/
+  summary: Returns list of unique EpisodeId and Entity changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieChangeHistoryChangesMoviesHistory_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Movies/History/
+  summary: Returns list of unique MovieId changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieChangeHistoryWithEntityChangesMoviesHistoryWithEntity_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Movies/HistoryWithEntity/
+  summary: Returns list of unique MovieId and Entity changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetSeasonChangeHistoryChangesSeasonsHistory_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Seasons/History/
+  summary: Returns list of unique SeasonId changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetSeasonChangeHistoryWithEntityChangesSeasonsHistoryWithEntity_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Seasons/HistoryWithEntity/
+  summary: Returns list of unique SeasonId and Entity changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetShowChangeHistoryChangesShowsHistory_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Shows/History/
+  summary: Returns list of unique ShowId changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetShowChangeHistoryWithEntityChangesShowsHistoryWithEntity_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Changes/Shows/HistoryWithEntity/
+  summary: Returns list of unique ShowId and Entity changes greater than or equal to date (UTC).
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/GetEntertainmentMatchCandidates
+  summary: Gets a list of possible Entertainment program matches.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Post
+  api: entertainment-api
+  method: POST
+  path: /Entertainment/GetEntertainmentMatchCandidates
+  summary: Gets a list of possible Entertainment program matches.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentProgramMatch_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/Match/
+  summary: Match a program using Title, Year, Cast, Director.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentProgramMatch_Post
+  api: entertainment-api
+  method: POST
+  path: /Entertainment/Match/
+  summary: Match a program using Title, Year, Cast, Director.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/MatchEpisodeBySequence
+  summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number, match title
+    and year also for a better
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Post
+  api: entertainment-api
+  method: POST
+  path: /Entertainment/MatchEpisodeBySequence
+  summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number, match title
+    and year also for a better
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/MatchSeasonBySequence
+  summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title and year also
+    for a better score.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Post
+  api: entertainment-api
+  method: POST
+  path: /Entertainment/MatchSeasonBySequence
+  summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title and year also
+    for a better score.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMovieIvaRatingsMovieRatings_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/MovieRatings
+  summary: Get a paged list of IVA Movie Ratings
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetShowIvaRatingsShowRatings_Get
+  api: entertainment-api
+  method: GET
+  path: /Entertainment/ShowRatings
+  summary: Get a paged list of IVA Show Ratings
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoGeoLocationCityGeoLocationByCity_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/GeoLocation/ByCity
+  summary: Gets geo-location data for a city.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoGeoLocationPostalCodeGeoLocationByPostalCode_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/GeoLocation/ByPostalCode
+  summary: Gets geo-location data for a postal code.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoMovieDisplayDatesMoviedisplay-dates_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Movie/display-dates
+  summary: Gets display dates for a movie based on geolocation.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoMovieShowtimeGroupingsMovieshowtime-groupings_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Movie/showtime-groupings
+  summary: Gets movie showtimes grouped by date, theater, format, and amenities.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoMovieByIdMovieById_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/MovieById
+  summary: Gets a movie.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoMoviesMovies_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Movies
+  summary: Search for movies available.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoShowtimeByIdShowtimeById_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/ShowtimeById
+  summary: Get showtime details by showtime id.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoShowtimesShowtimes_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Showtimes
+  summary: Gets showtimes by geolocation/theater and date.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoTheaterDisplayDatesTheaterdisplay-dates_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Theater/display-dates
+  summary: Gets display dates for a theater.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoTheaterShowtimeGroupingsTheatershowtime-groupings_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Theater/showtime-groupings
+  summary: Gets theater showtimes grouped by date, movie, format, and amenities.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoTheaterTheaterById_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/TheaterById
+  summary: Gets a theater.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetFandangoTheatersTheaters_Get
+  api: fandango-api
+  method: GET
+  path: /Fandango/Theaters
+  summary: Gets theaters close to a geolocation.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetImageRedirectFilePathRedirect_Get
+  api: images-api
+  method: GET
+  path: /Images/{FilePath}/Redirect
+  summary: Redirect to an Image.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetImageBatchBatch_Post
+  api: images-api
+  method: POST
+  path: /Images/Batch
+  summary: List of Batch Image.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetScreenCaptureBatchScreenCapturesBatch_Post
+  api: images-api
+  method: POST
+  path: /Images/ScreenCaptures/Batch
+  summary: List of Screen Capture Responses.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetScreenCaptureRedirectScreenCapturesRedirect_Get
+  api: images-api
+  method: GET
+  path: /Images/ScreenCaptures/Redirect
+  summary: Redirect to a Screen Capture.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetKatchProgramMetaDataMetaData_Get
+  api: katch-media-api
+  method: GET
+  path: /KatchMedia/MetaData
+  summary: Get Katch program Metadata by Origin Id
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMetacriticMovieMovieId_Get
+  api: metacritic-api
+  method: GET
+  path: /Metacritic/Movie/{Id}
+  summary: Get Metacritic Movie information.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetMetacriticTvTVId_Get
+  api: metacritic-api
+  method: GET
+  path: /Metacritic/TV/{Id}
+  summary: Get Metacritic TV information.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetXroadMediaRecommendationsrecommendations_Get
+  api: rabbit-recommendations-api
+  method: GET
+  path: /RabbitRecommendations/recommendations
+  summary: List of Entertainment Program Recommendations for movies or shows.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetRottenTomatoesEpisodeEpisode_Get
+  api: rotten-tomatoes-api
+  method: GET
+  path: /RottenTomatoes/Episode
+  summary: Get Rotten Tomatoes reviews and scores for episode
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetRottenTomatoesMovieMovie_Get
+  api: rotten-tomatoes-api
+  method: GET
+  path: /RottenTomatoes/Movie
+  summary: Get Rotten Tomatoes reviews and scores for movie
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetRottenTomatoesSeasonSeason_Get
+  api: rotten-tomatoes-api
+  method: GET
+  path: /RottenTomatoes/Season
+  summary: GetRottenTomatoesSeason
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetRottenTomatoesShowShow_Get
+  api: rotten-tomatoes-api
+  method: GET
+  path: /RottenTomatoes/Show
+  summary: Get Rotten Tomatoes reviews and scores for Show
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaMovieGenresgenresmovies_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/genres/movies
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaShowGenresgenresshows_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/genres/shows
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaSportGenresgenressports_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/genres/sports
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLeaguesleagues_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/leagues
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLeagueListingsleaguesLeagueIDlistings_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/leagues/{LeagueID}/listings
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaTeamsleaguesLeagueIDteams_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/leagues/{LeagueID}/teams
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupsByPostalCodelineups_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupByIDlineupsLineupID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/{LineupID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupListingslineupsLineupIDlistings_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/{LineupID}/listings
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupListingsGridlineupsLineupIDlistingsgrid_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/{LineupID}/listings/grid
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupListingsHighlightslineupsLineupIDlistingshighlights_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/{LineupID}/listings/highlights
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaCountrieslineupsbrowse_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/browse
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaRegionslineupsbrowseCountryID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/browse/{CountryID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaServiceAreaslineupsbrowseCountryIDRegionID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/browse/{CountryID}/{RegionID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupsByAreaIDlineupsbrowseCountryIDRegionIDAreaID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/browse/{CountryID}/{RegionID}/{AreaID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaLineupsByLatitudeLongitudelineupsgeo_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/lineups/geo
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaGenericLineupsreferencelineups_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/reference/lineups
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaStationstationsStationID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/stations/{StationID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaListingsByStationstationsStationIDlistings_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/stations/{StationID}/listings
+  summary: Stations are not tied to lineups, therefore no channel numbers will be present in the response, unlike most other
+    listing operations.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaTeamByIdteamsTeamID_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/teams/{TeamID}
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetTvMediaTeamListingsteamsTeamIDlistings_Get
+  api: tv-grid-online-api
+  method: GET
+  path: /TvGrid/teams/{TeamID}/listings
+  summary: ''
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetGBUsageGBUsage_Get
+  api: video-analytics-api
+  method: GET
+  path: /Analytics/GBUsage/
+  summary: Get GB usage by date and tag.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetClosedCaptionClosedCaptionsVideoId_Get
+  api: videos-api
+  method: GET
+  path: /Videos/ClosedCaptions/{VideoId}
+  summary: Returns a WebVTT closed caption file for the specified video.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+- operationId: GetVideoGetVideoId_Get
+  api: videos-api
+  method: GET
+  path: /Videos/GetVideo/{Id}
+  summary: Returns a signed redirect URL to stream the requested video.
+  reason: Origin Nexus REST operation. Fabric ships no MCP server for Origin Nexus — the two published MCP servers cover Origin
+    Studio and Origin Insights.
+coverage:
+  rest_operations: 121
+  mcp_actions_published: 108
+  bound: 2
+  mcp_only: 107
+  rest_only: 121
+  bound_confidence: all bindings low — both live MCP schemas are auth-gated and the products differ
+  note: 0 high-confidence bindings. This is a real structural finding, not a mapping failure.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

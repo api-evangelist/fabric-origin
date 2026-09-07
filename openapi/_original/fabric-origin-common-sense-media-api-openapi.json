@@ -1,0 +1,816 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Common Sense Media API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "commonsense"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/CommonSense/Movie/{Id}": {
+      "get": {
+        "tags": [
+          "commonsense"
+        ],
+        "summary": "Get Common Sense data for a Movie.",
+        "description": "Get Common Sense data for a Movie.",
+        "operationId": "GetCommonSenseMovieMovieId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonSenseProgram"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "commonsense"
+        ],
+        "summary": "Get Common Sense data for a Movie.",
+        "description": "Get Common Sense data for a Movie.",
+        "operationId": "GetCommonSenseMovieMovieId_Post",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonSenseProgram"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCommonSenseMovie"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CommonSense/TV/{Id}": {
+      "get": {
+        "tags": [
+          "commonsense"
+        ],
+        "summary": "Get Common Sense data for a TV program",
+        "description": "Get Common Sense data for a TV program",
+        "operationId": "GetCommonSenseTVTVId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonSenseProgram"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "commonsense"
+        ],
+        "summary": "Get Common Sense data for a TV program",
+        "description": "Get Common Sense data for a TV program",
+        "operationId": "GetCommonSenseTVTVId_Post",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonSenseProgram"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCommonSenseTV"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CommonSenseProgram": {
+        "title": "CommonSenseProgram",
+        "properties": {
+          "Langcode": {
+            "type": "string"
+          },
+          "Created": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Author": {
+            "type": "string"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "Stars": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "Video": {
+            "$ref": "#/components/schemas/Video"
+          },
+          "Uuid": {
+            "type": "string"
+          },
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Url": {
+            "type": "string"
+          },
+          "Updated": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Channel": {
+            "type": "string"
+          },
+          "AgeRatingGroup": {
+            "type": "string"
+          },
+          "ParentsNeedToKnow": {
+            "type": "string"
+          },
+          "OneLiner": {
+            "type": "string"
+          },
+          "AnyGood": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "TalkingPoints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Alternatives": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Alternative"
+            }
+          },
+          "ContentGrid": {
+            "$ref": "#/components/schemas/Contentgrid"
+          },
+          "PositiveGender": {
+            "$ref": "#/components/schemas/Object"
+          },
+          "Themes": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "CharacterStrengths": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Object"
+            }
+          },
+          "Skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Object"
+            }
+          },
+          "Stats": {
+            "$ref": "#/components/schemas/Stats"
+          },
+          "ReviewTopPicks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReviewTopPicks"
+            }
+          },
+          "AgeRating": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "CommonSenseProgram",
+        "type": "object"
+      },
+      "Product": {
+        "title": "Product",
+        "properties": {
+          "Awards": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Langcode": {
+            "type": "string"
+          },
+          "Uuid": {
+            "type": "string"
+          },
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ReleaseDate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ReleaseDates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReleaseDate"
+            }
+          },
+          "Images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            }
+          },
+          "References": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Reference"
+            }
+          },
+          "Cast": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Directors": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Networks": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Genres": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Studios": {
+            "$ref": "#/components/schemas/Dictionary_String_String_"
+          },
+          "Rating": {
+            "$ref": "#/components/schemas/Rating"
+          },
+          "Platforms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Object"
+            }
+          }
+        },
+        "description": "Product",
+        "type": "object"
+      },
+      "Dictionary_String_String_": {
+        "title": "Dictionary<String,String>",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Dictionary<String,String>",
+        "type": "object"
+      },
+      "ReleaseDate": {
+        "title": "ReleaseDate",
+        "properties": {
+          "Country": {
+            "type": "string"
+          },
+          "Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Note": {
+            "type": "string"
+          },
+          "ReleaseTypeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "ReleaseDate",
+        "type": "object"
+      },
+      "Image": {
+        "title": "Image",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "description": "Image",
+        "type": "object"
+      },
+      "Reference": {
+        "title": "Reference",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "description": "Reference",
+        "type": "object"
+      },
+      "Rating": {
+        "title": "Rating",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        },
+        "description": "Rating",
+        "type": "object"
+      },
+      "Object": {
+        "properties": {},
+        "description": "Object",
+        "type": "object"
+      },
+      "Video": {
+        "title": "Video",
+        "properties": {
+          "thumbnail": {
+            "$ref": "#/components/schemas/Thumbnail"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/File"
+            }
+          }
+        },
+        "description": "Video",
+        "type": "object"
+      },
+      "Thumbnail": {
+        "title": "Thumbnail",
+        "properties": {
+          "FileName": {
+            "type": "string"
+          },
+          "Height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Url": {
+            "type": "string"
+          }
+        },
+        "description": "Thumbnail",
+        "type": "object"
+      },
+      "File": {
+        "title": "File",
+        "properties": {
+          "lang": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          }
+        },
+        "description": "File",
+        "type": "object"
+      },
+      "Alternative": {
+        "title": "Alternative",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uuid": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "description": "Alternative",
+        "type": "object"
+      },
+      "Contentgrid": {
+        "title": "Contentgrid",
+        "properties": {
+          "educational": {
+            "$ref": "#/components/schemas/Educational"
+          },
+          "message": {
+            "$ref": "#/components/schemas/Message"
+          },
+          "role_model": {
+            "$ref": "#/components/schemas/RoleModel"
+          },
+          "violence": {
+            "$ref": "#/components/schemas/Violence"
+          },
+          "sex": {
+            "$ref": "#/components/schemas/Sex"
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          },
+          "consumerism": {
+            "$ref": "#/components/schemas/Consumerism"
+          },
+          "drugs": {
+            "$ref": "#/components/schemas/Drugs"
+          },
+          "diversity": {
+            "$ref": "#/components/schemas/Diversity"
+          }
+        },
+        "description": "Contentgrid",
+        "type": "object"
+      },
+      "Educational": {
+        "title": "Educational",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Educational",
+        "type": "object"
+      },
+      "Message": {
+        "title": "Message",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Message",
+        "type": "object"
+      },
+      "RoleModel": {
+        "title": "RoleModel",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "RoleModel",
+        "type": "object"
+      },
+      "Violence": {
+        "title": "Violence",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Violence",
+        "type": "object"
+      },
+      "Sex": {
+        "title": "Sex",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Sex",
+        "type": "object"
+      },
+      "Language": {
+        "title": "Language",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Language",
+        "type": "object"
+      },
+      "Consumerism": {
+        "title": "Consumerism",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Consumerism",
+        "type": "object"
+      },
+      "Drugs": {
+        "title": "Drugs",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Drugs",
+        "type": "object"
+      },
+      "Diversity": {
+        "title": "Diversity",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "description": "Diversity",
+        "type": "object"
+      },
+      "Stats": {
+        "title": "Stats",
+        "properties": {
+          "stars": {
+            "$ref": "#/components/schemas/Stars"
+          },
+          "user_review_count": {
+            "$ref": "#/components/schemas/UserReviewCount"
+          },
+          "recommended_age": {
+            "$ref": "#/components/schemas/RecommendedAge"
+          }
+        },
+        "description": "Stats",
+        "type": "object"
+      },
+      "Stars": {
+        "title": "Stars",
+        "properties": {
+          "avg": {
+            "$ref": "#/components/schemas/Avg"
+          }
+        },
+        "description": "Stars",
+        "type": "object"
+      },
+      "Avg": {
+        "title": "Avg",
+        "properties": {
+          "adult": {
+            "type": "number",
+            "format": "float"
+          },
+          "child": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "description": "Avg",
+        "type": "object"
+      },
+      "UserReviewCount": {
+        "title": "UserReviewCount",
+        "properties": {
+          "count": {
+            "$ref": "#/components/schemas/Count"
+          }
+        },
+        "description": "UserReviewCount",
+        "type": "object"
+      },
+      "Count": {
+        "title": "Count",
+        "properties": {
+          "adult": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "child": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Count",
+        "type": "object"
+      },
+      "RecommendedAge": {
+        "title": "RecommendedAge",
+        "properties": {
+          "avg": {
+            "$ref": "#/components/schemas/Avg1"
+          }
+        },
+        "description": "RecommendedAge",
+        "type": "object"
+      },
+      "Avg1": {
+        "title": "Avg1",
+        "properties": {
+          "adult": {
+            "type": "number",
+            "format": "float"
+          },
+          "child": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "description": "Avg1",
+        "type": "object"
+      },
+      "ReviewTopPicks": {
+        "title": "ReviewTopPicks",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uuid": {
+            "type": "string"
+          }
+        },
+        "description": "ReviewTopPicks",
+        "type": "object"
+      },
+      "GetCommonSenseMovie": {
+        "title": "GetCommonSenseMovie",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "description": "GetCommonSenseMovie",
+        "type": "object"
+      },
+      "GetCommonSenseTV": {
+        "title": "GetCommonSenseTV",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "description": "GetCommonSenseTV",
+        "type": "object"
+      }
+    }
+  }
+}

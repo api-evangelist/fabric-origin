@@ -1,0 +1,95 @@
+openapi: 3.1.1
+info:
+  title: fabric Origin API
+  version: '3.0'
+tags:
+- name: analytics
+servers:
+- url: https://api.origin.fabricdata.com
+paths:
+  /Analytics/GBUsage/:
+    get:
+      tags:
+      - analytics
+      summary: Get GB usage by date and tag.
+      description: Get GB usage by date and tag.
+      operationId: GetGBUsageGBUsage_Get
+      parameters:
+      - schema:
+          type: string
+        name: ReportTag
+        in: query
+        description: Report Tag filter.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - January
+          - February
+          - March
+          - April
+          - May
+          - June
+          - July
+          - August
+          - September
+          - October
+          - November
+          - December
+        name: Month
+        in: query
+        description: Report month
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Year
+        in: query
+        description: Report year
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GBUsageResponse'
+      deprecated: false
+components:
+  schemas:
+    GBUsageResponse:
+      title: GBUsageResponse
+      properties:
+        TotalGB:
+          type: number
+          format: double
+        MonthlyStorageInMinutes:
+          type: string
+        MonthEncodeMinutes:
+          type: string
+        Detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/GBUsageDay'
+      description: GBUsageResponse
+      type: object
+    GBUsageDay:
+      title: GBUsageDay
+      properties:
+        Date:
+          type: string
+          format: date-time
+        GB:
+          type: number
+          format: double
+        FlashPlayerRequests:
+          type: integer
+          format: int32
+        ImageServiceRequests:
+          type: integer
+          format: int32
+        ImageServiceGB:
+          type: number
+          format: double
+      description: GBUsageDay
+      type: object

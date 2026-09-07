@@ -1,0 +1,67 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/environments
+docs:
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/environments
+- https://knowledgebase.fabricdata.com/origin/getting-started
+- https://mcp-api.studio.fabricdata.com/health
+provider: Fabric Origin
+providerId: fabric-origin
+description: >-
+  What a developer or agent can exercise before signing a contract. Fabric publishes a staging host
+  for Origin Studio and two unauthenticated operational endpoints on the Origin Studio MCP server,
+  but there is no key-free sandbox, no test key, and no published test fixtures for any Origin
+  product. Every data call requires a credential obtained through a sales conversation.
+environments:
+- id: origin-studio-production
+  name: Origin Studio Production
+  base_url: https://api.studio.fabricdata.com/
+  auth_required: true
+- id: origin-studio-sandbox
+  name: Origin Studio Sandbox
+  base_url: https://api.stg.studio.fabricdata.com/
+  auth_required: true
+  qualifier: >-
+    Provider labels it "Sandbox (if available)" — availability is per-tenant, not universal. No test
+    credential is published; a sandbox key comes from the same administrator flow as production.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/environments
+- id: origin-nexus
+  name: Origin Nexus
+  base_url: https://api.origin.fabricdata.com
+  sandbox: none
+  auth_required: true
+  note: >-
+    No separate test host. The evaluation path is a 30-day free trial subscription key, requested by
+    form, rate limited to 5 requests/second and 1,000 requests/month.
+  request: https://www.fabricdata.com/contact-us
+unauthenticated_surface:
+- url: https://mcp-api.studio.fabricdata.com/health
+  returns: '{"status":"ok"}'
+  probed_status: 200
+  note: The only liveness check a prospective integrator can run without a credential.
+- url: https://mcp-api.studio.fabricdata.com/info
+  returns: server name, version, upstream API URL, whether OAuth is enabled
+  probed_status: 200
+- url: https://mcp-api.studio.fabricdata.com/.well-known/oauth-authorization-server
+  probed_status: 200
+- url: https://insights.fabric-mcp.link/.well-known/oauth-protected-resource
+  probed_status: 200
+test_data:
+  test_keys: none published
+  test_identifiers: none published
+  fixtures: none published
+  time_simulation: none
+  note: >-
+    Fabric publishes NO test key, no magic identifier range, no sample credential and no fixture set.
+    Documentation examples use placeholder keys ("YOUR_API_KEY", "XXXXXXXX"). Example title and
+    theatre identifiers appear in the release notes and Fandango path table, but those are production
+    identifiers illustrating a URL shape, not sandbox fixtures.
+try_it:
+  docs_console: >-
+    The knowledge base renders each operation from an embedded OpenAPI document, so parameters and
+    schemas can be read without a key — but a call still requires a subscription key.
+  playground: none
+  postman: none published by the provider
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

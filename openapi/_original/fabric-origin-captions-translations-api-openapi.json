@@ -1,0 +1,324 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Rev Caption API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "rev"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/Rev/{Id}/Attachments/{Type}/content": {
+      "get": {
+        "tags": [
+          "rev"
+        ],
+        "summary": "Caption text.",
+        "description": "Requires caption OrderId and Type of caption.",
+        "operationId": "GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "description": "Caption Order Id.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WebVTT",
+                "Ttml",
+                "SubRip",
+                "Scc",
+                "Mcc",
+                "QtText",
+                "Transcript",
+                "Dfxp",
+                "CheetaCap",
+                "Stl",
+                "AvidDs",
+                "FacebookSubRip",
+                "Unknown"
+              ]
+            },
+            "name": "Type",
+            "in": "path",
+            "description": "Type of caption content.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "String",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Rev/Orders": {
+      "post": {
+        "tags": [
+          "rev"
+        ],
+        "summary": "Creates a caption order for given Video Ids.",
+        "description": "Requires at least one Video ID.",
+        "operationId": "CreateRevCaptionOrderOrders_Post",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptionOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ClientApiKey": {
+                    "type": "string",
+                    "description": "This is a secret key specific to each partner that wishes to use the Rev Entertainment."
+                  },
+                  "UserApiKey": {
+                    "type": "string",
+                    "description": "This is a secret key specific to a Rev user, which identifies the user account under whose privileges the requested operation executes. This key can be obtained by logging in to Rev as the user in question and going to the Rev Account Settings page."
+                  },
+                  "ReferenceId": {
+                    "type": "string",
+                    "description": "Optional order reference number."
+                  },
+                  "VideoId": {
+                    "type": "integer",
+                    "description": "ID of video to caption.",
+                    "format": "int64"
+                  },
+                  "NotificationUrl": {
+                    "type": "string",
+                    "description": "Optional URL to send notifications when order is complete."
+                  },
+                  "UseSandbox": {
+                    "type": "boolean",
+                    "description": "Optional URL to send notifications when order is complete."
+                  }
+                },
+                "required": [
+                  "ClientApiKey",
+                  "UserApiKey",
+                  "VideoId"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Rev/Orders/All": {
+      "get": {
+        "tags": [
+          "rev"
+        ],
+        "summary": "List of Caption Orders.",
+        "description": "Orders are paged. Use Order ID to retrieve the caption attachment.",
+        "operationId": "GetRevCaptionsOrdersAll_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Take",
+            "in": "query",
+            "description": "Limits the total items returned. Maximum of 100 per request.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "name": "Skip",
+            "in": "query",
+            "description": "Skips records using for paging results.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AllRevCaptionsResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CaptionOrderResponse": {
+        "title": "CaptionOrderResponse",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Status": {
+            "type": "string"
+          }
+        },
+        "description": "CaptionOrderResponse",
+        "type": "object"
+      },
+      "AllRevCaptionsResponse": {
+        "title": "AllRevCaptionsResponse",
+        "properties": {
+          "TotalCount": {
+            "description": "Total count of captions.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "Skip": {
+            "description": "Records to skip used with paging.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "Take": {
+            "description": "Page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "Result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RevCaptionsResponse"
+            }
+          }
+        },
+        "description": "AllRevCaptionsResponse",
+        "type": "object"
+      },
+      "RevCaptionsResponse": {
+        "title": "RevCaptionsResponse",
+        "properties": {
+          "Id": {
+            "description": "Caption Order Id.  Use this ID to get individual captions.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "VideoId": {
+            "description": "ID of the video getting captioned.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "OrderNumber": {
+            "description": "Rev internal order number.",
+            "type": "string"
+          },
+          "ReferenceId": {
+            "description": "Optional reference Id used when creating the order.",
+            "type": "string"
+          },
+          "Status": {
+            "description": "Status of the order.",
+            "type": "string"
+          },
+          "Comments": {
+            "description": "List of comments from Rev.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RevOrderComment"
+            }
+          },
+          "Captions": {
+            "description": "List of captions.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RevCaptionItem"
+            }
+          },
+          "Created": {
+            "description": "DateTime order was placed.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "Modified": {
+            "description": "DateTime order was last modified.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "UseSandbox": {
+            "description": "Determines if order was placed using Rev's testing environment. ",
+            "type": "boolean"
+          }
+        },
+        "description": "RevCaptionsResponse",
+        "type": "object"
+      },
+      "RevOrderComment": {
+        "title": "RevOrderComment",
+        "properties": {
+          "by": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "description": "RevOrderComment",
+        "type": "object"
+      },
+      "RevCaptionItem": {
+        "title": "RevCaptionItem",
+        "properties": {
+          "Kind": {
+            "type": "string"
+          },
+          "Text": {
+            "type": "string"
+          },
+          "Content_Type": {
+            "type": "string"
+          }
+        },
+        "description": "RevCaptionItem",
+        "type": "object"
+      }
+    }
+  }
+}

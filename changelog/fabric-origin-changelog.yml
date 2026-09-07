@@ -1,0 +1,120 @@
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/origin/release-notes
+provider: Fabric Origin
+providerId: fabric-origin
+name: Origin Nexus release notes
+url: https://knowledgebase.fabricdata.com/origin/release-notes
+markdown: https://knowledgebase.fabricdata.com/origin/release-notes.md
+description: >-
+  Fabric maintains a dated release-notes page for Origin Nexus reaching back to September 2024, with
+  breaking changes explicitly labelled and given effective dates. Origin Studio keeps a separate,
+  monthly-titled set of release-notes pages in its own knowledge base. This artifact captures the
+  recent window of the Origin Nexus log.
+scheme:
+  versioning: date-based release notes; no semantic version on the Origin Nexus API itself
+  cadence: irregular — roughly monthly, clustering around data and provider updates
+  breaking_change_labeling: true
+  effective_dates: true
+  machine_readable: false
+  feed: none — no RSS/Atom or JSON changelog is published for the release notes
+current_version: '2026-09-02 (most recent dated entry)'
+entries:
+- date: '2026-09-02'
+  breaking: false
+  type: feature
+  api: Video API
+  highlights:
+  - Added a boolean HlsNoAudioOnly parameter to GetVideo, excluding the audio-only fallback track so
+    the lowest available bitrate always carries video.
+- date: '2026-09-01'
+  breaking: false
+  type: feature
+  api: Entertainment API / Common Metadata API
+  highlights:
+  - Six new Characteristic fields exposed as queryable fields on a single Search endpoint — Mood/Tone,
+    Setting/Context, Subjects and Tropes, Based On, Narrative Location, Filming Location.
+  - Six new taxonomy endpoints under /Common/Characteristics/ return the value lists.
+- date: '2026-05-20'
+  breaking: false
+  type: improvement
+  api: all
+  highlights:
+  - format=html now renders both a structured JSON block and a table view.
+- date: '2026-04-15'
+  breaking: false
+  type: feature+fix
+  api: Entertainment API
+  highlights:
+  - Added StartDateStart and StartDateEnd to SearchEntertainment for availability start-date ranges.
+  - Fixed program totals not matching the Total property in the SearchEntertainment response.
+- date: '2026-03-17'
+  breaking: false
+  type: data
+  highlights:
+  - 98,643 new Show descriptions and 46,018 new Movie descriptions in Short/Medium/Long lengths.
+- date: '2026-02-09'
+  effective: '2026-02-10'
+  breaking: true
+  type: breaking-change
+  api: Entertainment API, Celebrity API
+  highlights:
+  - 'BREAKING — Take parameter maximum reduced from 50 to 10 on /Entertainment/Search and /Celebrity/Search.'
+  - Requests with Take > 10 return 400 Bad Request from 2026-02-10.
+  - Rationale published — responses exceeding the API Gateway's 10MB hard limit trigger a gateway-level
+    500 after a successful server response, which is not detectable via standard monitoring.
+- date: '2026-02-04'
+  breaking: false
+  type: improvement+data
+  highlights:
+  - 'Gzip compression enabled; request with Accept-Encoding: gzip for roughly 70% smaller payloads.'
+  - 87,699 new awards added across 162 award types globally.
+  - 'Provider change: iTunes migrated to Apple TV.'
+  - 'Provider change: HBO and Max availability migrated to HBOMax; legacy providers removed (8,644 titles).'
+  - 'Provider removal: imdbTv removed from 79 shows — service discontinued.'
+- date: '2026-01-05'
+  breaking: true
+  type: breaking-change
+  title: AWS migration
+  highlights:
+  - 17 Fandango and Common endpoint paths renamed in place; the release notes publish an
+    old-path -> new-path table with example URLs and endpoint names.
+  - 'Deprecated: Charts API (replaced by Trending).'
+  - 'Deprecated: YouTube trending chart (use trending in Search).'
+  - 'Deprecated: /Entertainment/FindProgramByImage.'
+- date: '2025-12-23'
+  breaking: false
+  type: data
+  highlights:
+  - Hundreds of additional worldwide availability providers integrated.
+- date: '2025-04-09'
+  breaking: false
+  type: improvement
+  highlights:
+  - Autocomplete API adjusted for better title matching.
+- date: '2025-03-05'
+  breaking: false
+  type: data
+  highlights:
+  - 'Availabilities: Vudu (deprecated) renamed to FandangoAtHome.'
+- date: '2025-02-05'
+  breaking: false
+  type: improvement
+  highlights:
+  - Autocomplete API refreshes the title list hourly with faster response times.
+  - Celebrity Ranked API updated hourly with faster response times.
+related:
+  origin_studio_release_notes:
+    index: https://knowledgebase.fabricdata.com/studio/llms.txt
+    examples:
+    - https://knowledgebase.fabricdata.com/studio/origin-studio-release-notes-july-2026
+    - https://knowledgebase.fabricdata.com/studio/origin-studio-release-notes-june-2026
+    - https://knowledgebase.fabricdata.com/studio/origin-studio-release-notes-may-2026
+    - https://knowledgebase.fabricdata.com/studio/origin-studio-release-notes-april-2026
+    note: Origin Studio publishes monthly release-notes pages under its own knowledge-base section.
+  mcp_releases:
+    note: 'Provider states "MCP releases are now centralized in Project docs -> Releases — MCP".'
+    source: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/getting-started
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

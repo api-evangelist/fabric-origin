@@ -1,93 +1,161 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
-  title: Fabric Origin Data APIs Entertainment Images API
-  description: 'Fabric Origin (formerly IVA) is an entertainment metadata platform.
-
-    The Entertainment, Image, and Video APIs share the host
-
-    api.origin.fabricdata.com. Authentication uses an Azure API
-
-    Management subscription key sent as either the
-
-    Ocp-Apim-Subscription-Key header or the subscription-key query
-
-    parameter.
-
-    '
-  version: 1.0.0
-  contact:
-    name: Fabric Origin Knowledge Base
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  title: fabric Origin API
+  version: '3.0'
+tags:
+- name: images
 servers:
 - url: https://api.origin.fabricdata.com
-  description: Fabric Origin production
-security:
-- SubscriptionKeyHeader: []
-- SubscriptionKeyQuery: []
-tags:
-- name: Images
 paths:
-  /api/Images/{filePath}/Redirect:
-    parameters:
-    - name: filePath
-      in: path
-      required: true
-      schema:
-        type: string
+  /Images/{FilePath}/Redirect:
     get:
-      summary: Redirect to an image file
-      operationId: imageRedirect
-      responses:
-        '302':
-          description: Redirect to CDN URL
       tags:
-      - Images
-  /api/Images/ScreenCaptures/Redirect:
-    get:
-      summary: Redirect to a screen capture image
-      operationId: screenCaptureRedirect
-      responses:
-        '302':
-          description: Redirect to CDN URL
-      tags:
-      - Images
-  /api/Images/Batch:
-    post:
-      summary: Batch image lookup
-      operationId: imagesBatch
-      requestBody:
+      - images
+      summary: Redirect to an Image.
+      description: 'Images should be downloaded and stored on the client server. Use /Common/ImageTypes to see a
+        list of available image types. Note: The swagger U/I does not support redirects.'
+      operationId: GetImageRedirectFilePathRedirect_Get
+      parameters:
+      - schema:
+          type: string
+        name: FilePath
+        in: path
+        description: Filepath of Image.
         required: true
-        content:
-          application/json:
-            schema:
-              type: object
+      - schema:
+          type: boolean
+        name: Redirect
+        in: query
+        description: Redirect to the image. Default = true
+        required: false
+      - schema:
+          type: string
+        name: ExpirationMinutes
+        in: query
+        description: Image url expiration in minutes. Default = 60. Maximum is 1440.
+        required: false
       responses:
         '200':
-          description: Image batch response
-      tags:
-      - Images
-  /api/Images/ScreenCaptures/Batch:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageRedirectResponse'
+      deprecated: false
+  /Images/Batch:
     post:
-      summary: Batch screen-capture lookup
-      operationId: screenCapturesBatch
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
+      tags:
+      - images
+      summary: List of Batch Image.
+      description: Requires a list filepath.
+      operationId: GetImageBatchBatch_Post
       responses:
         '200':
-          description: Batch response
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<ImageBatchResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImageBatchResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                FilePath:
+                  type: array
+                  description: List of Filepaths.
+              required: []
+  /Images/ScreenCaptures/Batch:
+    post:
       tags:
-      - Images
+      - images
+      summary: List of Screen Capture Responses.
+      description: Requires a list of filepaths.
+      operationId: GetScreenCaptureBatchScreenCapturesBatch_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<ImageBatchResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImageBatchResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                FilePath:
+                  type: array
+                  description: List of Filepaths.
+              required: []
+  /Images/ScreenCaptures/Redirect:
+    get:
+      tags:
+      - images
+      summary: Redirect to a Screen Capture.
+      description: 'Requires a valid filepath of a video asset screen capture. Note: The swagger U/I does not support
+        redirects.'
+      operationId: GetScreenCaptureRedirectScreenCapturesRedirect_Get
+      parameters:
+      - schema:
+          type: string
+        name: FilePath
+        in: query
+        description: Filepath of Image.
+        required: true
+      - schema:
+          type: boolean
+        name: Redirect
+        in: query
+        description: Redirect to the image. Default = true
+        required: false
+      - schema:
+          type: string
+        name: ExpirationMinutes
+        in: query
+        description: Image url expiration in minutes. Default = 60. Maximum is 1440.
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreenCaptureRedirectResponse'
+      deprecated: false
 components:
-  securitySchemes:
-    SubscriptionKeyHeader:
-      type: apiKey
-      in: header
-      name: Ocp-Apim-Subscription-Key
-    SubscriptionKeyQuery:
-      type: apiKey
-      in: query
-      name: subscription-key
+  schemas:
+    ImageRedirectResponse:
+      title: ImageRedirectResponse
+      properties:
+        Url:
+          description: URL to image request.
+          type: string
+        Expires:
+          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
+          type: string
+          format: date-time
+      description: ImageRedirectResponse
+      type: object
+    ScreenCaptureRedirectResponse:
+      title: ScreenCaptureRedirectResponse
+      properties:
+        Url:
+          description: URL to image request.
+          type: string
+        Expires:
+          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
+          type: string
+          format: date-time
+      description: ScreenCaptureRedirectResponse
+      type: object

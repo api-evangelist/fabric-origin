@@ -1,0 +1,427 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Metacritic API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "metacritic"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/Metacritic/Movie/{Id}": {
+      "get": {
+        "tags": [
+          "metacritic"
+        ],
+        "summary": "Get Metacritic Movie information.",
+        "description": "Returns Metacritic Movie information by Entertainment Movie ID.",
+        "operationId": "GetMetacriticMovieMovieId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "description": "Required ID of Entertainment Movie.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetacriticMovieResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Metacritic/TV/{Id}": {
+      "get": {
+        "tags": [
+          "metacritic"
+        ],
+        "summary": "Get Metacritic TV information.",
+        "description": "Returns Metacritic TV information by Entertainment Show ID.",
+        "operationId": "GetMetacriticTvTVId_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "Id",
+            "in": "path",
+            "description": "Required ID of Entertainment Show.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "format": "double"
+            },
+            "name": "SeasonNumber",
+            "in": "query",
+            "description": "Number of season.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetacriticTvResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "MetacriticMovieResponse": {
+        "title": "MetacriticMovieResponse",
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseObj"
+          }
+        },
+        "description": "MetacriticMovieResponse",
+        "type": "object"
+      },
+      "MetacriticMovieResponseObj": {
+        "title": "MetacriticMovieResponseObj",
+        "properties": {
+          "Product": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProduct"
+          }
+        },
+        "description": "MetacriticMovieResponseObj",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProduct": {
+        "title": "MetacriticMovieResponseProduct",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "Year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ReleaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Metascore": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProductMetascore"
+          },
+          "Userscore": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProductUserscore"
+          },
+          "Reviews": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProductReviews"
+          }
+        },
+        "description": "MetacriticMovieResponseProduct",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductMetascore": {
+        "title": "MetacriticMovieResponseProductMetascore",
+        "properties": {
+          "Score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ReviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PositiveCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NeutralCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NegativeCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "MetacriticMovieResponseProductMetascore",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductUserscore": {
+        "title": "MetacriticMovieResponseProductUserscore",
+        "properties": {
+          "Score": {
+            "type": "number",
+            "format": "double"
+          },
+          "RatingCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PositiveCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NeutralCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NegativeCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "MetacriticMovieResponseProductUserscore",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductReviews": {
+        "title": "MetacriticMovieResponseProductReviews",
+        "properties": {
+          "Review": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetacriticMovieResponseProductReviewsReview"
+            }
+          }
+        },
+        "description": "MetacriticMovieResponseProductReviews",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductReviewsReview": {
+        "title": "MetacriticMovieResponseProductReviewsReview",
+        "properties": {
+          "Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Url": {
+            "type": "string"
+          },
+          "Quote": {
+            "type": "string"
+          },
+          "Score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Publication": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProductReviewsReviewPublication"
+          },
+          "Critic": {
+            "$ref": "#/components/schemas/MetacriticMovieResponseProductReviewsReviewCritic"
+          }
+        },
+        "description": "MetacriticMovieResponseProductReviewsReview",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductReviewsReviewPublication": {
+        "title": "MetacriticMovieResponseProductReviewsReviewPublication",
+        "properties": {
+          "Name": {
+            "type": "string"
+          }
+        },
+        "description": "MetacriticMovieResponseProductReviewsReviewPublication",
+        "type": "object"
+      },
+      "MetacriticMovieResponseProductReviewsReviewCritic": {
+        "title": "MetacriticMovieResponseProductReviewsReviewCritic",
+        "properties": {
+          "Name": {
+            "type": "string"
+          }
+        },
+        "description": "MetacriticMovieResponseProductReviewsReviewCritic",
+        "type": "object"
+      },
+      "MetacriticTvResponse": {
+        "title": "MetacriticTvResponse",
+        "properties": {
+          "response": {
+            "$ref": "#/components/schemas/MetacriticTvResponseObj"
+          }
+        },
+        "description": "MetacriticTvResponse",
+        "type": "object"
+      },
+      "MetacriticTvResponseObj": {
+        "title": "MetacriticTvResponseObj",
+        "properties": {
+          "Product": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProduct"
+          }
+        },
+        "description": "MetacriticTvResponseObj",
+        "type": "object"
+      },
+      "MetacriticTvResponseProduct": {
+        "title": "MetacriticTvResponseProduct",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Metascore": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProductMetascore"
+          },
+          "Userscore": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProductUserscore"
+          },
+          "Reviews": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProductReviews"
+          }
+        },
+        "description": "MetacriticTvResponseProduct",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductMetascore": {
+        "title": "MetacriticTvResponseProductMetascore",
+        "properties": {
+          "Score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ReviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PositiveCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NeutralCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NegativeCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "MetacriticTvResponseProductMetascore",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductUserscore": {
+        "title": "MetacriticTvResponseProductUserscore",
+        "properties": {
+          "Score": {
+            "type": "number",
+            "format": "double"
+          },
+          "RatingCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PositiveCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NeutralCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NegativeCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "MetacriticTvResponseProductUserscore",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductReviews": {
+        "title": "MetacriticTvResponseProductReviews",
+        "properties": {
+          "Review": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetacriticTvResponseProductReviewsReview"
+            }
+          }
+        },
+        "description": "MetacriticTvResponseProductReviews",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductReviewsReview": {
+        "title": "MetacriticTvResponseProductReviewsReview",
+        "properties": {
+          "Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Url": {
+            "type": "string"
+          },
+          "Quote": {
+            "type": "string"
+          },
+          "Score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Publication": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProductReviewsReviewPublication"
+          },
+          "Critic": {
+            "$ref": "#/components/schemas/MetacriticTvResponseProductReviewsReviewCritic"
+          }
+        },
+        "description": "MetacriticTvResponseProductReviewsReview",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductReviewsReviewPublication": {
+        "title": "MetacriticTvResponseProductReviewsReviewPublication",
+        "properties": {
+          "Name": {
+            "type": "string"
+          }
+        },
+        "description": "MetacriticTvResponseProductReviewsReviewPublication",
+        "type": "object"
+      },
+      "MetacriticTvResponseProductReviewsReviewCritic": {
+        "title": "MetacriticTvResponseProductReviewsReviewCritic",
+        "properties": {
+          "Name": {
+            "type": "string"
+          }
+        },
+        "description": "MetacriticTvResponseProductReviewsReviewCritic",
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,14 +1,14 @@
 aid: fabric-origin
 name: Fabric Origin
-description: >-
-  Fabric Origin (formerly IVA) is the entertainment data platform powering
-  content discovery experiences for movies, television, games, and trailers.
-  Fabric Origin offers comprehensive entertainment data solutions including
-  metadata, images, trailers, TV listings, and celebrity information through
-  a family of REST APIs. With 30 percent more coverage than other providers
-  and tailored products for every stage of the release cycle, Fabric Origin
-  is an affordable, scalable solution trusted by startups and Fortune 50
-  companies alike.
+description: 'Fabric Origin is the entertainment metadata and market-intelligence arm of Fabric, the media
+  software company formed from Xytech and IVA. Origin spans three products: Nexus, a family of 14 REST
+  APIs serving movie, television, game and celebrity metadata plus images, trailers, TV listings, showtimes
+  and licensed third-party ratings from Metacritic, Rotten Tomatoes, Common Sense Media and Katch; Studio,
+  a JSON:API 1.1 metadata management platform with an SNS event surface; and Insights, streaming market
+  intelligence across 1,000+ platforms and 249 countries. Fabric publishes machine-readable OpenAPI 3.1.1
+  for the whole Nexus surface, an llms.txt index at the company root, and two OAuth-governed hosted MCP
+  servers — Origin Studio and Origin Insights — making it one of the more deliberately agent-ready entertainment-data
+  providers in the catalog.'
 deliveryModel:
   model: unknown
   open_source: false
@@ -35,31 +35,35 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fabric-origin.png
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml
 created: '2025-03-01'
-modified: '2026-04-28'
+modified: '2026-09-07'
 specificationVersion: '0.23'
 type: Index
-position: Consuming
+position: Producing
 access: 3rd-Party
 tags:
-  - Entertainment
-  - Movies
-  - Television
-  - Games
-  - Trailers
-  - Metadata
+- Entertainment
+- Metadata
+- Movies
+- Television
+- Games
+- Celebrities
+- Trailers
+- Images
+- TV Listings
+- Market Intelligence
+- Media
+- MCP
 apis:
 - aid: fabric-origin:entertainment-api
   name: Fabric Origin Entertainment API
-  description: >-
-    The Entertainment API ingests and serves metadata for movies, television shows, and games, including
-    identifiers used to retrieve associated videos and images from sibling APIs. Responses are available
-    in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
+  description: The Entertainment API ingests and serves metadata for movies, television shows, and games,
+    including identifiers used to retrieve associated videos and images from sibling APIs. Responses are
+    available in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Entertainment
   - Metadata
@@ -71,14 +75,17 @@ apis:
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
   - type: Knowledge Base
     url: https://knowledgebase.fabricdata.com/origin
+  - type: OpenAPI
+    url: openapi/fabric-origin-entertainment-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
 - aid: fabric-origin:celebrity-api
   name: Fabric Origin Celebrity API
-  description: >-
-    The Celebrity API serves metadata about celebrities, including actors, directors, and other entertainment
-    industry figures, with cross references to titles served by the Entertainment API.
+  description: The Celebrity API serves metadata about celebrities, including actors, directors, and other
+    entertainment industry figures, with cross references to titles served by the Entertainment API.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/celebrity-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Celebrities
   - People
@@ -86,15 +93,18 @@ apis:
   properties:
   - type: Documentation
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: OpenAPI
+    url: openapi/fabric-origin-celebrity-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/celebrity-api-docs
 - aid: fabric-origin:video-api
   name: Fabric Origin Video API
-  description: >-
-    The Video API generates playable links for trailers and other video assets using video identifiers
-    returned from the Entertainment API, allowing customers to embed Fabric Origin video content into
-    their content discovery experiences.
+  description: The Video API generates playable links for trailers and other video assets using video
+    identifiers returned from the Entertainment API, allowing customers to embed Fabric Origin video content
+    into their content discovery experiences.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Video
   - Trailers
@@ -102,15 +112,18 @@ apis:
   properties:
   - type: Documentation
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: OpenAPI
+    url: openapi/fabric-origin-videos-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
 - aid: fabric-origin:image-api
   name: Fabric Origin Image API
-  description: >-
-    The Image API provides access to images hosted on Fabric Origin's servers, including posters, stills,
-    and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are encouraged
-    to host and serve images from their own infrastructure for production use.
+  description: The Image API provides access to images hosted on Fabric Origin's servers, including posters,
+    stills, and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are
+    encouraged to host and serve images from their own infrastructure for production use.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Image
   - Posters
@@ -122,36 +135,46 @@ apis:
   properties:
   - type: Documentation
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: OpenAPI
+    url: openapi/fabric-origin-images-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
 - aid: fabric-origin:common-data-api
   name: Fabric Origin Common Data API
-  description: >-
-    The Common Data API exposes reference data used across the Fabric Origin product family, including
-    country codes, image type lookups, and video type lookups required when working with the Entertainment,
-    Celebrity, Video, and Image APIs.
+  description: The Common Data API exposes reference data used across the Fabric Origin product family,
+    including country codes, image type lookups, and video type lookups required when working with the
+    Entertainment, Celebrity, Video, and Image APIs.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Reference Data
   - Lookups
   properties:
   - type: Documentation
     url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: OpenAPI
+    url: openapi/fabric-origin-common-metadata-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
 - aid: fabric-origin:fabric-origin-entertainment-api
   name: Fabric Origin Entertainment API
   description: The Entertainment API from Fabric Origin — 14 operation(s) for entertainment.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Entertainment
   properties:
   - type: OpenAPI
     url: openapi/fabric-origin-entertainment-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:fabric-origin-images-api
   name: Fabric Origin Images API
   description: The Images API from Fabric Origin — 4 operation(s) for images.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Image
   tags_raw:
@@ -159,36 +182,372 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/fabric-origin-images-api-openapi.yml
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:fabric-origin-videos-api
   name: Fabric Origin Videos API
   description: The Videos API from Fabric Origin — 2 operation(s) for videos.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/
-  baseURL: https://ee.iva-api.com/api/
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
+  baseURL: https://api.origin.fabricdata.com
   tags:
   - Videos
   properties:
   - type: OpenAPI
     url: openapi/fabric-origin-videos-api-openapi.yml
-common:
-  - type: CapabilityMap
-    url: capabilities/fabric-origin-capability-edges.yml
-    name: Fabric Origin Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/fabric-origin-agentic-access.yml
-  - type: DomainSecurity
-    url: security/fabric-origin-domain-security.yml
-  - type: Authentication
-    url: authentication/fabric-origin-authentication.yml
-  - type: Website
-    url: https://www.fabricdata.com/
-  - type: Knowledge Base
-    url: https://knowledgebase.fabricdata.com/origin
-  - type: Solutions
-    url: https://knowledgebase.fabricdata.com/origin/solutions
-  - type: DeveloperPortal
-    url: https://developer.origin.fabricdata.com/portal/login
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:video-analytics-api
+  name: Fabric Origin Video Analytics API
+  description: Reports GB of video delivery usage by day for the Origin Nexus video surface.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Video
+  - Analytics
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-video-analytics-api-openapi.yml
   - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:fandango-api
+  name: Fabric Origin Fandango API
+  description: Theatrical showtimes and ticketing — geolocation lookup, nearby theaters, movies playing,
+    and showtime groupings by date, theater, format and amenities, linked back to Origin title identifiers.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Movies
+  - Showtimes
+  - Ticketing
+  - Theaters
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-fandango-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:captions-translations-api
+  name: Fabric Origin Captions and Translations API
+  description: Rev-powered captioning and translation for Origin video content.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Video
+  - Captions
+  - Translation
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-captions-translations-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:metacritic-api
+  name: Fabric Origin Metacritic API
+  description: Metascores and Metacritic reviews for movies and TV, keyed on Origin identifiers.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/metacritic-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Ratings
+  - Reviews
+  - Movies
+  - Television
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-metacritic-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/metacritic-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/metacritic-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:common-sense-media-api
+  name: Fabric Origin Common Sense Media API
+  description: Common Sense Media age ratings and reviews for movies and TV, keyed on Origin identifiers.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Ratings
+  - Reviews
+  - Parental Guidance
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-common-sense-media-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:rotten-tomatoes-api
+  name: Fabric Origin Rotten Tomatoes API
+  description: Tomatometer, Audience Scores, critic snippets and critics consensus for movies, shows,
+    seasons and episodes, keyed on Origin identifiers.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Ratings
+  - Reviews
+  - Movies
+  - Television
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-rotten-tomatoes-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:rabbit-recommendations-api
+  name: Fabric Origin Rabbit Recommendations API
+  description: Content recommendations over the Origin catalog.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Recommendations
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-rabbit-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:tv-grid-online-api
+  name: Fabric Origin TV Grid Online API
+  description: TV listings by channel lineup — lineups, team info and linear grid data.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Television
+  - TV Listings
+  - Lineups
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-tv-grid-online-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:katch-media-api
+  name: Fabric Origin Katch Media API
+  description: Katch genomic taste data — content broken into core attributes, organised into traits and
+    content clusters.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - Metadata
+  - Taste Data
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-katch-media-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:origin-studio-api
+  name: Origin Studio Production API
+  description: The Origin Studio metadata management API — records, record lifecycles, fields, datasets,
+    media, credits, contributors, data deliveries, data ingress, background jobs, audit, tenants and users.
+    Follows REST and the JSON:API 1.1 specification, authenticated with a bearer API key. The reference
+    is a client-rendered Stoplight instance; no OpenAPI document is retrievable anonymously.
+  humanURL: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview
+  baseURL: https://api.studio.fabricdata.com/v1
+  tags:
+  - Metadata
+  - Catalog
+  - JSON:API
+  - Media
+  properties:
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview
+  - type: APIReference
+    url: https://api.fabricdata.com/docs/fabric/83d3097deedd5-introduction
+  - type: Authentication
+    url: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/authentication
+  - type: Webhooks
+    url: asyncapi/fabric-origin-events-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/fabric-origin-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/fabric-origin-rate-limits.yml
+  - type: Sandbox
+    url: sandbox/fabric-origin-sandbox.yml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:origin-studio-mcp
+  name: Origin Studio MCP Server
+  description: A hosted Model Context Protocol server over Origin Studio — metadata records, catalog operations
+    and availability. Streamable HTTP on the root path, OAuth 2.0 with mandatory PKCE, acting as its own
+    authorization server with dynamic client registration. An Origin Studio API key is accepted as a bearer
+    alternative for unattended workloads. Tenant and permissions are derived from the token.
+  humanURL: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  baseURL: https://mcp-api.studio.fabricdata.com
+  tags:
+  - MCP
+  - Agents
+  - Metadata
+  - Catalog
+  properties:
+  - type: MCPServer
+    url: mcp/fabric-origin-mcp.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  - type: ToolCrosswalk
+    url: mcp/fabric-origin-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/fabric-origin-scopes.yml
+  - type: AgentSkill
+    url: skills/fabric-origin-mcp-agent-access.md
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:origin-insights-mcp
+  name: Origin Insights MCP Server
+  description: A hosted Model Context Protocol server over Origin Insights streaming market intelligence
+    — availability, demand, TVOD pricing, subscription plans, platforms, supply, coming-soon and pre-built
+    reports across 11 data domains. Read-only and catalog-scoped, Streamable HTTP, OAuth browser sign-in,
+    with a documented mcp-remote bridge and a first-party desktop installer for local clients.
+  humanURL: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp
+  baseURL: https://insights.fabric-mcp.link
+  tags:
+  - MCP
+  - Agents
+  - Market Intelligence
+  - Streaming
+  properties:
+  - type: MCPServer
+    url: mcp/fabric-origin-mcp.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp
+  - type: GettingStarted
+    url: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/getting-started
+  - type: OAuthScopes
+    url: scopes/fabric-origin-scopes.yml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+common:
+- type: CapabilityMap
+  url: capabilities/fabric-origin-capability-edges.yml
+  name: Fabric Origin Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/fabric-origin-agentic-access.yml
+- type: DomainSecurity
+  url: security/fabric-origin-domain-security.yml
+- type: Authentication
+  url: authentication/fabric-origin-authentication.yml
+- type: Website
+  url: https://www.fabricdata.com/
+- type: Knowledge Base
+  url: https://knowledgebase.fabricdata.com/origin
+- type: Solutions
+  url: https://knowledgebase.fabricdata.com/origin/solutions
+- type: DeveloperPortal
+  url: https://developer.origin.fabricdata.com/portal/login
+- type: Documentation
+  url: https://knowledgebase.fabricdata.com/origin/apis-all/
+- type: Documentation
+  url: https://knowledgebase.fabricdata.com/origin
+- type: APIReference
+  url: https://knowledgebase.fabricdata.com/origin/apis-all
+- type: GettingStarted
+  url: https://knowledgebase.fabricdata.com/origin/getting-started
+- type: SignUp
+  url: https://www.fabricdata.com/contact-us
+- type: Login
+  url: https://developer.origin.fabricdata.com/portal/login
+- type: Support
+  url: https://metahive.atlassian.net/servicedesk/customer/portal/2
+- type: HelpCenter
+  url: https://helpcenter.fabricdata.com/
+- type: Blog
+  url: https://www.fabricdata.com/trends
+- type: Pricing
+  url: https://www.fabricdata.com/pricing-models
+- type: PrivacyPolicy
+  url: https://www.fabricdata.com/privacy-policy
+- type: StatusPage
+  url: https://status.fabricdata.com/
+- type: FAQ
+  url: https://knowledgebase.fabricdata.com/origin/faq
+- type: ChangeLog
+  url: changelog/fabric-origin-changelog.yml
+- type: LLMsTxt
+  url: llms/fabric-origin-llms.txt
+- type: MCPServer
+  url: mcp/fabric-origin-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/fabric-origin-tool-crosswalk.yml
+- type: WellKnown
+  url: well-known/fabric-origin-well-known.yml
+- type: Packages
+  url: packages/fabric-origin-packages.yml
+- type: Conventions
+  url: conventions/fabric-origin-conventions.yml
+- type: Conformance
+  url: conformance/fabric-origin-conformance.yml
+- type: Compliance
+  url: conformance/fabric-origin-conformance.yml
+- type: ErrorCatalog
+  url: errors/fabric-origin-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/fabric-origin-lifecycle.yml
+- type: OAuthScopes
+  url: scopes/fabric-origin-scopes.yml
+- type: Sandbox
+  url: sandbox/fabric-origin-sandbox.yml
+- type: DataModel
+  url: data-model/fabric-origin-data-model.yml
+- type: Webhooks
+  url: asyncapi/fabric-origin-events-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Plans
+  url: plans/fabric-origin-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/fabric-origin-rate-limits.yml
+- type: FinOps
+  url: finops/fabric-origin-finops.yml
+- type: Overlay
+  url: overlays/fabric-origin-captions-translations-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-celebrity-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-common-metadata-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-common-sense-media-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-entertainment-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-fandango-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-images-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-katch-media-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-metacritic-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-rabbit-recommendations-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-rotten-tomatoes-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-tv-grid-online-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-video-analytics-api-overlay.yaml
+- type: Overlay
+  url: overlays/fabric-origin-videos-api-overlay.yaml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-07'
+  status: enriched
+  artifacts_added: 62
+  pass: local-v3

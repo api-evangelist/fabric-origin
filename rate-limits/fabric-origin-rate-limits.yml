@@ -1,113 +1,124 @@
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+generated: '2026-09-07'
+method: searched
+source: https://knowledgebase.fabricdata.com/origin/getting-started
+docs:
+- https://knowledgebase.fabricdata.com/origin/getting-started
+- https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
 provider: Fabric Origin
 providerId: fabric-origin
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Entertainment
-  - Movies
-  - Television
-  - Games
-  - Trailers
-  - Metadata
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Fabric Origin API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+modified: '2026-09-07'
+tags: [Entertainment, Metadata, Rate Limiting, Quotas, Throttling]
+description: >-
+  Published rate limits for the Fabric Origin surface, read from the provider's own documentation.
+  Replaces the 2026-05-04 scaffold, whose tier names and numbers were bulk-sweep defaults and did
+  not match anything Fabric publishes.
+limit_count: 5
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  documented: false
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    Fabric documents NO rate-limit response headers on either REST family. There is no
+    X-RateLimit-*, no RateLimit-*, and no Retry-After in the published docs or in the 14 first-party
+    OpenAPI documents. An agent cannot read its remaining quota — it discovers exhaustion only by
+    receiving a 429. This is a real, checkable gap on an otherwise agent-forward provider.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
+  payloadTooLarge: 500
+  payloadTooLargeNote: >-
+    Not a rate limit, but the same class of runtime failure: a response exceeding the API Gateway's
+    10MB hard limit triggers a gateway-level 500 AFTER a successful server response, which the
+    provider notes is not detectable via standard monitoring. Mitigated by capping Take at 10.
+errorEnvelope:
+  origin_studio: '{"jsonapi":{"version":"1.1"},"errors":[{"status":"429","title":"Too Many Requests","detail":"Rate limit exceeded."}]}'
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Fabric Origin Entertainment API
-      - Fabric Origin Celebrity API
-      - Fabric Origin Video API
-      - Fabric Origin Image API
-      - Fabric Origin Common Data API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Fabric Origin Entertainment API
-      - Fabric Origin Celebrity API
-      - Fabric Origin Video API
-      - Fabric Origin Image API
-      - Fabric Origin Common Data API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Fabric Origin Entertainment API
-      - Fabric Origin Celebrity API
-      - Fabric Origin Video API
-      - Fabric Origin Image API
-      - Fabric Origin Common Data API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Fabric Origin Entertainment API
-      - Fabric Origin Celebrity API
-      - Fabric Origin Video API
-      - Fabric Origin Image API
-      - Fabric Origin Common Data API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Fabric Origin Entertainment API
-      - Fabric Origin Celebrity API
-      - Fabric Origin Video API
-      - Fabric Origin Image API
-      - Fabric Origin Common Data API
+- id: nexus-free-trial-rate
+  product: Origin Nexus
+  tier: free-trial
+  name: Free Trial rate
+  scope: subscription-key
+  metric: requests_per_second
+  limit: 5
+  timeFrame: second
+  source: https://knowledgebase.fabricdata.com/origin/getting-started
+  note: Free trials run 30 days and are described by the provider as "severely rate limited".
+- id: nexus-free-trial-quota
+  product: Origin Nexus
+  tier: free-trial
+  name: Free Trial monthly quota
+  scope: subscription-key
+  metric: requests_per_month
+  limit: 1000
+  timeFrame: month
+  source: https://knowledgebase.fabricdata.com/origin/getting-started
+  note: Provider states additional rate limits and quotas apply.
+- id: nexus-core-rate
+  product: Origin Nexus
+  tier: core-solution
+  name: Core Solution APIs rate
+  scope: subscription-key-per-api
+  metric: requests_per_second
+  limit: 25
+  timeFrame: second
+  qualifier: 'starting at — per API, not per account'
+  source: https://knowledgebase.fabricdata.com/origin/getting-started
+  applies: [Entertainment API, Celebrity API, Video API, Image API, Common Metadata API]
+- id: nexus-image-quota
+  product: Origin Nexus
+  tier: core-solution
+  name: Image API monthly cap
+  scope: subscription-key
+  metric: requests_per_month
+  limit: 50
+  timeFrame: month
+  applies: [Image API]
+  source: https://knowledgebase.fabricdata.com/origin/getting-started
+  note: >-
+    50 calls per month is a demo-scale cap, consistent with the provider's standing instruction that
+    customers host and serve images from their own infrastructure rather than calling the Image API
+    in production. Contact sales for more.
+- id: studio-rate
+  product: Origin Studio
+  tier: all
+  name: Origin Studio per-key rate
+  scope: api-key
+  metric: requests_per_second
+  limit: 100
+  timeFrame: second
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
+undocumented:
+- id: studio-daily-quota
+  product: Origin Studio
+  metric: requests_per_day
+  limit: null
+  note: >-
+    The provider's rate-limits table lists a "Per Day" threshold whose value is the literal
+    placeholder "x requests per 24-hour period". The limit is enforced ("both limits are enforced
+    independently") but its value is unpublished. Recorded as an honest null, not guessed.
+  source: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/rate-limits
+- id: mcp-limits
+  product: Origin Studio MCP / Origin Insights MCP
+  limit: null
+  note: No rate limits are published for either MCP server.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+- name: Enforcement
+  description: >-
+    Origin Studio enforces its per-second and per-day limits independently; exceeding either returns
+    429 with a JSON:API error envelope.
+- name: Paging as throttle mitigation
+  description: >-
+    Take is capped at 10 on Origin Nexus search endpoints and gzip compression is available via
+    Accept-Encoding, both introduced in February 2026 to keep responses inside the gateway's 10MB
+    ceiling.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

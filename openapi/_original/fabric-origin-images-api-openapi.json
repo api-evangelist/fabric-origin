@@ -1,0 +1,245 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "fabric Origin API",
+    "version": "3.0"
+  },
+  "tags": [
+    {
+      "name": "images"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/Images/{FilePath}/Redirect": {
+      "get": {
+        "tags": [
+          "images"
+        ],
+        "summary": "Redirect to an Image.",
+        "description": "Images should be downloaded and stored on the client server. Use /Common/ImageTypes to see a list of available image types. Note: The swagger U/I does not support redirects.",
+        "operationId": "GetImageRedirectFilePathRedirect_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "FilePath",
+            "in": "path",
+            "description": "Filepath of Image.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "Redirect",
+            "in": "query",
+            "description": "Redirect to the image. Default = true",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ExpirationMinutes",
+            "in": "query",
+            "description": "Image url expiration in minutes. Default = 60. Maximum is 1440.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageRedirectResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/Images/Batch": {
+      "post": {
+        "tags": [
+          "images"
+        ],
+        "summary": "List of Batch Image.",
+        "description": "Requires a list filepath.",
+        "operationId": "GetImageBatchBatch_Post",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<ImageBatchResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImageBatchResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FilePath": {
+                    "type": "array",
+                    "description": "List of Filepaths."
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Images/ScreenCaptures/Batch": {
+      "post": {
+        "tags": [
+          "images"
+        ],
+        "summary": "List of Screen Capture Responses.",
+        "description": "Requires a list of filepaths.",
+        "operationId": "GetScreenCaptureBatchScreenCapturesBatch_Post",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List<ImageBatchResponse>",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImageBatchResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FilePath": {
+                    "type": "array",
+                    "description": "List of Filepaths."
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Images/ScreenCaptures/Redirect": {
+      "get": {
+        "tags": [
+          "images"
+        ],
+        "summary": "Redirect to a Screen Capture.",
+        "description": "Requires a valid filepath of a video asset screen capture. Note: The swagger U/I does not support redirects.",
+        "operationId": "GetScreenCaptureRedirectScreenCapturesRedirect_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "FilePath",
+            "in": "query",
+            "description": "Filepath of Image.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "name": "Redirect",
+            "in": "query",
+            "description": "Redirect to the image. Default = true",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "ExpirationMinutes",
+            "in": "query",
+            "description": "Image url expiration in minutes. Default = 60. Maximum is 1440.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScreenCaptureRedirectResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ImageRedirectResponse": {
+        "title": "ImageRedirectResponse",
+        "properties": {
+          "Url": {
+            "description": "URL to image request.",
+            "type": "string"
+          },
+          "Expires": {
+            "description": "Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z ",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "ImageRedirectResponse",
+        "type": "object"
+      },
+      "ScreenCaptureRedirectResponse": {
+        "title": "ScreenCaptureRedirectResponse",
+        "properties": {
+          "Url": {
+            "description": "URL to image request.",
+            "type": "string"
+          },
+          "Expires": {
+            "description": "Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z ",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "ScreenCaptureRedirectResponse",
+        "type": "object"
+      }
+    }
+  }
+}

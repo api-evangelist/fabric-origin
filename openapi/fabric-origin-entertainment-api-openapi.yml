@@ -1,233 +1,4293 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
-  title: Fabric Origin Data APIs Entertainment API
-  description: 'Fabric Origin (formerly IVA) is an entertainment metadata platform.
-
-    The Entertainment, Image, and Video APIs share the host
-
-    api.origin.fabricdata.com. Authentication uses an Azure API
-
-    Management subscription key sent as either the
-
-    Ocp-Apim-Subscription-Key header or the subscription-key query
-
-    parameter.
-
-    '
-  version: 1.0.0
-  contact:
-    name: Fabric Origin Knowledge Base
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  title: Entertainment API
+  version: '1.0'
+tags:
+- name: entertainment
 servers:
 - url: https://api.origin.fabricdata.com
-  description: Fabric Origin production
-security:
-- SubscriptionKeyHeader: []
-- SubscriptionKeyQuery: []
-tags:
-- name: Entertainment
 paths:
-  /api/Entertainment/Search/:
+  /Entertainment/Search/:
     get:
-      summary: Search entertainment metadata
-      operationId: entertainmentSearch
+      tags:
+      - entertainment
+      summary: Search all entertainment programs.
+      description: Search movies, shows, seasons, episodes, and games.  Each image in our database is related to
+        a specific movie, TV or game title and is promotional of that title.  If you have title pages or articles
+        about that title, then offering an image gallery on that page is obviously promotional.  If you are doing
+        editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the
+        title of the film, TV show or game so as to be promotional.
+      operationId: SearchEntertainmentSearch_Get
       parameters:
-      - name: query
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Ids
         in: query
-        schema:
+        description: 'Search by one or more Ids.  Ex: Movie/123.'
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Rows to skip, used for paging. Default is 0.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Rows to return, used for paging. Default is 10, limit is 10.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - NOT_SET
+            - AmazonInstantVideo
+            - NBC
+            - ABC
+            - FOX
+            - FandangoMovies
+            - GooglePlay
+            - CBS
+            - TheCW
+            - PBS
+            - DiscoveryChannel
+            - Disney_XD
+            - AmazonErosNow
+            - Hulu
+            - AmazonPrimeVideo
+            - AppleTV
+            - Netflix
+            - YouTubePremium
+            - DisneyPlus
+            - Disney_Channel
+            - AE
+            - AdultSwim
+            - BET
+            - ComedyCentral
+            - Disney_Junior
+            - E
+            - FoodNetwork
+            - MTV
+            - NationalGeographicChannel
+            - Showtime
+            - Starz
+            - TLC
+            - VH1
+            - Tubi
+            - FandangoAtHome
+            - Pluto
+            - Peacock
+            - CBSAllAccess
+            - AMC
+            - Crackle
+            - YoutubeMovies
+            - FandangoNOW
+            - AMCPremiere
+            - Shudder
+            - SundanceNow
+            - EPIX
+            - TheCriterionChannel
+            - DiscoveryPlus
+            - ParamountPlus
+            - Plex
+            - BETPlus
+            - ParamountNetwork
+            - LOGOTV
+            - FuboTV
+            - BritBox
+            - AcornTV
+            - TheRokuChannel
+            - RokuPremSub_AECrimeCentral
+            - RokuPremSub_ALLBLK
+            - RokuPremSub_AMCPlus
+            - RokuPremSub_AcornTV
+            - RokuPremSub_BBCSelect
+            - RokuPremSub_BETPlus
+            - RokuPremSub_BFIPlayerClassics
+            - RokuPremSub_BritBox
+            - RokuPremSub_CONtv
+            - RokuPremSub_Cinemax
+            - RokuPremSub_CuriosityStream
+            - RokuPremSub_Docurama
+            - RokuPrSub_DoveChannel
+            - RokuPrSub_EPIX
+            - RokuPrSub_FandorSpotlight
+            - RokuPremSub_HallmarkMoviesNow
+            - RokuPremSub_HiYAH
+            - RokuPremSub_HistoryVault
+            - RokuPremSub_IFCFilmsUnlimited
+            - RokuPremSub_LifetimeMovieClub
+            - RokuPremSub_MagellanTV
+            - RokuPremSub_SHOWTIME
+            - RokuPremSub_STARZ
+            - RokuPremSub_Screambox
+            - RokuPremSub_ScreenPix
+            - RokuPremSub_Shudder
+            - RokuPremSub_SundanceNow
+            - RokuPremSub_UPFaithFamily
+            - RokuPremSub_ViewsterAnime
+            - RokuPremSub_WalterPresents
+            - AMCPlus
+            - FreeVee
+            - SkyShowtime
+            - AmazonShowtime
+            - AmazonDiscoveryPlus
+            - AmazonParamountPlus
+            - AmazonAMCPlus
+            - AmazonBETPlus
+            - AmazonSundance
+            - AmazonBritBox
+            - AmazonAcornTV
+            - AmazonShudder
+            - AmazonCONtv
+            - AmazonMGMPlus
+            - AmazonNoggin
+            - AmazonDaringDocs
+            - AmazonFitfusionbyJillianMichaels
+            - AmazonCuriosityStream
+            - AmazonViewsterAnime
+            - AmazonNBALeaguePass
+            - AmazonBeFiT
+            - AmazonPantaya
+            - AmazonPBSKID
+            - AmazonCinemax
+            - AmazonMUBI
+            - AmazonScreambox
+            - AmazonMovieSphere
+            - AmazonViX
+            - AmazonShoutFactoryTV
+            - AmazonVixPlus
+            - AmazonTheFilmDetective
+            - AmazonBBCSelect
+            - AmazonDocurama
+            - AmazonHBOMax
+            - AmazonFilmDoo
+            - FandangoAtHomeSub_Unknown
+            - AmazonAECrimeCentral
+            - AmazonPBSDocumentaries
+            - AmazonWarriorsAndGangsters
+            - AmazonSub_Unknown
+            - AmazonFandor
+            - MGMPlus
+            - CrunchyRoll
+            - RakutenViki
+            - ViX
+            - ITVX
+            - MUBI
+            - AppleTVSub_Unknown
+            - RokuPremSub_Unknown
+            - RokuPremSub_Kocowa
+            - RokuPremSub_Max
+            - RokuPremSub_Crunchyroll
+            - RokuPremSub_Foxnation
+            - RokuPremSub_Mhz_choice
+            - RokuPremSub_Hidive
+            - RokuPremSub_Great_courses
+            - RokuPremSub_Britbox
+            - RokuPremSub_Paramountplus
+            - RokuPremSub_Discoveryplus
+            - RokuPremSub_Vixplus
+            - RokuPremSub_Viaplay
+            - RokuPremSub_Acorn_tv
+            - RokuPremSub_Demandafrica
+            - RokuPremSub_Francechannel
+            - RokuPremSub_Pureflix
+            - RokuPremSub_Cinedigm_docurama
+            - RokuPremSub_Cinedigm_contv
+            - RokuPremSub_Shout_factory
+            - RokuPremSub_Upff
+            - RokuPremSub_Hallmark
+            - RokuPremSub_Bet
+            - RokuPremSub_Cinedigm_dove
+            - RokuPremSub_Ifc
+            - RokuPremSub_Tv4_screambox
+            - RokuPremSub_Marqueetv
+            - RokuPremSub_Ae_lifetime
+            - RokuPremSub_Fandor
+            - RokuPremSub_Qello
+            - RokuPremSub_Bfi
+            - RokuPremSub_Screenpix
+            - AmazonadsonViXGratis
+            - AmazonHallmarkPlus
+            - AmazonCineverse
+            - AmazonMIDNIGHTPULP
+            - AmazonGaia
+            - AmazonUPFaithFamily
+            - AmazonEchoboomSports
+            - AmazonCrunchyroll
+            - RakutenVikiSub_Unknown
+            - HuluSub_Unknown
+            - DisneyPlusSub_Unknown
+            - PeacockSub_Unknown
+            - MaxSub_Unknown
+            - NetflixSub_Unknown
+            - SkyShowtimeSub_Unknown
+            - GooglePlaySub_Unknown
+            - TubiSub_Unknown
+            - ITVXSub_Unknown
+            - CrunchyRollSub_Unknown
+            - AmazonOutsideTVFeatures
+            - AmazonStingrayClassica
+            - AmazonAppleTV
+            - AmazonStingrayKaraoke
+            - AmazonRyandFriendsPlus
+            - AmazonUnknown
+            - AmazonMax
+            - Comedy_Central
+            - ShowtimeAnytime
+            - AmazonNFLGAMEPASS
+            - AmazonPeacock
+            - GuideDoc
+            - AnimalPlanet
+            - BBCAmerica
+            - Bounce
+            - Bravo
+            - CINEARPLAY
+            - CuriosityStream
+            - DiscoveryGO
+            - DISHAnywhere
+            - DisneyNOW
+            - DoveChannel
+            - EWTN
+            - Fandor
+            - FlixFling
+            - FoxOne
+            - Freeform
+            - FXNOW
+            - FYI
+            - Gaia
+            - HallmarkTV
+            - HallmarkPlus
+            - HGTV
+            - HISTORY
+            - HistoryVault
+            - Hoopla
+            - IFC
+            - IndieFlix
+            - IDGO
+            - Lifetime
+            - MagnoliaSelects
+            - MyOutdoorTV
+            - NationalGeographic
+            - Oxygen
+            - PBSKids
+            - PlutoTV
+            - Pureflix
+            - RedBullTV
+            - ScienceChannelGO
+            - ScreamBox
+            - ShoutFactoryTV
+            - SlingTV
+            - SundanceTV
+            - TNT
+            - Syfy
+            - TBS
+            - Teatrix
+            - TravelChannel
+            - TruTV
+            - Allblk
+            - UPFaithandFamily
+            - USANetwork
+            - Verizon
+            - ViceTV
+            - WeTV
+            - XfinityStream
+            - YouTube
+            - YuppTV
+            - ESPNPlus
+            - OptimumTV
+            - SpectrumOnDemand
+            - YouTubeTV
+            - CanelaTV
+            - MagellanTV
+            - KOCOWAPlus
+            - Dekkoo
+            - ChaiFlicks
+            - Hoichoi
+            - LifetimeMovieClub
+            - HereTV
+            - DaFilms
+            - FilmMovementPlus
+            - HIDIVE
+            - Filmzie
+            - iQIYI
+            - FlixLatino
+            - HiYAH
+            - WOWPresentsPlus
+            - OvidTV
+            - DOCSVILLE
+            - MarthaStewartTV
+            - MhzChoice
+            - NightFlightPlus
+            - PublicDomainMovies
+            - Revry
+            - FlixPremiere
+            - WatchTCM
+            - Retrocrush
+            - SunNXT
+            - MovieSaints
+            - DAZN
+            - Metrograph
+            - TrueStory
+            - OWN
+            - AsianCrush
+            - OnDemandKorea
+            - Arrow
+            - MLBTV
+            - XumoPlay
+            - FlixOle
+            - BroadwayHD
+            - FamilyPlayland
+            - RTenEspanol
+            - Alchemiya
+            - Addatimes
+            - AmericanIndianFilmGallery
+            - EstrellaTV
+            - NineNineMedia
+            - TromaNOW
+            - CirqueConnect
+            - DistroTV
+            - Fanatiz
+            - ToonGoggles
+            - DigitalConcertHall
+            - DemandAfrica
+            - FullMoonFeatures
+            - GlewedTV
+            - FIFAPlus
+            - ArchivioLuce
+            - AFAPlay
+            - F1TV
+            - HENRI
+            - DigitalTheatre
+            - Pinguinitos
+            - KidoodleTV
+            - GlobePlayer
+            - ShortoftheWeek
+            - Zee5
+            - Reveel
+            - KartoonChannel
+            - TaskmasterSuperMaxPlus
+            - HispanTV
+            - Viddsee
+            - HistoryHit
+            - QelloConcerts
+            - SimplySouth
+            - IFIArchivePlayer
+            - KweliTV
+            - MeansTV
+            - OCULTOTV
+            - Cultpix
+            - MetOperaonDemand
+            - MarqueeTV
+            - OperaVision
+            - Aha
+            - Takflix
+            - FilmboxPlus
+            - NFLPlus
+            - TennisChannel
+            - Eventive
+            - FoxNation
+            - Cineverse
+            - NBA
+            - Mometu
+            - Kidstream
+            - Starpicks
+            - FOXSports
+            - FloSports
+            - MundoDramaPlus
+            - TED
+            - IWantTFC
+            - Philo
+            - ABCIview
+            - AbemaTV
+            - acontraPlus
+            - ADN
+            - AISPlay
+            - All4
+            - Alleskino
+            - ALTBalaji
+            - AmazoniaFLIX
+            - Amediateka
+            - Americatvgo
+            - ANT1Plus
+            - AntelTV
+            - ARDMediathek
+            - ARDPlus
+            - Argo
+            - Arte
+            - ARTEBoutique
+            - ArthouseCNMA
+            - AstroGo
+            - ATRESplayer
+            - ATV
+            - Audiovisiva
+            - AVAHBZ
+            - AVAVOBB
+            - AXN
+            - BancodeConteudosCulturais
+            - BanglaFlix
+            - BBCiPlayer
+            - Beamafilm
+            - BeelineTV
+            - BeINCONNECT
+            - BelasArtesALaCarte
+            - Benshi
+            - BeTVGo
+            - BesTV
+            - BFIPlayer
+            - Bilibili
+            - Binge
+            - BioskopOnline
+            - Bioscope
+            - Blockbuster
+            - Blue
+            - Bombozila
+            - Bongo
+            - Boonet
+            - Bookmyshow
+            - Brollie
+            - BTTV
+            - CANALPlus
+            - Canal13
+            - CanalOnce
+            - CanalRCN
+            - CanalVOD
+            - Cardume
+            - CatchplayPlus
+            - Channel4
+            - Chili
+            - Chilevision
+            - ChivasTV
+            - CHTMOD
+            - Cindie
+            - Cineaparte
+            - Cinearchives
+            - Cineasterna
+            - Cinego
+            - CineHumbertoMauroMais
+            - Cinemargentino
+            - Cinemasalademande
+            - CineMember
+            - CinematecaPernambucana
+            - CineplexStore
+            - Cinespot
+            - Cinesquare
+            - CitytvPlus
+            - ClaroTVPlus
+            - ClaroVideo
+            - ClipTV
+            - ClubIllico
+            - CNNChile
+            - CNTVInfantil
+            - Combate
+            - CoupangPlay
+            - Courtside1891
+            - Crave
+            - CTV
+            - CultSPPlay
+            - CurtaOn
+            - CurzonHomeCinema
+            - Danet
+            - DarkflixPlus
+            - DGO
+            - DisneyPlusHotstar
+            - DMMTV
+            - DocomoAnimeStore
+            - DocPlay
+            - DORCELCLUB
+            - DrakenFilm
+            - DRTV
+            - DSmartGo
+            - Ecinemacom
+            - Edisonline
+            - Edonon
+            - ElisaViihde
+            - ElisaViihdeViaplay
+            - ElNueve
+            - Eltrece
+            - EmbaubaPlay
+            - EPICON
+            - ERTFLIX
+            - Escenix
+            - Exxen
+            - FibeTVApp
+            - FILMO
+            - Film1
+            - Filmaslv
+            - Filmcentralen
+            - FilmDoo
+            - Filmicca
+            - Filmin
+            - Filmarkivet
+            - Filmfriend
+            - FilmotecaUNAM
+            - Filmoteket
+            - Filmtastic
+            - Filmstriben
+            - FiosOnDemand
+            - Flow
+            - FOD
+            - FPTPLAY
+            - FranceTV
+            - Freenetvideo
+            - FreeTV
+            - FriDay
+            - FWTV
+            - Gain
+            - GalaxyPlay
+            - GaumontClassique
+            - Gem
+            - Genflix
+            - GLITCH
+            - GlobalTV
+            - Globoplay
+            - Go3
+            - GoAnime
+            - GOSeries
+            - GospelPlay
+            - HamiVideo
+            - Hayu
+            - HikariTV
+            - Hmvod
+            - HollywoodSuite
+            - HomeofHorror
+            - Hotstar
+            - ICITOUTV
+            - IFFRUnleashed
+            - ImagenTelevision
+            - ImagoTV
+            - IROKOTV
+            - ItaCulturalPlay
+            - Ivi
+            - IzziGO
+            - JapaneseAnimatedFilmClassics
+            - JCom
+            - Joyn
+            - KPlus
+            - KakaoTV
+            - Kayo
+            - KINOATV
+            - Kino1TV
+            - KinoVODClub
+            - KinoonDemand
+            - Kirjastokino
+            - KIXI
+            - KnowledgeNetwork
+            - KT
+            - KyivstarTV
+            - LaCinetek
+            - LAFTEL
+            - LaLigaPlus
+            - LaNacionPlus
+            - LasEstrellas
+            - LEquipe
+            - Lemino
+            - Libreflix
+            - LiceuPlus
+            - LINETV
+            - LiTV
+            - Looke
+            - M6Plus
+            - Madelen
+            - MagentaTV
+            - ManoramaMAX
+            - MaoriPlus
+            - Maxdome
+            - MAXstream
+            - MediasetInfinity
+            - Medicitv
+            - MegaGo
+            - Mejane
+            - MeWATCH
+            - MEOGo
+            - MercadoPlay
+            - Migu
+            - MINASplay
+            - Mirail
+            - MiTelefe
+            - MolotovTV
+            - Monomax
+            - MovistarPlusPlus
+            - MovistarTV
+            - Mubi
+            - MVSHub
+            - MXPlayer
+            - My5
+            - MyTVSUPER
+            - MyVideo
+            - Myst
+            - NarrativasIndigenasdoNordeste
+            - NBALeaguePass
+            - Nebula
+            - Neon
+            - NetMovies
+            - Netzkino
+            - NexoPlus
+            - NFB
+            - NHK
+            - NineNow
+            - NLZIET
+            - Nonfictionfilm
+            - Noovo
+            - NOSTV
+            - NovaPlay
+            - NOW
+            - NowPlayer
+            - NPOStart
+            - NRKTV
+            - NTV
+            - NuestroCineMX
+            - OctubreTV
+            - Okko
+            - Oldflix
+            - OndaMedia
+            - OnePlus
+            - OQEEbyFree
+            - Optimum
+            - OrangeTV
+            - OrangeTVGO
+            - OSNPlus
+            - Ovidtv
+            - PatheThuis
+            - PickboxNOW
+            - Picl
+            - Play
+            - Player
+            - PlayNow
+            - PlayPlus
+            - PlayRTS
+            - PlaySRF
+            - PolsatBoxGo
+            - PopcornTimes
+            - Premier
+            - ProTVPlus
+            - PTOPlus
+            - Puhutv
+            - QwestTV
+            - RacingTV
+            - RaiPlay
+            - RakutenTV
+            - Ran
+            - RedeTV
+            - Redoc
+            - ReelShort
+            - ReservaImovision
+            - RetinaLatina
+            - RiksTV
+            - Riivi
+            - RTEPlayer
+            - RTLPlus
+            - RTPPlay
+            - RTVCPlay
+            - RTVEPlay
+            - SalemNOW
+            - SBTVideos
+            - SbsOnDemand
+            - SBS
+            - SelectaTV
+            - Selego
+            - Serially
+            - SescDigital
+            - SevenPlus
+            - SFAnytime
+            - SFRPlay
+            - Shadowz
+            - Shahid
+            - ShemarooMe
+            - Showmax
+            - Sky
+            - SkyGo
+            - SkyPlus
+            - SkyStore
+            - SohuVideo
+            - Sooka
+            - Sooner
+            - SonyChannel
+            - SonyLiv
+            - SonyOne
+            - SouthPark
+            - SpcinePlay
+            - SportDigital
+            - SportsnetNOW
+            - Spoox
+            - SPURSPLAY
+            - Stan
+            - STVPlayer
+            - Streamz
+            - Strim
+            - SVTPlay
+            - SweetTV
+            - tabii
+            - TamanduaTV
+            - TataPlay
+            - TCM
+            - Teatroamiltv
+            - Teatroteca
+            - tediTV
+            - TELASA
+            - TelecentroPlay
+            - TeleFlix
+            - TelekomTVGO
+            - TeleSat
+            - TELUSTVPlus
+            - Tenk
+            - TenPlay
+            - TencentVideo
+            - TF1Plus
+            - TFOUMax
+            - TG4
+            - ThreeNow
+            - TIMVISION
+            - Tivify
+            - TOD
+            - Todesplay
+            - Tonton
+            - TriArtPlay
+            - TrueID
+            - TSN
+            - Tver
+            - TV2Play
+            - TV360
+            - TV4Play
+            - TV5MONDE
+            - TVAzteca
+            - TVBarrandov
+            - TVBrasilPlay
+            - TVCaicara
+            - TVcomigo
+            - TVdOrange
+            - Tving
+            - TVNPlay
+            - TVNZ
+            - Tvo
+            - TVPeru
+            - TVPlus
+            - TVVlaanderen
+            - TyCSportsPlay
+            - UFCFightpass
+            - UKTV
+            - Umbra
+            - UN3
+            - UNEXT
+            - UNIVERVIDEO
+            - UniversalPlus
+            - Universcine
+            - UOLPlay
+            - URplay
+            - VEOTelepacifico
+            - Viddla
+            - Videobuster
+            - Videoland
+            - Videoload
+            - VideoMarket
+            - Vidio
+            - VieOn
+            - ViMoviesandTV
+            - Viaplay
+            - VirginMediaPlayer
+            - VirginMediaStore
+            - Viu
+            - ViuTV
+            - Vivamax
+            - VivoPlay
+            - Vodpl
+            - VoliaTV
+            - Voyo
+            - VRTMax
+            - VeinticuatroHoras
+            - Waiputv
+            - Watch
+            - Watcha
+            - WATCHIT
+            - Wavve
+            - Wedotv
+            - WeTvIflix
+            - WinSportsOnline
+            - WOW
+            - WOWOWOnDemand
+            - XUMO
+            - XviewPlus
+            - YleAreena
+            - Youku
+            - Zattoo
+            - ZDF
+            - The_CW
+            - Vudu
+            - Food_Network
+            - Oprah_Winfrey_Network
+            - Cartoon_Network
+            - Travel_Channel
+            - USA_Network
+            - Nickelodeon
+            - Animal_Planet
+            - Investigation_Discovery
+            - CriterionChannel
+            - HBOMax
+            - AmazonHayu
+            - AppleTVHistoryVault
+            - AppleTVLifetimeMovieClub
+            - AppleTVHallmarkPlus
+            - AppleTVBETPlus
+            - AppleTVBFIPlayerClassics
+            - AppleTVCarnegieHallPlus
+            - AppleTVMUBI
+            - AppleTVParamountPlus
+            - AppleTVCuriosityStream
+            - AppleTVAMCPlus
+            - AppleTVSundanceNow
+            - AppleTVMGMPlus
+            - AppleTVScreenPix
+            - AppleTVErosNowSelect
+            - AppleTVALLBLK
+            - AppleTVMarqueeTV
+            - AppleTVMHzChoice
+            - AppleTVUPFaithAndFamily
+            - ApleTVBBCSelect
+            - AppleTVShudder
+            - AppleTVCJENMSelects
+            - AppleTVTastemade
+            - AppleTVGreatCoursesSignatureCollection
+            - AppleTVAECrimeCentral
+            - AppleTVPBSLiving
+            - AppleTVSTARZ
+            - AppleTVOUTtv
+            - AppleTVAcornTV
+            - AppleTVBritBox
+            - AppleTVCrunchyroll
+            - MagentaTVArte
+            - MagentaTVVideoload
+            - MagentaTVARDMediathek
+            - MagentaTVEroticLounge
+            - MagentaTVZDF
+            - TheRokuChannelHBOMax
+            - TheRokuChannelDiscoveryPlus
+            - TheRokuChannelMGMPlus
+            - TheRokuChannelPeacock
+            - TheRokuChannelHowdy
+            - TheRokuChannelCineverse
+            - TheRokuChannelParamountPlus
+            - TheRokuChannelAMCPlus
+            - TheRokuChannelQelloConcertsByStingray
+            - TheRokuChannelMidnightPulp
+            - TheRokuChannelHallmarkPlus
+            - TheRokuChannelShoutTV
+            - AmazonStingray
+            - AmazonLooke
+            - AmazonCrave
+            - AmazonDAZN
+            - AmazonStingrayAllGoodVibes
+            - AmazonStackTV
+            - AppleTVGarage
+            - AmazonSport
+            - AmazonPeacockPremiumPlus
+            - AmazonIndieflix
+            - AmazonHowdy
+            - AmazonVixGratis
+            - AmazonTNTSports
+            - AmazonFODChannel
+            - AmazonDAnimeStore
+            - AmazonAnimeTimes
+            - AmazonToeiOnDemand
+            - AmazonNHKOnDemand
+            - AmazonMyTheaterPlus
+            - AmazonDiscoveryPlusIntrattenimentoAndSport
+            - AmazonJuventusTV
+            - AmazonHBOMaxSport
+            - AmazonDiscoveryPlusIntrattenimento
+            - AmazonTheFilmClub
+            - NA
+        style: form
+        explode: true
+        name: Providers
+        in: query
+        description: List of availability providers.  See /Common/GetCommonEnumerators endpoint for complete list.
+        required: false
+      - schema:
           type: string
-      - name: type
+          format: date-time
+        name: StartDateStart
         in: query
-        schema:
+        description: Start date for availability StartDate filter.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: StartDateEnd
+        in: query
+        description: End date for availability StartDate filter.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - NOT_SET
+            - Scheduled
+            - Ticket
+            - Physical
+            - OnDemand
+        style: form
+        explode: true
+        name: DeliveryMethods
+        in: query
+        description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint for complete
+          list.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - NOT_SET
+            - Buy
+            - Subscription
+            - Free
+            - Rent
+        style: form
+        explode: true
+        name: OfferTypes
+        in: query
+        description: List of availability offer types. See /Common/GetCommonEnumerators endpoint for complete list.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - NOT_SET
+            - HD
+            - UHD
+            - SD
+        style: form
+        explode: true
+        name: VideoQualities
+        in: query
+        description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for complete
+          list.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Movie
+            - Show
+            - Game
+            - Season
+            - Episode
+        style: form
+        explode: true
+        name: ProgramTypes
+        in: query
+        description: List of program types. See /Common/GetCommonEnumerators endpoint for complete list.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AvailabilityCountries
+        in: query
+        description: List of 2 character country codes.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Genres
+        in: query
+        description: List of genres (movie and show).
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Themes
+        in: query
+        description: List of themes (movie and show).
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Tags
+        in: query
+        description: List of tags (movie and show).
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Certifications
+        in: query
+        description: List of certifications for movie and show.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: PersonNames
+        in: query
+        description: List of names. Maximum of 3.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: PeopleIds
+        in: query
+        description: Person Ids.  Currently supports one person.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Jobs
+        in: query
+        description: List of Jobs a contributor can have.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Digital
+            - Festival
+            - Physical
+            - Premiere
+            - Theatrical_Limited_Release
+            - Theatrical_Wide_Release
+            - TV
+            - On_Demand_Release
+            - Show_Release
+        style: form
+        explode: true
+        name: ReleaseTypes
+        in: query
+        description: List of release types for both movie and show.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: ReleaseCountries
+        in: query
+        description: List of 2 character country codes when filtering on releases.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: YearRange_Start
+        in: query
+        description: Filter results based on start and end original release year.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: YearRange_End
+        in: query
+        description: Filter results based on start and end original release year.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ReleaseDateRange_Start
+        in: query
+        description: Filter results based on any release date range.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ReleaseDateRange_End
+        in: query
+        description: Filter results based on any release date range.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: OriginalReleaseDateRange_Start
+        in: query
+        description: Filter results based on original release date range.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: OriginalReleaseDateRange_End
+        in: query
+        description: Filter results based on original release date range.
+        required: false
+      - schema:
+          type: string
+        name: Package
+        in: query
+        description: Package is based on subscription which will be set at the customer level.
+        required: false
+      - schema:
+          type: string
+        name: Title
+        in: query
+        description: Title search.
+        required: false
+      - schema:
+          type: string
+        name: ShowId
+        in: query
+        description: Filter results to match a show.  Use for locating seasons and episodes for a show.
+        required: false
+      - schema:
+          type: string
+        name: SeasonId
+        in: query
+        description: Filter results to match a season.  Use for locating episodes for a season.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Releases
+            - Contributors
+            - AlternateTitles
+            - Descriptions
+            - Companies
+            - Tags
+            - ExternalIds
+            - Videos
+            - Images
+            - Availabilities
+            - Genres
+            - ProgramTrends
+            - Themes
+            - Awards
+            - ProgramChangeHistory
+            - Summary
+            - Subjects
+            - FilmingLocations
+            - NarrativeLocations
+            - BasedOns
+            - TimePeriods
+            - MicroGenres
+            - ProgramTags
+            - Collections
+            - ShowEpisodes
+        style: form
+        explode: true
+        name: Includes
+        in: query
+        description: Include sub objects from the program
+        required: false
+      - schema:
+          type: string
+          enum:
+          - NOT_SET
+          - English_US
+          - English_CA
+          - English_UK
+          - English_AU
+        name: Culture
+        in: query
+        description: Specify the country and language
+        required: false
+      - schema:
+          type: string
+        name: ExternalId
+        in: query
+        description: Filter results matching external Id
+        required: false
+      - schema:
+          type: string
+        name: ExternalIdType
+        in: query
+        description: Filter results matching external Id
+        required: false
+      - schema:
+          type: string
+        name: CompanyName
+        in: query
+        description: Filter results matching company name
+        required: false
+      - schema:
+          type: boolean
+        name: HasVideo
+        in: query
+        description: Filter results based on having video content
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+        style: form
+        explode: true
+        name: VideoId
+        in: query
+        description: Filter results based on matching Video ID.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: VideoTargetCountries
+        in: query
+        description: List of 2 character country codes when filtering on video target countries.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: VideoTargetLanguages
+        in: query
+        description: Specify video target languages. This takes into consideration both language spoken and language
+          subtitled.
+        required: false
+      - schema:
+          type: boolean
+        name: SortByTimeStamp
+        in: query
+        description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED!
+          Use SortBy instead.
+        required: false
+      - schema:
+          type: string
+          enum:
+          - NOT_SET
+          - Relevance
+          - TimeStamp
+          - IvaRating
+          - ReleaseDate
+          - CalculatedTrendRank
+          - TimeStampAsc
+          - ReleaseDateAsc
+        name: SortBy
+        in: query
+        description: SortBy
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ModifiedRecordsSince
+        in: query
+        description: Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: OriginatingNetworks
+        in: query
+        description: 'The Network the current first run shows appear on. Ex: ABC, NBC, Netflix, etc.  '
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Status
+        in: query
+        description: 'The status of the movie or show.  Ex: Returning_Series, in_production, etc.  '
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: OriginalLanguages
+        in: query
+        description: The original language of the program.
+        required: false
+      - schema:
+          type: integer
+          format: int64
+        name: Revenue
+        in: query
+        description: Filter results where movie revenue is greater than or equal to this value.
+        required: false
+      - schema:
+          type: integer
+          format: int64
+        name: Budget
+        in: query
+        description: Filter results where movie budget is greater than or equal to this value.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Minimum_IvaRating
+        in: query
+        description: Filter results with a minimum Rating greater than or equal to this value. (0 to 100)
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: Minimum_EncodeDate
+        in: query
+        description: Filter results based on encode date.
+        required: false
+      - schema:
+          type: boolean
+        name: IncludeDeleted
+        in: query
+        description: Include Soft Deleted Records. Default (false)
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        style: form
+        explode: true
+        name: TrendSourceIds
+        in: query
+        description: 'Program Trend Source Ids.  Ex: 2,3.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - IMDB
+            - IVA
+            - BoxOfficeMojo
+            - TMDB
+            - RottenTomatoes
+            - TVGuide
+            - iTunes
+            - Amazon
+            - Fios
+            - Gamespot
+            - Hulu
+            - MovieClips
+            - Netflix
+            - PlutoTV
+            - Redbox
+            - TheNumbers
+            - fandangoAtHome
+            - Xfinity
+            - Youtube
+        style: form
+        explode: true
+        name: TrendBrands
+        in: query
+        description: 'Program Trend Brands.  Ex: IMDB,IVA'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: TrendCountries
+        in: query
+        description: 'Program Trend Countries.  Ex: US,CA.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Publisher
+            - TVOD
+            - SVOD
+            - Revenue
+            - Social
+            - Trailers
+            - AVOD
+            - Physical
+        style: form
+        explode: true
+        name: TrendListClassifiers
+        in: query
+        description: 'Program Trend List Classifiers.  Ex: AVOD,SVOD.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: MissingExternalIdNames
+        in: query
+        description: List of External ID Names that will be used to find where they DO NOT exist.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: BasedOns
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: BasedOnInstanceOfs
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: FilmingLocations
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: NarrativeLocations
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: TimePeriods
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Subjects
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: MicroGenres
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: WikiEntityValueIds
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: WikiEntityValueLabels
+        in: query
+        description: List of WikiEntity Value Labels
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: SubjectsAndTropeCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: FilmingLocationsCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: BasedOnsCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: SettingAndContextCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: NarrativeLocationsCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: MoodAndTonesCharacteristics
+        in: query
+        description: List of string
+        required: false
+      - schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        style: form
+        explode: true
+        name: AwardYears
+        in: query
+        description: List of award years to filter on.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Academy
+            - GoldenGlobe
+            - Emmy
+            - AACTAAwards
+            - AmericanFilmInstituteAwards
+            - ALMAAwards
+            - AfricaMovieAcademyAwards
+            - AfricaMagicViewersChoiceAwards
+            - AndhrapradeshNandiAwards
+            - AnnieAwards
+            - ApsaraAwards
+            - ArtDirectorsGuildAwards
+            - AsianFilmAwards
+            - BaeksangArtsAwards
+            - BAFTAFilmAwards
+            - BAFTATelevisionAwards
+            - BAFTATVCraftAwards
+            - BayerischerFilmpreis
+            - BCNSportsFilm
+            - BCNSportsFilmFestival
+            - BestofNollywoodAwards
+            - BigStarEntertainmentAwards
+            - BlueDragonFilmAwards
+            - BlueRibbonAwards
+            - BodilPrisen
+            - BritishAcademyChildrensAwards
+            - BritishIndependentFilmAwards
+            - CairoInternationalFilmFestival
+            - CanadianScreenAwards
+            - CartagenaFilmFestival
+            - CesarAwards
+            - CesarDuCinema
+            - CondorDePlata
+            - CriticsChoiceAwards
+            - CriticsChoiceSuperAwards
+            - CrunchyrollAnimeAwards
+            - DaviddiDonatello
+            - DeutscherFilmpreis
+            - DiosasdePlata
+            - EuropeanFilmAwards
+            - FantasportoInternationalFilmFestival
+            - FestivaldeCannes
+            - FestivalDeCineDeLima
+            - FestivalDeCineIberoamericanoDeHuelva
+            - FestivaldeGramado
+            - FestivaldeSanSebastian
+            - FestivaldoRio
+            - FestivalDuCinemaAmericainDeDeauville
+            - FestivalduCinemaEspagnoldeNantes
+            - FestivalInternacionaldeCinedeGijon
+            - FestivalInternacionaldeCinedeGuadalajara
+            - FestivalInternacionaldeCinedeLebu
+            - FestivalInternacionaldeCinedeMardelPlata
+            - FestivalInternacionaldeCinedeMonterrey
+            - FestivalInternacionaldeCinedeMorelia
+            - FestivalInternacionaldeCinedeValdivia
+            - FestivalInternacionaldeCinedeViñadelMar
+            - FestivalInternacionaldeCinedelNortedeChile
+            - FestivalInternacionaldeCineenGuadalajara
+            - FestivalInternacionaldeCineUNAM
+            - FestivalInternacionaldeCinemadaFigueiradaFoz
+            - FestivalInternacionaldeCinemaFantasticdeCatalunya
+            - FestivalInternacionaldelNuevoCineLatinoamericanodeLaHabana
+            - FestivalInternationalDuCourtMetrageDeClermontFerrand
+            - FestivalLaFiladeCortometrajes
+            - FestivalinternationaldufilmdanimationdAnnecy
+            - FilmfareAwards
+            - InternationalDocumentaryFestival
+            - GawadUrianAward
+            - GermanFilmCriticsAssociationAwards
+            - GLAADMediaAwards
+            - GoldenHorseAwards
+            - GoldenKelaAwards
+            - GoldenMovieAwards
+            - GoldenReelAwards
+            - GothamAwards
+            - GrandBellAwards
+            - GrandePremiodoCinemaBrasileiro
+            - GrimmePreis
+            - HochiFilmAward
+            - HollywoodFilmAwards
+            - HongKongFilmAward
+            - IbicinePremiosAstarte
+            - InternationalDocumentaryAssociationAward
+            - IDFAAwards
+            - InternationalFilmFestivalRotterdam
+            - IndependentSpiritAwards
+            - IndianNationalFilmAwards
+            - IndieLisboaFestivalInternacionaldeCinema
+            - InternationalIndianFilmAcademyAwards
+            - InternationalIndianFilmAcademyDigitalAwards
+            - InternationaleFilmfestspieleBerlin
+            - JapanAcademyFilmPrize
+            - KidsChoiceAwards
+            - KidscreenAwards
+            - KinemaJunpoAwards
+            - TheInternationalFestivalofFilmsonArt
+            - LionsGoldAwards
+            - LocarnoFilmFestival
+            - LosAngelesFilmCriticsAssociationAwards
+            - Lumieresdelapresseinternationale
+            - LuxStyleAwards
+            - MumbaiAcademyoftheMovingImage
+            - MartinFierro
+            - MartinFierroCine
+            - MartinFierroLatino
+            - MedallasdelCirculodeEscritoresCinematograficos
+            - MeliesAwards
+            - MezinarodnifilmovyfestivalKarlovyVary
+            - MoscowInternationalFilmFestival
+            - MostraInternacionaldeCinemadeSaoPaulo
+            - MostraInternazionaledArteCinematograficadellaBiennalediVenezia
+            - MTVMovieTVAwards
+            - MuestraInternacionaldeCineyDiversidadSexualCINHOMO
+            - NAACPImageAwards
+            - NationalBoardofReviewAwards
+            - NationalSocietyofFilmCriticsAwards
+            - NederlandsFilmFestival
+            - NewYorkFilmCriticsCircleAwards
+            - PeabodyAwards
+            - PeoplesChoiceAwards
+            - ProducersGuildAwards
+            - PremioAriel
+            - PremiosALCINE
+            - PremiosCANACINE
+            - PremiosFeroz
+            - PremiosForque
+            - PremiosGoya
+            - PremiosIndiaCatalina
+            - PremiosIris
+            - PremiosMacondo
+            - PremiosMestreMateo
+            - PremiosPedroSienna
+            - PremiosPlatinodelCineIberoamericano
+            - PremiosProdu
+            - PremiosSophia
+            - PremiosSur
+            - PremiosTuria
+            - PremisGaudi
+            - PrixGemeaux
+            - PrixLouisDelluc
+            - RazzieAwards
+            - RosedOrLatinos
+            - ScreenActorsGuildAwards
+            - SaturnAwards
+            - SemanaInternacionaldeCinedeValladolid
+            - SeoulInternationalDramaAwards
+            - StarScreenAwards
+            - StardustAwards
+            - SundanceFilmFestival
+            - SXSWFilmFestival
+            - TeenChoiceAwards
+            - TokyoAnimeAward
+            - TorontoInternationalFilmFestival
+            - TribecaFilmFestival
+            - TurinFilmFestival
+            - VancouverFilmCriticsCircleAwards
+            - ViennaInternationalFilmFestival
+            - WestBengalFilmJournalistsAssociationAwards
+            - WritersGuildAwards
+            - ZeeCineAwards
+            - ZurichFilmFestival
+        style: form
+        explode: true
+        name: AwardTypes
+        in: query
+        description: 'List of award types Ex: Academy, GoldenGlobe, etc.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - BestPicture
+            - BestSeries
+            - BestActor
+            - BestActress
+            - BestDirector
+            - BestSupportingActor
+            - BestSupportingActress
+            - BestPictureOther
+            - BestSeriesOther
+        style: form
+        explode: true
+        name: AwardCategoryTypes
+        in: query
+        description: 'List of award category types Ex: BestPicture, BestActor, etc.'
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AwardProgramIds
+        in: query
+        description: Limit to awards based on ProgramIds.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AwardPersonIds
+        in: query
+        description: Limit to awards based on PersonIds.
+        required: false
+      - schema:
+          type: boolean
+        name: AwardWinners
+        in: query
+        description: Limit to award winners.
+        required: false
+      - schema:
+          type: boolean
+        name: MatureVideo
+        in: query
+        description: Limit to programs that have mature video content.
+        required: false
+      - schema:
+          type: string
+        name: NextPageToken
+        in: query
+        description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken returned
+          from search results when using Timestamp sorting for optimal performance while paging large result sets.
+          Skip is ignored when this parameter is provided.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: CollectionIds
+        in: query
+        description: Filter programs by list of CollectionIds
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - SequentialWork
+            - IconicCharacter
+            - SharedUniverse
+            - IconicAuthor
+            - IconicTitle
+            - IconicPerformer
+            - IconicStudio
+            - IconicBrand
+            - Editorial
+        style: form
+        explode: true
+        name: CollectionTypes
+        in: query
+        description: List of collection types.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - MovieMovieGenre
+            - MovieImage
+            - MovieCompany
+            - MovieVideoScreenCapture
+            - MovieVideoTargetCountry
+            - MovieImageTag
+            - MovieRelease
+            - CollectionItem
+            - Collection
+            - MovieAlternateTitle
+            - MovieAlternateId
+            - MovieDescription
+            - MovieAvailability
+            - MovieContributor
+            - Movie
+            - MovieVideo
+            - MovieVideoEncode
+            - MovieTheme
+            - MovieTag
+            - SeasonAlternateId
+            - ShowCompany
+            - ShowAlternateTitle
+            - Season
+            - EpisodeAlternateId
+            - SeasonImage
+            - Show
+            - EpisodeImageTag
+            - SeasonDescription
+            - SeasonRelease
+            - ShowImageTag
+            - ShowVideo
+            - EpisodeVideoScreenCapture
+            - EpisodeRelease
+            - ShowRelease
+            - ShowShowGenre
+            - EpisodeAvailability
+            - SeasonAvailability
+            - EpisodeContributor
+            - EpisodeImage
+            - ShowVideoTargetCountry
+            - ShowVideoEncode
+            - ShowAvailability
+            - SeasonVideoEncode
+            - ShowImage
+            - EpisodeAlternateTitle
+            - EpisodeDescription
+            - ShowAlternateId
+            - SeasonVideo
+            - ShowTheme
+            - EpisodeVideoEncode
+            - SeasonVideoTargetCountry
+            - EpisodeVideo
+            - SeasonVideoScreenCapture
+            - Episode
+            - ShowVideoScreenCapture
+            - EpisodeVideoTargetCountry
+            - SeasonImageTag
+            - ShowDescription
+            - ShowTag
+        style: form
+        explode: true
+        name: ProgramChangeEntities
+        in: query
+        description: List of program change entities.
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchEntertainmentResponse'
+      deprecated: false
+    post:
+      tags:
+      - entertainment
+      summary: Search all entertainment programs.
+      description: Search movies, shows, seasons, episodes, and games.  Each image in our database is related to
+        a specific movie, TV or game title and is promotional of that title.  If you have title pages or articles
+        about that title, then offering an image gallery on that page is obviously promotional.  If you are doing
+        editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the
+        title of the film, TV show or game so as to be promotional.
+      operationId: SearchEntertainmentSearch_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchEntertainmentResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Ids:
+                  type: array
+                  description: 'Search by one or more Ids.  Ex: Movie/123.'
+                Skip:
+                  type: integer
+                  description: Rows to skip, used for paging. Default is 0.
+                  format: int32
+                Take:
+                  type: integer
+                  description: Rows to return, used for paging. Default is 10, limit is 10.
+                  format: int32
+                Providers:
+                  type: array
+                  description: List of availability providers.  See /Common/GetCommonEnumerators endpoint for complete
+                    list.
+                StartDateStart:
+                  type: string
+                  description: Start date for availability StartDate filter.
+                  format: date-time
+                StartDateEnd:
+                  type: string
+                  description: End date for availability StartDate filter.
+                  format: date-time
+                DeliveryMethods:
+                  type: array
+                  description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint
+                    for complete list.
+                OfferTypes:
+                  type: array
+                  description: List of availability offer types. See /Common/GetCommonEnumerators endpoint for complete
+                    list.
+                VideoQualities:
+                  type: array
+                  description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for
+                    complete list.
+                ProgramTypes:
+                  type: array
+                  description: List of program types. See /Common/GetCommonEnumerators endpoint for complete list.
+                AvailabilityCountries:
+                  type: array
+                  description: List of 2 character country codes.
+                Genres:
+                  type: array
+                  description: List of genres (movie and show).
+                Themes:
+                  type: array
+                  description: List of themes (movie and show).
+                Tags:
+                  type: array
+                  description: List of tags (movie and show).
+                Certifications:
+                  type: array
+                  description: List of certifications for movie and show.
+                PersonNames:
+                  type: array
+                  description: List of names. Maximum of 3.
+                PeopleIds:
+                  type: array
+                  description: Person Ids.  Currently supports one person.
+                Jobs:
+                  type: array
+                  description: List of Jobs a contributor can have.
+                ReleaseTypes:
+                  type: array
+                  description: List of release types for both movie and show.
+                ReleaseCountries:
+                  type: array
+                  description: List of 2 character country codes when filtering on releases.
+                YearRange_Start:
+                  type: integer
+                  description: Filter results based on start and end original release year.
+                  format: int32
+                YearRange_End:
+                  type: integer
+                  description: Filter results based on start and end original release year.
+                  format: int32
+                ReleaseDateRange_Start:
+                  type: string
+                  description: Filter results based on any release date range.
+                  format: date-time
+                ReleaseDateRange_End:
+                  type: string
+                  description: Filter results based on any release date range.
+                  format: date-time
+                OriginalReleaseDateRange_Start:
+                  type: string
+                  description: Filter results based on original release date range.
+                  format: date-time
+                OriginalReleaseDateRange_End:
+                  type: string
+                  description: Filter results based on original release date range.
+                  format: date-time
+                Package:
+                  type: string
+                  description: Package is based on subscription which will be set at the customer level.
+                Title:
+                  type: string
+                  description: Title search.
+                ShowId:
+                  type: string
+                  description: Filter results to match a show.  Use for locating seasons and episodes for a show.
+                SeasonId:
+                  type: string
+                  description: Filter results to match a season.  Use for locating episodes for a season.
+                Includes:
+                  type: array
+                  description: Include sub objects from the program
+                Culture:
+                  type: string
+                  description: Specify the country and language
+                ExternalId:
+                  type: string
+                  description: Filter results matching external Id
+                ExternalIdType:
+                  type: string
+                  description: Filter results matching external Id
+                CompanyName:
+                  type: string
+                  description: Filter results matching company name
+                HasVideo:
+                  type: boolean
+                  description: Filter results based on having video content
+                VideoId:
+                  type: array
+                  description: Filter results based on matching Video ID.
+                VideoTargetCountries:
+                  type: array
+                  description: List of 2 character country codes when filtering on video target countries.
+                VideoTargetLanguages:
+                  type: array
+                  description: Specify video target languages. This takes into consideration both language spoken
+                    and language subtitled.
+                SortByTimeStamp:
+                  type: boolean
+                  description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED!
+                    Use SortBy instead.
+                SortBy:
+                  type: string
+                  description: SortBy
+                ModifiedRecordsSince:
+                  type: string
+                  description: Filter results based on timestamp.  Returns >= value timestamp (UTC) provided.
+                  format: date-time
+                OriginatingNetworks:
+                  type: array
+                  description: 'The Network the current first run shows appear on. Ex: ABC, NBC, Netflix, etc.  '
+                Status:
+                  type: array
+                  description: 'The status of the movie or show.  Ex: Returning_Series, in_production, etc.  '
+                OriginalLanguages:
+                  type: array
+                  description: The original language of the program.
+                Revenue:
+                  type: integer
+                  description: Filter results where movie revenue is greater than or equal to this value.
+                  format: int64
+                Budget:
+                  type: integer
+                  description: Filter results where movie budget is greater than or equal to this value.
+                  format: int64
+                Minimum_IvaRating:
+                  type: integer
+                  description: Filter results with a minimum Rating greater than or equal to this value. (0 to 100)
+                  format: int32
+                Minimum_EncodeDate:
+                  type: string
+                  description: Filter results based on encode date.
+                  format: date-time
+                IncludeDeleted:
+                  type: boolean
+                  description: Include Soft Deleted Records. Default (false)
+                TrendSourceIds:
+                  type: array
+                  description: 'Program Trend Source Ids.  Ex: 2,3.'
+                TrendBrands:
+                  type: array
+                  description: 'Program Trend Brands.  Ex: IMDB,IVA'
+                TrendCountries:
+                  type: array
+                  description: 'Program Trend Countries.  Ex: US,CA.'
+                TrendListClassifiers:
+                  type: array
+                  description: 'Program Trend List Classifiers.  Ex: AVOD,SVOD.'
+                MissingExternalIdNames:
+                  type: array
+                  description: List of External ID Names that will be used to find where they DO NOT exist.
+                BasedOns:
+                  type: array
+                  description: List of string
+                BasedOnInstanceOfs:
+                  type: array
+                  description: List of string
+                FilmingLocations:
+                  type: array
+                  description: List of string
+                NarrativeLocations:
+                  type: array
+                  description: List of string
+                TimePeriods:
+                  type: array
+                  description: List of string
+                Subjects:
+                  type: array
+                  description: List of string
+                MicroGenres:
+                  type: array
+                  description: List of string
+                WikiEntityValueIds:
+                  type: array
+                  description: List of string
+                WikiEntityValueLabels:
+                  type: array
+                  description: List of WikiEntity Value Labels
+                SubjectsAndTropeCharacteristics:
+                  type: array
+                  description: List of string
+                FilmingLocationsCharacteristics:
+                  type: array
+                  description: List of string
+                BasedOnsCharacteristics:
+                  type: array
+                  description: List of string
+                SettingAndContextCharacteristics:
+                  type: array
+                  description: List of string
+                NarrativeLocationsCharacteristics:
+                  type: array
+                  description: List of string
+                MoodAndTonesCharacteristics:
+                  type: array
+                  description: List of string
+                AwardYears:
+                  type: array
+                  description: List of award years to filter on.
+                AwardTypes:
+                  type: array
+                  description: 'List of award types Ex: Academy, GoldenGlobe, etc.'
+                AwardCategoryTypes:
+                  type: array
+                  description: 'List of award category types Ex: BestPicture, BestActor, etc.'
+                AwardProgramIds:
+                  type: array
+                  description: Limit to awards based on ProgramIds.
+                AwardPersonIds:
+                  type: array
+                  description: Limit to awards based on PersonIds.
+                AwardWinners:
+                  type: boolean
+                  description: Limit to award winners.
+                MatureVideo:
+                  type: boolean
+                  description: Limit to programs that have mature video content.
+                NextPageToken:
+                  type: string
+                  description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken
+                    returned from search results when using Timestamp sorting for optimal performance while paging
+                    large result sets. Skip is ignored when this parameter is provided.
+                CollectionIds:
+                  type: array
+                  description: Filter programs by list of CollectionIds
+                CollectionTypes:
+                  type: array
+                  description: List of collection types.
+                ProgramChangeEntities:
+                  type: array
+                  description: List of program change entities.
+              required: []
+  /Entertainment/Autocomplete/:
+    get:
+      tags:
+      - entertainment
+      summary: Get suggestions based on prefix and field selection.
+      description: Get suggestions based on prefix and field selection.
+      operationId: SearchEntertainmentAutoCompleteAutocomplete_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+        name: Size
+        in: query
+        description: Rows to return, used for paging. Default is 10, limit is 50.
+        required: false
+      - schema:
+          type: string
+        name: Package
+        in: query
+        description: Package is based on subscription which will be set at the customer level.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Movie
+            - Show
+            - Game
+            - Season
+            - Episode
+        style: form
+        explode: true
+        name: ProgramTypes
+        in: query
+        description: List of program types. See /Common/GetCommonEnumerators endpoint for complete list.
+        required: true
+      - schema:
+          type: string
+          enum:
+          - basedOns_instanceOfLabel
+          - basedOns_label
+          - subjects_label
+          - filmingLocations_label
+          - narrativeLocations_label
+          - microGenres_label
+          - timePeriods_label
+          - title
+          - originalTitle
+          - tags
+          - originatingNetwork
+          - companies_name
+          - contributors_personName
+        name: Field
+        in: query
+        description: List of available auto completion fields.
+        required: true
+      - schema:
+          type: string
+        name: Prefix
+        in: query
+        description: String prefix to use to locate matching strings based on Field selected.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<SearchEntertainmentAutoCompleteResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchEntertainmentAutoCompleteResponse'
+      deprecated: false
+  /Entertainment/AutocompleteTitle/:
+    get:
+      tags:
+      - entertainment
+      summary: Get suggestions based on prefix and field selection.
+      description: Get suggestions based on prefix and field selection.
+      operationId: SearchEntertainmentAutoCompleteTitleAutocompleteTitle_Get
+      parameters:
+      - schema:
+          type: boolean
+        name: IncludeGenres
+        in: query
+        description: set to true if you want response to include genres.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Size
+        in: query
+        description: Rows to return, used for paging. Default is 10, limit is 50.
+        required: false
+      - schema:
+          type: string
+        name: Package
+        in: query
+        description: Package is based on subscription which will be set at the customer level.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Movie
+            - Show
+            - Game
+            - Season
+            - Episode
+        style: form
+        explode: true
+        name: ProgramTypes
+        in: query
+        description: List of program types. See /Common/GetCommonEnumerators endpoint for complete list.
+        required: false
+      - schema:
+          type: string
+        name: Prefix
+        in: query
+        description: String prefix to use to locate matching strings based on Field selected.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: IEnumerable<TitleLookup>
+                type: array
+                items:
+                  $ref: '#/components/schemas/TitleLookup'
+      deprecated: false
+  /Entertainment/CelebrityRatings:
+    get:
+      tags:
+      - entertainment
+      summary: Get a paged list of IVA Celebrity Ratings
+      description: Get a paged list of IVA Celebrity Ratings
+      operationId: GetCelebrityIvaRatingsCelebrityRatings_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Used for paging result set.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Required. Max size is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<IvaRatingsResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/IvaRatingsResponse'
+      deprecated: false
+  /Entertainment/Changes/Episodes/History/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique EpisodeId changes greater than or equal to date (UTC).
+      description: For each updated episode ID, pull the full episode data for that ID and update.
+      operationId: GetEpisodeChangeHistoryChangesEpisodesHistory_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<EpisodeChangeHistoryResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/EpisodeChangeHistoryResponse'
+      deprecated: false
+  /Entertainment/Changes/Episodes/HistoryWithEntity/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique EpisodeId and Entity changes greater than or equal to date (UTC).
+      description: Lists each episode ID that has changed as well as the entity in the object that changed.
+      operationId: GetEpisodeChangeHistoryWithEntityChangesEpisodesHistoryWithEntity_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<EpisodeChangeHistoryWithEntityResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/EpisodeChangeHistoryWithEntityResponse'
+      deprecated: false
+  /Entertainment/Changes/Movies/History/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique MovieId changes greater than or equal to date (UTC).
+      description: Use to get the ID's of the movies that have been added or changed and use /Movies/{ID} to get
+        back the object with the updated data and replace in your database.
+      operationId: GetMovieChangeHistoryChangesMoviesHistory_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<MovieChangeHistoryResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieChangeHistoryResponse'
+      deprecated: false
+  /Entertainment/Changes/Movies/HistoryWithEntity/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique MovieId and Entity changes greater than or equal to date (UTC).
+      description: Same as /Changes/Movies/History but with the specific entities that have changed inside the MovieResponse.
+      operationId: GetMovieChangeHistoryWithEntityChangesMoviesHistoryWithEntity_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<MovieChangeHistoryWithEntityResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieChangeHistoryWithEntityResponse'
+      deprecated: false
+  /Entertainment/Changes/Seasons/History/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique SeasonId changes greater than or equal to date (UTC).
+      description: Use if you want to check for specific updates to season records.
+      operationId: GetSeasonChangeHistoryChangesSeasonsHistory_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<SeasonChangeHistoryResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeasonChangeHistoryResponse'
+      deprecated: false
+  /Entertainment/Changes/Seasons/HistoryWithEntity/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique SeasonId and Entity changes greater than or equal to date (UTC).
+      description: Returns list of new or changed SeasonIds with the entity that has changed.
+      operationId: GetSeasonChangeHistoryWithEntityChangesSeasonsHistoryWithEntity_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<SeasonChangeHistoryWithEntityResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeasonChangeHistoryWithEntityResponse'
+      deprecated: false
+  /Entertainment/Changes/Shows/History/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique ShowId changes greater than or equal to date (UTC).
+      description: All new and updated shows from requested date and time. When a record gets updated, use the ID
+        to get the full show object and replace the data in your cache.
+      operationId: GetShowChangeHistoryChangesShowsHistory_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<ShowChangeHistoryResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowChangeHistoryResponse'
+      deprecated: false
+  /Entertainment/Changes/Shows/HistoryWithEntity/:
+    get:
+      tags:
+      - entertainment
+      summary: Returns list of unique ShowId and Entity changes greater than or equal to date (UTC).
+      description: Returns a list of ShowId and entity of any show that has been updated.
+      operationId: GetShowChangeHistoryWithEntityChangesShowsHistoryWithEntity_Get
+      parameters:
+      - schema:
+          type: string
+          format: date-time
+        name: Date
+        in: query
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
+          hh:mm:ss.ffffff0Z'
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Offset for paging. Default is 0.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Maximum number of rows returned. Default is 1,000.
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<ShowChangeHistoryWithEntityResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowChangeHistoryWithEntityResponse'
+      deprecated: false
+  /Entertainment/GetEntertainmentMatchCandidates:
+    get:
+      tags:
+      - entertainment
+      summary: Gets a list of possible Entertainment program matches.
+      description: Requires at least a title. Returns a list of match candidates with confidence scores.
+      operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Get
+      parameters:
+      - schema:
+          type: string
+        name: Title
+        in: query
+        description: Title of Program to be matched.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Year
+        in: query
+        description: Release Year of Program to be matched.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ReleaseDate
+        in: query
+        description: Release Date of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Certification
+        in: query
+        description: Certification of Program to be matched.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Runtime
+        in: query
+        description: RunTime (in minutes) of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: OriginatingNetwork
+        in: query
+        description: Originating network of SHOW Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Description
+        in: query
+        description: Description of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Cast
+        in: query
+        description: Cast members of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Directors
+        in: query
+        description: Directors of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Producers
+        in: query
+        description: Producers of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Company
+        in: query
+        description: Company of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Genre
+        in: query
+        description: Genre of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Theme
+        in: query
+        description: Theme of Program to be matched.
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntertainmentMatchCandidatesResponse'
+      deprecated: false
+    post:
+      tags:
+      - entertainment
+      summary: Gets a list of possible Entertainment program matches.
+      description: Requires at least a title. Returns a list of match candidates with confidence scores.
+      operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntertainmentMatchCandidatesResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Title:
+                  type: string
+                  description: Title of Program to be matched.
+                Year:
+                  type: integer
+                  description: Release Year of Program to be matched.
+                  format: int32
+                ReleaseDate:
+                  type: string
+                  description: Release Date of Program to be matched.
+                  format: date-time
+                Certification:
+                  type: string
+                  description: Certification of Program to be matched.
+                Runtime:
+                  type: integer
+                  description: RunTime (in minutes) of Program to be matched.
+                  format: int32
+                OriginatingNetwork:
+                  type: string
+                  description: Originating network of SHOW Program to be matched.
+                Description:
+                  type: string
+                  description: Description of Program to be matched.
+                Cast:
+                  type: array
+                  description: Cast members of Program to be matched.
+                Directors:
+                  type: array
+                  description: Directors of Program to be matched.
+                Producers:
+                  type: array
+                  description: Producers of Program to be matched.
+                Company:
+                  type: string
+                  description: Company of Program to be matched.
+                Genre:
+                  type: string
+                  description: Genre of Program to be matched.
+                Theme:
+                  type: string
+                  description: Theme of Program to be matched.
+              required:
+              - Title
+  /Entertainment/Match/:
+    get:
+      tags:
+      - entertainment
+      summary: Match a program using Title, Year, Cast, Director.
+      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given
+        type, returns all candidates that achieved the highest score, ties possible.
+      operationId: MatchToEntertainmentProgramMatch_Get
+      parameters:
+      - schema:
           type: string
           enum:
           - Movie
           - Show
+          - Game
           - Season
           - Episode
-          - Game
-          - Celebrity
-      responses:
-        '200':
-          description: Search results
-      tags:
-      - Entertainment
-    post:
-      summary: Search entertainment metadata (POST body)
-      operationId: entertainmentSearchPost
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Search results
-      tags:
-      - Entertainment
-  /api/Entertainment/Match/:
-    get:
-      summary: Match entertainment record by external IDs
-      operationId: entertainmentMatch
-      responses:
-        '200':
-          description: Match
-      tags:
-      - Entertainment
-    post:
-      summary: Match (POST body)
-      operationId: entertainmentMatchPost
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Match
-      tags:
-      - Entertainment
-  /api/Entertainment/GetEntertainmentMatchCandidates:
-    get:
-      summary: Get candidate matches
-      operationId: getEntertainmentMatchCandidates
-      responses:
-        '200':
-          description: Candidates
-      tags:
-      - Entertainment
-    post:
-      summary: Get candidate matches (POST)
-      operationId: getEntertainmentMatchCandidatesPost
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Candidates
-      tags:
-      - Entertainment
-  /api/Entertainment/MatchSeasonBySequence:
-    get:
-      summary: Match a season by sequence number
-      operationId: matchSeasonBySequence
-      responses:
-        '200':
-          description: Season
-      tags:
-      - Entertainment
-  /api/Entertainment/MatchEpisodeBySequence:
-    get:
-      summary: Match an episode by sequence number
-      operationId: matchEpisodeBySequence
-      responses:
-        '200':
-          description: Episode
-      tags:
-      - Entertainment
-  /api/Entertainment/MovieRatings:
-    get:
-      summary: Get movie ratings
-      operationId: getMovieRatings
-      responses:
-        '200':
-          description: Ratings
-      tags:
-      - Entertainment
-  /api/Entertainment/ShowRatings:
-    get:
-      summary: Get show ratings
-      operationId: getShowRatings
-      responses:
-        '200':
-          description: Ratings
-      tags:
-      - Entertainment
-  /api/Entertainment/CelebrityRatings:
-    get:
-      summary: Get celebrity ratings
-      operationId: getCelebrityRatings
-      responses:
-        '200':
-          description: Ratings
-      tags:
-      - Entertainment
-  /api/Entertainment/Autocomplete/:
-    get:
-      summary: Autocomplete suggestions
-      operationId: autocomplete
-      parameters:
-      - name: query
+        name: ProgramType
         in: query
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Suggestions
-      tags:
-      - Entertainment
-  /api/Entertainment/AutocompleteTitle/:
-    get:
-      summary: Autocomplete title suggestions
-      operationId: autocompleteTitle
-      parameters:
-      - name: query
+        description: Type of Program to be matched.
+        required: true
+      - schema:
+          type: boolean
+        name: MatchForShow
         in: query
-        schema:
+        description: Set to true to also match for shows
+        required: false
+      - schema:
+          type: integer
+          format: int64
+        name: EntertainmentId
+        in: query
+        description: Id of Entertainment program to be matched against, if this is set no search is run and data
+          is compared to this program only.
+        required: false
+      - schema:
           type: string
+        name: Title
+        in: query
+        description: Title of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: AlternateTitles
+        in: query
+        description: Alternate Titles of Program to be matched.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Year
+        in: query
+        description: Release Year of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Cast
+        in: query
+        description: Cast members of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Producers
+        in: query
+        description: Producers of Program to be matched.
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+        name: Directors
+        in: query
+        description: Directors of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: Description
+        in: query
+        description: Description of Program to be matched.
+        required: false
+      - schema:
+          type: string
+        name: OriginatingNetwork
+        in: query
+        description: Originating network of SHOW Program to be matched.
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        name: ReleaseDate
+        in: query
+        description: Release Date of Program to be matched.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: StringDistance
+        in: query
+        description: For fuzzy title match, default is 4, set to 0 for no fuzzy match.
+        required: false
       responses:
         '200':
-          description: Suggestions
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentProgramResponse'
+      deprecated: false
+    post:
       tags:
-      - Entertainment
-  /api/Entertainment/Changes/Movies/History/:
+      - entertainment
+      summary: Match a program using Title, Year, Cast, Director.
+      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given
+        type, returns all candidates that achieved the highest score, ties possible.
+      operationId: MatchToEntertainmentProgramMatch_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentProgramResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ProgramType:
+                  type: string
+                  description: Type of Program to be matched.
+                MatchForShow:
+                  type: boolean
+                  description: Set to true to also match for shows
+                EntertainmentId:
+                  type: integer
+                  description: Id of Entertainment program to be matched against, if this is set no search is run
+                    and data is compared to this program only.
+                  format: int64
+                Title:
+                  type: string
+                  description: Title of Program to be matched.
+                AlternateTitles:
+                  type: array
+                  description: Alternate Titles of Program to be matched.
+                Year:
+                  type: integer
+                  description: Release Year of Program to be matched.
+                  format: int32
+                Cast:
+                  type: array
+                  description: Cast members of Program to be matched.
+                Producers:
+                  type: array
+                  description: Producers of Program to be matched.
+                Directors:
+                  type: array
+                  description: Directors of Program to be matched.
+                Description:
+                  type: string
+                  description: Description of Program to be matched.
+                OriginatingNetwork:
+                  type: string
+                  description: Originating network of SHOW Program to be matched.
+                ReleaseDate:
+                  type: string
+                  description: Release Date of Program to be matched.
+                  format: date-time
+                StringDistance:
+                  type: integer
+                  description: For fuzzy title match, default is 4, set to 0 for no fuzzy match.
+                  format: int32
+              required:
+              - ProgramType
+  /Entertainment/MatchEpisodeBySequence:
     get:
-      summary: Movie change history
-      operationId: moviesChangeHistory
+      tags:
+      - entertainment
+      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number,
+        match title and year also for a better score.
+      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode
+        by sequence.
+      operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int64
+        name: ShowId
+        in: query
+        description: Id of Show this Season belongs to
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: SeasonNumber
+        in: query
+        description: Number of Season this Episode belongs to, within Show.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: EpisodeNumber
+        in: query
+        description: Episode number within Season.
+        required: true
+      - schema:
+          type: string
+        name: Title
+        in: query
+        description: Title of Episode to be matched.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Year
+        in: query
+        description: Release Year of Episode to be matched.
+        required: false
       responses:
         '200':
-          description: Change history
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentEpisodeBySequenceResponse'
+      deprecated: false
+    post:
       tags:
-      - Entertainment
-  /api/Entertainment/Changes/Shows/History/:
+      - entertainment
+      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number,
+        match title and year also for a better score.
+      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode
+        by sequence.
+      operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentEpisodeBySequenceResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ShowId:
+                  type: integer
+                  description: Id of Show this Season belongs to
+                  format: int64
+                SeasonNumber:
+                  type: integer
+                  description: Number of Season this Episode belongs to, within Show.
+                  format: int32
+                EpisodeNumber:
+                  type: integer
+                  description: Episode number within Season.
+                  format: int32
+                Title:
+                  type: string
+                  description: Title of Episode to be matched.
+                Year:
+                  type: integer
+                  description: Release Year of Episode to be matched.
+                  format: int32
+              required:
+              - ShowId
+              - SeasonNumber
+              - EpisodeNumber
+  /Entertainment/MatchSeasonBySequence:
     get:
-      summary: Show change history
-      operationId: showsChangeHistory
+      tags:
+      - entertainment
+      summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title
+        and year also for a better score.
+      description: Requires a valid Show Id and Season number to match to an Entertainment Season by sequence.
+      operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int64
+        name: ShowId
+        in: query
+        description: Id of Show this Season belongs to
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: SeasonNumber
+        in: query
+        description: Season number within Show.
+        required: true
+      - schema:
+          type: string
+        name: Title
+        in: query
+        description: Title of Season to be matched.
+        required: false
+      - schema:
+          type: integer
+          format: int32
+        name: Year
+        in: query
+        description: Release Year of Season to be matched.
+        required: false
       responses:
         '200':
-          description: Change history
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentSeasonBySequenceResponse'
+      deprecated: false
+    post:
       tags:
-      - Entertainment
-  /api/Entertainment/Changes/Seasons/History/:
+      - entertainment
+      summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title
+        and year also for a better score.
+      description: Requires a valid Show Id and Season number to match to an Entertainment Season by sequence.
+      operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Post
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchToEntertainmentSeasonBySequenceResponse'
+      deprecated: false
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ShowId:
+                  type: integer
+                  description: Id of Show this Season belongs to
+                  format: int64
+                SeasonNumber:
+                  type: integer
+                  description: Season number within Show.
+                  format: int32
+                Title:
+                  type: string
+                  description: Title of Season to be matched.
+                Year:
+                  type: integer
+                  description: Release Year of Season to be matched.
+                  format: int32
+              required:
+              - ShowId
+              - SeasonNumber
+  /Entertainment/MovieRatings:
     get:
-      summary: Season change history
-      operationId: seasonsChangeHistory
+      tags:
+      - entertainment
+      summary: Get a paged list of IVA Movie Ratings
+      description: Get a paged list of IVA Movie Ratings
+      operationId: GetMovieIvaRatingsMovieRatings_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Used for paging result set.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Required. Max size is 1,000.
+        required: true
       responses:
         '200':
-          description: Change history
-      tags:
-      - Entertainment
-  /api/Entertainment/Changes/Episodes/History/:
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<IvaRatingsResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/IvaRatingsResponse'
+      deprecated: false
+  /Entertainment/ShowRatings:
     get:
-      summary: Episode change history
-      operationId: episodesChangeHistory
+      tags:
+      - entertainment
+      summary: Get a paged list of IVA Show Ratings
+      description: Get a paged list of IVA Show Ratings
+      operationId: GetShowIvaRatingsShowRatings_Get
+      parameters:
+      - schema:
+          type: integer
+          format: int32
+        name: Skip
+        in: query
+        description: Used for paging result set.
+        required: true
+      - schema:
+          type: integer
+          format: int32
+        name: Take
+        in: query
+        description: Required. Max size is 1,000.
+        required: true
       responses:
         '200':
-          description: Change history
-      tags:
-      - Entertainment
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: List<IvaRatingsResponse>
+                type: array
+                items:
+                  $ref: '#/components/schemas/IvaRatingsResponse'
+      deprecated: false
 components:
-  securitySchemes:
-    SubscriptionKeyHeader:
-      type: apiKey
-      in: header
-      name: Ocp-Apim-Subscription-Key
-    SubscriptionKeyQuery:
-      type: apiKey
-      in: query
-      name: subscription-key
+  schemas:
+    SearchEntertainmentResponse:
+      title: SearchEntertainmentResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchEntertainmentResponse
+      type: object
+    SearchHit:
+      title: SearchHit
+      properties:
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/DiscoverProgram'
+        Id:
+          type: string
+      description: SearchHit
+      type: object
+    DiscoverProgram:
+      title: DiscoverProgram
+      required:
+      - Year
+      - ShowEpisodes
+      properties:
+        Id:
+          description: Unique ID of the Movie, Show, Season or Episode in the form of Movie/1 or Show/2
+          type: string
+        ProgramType:
+          type: string
+        Title:
+          description: English version of any foreign Original Title.
+          type: string
+        Created:
+          description: DateTime record was created.
+          type: string
+          format: date-time
+        Modified:
+          description: DateTime record last modified.
+          type: string
+          format: date-time
+        OriginalTitle:
+          description: Original title of program
+          type: string
+        OriginalReleaseDate:
+          description: First generally available release regardless of country. Excludes festivals and premieres.
+          type: string
+          format: date-time
+        Year:
+          description: Release year of program.
+          type: integer
+          format: int32
+        ShowEpisodes:
+          description: Episodes for a show.
+          type: array
+          items:
+            $ref: '#/components/schemas/ShowEpisode'
+        ShowId:
+          description: 'Used for season and episodes.  Ex: Show/1234'
+          type: string
+        SeasonId:
+          description: 'Used for season and episodes. Ex: Season/1234'
+          type: string
+        SeasonNumber:
+          description: Used for season and episodes.
+          type: integer
+          format: int32
+        SeasonEpisodeCount:
+          description: Number of episodes in season.
+          type: integer
+          format: int32
+        EpisodeNumber:
+          description: Used for episodes.
+          type: integer
+          format: int32
+        OriginalLanguage:
+          description: Original language.
+          type: string
+        OriginalLanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+          description: Original language.
+        CountriesOfOrigin:
+          description: Program's countries of origin.
+          type: array
+          items:
+            $ref: '#/components/schemas/CountryDetail'
+        Revenue:
+          description: Total revenue generated by Movie.
+          type: integer
+          format: int64
+        Budget:
+          description: Movie budget
+          type: integer
+          format: int64
+        Runtime:
+          description: Movie runtime in minutes.
+          type: integer
+          format: int32
+        OfficialSiteUrl:
+          description: Movie website home page.
+          type: string
+        Deleted:
+          type: boolean
+        OwnerStudio:
+          type: string
+        Status:
+          description: Status of movie.
+          type: string
+        Type:
+          description: 'Type of movie. Ex: Tv Movie, Short, etc.'
+          type: string
+        RedirectTo:
+          description: Redirect to.
+          type: string
+        Idx:
+          description: Index to differentiate movies with identical titles and year.
+          type: string
+        OriginatingNetwork:
+          description: The network the new shows are currently airing on.
+          type: string
+        Genres:
+          description: List of genres.
+          type: array
+          items:
+            type: string
+        Releases:
+          description: List of releases associated with Program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramRelease'
+        Contributors:
+          description: List of contributors (Cast, Director, Writer, Production, etc.) for this program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramContributor'
+        AlternateTitles:
+          description: List of alternate titles for this Program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramAlternateTitle'
+        Descriptions:
+          description: List of descriptions for this Program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramDescription'
+        Companies:
+          description: List of companies (Production, Distribution, etc.) associated with program.
+          type: array
+          items:
+            $ref: '#/components/schemas/Company'
+        Tags:
+          description: List of tags associated with Program.
+          type: array
+          items:
+            type: string
+        Themes:
+          description: List of themes.
+          type: array
+          items:
+            type: string
+        ExternalIds:
+          description: List of external Ids associated with Program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalId'
+        Videos:
+          description: List of videos.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramVideo'
+        Images:
+          description: List of images.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramImage'
+        VersionId:
+          description: Record Version Id
+          type: integer
+          format: int64
+        Availabilities:
+          description: List of availabilities for program.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramAvailability'
+        ProgramTrends:
+          description: List of trending source data.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramTrend'
+        VideoCount:
+          description: Count of videos
+          type: integer
+          format: int32
+        ImageCount:
+          description: Count of images
+          type: integer
+          format: int32
+        IvaRating:
+          description: IVA Rating for program.  Applies to Show, Movie, and Game
+          type: number
+          format: double
+        IvaRatingSort:
+          description: IVA Rating for program.  Applies to Show, Movie, and Game. Includes decimal places for accurate
+            sorting.
+          type: number
+          format: double
+        TimeStamp:
+          description: Last time object was updated or changed.
+          type: string
+          format: date-time
+        Awards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Award'
+        Collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntertainmentCollection'
+        ProgramChangeHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramChangeHistory'
+        Summary:
+          $ref: '#/components/schemas/Summary'
+      description: DiscoverProgram
+      type: object
+    ShowEpisode:
+      title: ShowEpisode
+      properties:
+        EpisodeId:
+          type: string
+        SeasonId:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Action:
+          type: string
+      description: ShowEpisode
+      type: object
+    LanguageDetail:
+      title: LanguageDetail
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageDetail
+      type: object
+    CountryDetail:
+      title: CountryDetail
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IsoCode:
+          description: ISO code for a Country.
+          type: string
+        IsoCodeA3:
+          description: ISO 3 character code for a Country.
+          type: string
+        Name:
+          description: Name of the Country.
+          type: string
+        AlternateNames:
+          description: Alternate names of the Country.
+          type: array
+          items:
+            type: string
+      description: CountryDetail
+      type: object
+    ProgramRelease:
+      title: ProgramRelease
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Certification:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        FabricCountryId:
+          type: string
+        Type:
+          type: string
+      description: ProgramRelease
+      type: object
+    ProgramContributor:
+      title: ProgramContributor
+      properties:
+        PersonId:
+          type: string
+        PersonName:
+          type: string
+        Character:
+          type: string
+        Job:
+          type: string
+        Order:
+          type: integer
+          format: int32
+      description: ProgramContributor
+      type: object
+    ProgramAlternateTitle:
+      title: ProgramAlternateTitle
+      properties:
+        Title:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        CountryFabricId:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramAlternateTitle
+      type: object
+    ProgramDescription:
+      title: ProgramDescription
+      properties:
+        Description:
+          type: string
+        DescriptionType:
+          type: string
+        Attribution:
+          type: string
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramDescription
+      type: object
+    Company:
+      title: Company
+      properties:
+        Id:
+          description: ID of Company object.
+          type: integer
+          format: int64
+        CompanyId:
+          description: ID of Company.
+          type: integer
+          format: int64
+        Name:
+          description: Name of the Company.
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        NormalizedName:
+          type: string
+        ParentCompany:
+          type: string
+      description: Company
+      type: object
+    ExternalId:
+      title: ExternalId
+      properties:
+        Name:
+          type: string
+        Id:
+          type: string
+      description: ExternalId
+      type: object
+    ProgramVideo:
+      title: ProgramVideo
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Title:
+          type: string
+        Type:
+          type: string
+        StartDate:
+          type: string
+          format: date-time
+        ExpirationDate:
+          type: string
+          format: date-time
+        Mature:
+          type: boolean
+        CaptionID:
+          description: Closed Caption ID for a video, see the /Videos/ClosedCaption API for more details
+          type: integer
+          format: int64
+        Duration:
+          type: integer
+          format: int32
+        Language:
+          type: string
+        LanguageSubtitled:
+          type: string
+        Company:
+          type: string
+        Clean:
+          type: boolean
+        AllowAdvertising:
+          type: boolean
+        Certification:
+          type: boolean
+        Theatrical:
+          type: boolean
+        HomeVideo:
+          type: boolean
+        TuneIn:
+          type: boolean
+        SourceVideoWidth:
+          type: integer
+          format: int32
+        SourceVideoHeight:
+          type: integer
+          format: int32
+        Encoded:
+          type: string
+          format: date-time
+        ScreenCaptures:
+          type: array
+          items:
+            $ref: '#/components/schemas/VideoScreenCapture'
+        TargetCountries:
+          type: array
+          items:
+            type: string
+        TargetCountriesDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramVideoTargetCountry'
+        TargetLanguage:
+          type: string
+        TargetLanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramVideo
+      type: object
+    VideoScreenCapture:
+      title: VideoScreenCapture
+      properties:
+        Height:
+          type: integer
+          format: int32
+        Width:
+          type: integer
+          format: int32
+        Aspect:
+          type: string
+        FilePath:
+          type: string
+      description: VideoScreenCapture
+      type: object
+    ProgramVideoTargetCountry:
+      title: ProgramVideoTargetCountry
+      properties:
+        CountryId:
+          type: integer
+          format: int32
+        Country:
+          type: string
+        CountryName:
+          type: string
+        FabricId:
+          type: string
+      description: ProgramVideoTargetCountry
+      type: object
+    ProgramImage:
+      title: ProgramImage
+      properties:
+        ImageType:
+          type: string
+        Attribution:
+          type: string
+        Width:
+          type: integer
+          format: int32
+        Height:
+          type: integer
+          format: int32
+        Violence:
+          type: integer
+          format: int32
+        Sexuality:
+          type: integer
+          format: int32
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+        Tags:
+          type: array
+          items:
+            type: string
+        Official:
+          type: boolean
+        FilePath:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Created:
+          type: string
+          format: date-time
+      description: ProgramImage
+      type: object
+    ProgramAvailability:
+      title: ProgramAvailability
+      properties:
+        Provider:
+          type: string
+        OfferType:
+          type: string
+        DeliveryMethod:
+          type: string
+        Price:
+          type: number
+          format: double
+        Currency:
+          type: string
+        PreSale:
+          type: boolean
+        Quality:
+          type: string
+        Country:
+          type: string
+        CountryDetail:
+          $ref: '#/components/schemas/CountryDetail'
+        Links:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferLink'
+        StartDate:
+          type: string
+          format: date-time
+        ExpirationDate:
+          type: string
+          format: date-time
+      description: ProgramAvailability
+      type: object
+    OfferLink:
+      title: OfferLink
+      properties:
+        Platform:
+          type: string
+        Url:
+          type: string
+      description: OfferLink
+      type: object
+    ProgramTrend:
+      title: ProgramTrend
+      properties:
+        Id:
+          description: Trend Source Id.
+          type: integer
+          format: int32
+        Name:
+          description: Name of the trend list.
+          type: string
+        Brand:
+          description: Brand associated with trend list.
+          type: string
+        Country:
+          description: Specific country trend list is associated with.
+          type: string
+        Classifiers:
+          description: List of characteristics of the list.
+          type: array
+          items:
+            type: string
+        Modified:
+          description: Date the list was last updated.
+          type: string
+          format: date-time
+        Rank:
+          description: Position in the list.  1 is first/top of the list.
+          type: integer
+          format: int32
+        ListUrl:
+          description: URL of the list.
+          type: string
+        TitleUrl:
+          description: URL of title on trend list.
+          type: string
+      description: ProgramTrend
+      type: object
+    Award:
+      title: Award
+      properties:
+        Year:
+          type: integer
+          format: int32
+        Type:
+          type: string
+        Category:
+          type: string
+        CategoryType:
+          type: string
+        ProgramId:
+          type: string
+        PersonIds:
+          type: array
+          items:
+            type: string
+        Winner:
+          type: boolean
+        Modified:
+          type: string
+          format: date-time
+      description: Award
+      type: object
+    EntertainmentCollection:
+      title: EntertainmentCollection
+      properties:
+        Id:
+          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could
+            be ID or ParentID.
+          type: string
+        Name:
+          description: Name of collection.
+          type: string
+        Description:
+          description: Description of collection.
+          type: string
+        Types:
+          description: List of Types of collection.
+          type: array
+          items:
+            type: string
+        ParentCollectionIds:
+          description: List of collection ParentIds.
+          type: array
+          items:
+            type: string
+        Items:
+          description: Programs in the collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/EntertainmentCollectionItem'
+        Tags:
+          description: Significant Term tags from programs in the collection.
+          type: array
+          items:
+            type: string
+        MicroGenres:
+          description: Micro genres from programs in the collection.
+          type: array
+          items:
+            type: string
+        Subjects:
+          description: Subjects from programs in the collection.
+          type: array
+          items:
+            type: string
+        BasedOns:
+          description: Based Ons from programs in the collection.
+          type: array
+          items:
+            type: string
+        Characters:
+          description: Characters from programs in the collection.
+          type: array
+          items:
+            type: string
+        Timestamp:
+          description: DateTime where collection was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollection
+      type: object
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
+      properties:
+        ProgramId:
+          description: ID of program in collection.
+          type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
+        Modified:
+          description: DateTime collection item was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollectionItem
+      type: object
+    ProgramChangeHistory:
+      title: ProgramChangeHistory
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Entity:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+      description: ProgramChangeHistory
+      type: object
+    Summary:
+      title: Summary
+      properties:
+        Video:
+          $ref: '#/components/schemas/ProgramVideo'
+        Image:
+          $ref: '#/components/schemas/ProgramImage'
+        Description:
+          $ref: '#/components/schemas/ProgramDescription'
+        Contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramContributor'
+        ContributorCount:
+          type: integer
+          format: int32
+        AvailabilityCount:
+          type: integer
+          format: int32
+        ImageCount:
+          type: integer
+          format: int32
+        VideoCount:
+          type: integer
+          format: int32
+        ProgramTrendCount:
+          type: integer
+          format: int32
+        AwardCount:
+          type: integer
+          format: int32
+        ReleaseCount:
+          type: integer
+          format: int32
+        TitleCount:
+          type: integer
+          format: int32
+        ExternalIdCount:
+          type: integer
+          format: int32
+        TagCount:
+          type: integer
+          format: int32
+        ThemeCount:
+          type: integer
+          format: int32
+      description: Summary
+      type: object
+    EntertainmentMatchCandidatesResponse:
+      title: EntertainmentMatchCandidatesResponse
+      properties:
+        MatchCandidates:
+          description: List of possible matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/MatchCandidate'
+        TitleMods:
+          $ref: '#/components/schemas/TitleMods'
+        Success:
+          description: Status of match operation.
+          type: boolean
+        Message:
+          type: string
+      description: EntertainmentMatchCandidatesResponse
+      type: object
+    MatchCandidate:
+      title: MatchCandidate
+      properties:
+        Score:
+          description: Score of the match to Entertainment.
+          type: integer
+          format: int32
+        ProgramType:
+          description: Program Type of the match to Entertainment.
+          type: string
+        EntertainmentId:
+          description: Entertainment Index program ID on successful match.
+          type: string
+        TitleMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Title match result.
+        YearMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Year match result.
+        ReleaseDateMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Release Date match result.
+        CertificationMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Certification match result.
+        RuntimeMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Runtime match result.
+        OriginatingNetworkMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Originating Network match result.
+        DescriptionMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Description match result.
+        CastMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Cast match result.
+        DirectorsMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Directors match result.
+        ProducersMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Producers match result.
+        CompanyMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Company match result.
+        GenreMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Genre match result.
+        ThemeMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: THeme match result.
+      description: MatchCandidate
+      type: object
+    DataComparison:
+      title: DataComparison
+      properties:
+        Score:
+          type: integer
+          format: int32
+        SubmittedValue:
+          type: string
+        IndexValue:
+          type: string
+      description: DataComparison
+      type: object
+    TitleMods:
+      title: TitleMods
+      properties:
+        TitleSubmitted:
+          type: string
+        TitleApplied:
+          type: string
+        Removals:
+          type: array
+          items:
+            type: string
+      description: TitleMods
+      type: object
+    MatchToEntertainmentProgramResponse:
+      title: MatchToEntertainmentProgramResponse
+      properties:
+        Score:
+          description: Score of the match to Entertainment.
+          type: integer
+          format: int32
+        Success:
+          description: Status of match operation.
+          type: boolean
+        AltTitleMatch:
+          description: Status of match operation.
+          type: boolean
+        FUzzyTtleMatch:
+          description: Status of match operation.
+          type: boolean
+        TitleMods:
+          $ref: '#/components/schemas/TitleMods'
+        EntertainmentId:
+          description: Entertainment program ID on successful match.
+          type: integer
+          format: int64
+        Description:
+          description: Description of match operation result.
+          type: string
+        Took:
+          description: Elastic search time elapsed.
+          type: integer
+          format: int64
+        ProgramMatches:
+          description: List of matched Programs.
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscoverProgram'
+      description: MatchToEntertainmentProgramResponse
+      type: object
+    MatchToEntertainmentEpisodeBySequenceResponse:
+      title: MatchToEntertainmentEpisodeBySequenceResponse
+      properties:
+        Success:
+          type: boolean
+        EpisodeId:
+          type: integer
+          format: int64
+        Title:
+          type: string
+        Year:
+          type: integer
+          format: int32
+        Score:
+          type: integer
+          format: int32
+        Message:
+          type: string
+      description: MatchToEntertainmentEpisodeBySequenceResponse
+      type: object
+    MatchToEntertainmentSeasonBySequenceResponse:
+      title: MatchToEntertainmentSeasonBySequenceResponse
+      properties:
+        Success:
+          type: boolean
+        SeasonId:
+          type: integer
+          format: int64
+        Score:
+          type: integer
+          format: int32
+        Message:
+          type: string
+      description: MatchToEntertainmentSeasonBySequenceResponse
+      type: object

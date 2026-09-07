@@ -1,0 +1,367 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Rotten Tomatoes API",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "rottentomatoes"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.origin.fabricdata.com"
+    }
+  ],
+  "paths": {
+    "/RottenTomatoes/Episode": {
+      "get": {
+        "tags": [
+          "rottentomatoes"
+        ],
+        "summary": "Get Rotten Tomatoes reviews and scores for episode",
+        "description": "Get Rotten Tomatoes reviews and scores for Show",
+        "operationId": "GetRottenTomatoesEpisodeEpisode_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "EpisodeId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewData"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/RottenTomatoes/Movie": {
+      "get": {
+        "tags": [
+          "rottentomatoes"
+        ],
+        "summary": "Get Rotten Tomatoes reviews and scores for movie",
+        "description": "Get Rotten Tomatoes reviews and scores for movie",
+        "operationId": "GetRottenTomatoesMovieMovie_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "MovieId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewData"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/RottenTomatoes/Season": {
+      "get": {
+        "tags": [
+          "rottentomatoes"
+        ],
+        "summary": "GetRottenTomatoesSeason",
+        "description": "GetRottenTomatoesSeason",
+        "operationId": "GetRottenTomatoesSeasonSeason_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "SeasonId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewData"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/RottenTomatoes/Show": {
+      "get": {
+        "tags": [
+          "rottentomatoes"
+        ],
+        "summary": "Get Rotten Tomatoes reviews and scores for Show",
+        "description": "Get Rotten Tomatoes reviews and scores for Show",
+        "operationId": "GetRottenTomatoesShowShow_Get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "name": "ShowId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewData"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ReviewData": {
+        "title": "ReviewData",
+        "properties": {
+          "FanSummary": {
+            "$ref": "#/components/schemas/FanSummary"
+          },
+          "CriticSummary": {
+            "$ref": "#/components/schemas/CriticSummary"
+          },
+          "Reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RottenTomatoesReview"
+            }
+          },
+          "Ratings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RottenTomatoesRating"
+            }
+          }
+        },
+        "description": "ReviewData",
+        "type": "object"
+      },
+      "FanSummary": {
+        "title": "FanSummary",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "Score": {
+            "$ref": "#/components/schemas/SummaryScore"
+          }
+        },
+        "description": "FanSummary",
+        "type": "object"
+      },
+      "SummaryScore": {
+        "title": "SummaryScore",
+        "properties": {
+          "Value": {
+            "type": "string"
+          },
+          "AvgScore": {
+            "type": "string"
+          },
+          "Count": {
+            "type": "string"
+          },
+          "PreRelease": {
+            "type": "string"
+          },
+          "AudienceRating": {
+            "type": "string"
+          }
+        },
+        "description": "SummaryScore",
+        "type": "object"
+      },
+      "CriticSummary": {
+        "title": "CriticSummary",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "CriticRating": {
+            "type": "string"
+          },
+          "Score": {
+            "$ref": "#/components/schemas/SummaryScore"
+          },
+          "Freshness": {
+            "$ref": "#/components/schemas/SummaryFreshness"
+          }
+        },
+        "description": "CriticSummary",
+        "type": "object"
+      },
+      "SummaryFreshness": {
+        "title": "SummaryFreshness",
+        "properties": {
+          "Value": {
+            "type": "string"
+          },
+          "Certified": {
+            "type": "string"
+          },
+          "Rotten": {
+            "type": "string"
+          }
+        },
+        "description": "SummaryFreshness",
+        "type": "object"
+      },
+      "RottenTomatoesReview": {
+        "title": "RottenTomatoesReview",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Url": {
+            "type": "string"
+          },
+          "TopReview": {
+            "type": "string"
+          },
+          "Date": {
+            "type": "string"
+          },
+          "Quote": {
+            "type": "string"
+          },
+          "Freshness": {
+            "$ref": "#/components/schemas/ReviewFreshness"
+          },
+          "Critic": {
+            "$ref": "#/components/schemas/Critic"
+          },
+          "Publication": {
+            "$ref": "#/components/schemas/Publication"
+          }
+        },
+        "description": "RottenTomatoesReview",
+        "type": "object"
+      },
+      "ReviewFreshness": {
+        "title": "ReviewFreshness",
+        "properties": {
+          "OriginalScore": {
+            "type": "string"
+          },
+          "Text": {
+            "type": "string"
+          }
+        },
+        "description": "ReviewFreshness",
+        "type": "object"
+      },
+      "Critic": {
+        "title": "Critic",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "TopCritic": {
+            "type": "string"
+          },
+          "Url": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Thumbnail": {
+            "type": "string"
+          }
+        },
+        "description": "Critic",
+        "type": "object"
+      },
+      "Publication": {
+        "title": "Publication",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "TopPublication": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          }
+        },
+        "description": "Publication",
+        "type": "object"
+      },
+      "RottenTomatoesRating": {
+        "title": "RottenTomatoesRating",
+        "properties": {
+          "Url": {
+            "type": "string"
+          },
+          "Score": {
+            "$ref": "#/components/schemas/RatingScore"
+          },
+          "Date": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string"
+          },
+          "Comment": {
+            "type": "string"
+          }
+        },
+        "description": "RottenTomatoesRating",
+        "type": "object"
+      },
+      "RatingScore": {
+        "title": "RatingScore",
+        "properties": {
+          "Value": {
+            "type": "string"
+          },
+          "Text": {
+            "type": "string"
+          }
+        },
+        "description": "RatingScore",
+        "type": "object"
+      }
+    }
+  }
+}
