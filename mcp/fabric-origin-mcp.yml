@@ -4,15 +4,13 @@ source: https://www.fabricdata.com/llms.txt
 provider: Fabric Origin
 providerId: fabric-origin
 name: Fabric Origin MCP Servers
-description: >-
-  Fabric publishes two hosted Model Context Protocol servers inside the Origin product family:
-  Origin Studio MCP (metadata records, catalog operations, availability) and Origin Insights MCP
-  (streaming availability, pricing and plans, demand, Pay TV, consumer surveys). Both are remote
-  Streamable HTTP endpoints that implement the MCP authorization specification, and both were
-  probed directly: an unauthenticated tools/list returns a standards-compliant 401 challenge, and
-  both serve anonymous RFC 8414 authorization-server metadata and RFC 9728 protected-resource
-  metadata. A third Fabric MCP server, Xytech X2, belongs to the Xytech product family and is
-  recorded here only as a sibling, not as an Origin surface.
+description: 'Fabric publishes two hosted Model Context Protocol servers inside the Origin product family:
+  Origin Studio MCP (metadata records, catalog operations, availability) and Origin Insights MCP (streaming
+  availability, pricing and plans, demand, Pay TV, consumer surveys). Both are remote Streamable HTTP
+  endpoints that implement the MCP authorization specification, and both were probed directly: an unauthenticated
+  tools/list returns a standards-compliant 401 challenge, and both serve anonymous RFC 8414 authorization-server
+  metadata and RFC 9728 protected-resource metadata. A third Fabric MCP server, Xytech X2, belongs to
+  the Xytech product family and is recorded here only as a sibling, not as an Origin surface.'
 deployment:
   mode: both
   endpoint: https://mcp-api.studio.fabricdata.com
@@ -20,22 +18,25 @@ deployment:
   package: https://www.npmjs.com/package/mcp-remote
   auth: oauth
   verified: probed
-  note: >-
-    mode is `both` because Fabric ships two remote HTTPS endpoints an MCP client POSTs to directly
-    (Origin Studio at https://mcp-api.studio.fabricdata.com, Origin Insights at
-    https://insights.fabric-mcp.link) AND documents a local stdio path for Origin Insights via the
-    third-party `mcp-remote` bridge plus a first-party macOS/Windows installer at
-    https://download.fabric-mcp.link. `mcp-remote` is a generic community bridge, not a Fabric
-    package — the agent-callable surface is the remote endpoint in both cases.
+  note: mode is `both` because Fabric ships two remote HTTPS endpoints an MCP client POSTs to directly
+    (Origin Studio at https://mcp-api.studio.fabricdata.com, Origin Insights at https://insights.fabric-mcp.link)
+    AND documents a local stdio path for Origin Insights via the third-party `mcp-remote` bridge plus
+    a first-party macOS/Windows installer at https://download.fabric-mcp.link. `mcp-remote` is a generic
+    community bridge, not a Fabric package — the agent-callable surface is the remote endpoint in both
+    cases.
+  probe_prior: (never probed)
+  probe: gated
+  probe_why: RFC 9728 challenge on the MCP path only
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 servers:
 - id: origin-studio-mcp
   name: Origin Studio MCP Server
   product: Origin Studio
   endpoint: https://mcp-api.studio.fabricdata.com
   transport: streamable-http
-  path_note: >-
-    The MCP endpoint is the ROOT path. POST, GET and DELETE on / all carry MCP traffic — there is
-    no /mcp or /v1 suffix.
+  path_note: The MCP endpoint is the ROOT path. POST, GET and DELETE on / all carry MCP traffic — there
+    is no /mcp or /v1 suffix.
   docs: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
   status: live
   version: 1.10.0
@@ -44,20 +45,23 @@ servers:
     type: oauth2
     flow: authorization_code
     pkce: required
-    pkce_methods: [S256]
+    pkce_methods:
+    - S256
     client_auth: none
     dynamic_client_registration: true
     registration_endpoint: https://mcp-api.studio.fabricdata.com/register
     authorization_endpoint: https://mcp-api.studio.fabricdata.com/authorize
     token_endpoint: https://mcp-api.studio.fabricdata.com/token
     issuer: https://mcp-api.studio.fabricdata.com
-    scopes: [openid, profile, email, offline_access]
-    alternative: >-
-      An Origin Studio API key may be sent as the bearer token for unattended and service-to-service
-      workloads. The server accepts any non-JWT bearer as an API key. There is no client-credentials
-      path for third-party integrations.
-    note: >-
-      The MCP server is its own authorization server. It brokers login with Auth0 internally; clients
+    scopes:
+    - openid
+    - profile
+    - email
+    - offline_access
+    alternative: An Origin Studio API key may be sent as the bearer token for unattended and service-to-service
+      workloads. The server accepts any non-JWT bearer as an API key. There is no client-credentials path
+      for third-party integrations.
+    note: The MCP server is its own authorization server. It brokers login with Auth0 internally; clients
       never talk to Auth0 directly and must take every endpoint from the discovery document.
   operational_endpoints:
   - path: /health
@@ -71,23 +75,23 @@ servers:
   upstream_api: https://api.studio.fabricdata.com/v1
   tools:
     status: auth-gated
-    listing: >-
-      tools/list returned HTTP 401 with WWW-Authenticate: Bearer error="invalid_token". The live tool
-      set and its input schemas require an authenticated introspection; they are not published as a
-      static list. The provider documents that tools are discoverable at runtime via tools/list and
-      that reference catalogs (record fields, datasets, layouts, lifecycle definitions) are exposed
-      as MCP resources via resources/list.
-    named_in_docs: [whoami, create_api_key]
+    listing: 'tools/list returned HTTP 401 with WWW-Authenticate: Bearer error="invalid_token". The live
+      tool set and its input schemas require an authenticated introspection; they are not published as
+      a static list. The provider documents that tools are discoverable at runtime via tools/list and
+      that reference catalogs (record fields, datasets, layouts, lifecycle definitions) are exposed as
+      MCP resources via resources/list.'
+    named_in_docs:
+    - whoami
+    - create_api_key
     conventions:
     - find_* tools are read-only and always safe to retry
     - for writes, re-query before retrying — check whether a timed-out write landed
     - resolve tenant-specific metadata field and dataset keys before writing
     - lifecycle changes use lifecycle transitions, not metadata updates
     - file imports upload client-side via a server-issued presigned URL
-  authorization_model: >-
-    Tenant is inferred from the token; no tool accepts a client-supplied tenant hint. Tool-level
-    access follows the identity's Studio role and permission groups, enforced server-side on every
-    call, so two users connecting through the same agent may see different results.
+  authorization_model: Tenant is inferred from the token; no tool accepts a client-supplied tenant hint.
+    Tool-level access follows the identity's Studio role and permission groups, enforced server-side on
+    every call, so two users connecting through the same agent may see different results.
   write_capable: true
 - id: origin-insights-mcp
   name: Origin Insights MCP Server
@@ -106,90 +110,192 @@ servers:
     token_endpoint: https://insights.fabric-mcp.link/oauth/token
     issuer: https://insights.fabric-mcp.link/
     jwks_uri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_V84pL7JUo/.well-known/jwks.json
-    scopes: [openid, email, profile]
+    scopes:
+    - openid
+    - email
+    - profile
     note: Browser sign-in — grant access once, per client.
   local_stdio:
-    install: >-
-      npx -y mcp-remote https://insights.fabric-mcp.link --client-name origin-insights
+    install: npx -y mcp-remote https://insights.fabric-mcp.link --client-name origin-insights
     installer: https://download.fabric-mcp.link/
-    platforms: [macOS, Windows]
-    note: >-
-      The stdio path is a bridge to the same remote endpoint, not a separately distributed server.
+    platforms:
+    - macOS
+    - Windows
+    note: The stdio path is a bridge to the same remote endpoint, not a separately distributed server.
   write_capable: false
-  read_only_note: >-
-    Provider states every tool reads from the catalog and nothing writes back; any get_*/find_*/
+  read_only_note: Provider states every tool reads from the catalog and nothing writes back; any get_*/find_*/
     search_*/measure_* action is safe to retry.
   tools:
     status: auth-gated-live-schema
     listing_method: published tool catalog in the provider documentation (names only, no inputSchema)
     listing_source: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp/getting-started
-    note: >-
-      A live tools/list returns 401 (Bearer realm="fabric-mcp"). The names below are the provider's
-      own published catalog; input schemas require authenticated introspection. Each domain tool
-      takes an `action` parameter selecting the operation.
+    note: A live tools/list returns 401 (Bearer realm="fabric-mcp"). The names below are the provider's
+      own published catalog; input schemas require authenticated introspection. Each domain tool takes
+      an `action` parameter selecting the operation.
     domains:
     - tool: titles
-      description: Title discovery and metadata — search, browse, profiles, artwork, filmography, box office, awards.
-      actions: [find_title, browse_titles, show_title_profile, find_title_artwork, show_title_awards,
-        rank_titles_by_quality, find_filmography, find_studio_titles, find_frequent_collaborators,
-        get_title_external_ids, find_industry_awards, show_box_office, rank_awards_leaders]
+      description: Title discovery and metadata — search, browse, profiles, artwork, filmography, box
+        office, awards.
+      actions:
+      - find_title
+      - browse_titles
+      - show_title_profile
+      - find_title_artwork
+      - show_title_awards
+      - rank_titles_by_quality
+      - find_filmography
+      - find_studio_titles
+      - find_frequent_collaborators
+      - get_title_external_ids
+      - find_industry_awards
+      - show_box_office
+      - rank_awards_leaders
     - tool: availability
-      description: Where titles stream now and over time, catalog browsing, lifecycle, seasons, CSV/Excel export.
-      actions: [find_where_to_watch, find_streaming_availability, find_season_availability,
-        track_availability_timeline, track_title_across_platforms, track_title_lifecycle,
-        track_availability_history, track_season_platform_changes, track_season_distribution,
-        measure_title_staying_power, measure_season_staying_power, measure_availability_duration,
-        summarize_platform_coverage, summarize_season_coverage, measure_global_reach,
-        measure_season_global_reach, find_whats_streaming, find_platform_exclusives,
-        find_departing_titles, track_catalog_growth, track_catalog_evolution,
-        measure_global_catalog_size, export_whats_streaming_to_csv, export_whats_streaming_to_excel]
+      description: Where titles stream now and over time, catalog browsing, lifecycle, seasons, CSV/Excel
+        export.
+      actions:
+      - find_where_to_watch
+      - find_streaming_availability
+      - find_season_availability
+      - track_availability_timeline
+      - track_title_across_platforms
+      - track_title_lifecycle
+      - track_availability_history
+      - track_season_platform_changes
+      - track_season_distribution
+      - measure_title_staying_power
+      - measure_season_staying_power
+      - measure_availability_duration
+      - summarize_platform_coverage
+      - summarize_season_coverage
+      - measure_global_reach
+      - measure_season_global_reach
+      - find_whats_streaming
+      - find_platform_exclusives
+      - find_departing_titles
+      - track_catalog_growth
+      - track_catalog_evolution
+      - measure_global_catalog_size
+      - export_whats_streaming_to_csv
+      - export_whats_streaming_to_excel
     - tool: demand
-      description: Trending titles, demand rankings, global hits, popularity over time, genre momentum, top-10, pre-release hype.
-      actions: [find_trending_titles, rank_titles_by_demand, find_global_hits, measure_title_popularity,
-        track_genre_trends, find_top_10_charts, discover_hyped_titles, break_down_demand_scores,
-        whats_coming_soon]
+      description: Trending titles, demand rankings, global hits, popularity over time, genre momentum,
+        top-10, pre-release hype.
+      actions:
+      - find_trending_titles
+      - rank_titles_by_demand
+      - find_global_hits
+      - measure_title_popularity
+      - track_genre_trends
+      - find_top_10_charts
+      - discover_hyped_titles
+      - break_down_demand_scores
+      - whats_coming_soon
     - tool: platforms
       description: The streaming services — list, search, ownership, logos, status, cross-country overlap.
-      actions: [list_streaming_services, find_platforms, find_platforms_by_owner, find_platform_logos,
-        check_platform_status, compare_platform_across_countries]
+      actions:
+      - list_streaming_services
+      - find_platforms
+      - find_platforms_by_owner
+      - find_platform_logos
+      - check_platform_status
+      - compare_platform_across_countries
     - tool: pricing
       description: Per-title transactional (TVOD) rent/buy pricing.
-      actions: [show_title_price, track_price_drops, break_down_title_price]
+      actions:
+      - show_title_price
+      - track_price_drops
+      - break_down_title_price
     - tool: subscriptions
       description: Subscription (SVOD) plans, bundles, promotions.
-      actions: [compare_subscription_plans, find_best_plans, find_promotional_offers, track_plan_prices]
+      actions:
+      - compare_subscription_plans
+      - find_best_plans
+      - find_promotional_offers
+      - track_plan_prices
     - tool: market_intelligence
-      description: Platform-vs-platform and country-vs-country analysis, catalog overlap, audience gaps, studio strategy.
-      actions: [compare_platforms, compare_catalog_overlap, compare_country_catalogs, find_audience_gaps,
-        spot_hidden_gems, analyze_studio_strategy, get_the_quick_pitch, generate_market_intelligence_report]
+      description: Platform-vs-platform and country-vs-country analysis, catalog overlap, audience gaps,
+        studio strategy.
+      actions:
+      - compare_platforms
+      - compare_catalog_overlap
+      - compare_country_catalogs
+      - find_audience_gaps
+      - spot_hidden_gems
+      - analyze_studio_strategy
+      - get_the_quick_pitch
+      - generate_market_intelligence_report
     - tool: playbooks
       description: Composite analyses that run several lookups and return one decision-ready answer.
-      actions: [compare_titles, find_similar_titles, calculate_platform_value, build_content_calendar,
-        build_market_brief, build_acquisition_brief, evaluate_license_renewal,
-        find_underexploited_titles, build_content_gap_brief]
+      actions:
+      - compare_titles
+      - find_similar_titles
+      - calculate_platform_value
+      - build_content_calendar
+      - build_market_brief
+      - build_acquisition_brief
+      - evaluate_license_renewal
+      - find_underexploited_titles
+      - build_content_gap_brief
     - tool: reports
       description: Formatted single-entity HTML reports.
-      actions: [generate_title_report, generate_country_report, generate_platform_report,
-        generate_people_report, generate_top_titles_report, who_watches_this,
-        complete_audience_report, add_executive_insights]
+      actions:
+      - generate_title_report
+      - generate_country_report
+      - generate_platform_report
+      - generate_people_report
+      - generate_top_titles_report
+      - who_watches_this
+      - complete_audience_report
+      - add_executive_insights
     - tool: reports_market
       description: Market-wide HTML reports.
-      actions: [generate_trends_report, generate_market_radar, generate_box_office_report,
-        generate_comingsoon_report, generate_release_calendar_report, generate_subscription_plans_report,
-        generate_bundle_analysis_report, generate_promotional_offers_report, generate_overlap_report,
-        generate_awards_report, generate_price_history_report, generate_genre_catalog_distribution_report]
+      actions:
+      - generate_trends_report
+      - generate_market_radar
+      - generate_box_office_report
+      - generate_comingsoon_report
+      - generate_release_calendar_report
+      - generate_subscription_plans_report
+      - generate_bundle_analysis_report
+      - generate_promotional_offers_report
+      - generate_overlap_report
+      - generate_awards_report
+      - generate_price_history_report
+      - generate_genre_catalog_distribution_report
     - tool: generate_report
       description: A configurable report from assembled data, for when no specific report tool fits.
       actions: []
     - tool: data_guide
       description: Metadata about the data itself and how the platform works.
-      actions: [list_available_data, check_data_freshness, explain_demand_scores, summarize_data_catalog,
-        show_partition_keys_guide, confirm_title_match, ask_knowledge_base]
+      actions:
+      - list_available_data
+      - check_data_freshness
+      - explain_demand_scores
+      - summarize_data_catalog
+      - show_partition_keys_guide
+      - confirm_title_match
+      - ask_knowledge_base
     - tool: raw_data
       description: Direct query access, documented as a last resort behind the domain tools.
-      actions: [execute_sql, query_raw_data, export_full_query_to_csv, list_tables, get_table_schema]
-  data_domains: [Content, Availability, Demand, Price, PPB, Supply, Platform, Coming Soon, Reports,
-    Intelligence, Interactive]
+      actions:
+      - execute_sql
+      - query_raw_data
+      - export_full_query_to_csv
+      - list_tables
+      - get_table_schema
+  data_domains:
+  - Content
+  - Availability
+  - Demand
+  - Price
+  - PPB
+  - Supply
+  - Platform
+  - Coming Soon
+  - Reports
+  - Intelligence
+  - Interactive
 siblings:
 - id: xytech-x2-mcp
   name: Xytech X2 MCP
@@ -198,10 +304,10 @@ siblings:
   note: Recorded for completeness; belongs to the Xytech media-operations product line.
 governance:
   source: https://www.fabricdata.com/agent-governance
-  machine_identity: Agents authenticate as first-class identities via OAuth; service accounts and token-based access supported.
-  tool_level_scoping: >-
-    On Origin Studio, tool access maps to the identity's Studio permission groups; on Xytech, OAuth
-    grants are scoped to the individual tool level.
+  machine_identity: Agents authenticate as first-class identities via OAuth; service accounts and token-based
+    access supported.
+  tool_level_scoping: On Origin Studio, tool access maps to the identity's Studio permission groups; on
+    Xytech, OAuth grants are scoped to the individual tool level.
   auditability: Agent actions are logged and attributable to their identity.
   approval_layers: Workflows can require human approval at defined checkpoints.
   certification: ISO/IEC 27001
