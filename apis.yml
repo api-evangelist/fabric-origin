@@ -50,6 +50,19 @@ tags:
 - Games
 - Celebrities
 - Trailers
+- Image
+- TV Listings
+- Market Intelligence
+- Media
+- MCP
+tags_raw:
+- Entertainment
+- Metadata
+- Movies
+- Television
+- Games
+- Celebrities
+- Trailers
 - Images
 - TV Listings
 - Market Intelligence
@@ -58,9 +71,10 @@ tags:
 apis:
 - aid: fabric-origin:entertainment-api
   name: Fabric Origin Entertainment API
-  description: The Entertainment API ingests and serves metadata for movies, television shows, and games,
-    including identifiers used to retrieve associated videos and images from sibling APIs. Responses are
-    available in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
+  description: >-
+    The Entertainment API ingests and serves metadata for movies, television shows, and games, including
+    identifiers used to retrieve associated videos and images from sibling APIs. Responses are available
+    in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
   baseURL: https://api.origin.fabricdata.com
@@ -81,8 +95,9 @@ apis:
     url: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
 - aid: fabric-origin:celebrity-api
   name: Fabric Origin Celebrity API
-  description: The Celebrity API serves metadata about celebrities, including actors, directors, and other
-    entertainment industry figures, with cross references to titles served by the Entertainment API.
+  description: >-
+    The Celebrity API serves metadata about celebrities, including actors, directors, and other entertainment
+    industry figures, with cross references to titles served by the Entertainment API.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/celebrity-api-docs
   baseURL: https://api.origin.fabricdata.com
@@ -99,9 +114,10 @@ apis:
     url: https://knowledgebase.fabricdata.com/origin/apis-all/celebrity-api-docs
 - aid: fabric-origin:video-api
   name: Fabric Origin Video API
-  description: The Video API generates playable links for trailers and other video assets using video
-    identifiers returned from the Entertainment API, allowing customers to embed Fabric Origin video content
-    into their content discovery experiences.
+  description: >-
+    The Video API generates playable links for trailers and other video assets using video identifiers
+    returned from the Entertainment API, allowing customers to embed Fabric Origin video content into
+    their content discovery experiences.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
   baseURL: https://api.origin.fabricdata.com
@@ -118,9 +134,10 @@ apis:
     url: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
 - aid: fabric-origin:image-api
   name: Fabric Origin Image API
-  description: The Image API provides access to images hosted on Fabric Origin's servers, including posters,
-    stills, and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are
-    encouraged to host and serve images from their own infrastructure for production use.
+  description: >-
+    The Image API provides access to images hosted on Fabric Origin's servers, including posters, stills,
+    and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are encouraged
+    to host and serve images from their own infrastructure for production use.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
   baseURL: https://api.origin.fabricdata.com
@@ -139,24 +156,6 @@ apis:
     url: openapi/fabric-origin-images-api-openapi.yml
   - type: APIReference
     url: https://knowledgebase.fabricdata.com/origin/apis-all/image-api-docs
-- aid: fabric-origin:common-data-api
-  name: Fabric Origin Common Data API
-  description: The Common Data API exposes reference data used across the Fabric Origin product family,
-    including country codes, image type lookups, and video type lookups required when working with the
-    Entertainment, Celebrity, Video, and Image APIs.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Reference Data
-  - Lookups
-  properties:
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/
-  - type: OpenAPI
-    url: openapi/fabric-origin-common-metadata-api-openapi.yml
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
 - aid: fabric-origin:fabric-origin-entertainment-api
   name: Fabric Origin Entertainment API
   description: The Entertainment API from Fabric Origin — 14 operation(s) for entertainment.
@@ -198,27 +197,11 @@ apis:
   - type: APIReference
     url: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:video-analytics-api
-  name: Fabric Origin Video Analytics API
-  description: Reports GB of video delivery usage by day for the Origin Nexus video surface.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Video
-  - Analytics
-  - Usage
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-video-analytics-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:fandango-api
   name: Fabric Origin Fandango API
-  description: Theatrical showtimes and ticketing — geolocation lookup, nearby theaters, movies playing,
-    and showtime groupings by date, theater, format and amenities, linked back to Origin title identifiers.
+  description: >-
+    Theatrical showtimes and ticketing — geolocation lookup, nearby theaters, movies playing, and showtime
+    groupings by date, theater, format and amenities, linked back to Origin title identifiers.
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
   baseURL: https://api.origin.fabricdata.com
   tags:
@@ -233,23 +216,6 @@ apis:
     url: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
   - type: APIReference
     url: https://knowledgebase.fabricdata.com/origin/apis-all/fandango-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:captions-translations-api
-  name: Fabric Origin Captions and Translations API
-  description: Rev-powered captioning and translation for Origin video content.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Video
-  - Captions
-  - Translation
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-captions-translations-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:metacritic-api
   name: Fabric Origin Metacritic API
@@ -269,99 +235,13 @@ apis:
   - type: APIReference
     url: https://knowledgebase.fabricdata.com/origin/apis-all/metacritic-api-docs
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:common-sense-media-api
-  name: Fabric Origin Common Sense Media API
-  description: Common Sense Media age ratings and reviews for movies and TV, keyed on Origin identifiers.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Ratings
-  - Reviews
-  - Parental Guidance
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-common-sense-media-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:rotten-tomatoes-api
-  name: Fabric Origin Rotten Tomatoes API
-  description: Tomatometer, Audience Scores, critic snippets and critics consensus for movies, shows,
-    seasons and episodes, keyed on Origin identifiers.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Ratings
-  - Reviews
-  - Movies
-  - Television
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-rotten-tomatoes-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:rabbit-recommendations-api
-  name: Fabric Origin Rabbit Recommendations API
-  description: Content recommendations over the Origin catalog.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Recommendations
-  - Discovery
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-rabbit-recommendations-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:tv-grid-online-api
-  name: Fabric Origin TV Grid Online API
-  description: TV listings by channel lineup — lineups, team info and linear grid data.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Television
-  - TV Listings
-  - Lineups
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-tv-grid-online-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-- aid: fabric-origin:katch-media-api
-  name: Fabric Origin Katch Media API
-  description: Katch genomic taste data — content broken into core attributes, organised into traits and
-    content clusters.
-  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
-  baseURL: https://api.origin.fabricdata.com
-  tags:
-  - Metadata
-  - Taste Data
-  - Discovery
-  properties:
-  - type: OpenAPI
-    url: openapi/fabric-origin-katch-media-api-openapi.yml
-  - type: Documentation
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
-  - type: APIReference
-    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:origin-studio-api
   name: Origin Studio Production API
-  description: The Origin Studio metadata management API — records, record lifecycles, fields, datasets,
-    media, credits, contributors, data deliveries, data ingress, background jobs, audit, tenants and users.
-    Follows REST and the JSON:API 1.1 specification, authenticated with a bearer API key. The reference
-    is a client-rendered Stoplight instance; no OpenAPI document is retrievable anonymously.
+  description: >-
+    The Origin Studio metadata management API — records, record lifecycles, fields, datasets, media, credits,
+    contributors, data deliveries, data ingress, background jobs, audit, tenants and users. Follows REST
+    and the JSON:API 1.1 specification, authenticated with a bearer API key. The reference is a client-rendered
+    Stoplight instance; no OpenAPI document is retrievable anonymously.
   humanURL: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview
   baseURL: https://api.studio.fabricdata.com/v1
   tags:
@@ -375,7 +255,8 @@ apis:
   - type: APIReference
     url: https://api.fabricdata.com/docs/fabric/83d3097deedd5-introduction
   - type: Authentication
-    url: https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/authentication
+    url: >-
+      https://knowledgebase.fabricdata.com/studio/integrations-and-apis/api-overview/authentication
   - type: Webhooks
     url: asyncapi/fabric-origin-events-webhooks.yml
   - type: ErrorCatalog
@@ -387,11 +268,13 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:origin-studio-mcp
   name: Origin Studio MCP Server
-  description: A hosted Model Context Protocol server over Origin Studio — metadata records, catalog operations
-    and availability. Streamable HTTP on the root path, OAuth 2.0 with mandatory PKCE, acting as its own
-    authorization server with dynamic client registration. An Origin Studio API key is accepted as a bearer
-    alternative for unattended workloads. Tenant and permissions are derived from the token.
-  humanURL: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+  description: >-
+    A hosted Model Context Protocol server over Origin Studio — metadata records, catalog operations and
+    availability. Streamable HTTP on the root path, OAuth 2.0 with mandatory PKCE, acting as its own authorization
+    server with dynamic client registration. An Origin Studio API key is accepted as a bearer alternative
+    for unattended workloads. Tenant and permissions are derived from the token.
+  humanURL: >-
+    https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
   baseURL: https://mcp-api.studio.fabricdata.com
   tags:
   - MCP
@@ -402,7 +285,8 @@ apis:
   - type: MCPServer
     url: mcp/fabric-origin-mcp.yml
   - type: Documentation
-    url: https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
+    url: >-
+      https://knowledgebase.fabricdata.com/studio/origin-studio-mcp-server/origin-studio-mcp-server
   - type: ToolCrosswalk
     url: mcp/fabric-origin-tool-crosswalk.yml
   - type: OAuthScopes
@@ -412,10 +296,11 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: fabric-origin:origin-insights-mcp
   name: Origin Insights MCP Server
-  description: A hosted Model Context Protocol server over Origin Insights streaming market intelligence
-    — availability, demand, TVOD pricing, subscription plans, platforms, supply, coming-soon and pre-built
-    reports across 11 data domains. Read-only and catalog-scoped, Streamable HTTP, OAuth browser sign-in,
-    with a documented mcp-remote bridge and a first-party desktop installer for local clients.
+  description: >-
+    A hosted Model Context Protocol server over Origin Insights streaming market intelligence — availability,
+    demand, TVOD pricing, subscription plans, platforms, supply, coming-soon and pre-built reports across
+    11 data domains. Read-only and catalog-scoped, Streamable HTTP, OAuth browser sign-in, with a documented
+    mcp-remote bridge and a first-party desktop installer for local clients.
   humanURL: https://knowledgebase.fabricdata.com/insights/origin-insights-mcp
   baseURL: https://insights.fabric-mcp.link
   tags:
@@ -433,6 +318,343 @@ apis:
   - type: OAuthScopes
     url: scopes/fabric-origin-scopes.yml
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: fabric-origin:fabric-origin-analytics-api
+  name: Fabric Origin Analytics API
+  description: The analytics API from Fabric Origin — 1 operation(s) for analytics.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-common-api
+  name: Fabric Origin Common API
+  description: The common API from Fabric Origin — 39 operation(s) for common.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - common
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-common-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-commonsense-api
+  name: Fabric Origin Commonsense API
+  description: The commonsense API from Fabric Origin — 2 operation(s) for commonsense.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - commonsense
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-commonsense-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-katchmedia-api
+  name: Fabric Origin Katchmedia API
+  description: The katchmedia API from Fabric Origin — 1 operation(s) for katchmedia.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - katchmedia
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-katchmedia-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-rabbitrecommendations-api
+  name: Fabric Origin Rabbitrecommendations API
+  description: >-
+    The rabbitrecommendations API from Fabric Origin — 1 operation(s) for rabbitrecommendations.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - rabbitrecommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-rabbitrecommendations-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-rev-api
+  name: Fabric Origin Rev API
+  description: The rev API from Fabric Origin — 3 operation(s) for rev.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - rev
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-rev-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-rottentomatoes-api
+  name: Fabric Origin Rottentomatoes API
+  description: The rottentomatoes API from Fabric Origin — 4 operation(s) for rottentomatoes.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - rottentomatoes
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-rottentomatoes-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+- aid: fabric-origin:fabric-origin-tvgrid-api
+  name: Fabric Origin Tvgrid API
+  description: The tvgrid API from Fabric Origin — 21 operation(s) for tvgrid.
+  humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
+  baseURL: https://api.origin.fabricdata.com
+  tags:
+  - tvgrid
+  properties:
+  - type: OpenAPI
+    url: openapi/fabric-origin-tvgrid-api-openapi.yml
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-metadata-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/video-analytics-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/captions-and-translations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/common-sense-media-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rotten-tomatoes-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/rabbit-recommendations-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/tv-grid-online-api-docs
+  - type: Documentation
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
+  - type: APIReference
+    url: https://knowledgebase.fabricdata.com/origin/apis-all/katch-media-api-docs
 common:
 - type: CapabilityMap
   url: capabilities/fabric-origin-capability-edges.yml
