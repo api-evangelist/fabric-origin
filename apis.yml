@@ -190,6 +190,8 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/video-api-docs
   baseURL: https://api.origin.fabricdata.com
   tags:
+  - Video
+  tags_raw:
   - Videos
   properties:
   - type: OpenAPI
@@ -324,6 +326,8 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
   baseURL: https://api.origin.fabricdata.com
   tags:
+  - Analytics
+  tags_raw:
   - analytics
   properties:
   - type: OpenAPI
@@ -366,6 +370,8 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
   baseURL: https://api.origin.fabricdata.com
   tags:
+  - Common
+  tags_raw:
   - common
   properties:
   - type: OpenAPI
@@ -408,6 +414,8 @@ apis:
   humanURL: https://knowledgebase.fabricdata.com/origin/apis-all/entertainment-api-docs
   baseURL: https://api.origin.fabricdata.com
   tags:
+  - Common Sense
+  tags_raw:
   - commonsense
   properties:
   - type: OpenAPI
