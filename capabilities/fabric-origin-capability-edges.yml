@@ -1,0 +1,27 @@
+slug: fabric-origin
+provider: Fabric Origin
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Entertainment
+  spec_file: fabric-origin-entertainment-api-openapi.yml
+  capability_id: BC-3710.20
+  capability_id_l1: BC-3710
+  capability_name: Metadata Cataloguing
+  confidence: 0.75
+  evidence: GET /api/Entertainment/Search/ 'Search entertainment metadata'; 'Match entertainment record
+    by external IDs'; 'Match an episode by sequence number'
+  reason: Vendor supplies entertainment metadata (titles, seasons, episodes, ratings) with search and
+    identifier matching — this realises descriptive metadata cataloguing and identifier/version matching
+    for media assets. Chose Metadata Cataloguing as the closest fit, though the ID-matching operations
+    also touch BC-3710.60.
