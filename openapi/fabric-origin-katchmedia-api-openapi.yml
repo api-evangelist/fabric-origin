@@ -1,18 +1,17 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Katch Media
+  title: Katch Media Katchmedia API
   version: '1.0'
-tags:
-- name: katchmedia
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: katchmedia
 paths:
   /KatchMedia/MetaData:
     get:
       tags:
       - katchmedia
       summary: Get Katch program Metadata by Origin Id
-      description: Get Katch program Metadata by Origin Id
       operationId: GetKatchProgramMetaDataMetaData_Get
       parameters:
       - schema:
@@ -31,18 +30,41 @@ paths:
       deprecated: false
 components:
   schemas:
-    KatchProgramData:
-      title: KatchProgramData
+    Object:
+      properties: {}
+      description: Object
+      type: object
+    Crew:
+      title: Crew
       properties:
-        KatchId:
+        job:
           type: string
-        OriginId:
+        individual:
           type: string
-        ProgramAndTraits:
-          $ref: '#/components/schemas/KattchProgram'
-        Clusters:
-          $ref: '#/components/schemas/Datum'
-      description: KatchProgramData
+      description: Crew
+      type: object
+    UniversalTraits:
+      title: UniversalTraits
+      properties:
+        category:
+          type: string
+        subcategory:
+          type: string
+        universal_trait:
+          type: string
+        activation_score:
+          type: integer
+          format: int32
+      description: UniversalTraits
+      type: object
+    Cast:
+      title: Cast
+      properties:
+        character:
+          type: string
+        individual:
+          type: string
+      description: Cast
       type: object
     KattchProgram:
       title: KattchProgram
@@ -93,23 +115,18 @@ components:
             $ref: '#/components/schemas/Cast'
       description: KattchProgram
       type: object
-    Object:
-      properties: {}
-      description: Object
-      type: object
-    UniversalTraits:
-      title: UniversalTraits
+    KatchProgramData:
+      title: KatchProgramData
       properties:
-        category:
+        KatchId:
           type: string
-        subcategory:
+        OriginId:
           type: string
-        universal_trait:
-          type: string
-        activation_score:
-          type: integer
-          format: int32
-      description: UniversalTraits
+        ProgramAndTraits:
+          $ref: '#/components/schemas/KattchProgram'
+        Clusters:
+          $ref: '#/components/schemas/Datum'
+      description: KatchProgramData
       type: object
     Organization:
       title: Organization
@@ -119,35 +136,6 @@ components:
         organization:
           type: string
       description: Organization
-      type: object
-    Crew:
-      title: Crew
-      properties:
-        job:
-          type: string
-        individual:
-          type: string
-      description: Crew
-      type: object
-    Cast:
-      title: Cast
-      properties:
-        character:
-          type: string
-        individual:
-          type: string
-      description: Cast
-      type: object
-    Datum:
-      title: Datum
-      properties:
-        internal_id:
-          type: string
-        top_clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/TopClusters'
-      description: Datum
       type: object
     TopClusters:
       title: TopClusters
@@ -165,4 +153,15 @@ components:
         cluster_definition:
           type: string
       description: TopClusters
+      type: object
+    Datum:
+      title: Datum
+      properties:
+        internal_id:
+          type: string
+        top_clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopClusters'
+      description: Datum
       type: object

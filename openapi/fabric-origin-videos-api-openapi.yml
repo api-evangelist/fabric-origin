@@ -1,17 +1,17 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: fabric Origin API
+  title: fabric Origin Videos API
   version: '3.0'
-tags:
-- name: videos
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: Videos
 paths:
   /Videos/ClosedCaptions/{VideoId}:
     get:
       tags:
-      - videos
-      summary: Returns a WebVTT closed caption file for the specified video.
+      - Videos
+      summary: Returns a WebVTT closed caption file for the specified video
       description: Requires the Id of a video that has an associated closed caption track.
       operationId: GetClosedCaptionClosedCaptionsVideoId_Get
       parameters:
@@ -33,10 +33,9 @@ paths:
   /Videos/GetVideo/{Id}:
     get:
       tags:
-      - videos
-      summary: Returns a signed redirect URL to stream the requested video.
-      description: Requires the Id of a MovieVideo, ShowVideo, SeasonVideo, or EpisodeVideo object, along with the
-        desired format and expiry time.
+      - Videos
+      summary: Returns a signed redirect URL to stream the requested video
+      description: Requires the Id of a MovieVideo, ShowVideo, SeasonVideo, or EpisodeVideo object, along with the desired format and expiry time.
       operationId: GetVideoGetVideoId_Get
       parameters:
       - schema:
@@ -72,8 +71,7 @@ paths:
           - mp4_8000
         name: KbRate
         in: query
-        description: 'Video bit-rate in Kbps. Required for MP4 format. Allowed values: 80, 212, 450, 750, 1500,
-          2500, 5000, 8000.'
+        description: 'Video bit-rate in Kbps. Required for MP4 format. Allowed values: 80, 212, 450, 750, 1500, 2500, 5000, 8000.'
         required: false
       - schema:
           type: string
@@ -140,8 +138,7 @@ paths:
           - RESOLUTION_1080P
         name: AdaptiveMinimumResolution
         in: query
-        description: 'Adaptive streaming minimum resolution. Default is QVGA (320px wide, 212 Kbps). Allowed values:
-          RESOLUTION_QVGA, RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.'
+        description: 'Adaptive streaming minimum resolution. Default is QVGA (320px wide, 212 Kbps). Allowed values: RESOLUTION_QVGA, RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.'
         required: false
       - schema:
           type: string
@@ -153,8 +150,7 @@ paths:
           - RESOLUTION_1080P
         name: AdaptiveMaximumResolution
         in: query
-        description: 'Adaptive streaming maximum resolution. Default is 1080P (1920px wide). Allowed values: RESOLUTION_QVGA,
-          RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.'
+        description: 'Adaptive streaming maximum resolution. Default is 1080P (1920px wide). Allowed values: RESOLUTION_QVGA, RESOLUTION_HVGA, RESOLUTION_480P, RESOLUTION_720P, RESOLUTION_1080P.'
         required: false
       - schema:
           type: integer
@@ -187,8 +183,7 @@ paths:
           - Thirty
         name: AdaptiveMinimumFragmentLength
         in: query
-        description: 'Adaptive streaming minimum fragment length in seconds. Default is 10 seconds. Allowed values:
-          2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30.'
+        description: 'Adaptive streaming minimum fragment length in seconds. Default is 10 seconds. Allowed values: 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30.'
         required: false
       - schema:
           type: boolean

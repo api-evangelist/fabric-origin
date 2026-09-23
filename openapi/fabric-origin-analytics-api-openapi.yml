@@ -1,17 +1,17 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: fabric Origin API
+  title: fabric Origin Analytics API
   version: '3.0'
-tags:
-- name: analytics
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: Analytics
 paths:
   /Analytics/GBUsage/:
     get:
       tags:
-      - analytics
-      summary: Get GB usage by date and tag.
+      - Analytics
+      summary: Get GB usage by date and tag
       description: Get GB usage by date and tag.
       operationId: GetGBUsageGBUsage_Get
       parameters:
@@ -57,22 +57,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    GBUsageResponse:
-      title: GBUsageResponse
-      properties:
-        TotalGB:
-          type: number
-          format: double
-        MonthlyStorageInMinutes:
-          type: string
-        MonthEncodeMinutes:
-          type: string
-        Detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/GBUsageDay'
-      description: GBUsageResponse
-      type: object
     GBUsageDay:
       title: GBUsageDay
       properties:
@@ -92,4 +76,20 @@ components:
           type: number
           format: double
       description: GBUsageDay
+      type: object
+    GBUsageResponse:
+      title: GBUsageResponse
+      properties:
+        TotalGB:
+          type: number
+          format: double
+        MonthlyStorageInMinutes:
+          type: string
+        MonthEncodeMinutes:
+          type: string
+        Detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/GBUsageDay'
+      description: GBUsageResponse
       type: object

@@ -1,22 +1,18 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
   title: Entertainment API
   version: '1.0'
-tags:
-- name: entertainment
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: entertainment
 paths:
   /Entertainment/Search/:
     get:
       tags:
       - entertainment
-      summary: Search all entertainment programs.
-      description: Search movies, shows, seasons, episodes, and games.  Each image in our database is related to
-        a specific movie, TV or game title and is promotional of that title.  If you have title pages or articles
-        about that title, then offering an image gallery on that page is obviously promotional.  If you are doing
-        editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the
-        title of the film, TV show or game so as to be promotional.
+      summary: Search all entertainment programs
+      description: Search movies, shows, seasons, episodes, and games. Each image in our database is related to a specific movie, TV or game title and is promotional of that title. If you have title pages or articles about that title, then offering an image gallery on that page is obviously promotional. If you are doing editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film, TV show or game so as to be promotional.
       operationId: SearchEntertainmentSearch_Get
       parameters:
       - schema:
@@ -938,8 +934,7 @@ paths:
         explode: true
         name: DeliveryMethods
         in: query
-        description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint for complete
-          list.
+        description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint for complete list.
         required: false
       - schema:
           type: array
@@ -970,8 +965,7 @@ paths:
         explode: true
         name: VideoQualities
         in: query
-        description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for complete
-          list.
+        description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for complete list.
         required: false
       - schema:
           type: array
@@ -1266,15 +1260,13 @@ paths:
         explode: true
         name: VideoTargetLanguages
         in: query
-        description: Specify video target languages. This takes into consideration both language spoken and language
-          subtitled.
+        description: Specify video target languages. This takes into consideration both language spoken and language subtitled.
         required: false
       - schema:
           type: boolean
         name: SortByTimeStamp
         in: query
-        description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED!
-          Use SortBy instead.
+        description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED! Use SortBy instead.
         required: false
       - schema:
           type: string
@@ -1832,9 +1824,7 @@ paths:
           type: string
         name: NextPageToken
         in: query
-        description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken returned
-          from search results when using Timestamp sorting for optimal performance while paging large result sets.
-          Skip is ignored when this parameter is provided.
+        description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided.
         required: false
       - schema:
           type: array
@@ -1947,12 +1937,8 @@ paths:
     post:
       tags:
       - entertainment
-      summary: Search all entertainment programs.
-      description: Search movies, shows, seasons, episodes, and games.  Each image in our database is related to
-        a specific movie, TV or game title and is promotional of that title.  If you have title pages or articles
-        about that title, then offering an image gallery on that page is obviously promotional.  If you are doing
-        editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the
-        title of the film, TV show or game so as to be promotional.
+      summary: Search all entertainment programs
+      description: Search movies, shows, seasons, episodes, and games. Each image in our database is related to a specific movie, TV or game title and is promotional of that title. If you have title pages or articles about that title, then offering an image gallery on that page is obviously promotional. If you are doing editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film, TV show or game so as to be promotional.
       operationId: SearchEntertainmentSearch_Post
       responses:
         '200':
@@ -1981,8 +1967,7 @@ paths:
                   format: int32
                 Providers:
                   type: array
-                  description: List of availability providers.  See /Common/GetCommonEnumerators endpoint for complete
-                    list.
+                  description: List of availability providers.  See /Common/GetCommonEnumerators endpoint for complete list.
                 StartDateStart:
                   type: string
                   description: Start date for availability StartDate filter.
@@ -1993,16 +1978,13 @@ paths:
                   format: date-time
                 DeliveryMethods:
                   type: array
-                  description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint
-                    for complete list.
+                  description: List of availability delivery methods. See /Common/GetCommonEnumerators endpoint for complete list.
                 OfferTypes:
                   type: array
-                  description: List of availability offer types. See /Common/GetCommonEnumerators endpoint for complete
-                    list.
+                  description: List of availability offer types. See /Common/GetCommonEnumerators endpoint for complete list.
                 VideoQualities:
                   type: array
-                  description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for
-                    complete list.
+                  description: List of availability video qualities. See /Common/GetCommonEnumerators endpoint for complete list.
                 ProgramTypes:
                   type: array
                   description: List of program types. See /Common/GetCommonEnumerators endpoint for complete list.
@@ -2098,12 +2080,10 @@ paths:
                   description: List of 2 character country codes when filtering on video target countries.
                 VideoTargetLanguages:
                   type: array
-                  description: Specify video target languages. This takes into consideration both language spoken
-                    and language subtitled.
+                  description: Specify video target languages. This takes into consideration both language spoken and language subtitled.
                 SortByTimeStamp:
                   type: boolean
-                  description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED!
-                    Use SortBy instead.
+                  description: Sort results based on last modified descending.  Default is sorted by _score. DEPRECIATED! Use SortBy instead.
                 SortBy:
                   type: string
                   description: SortBy
@@ -2222,9 +2202,7 @@ paths:
                   description: Limit to programs that have mature video content.
                 NextPageToken:
                   type: string
-                  description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken
-                    returned from search results when using Timestamp sorting for optimal performance while paging
-                    large result sets. Skip is ignored when this parameter is provided.
+                  description: Used for deep paging of record (typically beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided.
                 CollectionIds:
                   type: array
                   description: Filter programs by list of CollectionIds
@@ -2239,7 +2217,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Get suggestions based on prefix and field selection.
+      summary: Get suggestions based on prefix and field selection
       description: Get suggestions based on prefix and field selection.
       operationId: SearchEntertainmentAutoCompleteAutocomplete_Get
       parameters:
@@ -2313,7 +2291,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Get suggestions based on prefix and field selection.
+      summary: Get suggestions based on prefix and field selection
       description: Get suggestions based on prefix and field selection.
       operationId: SearchEntertainmentAutoCompleteTitleAutocompleteTitle_Get
       parameters:
@@ -2374,7 +2352,6 @@ paths:
       tags:
       - entertainment
       summary: Get a paged list of IVA Celebrity Ratings
-      description: Get a paged list of IVA Celebrity Ratings
       operationId: GetCelebrityIvaRatingsCelebrityRatings_Get
       parameters:
       - schema:
@@ -2406,7 +2383,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique EpisodeId changes greater than or equal to date (UTC).
+      summary: Returns list of unique EpisodeId changes greater than or equal to date (UTC)
       description: For each updated episode ID, pull the full episode data for that ID and update.
       operationId: GetEpisodeChangeHistoryChangesEpisodesHistory_Get
       parameters:
@@ -2415,8 +2392,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2447,7 +2423,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique EpisodeId and Entity changes greater than or equal to date (UTC).
+      summary: Returns list of unique EpisodeId and Entity changes greater than or equal to…
       description: Lists each episode ID that has changed as well as the entity in the object that changed.
       operationId: GetEpisodeChangeHistoryWithEntityChangesEpisodesHistoryWithEntity_Get
       parameters:
@@ -2456,8 +2432,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2488,9 +2463,8 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique MovieId changes greater than or equal to date (UTC).
-      description: Use to get the ID's of the movies that have been added or changed and use /Movies/{ID} to get
-        back the object with the updated data and replace in your database.
+      summary: Returns list of unique MovieId changes greater than or equal to date (UTC)
+      description: Use to get the ID's of the movies that have been added or changed and use /Movies/{ID} to get back the object with the updated data and replace in your database.
       operationId: GetMovieChangeHistoryChangesMoviesHistory_Get
       parameters:
       - schema:
@@ -2498,8 +2472,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2530,7 +2503,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique MovieId and Entity changes greater than or equal to date (UTC).
+      summary: Returns list of unique MovieId and Entity changes greater than or equal to date…
       description: Same as /Changes/Movies/History but with the specific entities that have changed inside the MovieResponse.
       operationId: GetMovieChangeHistoryWithEntityChangesMoviesHistoryWithEntity_Get
       parameters:
@@ -2539,8 +2512,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2571,7 +2543,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique SeasonId changes greater than or equal to date (UTC).
+      summary: Returns list of unique SeasonId changes greater than or equal to date (UTC)
       description: Use if you want to check for specific updates to season records.
       operationId: GetSeasonChangeHistoryChangesSeasonsHistory_Get
       parameters:
@@ -2580,8 +2552,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2612,7 +2583,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique SeasonId and Entity changes greater than or equal to date (UTC).
+      summary: Returns list of unique SeasonId and Entity changes greater than or equal to…
       description: Returns list of new or changed SeasonIds with the entity that has changed.
       operationId: GetSeasonChangeHistoryWithEntityChangesSeasonsHistoryWithEntity_Get
       parameters:
@@ -2621,8 +2592,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2653,9 +2623,8 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique ShowId changes greater than or equal to date (UTC).
-      description: All new and updated shows from requested date and time. When a record gets updated, use the ID
-        to get the full show object and replace the data in your cache.
+      summary: Returns list of unique ShowId changes greater than or equal to date (UTC)
+      description: All new and updated shows from requested date and time. When a record gets updated, use the ID to get the full show object and replace the data in your cache.
       operationId: GetShowChangeHistoryChangesShowsHistory_Get
       parameters:
       - schema:
@@ -2663,8 +2632,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2695,7 +2663,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Returns list of unique ShowId and Entity changes greater than or equal to date (UTC).
+      summary: Returns list of unique ShowId and Entity changes greater than or equal to date…
       description: Returns a list of ShowId and entity of any show that has been updated.
       operationId: GetShowChangeHistoryWithEntityChangesShowsHistoryWithEntity_Get
       parameters:
@@ -2704,8 +2672,7 @@ paths:
           format: date-time
         name: Date
         in: query
-        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Starting date <= when record has changed (Maximum of 30 days back). ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: true
       - schema:
           type: integer
@@ -2736,7 +2703,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Gets a list of possible Entertainment program matches.
+      summary: Gets a list of possible Entertainment program matches
       description: Requires at least a title. Returns a list of match candidates with confidence scores.
       operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Get
       parameters:
@@ -2844,7 +2811,7 @@ paths:
     post:
       tags:
       - entertainment
-      summary: Gets a list of possible Entertainment program matches.
+      summary: Gets a list of possible Entertainment program matches
       description: Requires at least a title. Returns a list of match candidates with confidence scores.
       operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Post
       responses:
@@ -2909,9 +2876,8 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Match a program using Title, Year, Cast, Director.
-      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given
-        type, returns all candidates that achieved the highest score, ties possible.
+      summary: Match a program using Title, Year, Cast, Director
+      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given type, returns all candidates that achieved the highest score, ties possible.
       operationId: MatchToEntertainmentProgramMatch_Get
       parameters:
       - schema:
@@ -2937,8 +2903,7 @@ paths:
           format: int64
         name: EntertainmentId
         in: query
-        description: Id of Entertainment program to be matched against, if this is set no search is run and data
-          is compared to this program only.
+        description: Id of Entertainment program to be matched against, if this is set no search is run and data is compared to this program only.
         required: false
       - schema:
           type: string
@@ -3030,9 +2995,8 @@ paths:
     post:
       tags:
       - entertainment
-      summary: Match a program using Title, Year, Cast, Director.
-      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given
-        type, returns all candidates that achieved the highest score, ties possible.
+      summary: Match a program using Title, Year, Cast, Director
+      description: Requires a valid program type and at least a title. Matches to Entertainment Programs of given type, returns all candidates that achieved the highest score, ties possible.
       operationId: MatchToEntertainmentProgramMatch_Post
       responses:
         '200':
@@ -3056,8 +3020,7 @@ paths:
                   description: Set to true to also match for shows
                 EntertainmentId:
                   type: integer
-                  description: Id of Entertainment program to be matched against, if this is set no search is run
-                    and data is compared to this program only.
+                  description: Id of Entertainment program to be matched against, if this is set no search is run and data is compared to this program only.
                   format: int64
                 Title:
                   type: string
@@ -3098,10 +3061,8 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number,
-        match title and year also for a better score.
-      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode
-        by sequence.
+      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season…
+      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode by sequence.
       operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Get
       parameters:
       - schema:
@@ -3149,10 +3110,8 @@ paths:
     post:
       tags:
       - entertainment
-      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season number and Episode number,
-        match title and year also for a better score.
-      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode
-        by sequence.
+      summary: Perform a match to Entertainment Episode by sequence using Show Id, Season…
+      description: Requires a valid Show Id, Season number and Episode number to match to an Entertainment Episode by sequence.
       operationId: MatchToEntertainmentEpisodeBySequenceMatchEpisodeBySequence_Post
       responses:
         '200':
@@ -3195,8 +3154,7 @@ paths:
     get:
       tags:
       - entertainment
-      summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title
-        and year also for a better score.
+      summary: Perform a match to Entertainment Season by sequence using Show Id and Season…
       description: Requires a valid Show Id and Season number to match to an Entertainment Season by sequence.
       operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Get
       parameters:
@@ -3238,8 +3196,7 @@ paths:
     post:
       tags:
       - entertainment
-      summary: Perform a match to Entertainment Season by sequence using Show Id and Season number, match title
-        and year also for a better score.
+      summary: Perform a match to Entertainment Season by sequence using Show Id and Season…
       description: Requires a valid Show Id and Season number to match to an Entertainment Season by sequence.
       operationId: MatchToEntertainmentSeasonBySequenceMatchSeasonBySequence_Post
       responses:
@@ -3279,7 +3236,6 @@ paths:
       tags:
       - entertainment
       summary: Get a paged list of IVA Movie Ratings
-      description: Get a paged list of IVA Movie Ratings
       operationId: GetMovieIvaRatingsMovieRatings_Get
       parameters:
       - schema:
@@ -3312,7 +3268,6 @@ paths:
       tags:
       - entertainment
       summary: Get a paged list of IVA Show Ratings
-      description: Get a paged list of IVA Show Ratings
       operationId: GetShowIvaRatingsShowRatings_Get
       parameters:
       - schema:
@@ -3342,39 +3297,163 @@ paths:
       deprecated: false
 components:
   schemas:
-    SearchEntertainmentResponse:
-      title: SearchEntertainmentResponse
+    Company:
+      title: Company
       properties:
-        Took:
+        Id:
+          description: ID of Company object.
           type: integer
           format: int64
-        Total:
+        CompanyId:
+          description: ID of Company.
           type: integer
           format: int64
-        MaxScore:
+        Name:
+          description: Name of the Company.
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        NormalizedName:
+          type: string
+        ParentCompany:
+          type: string
+      description: Company
+      type: object
+    VideoScreenCapture:
+      title: VideoScreenCapture
+      properties:
+        Height:
+          type: integer
+          format: int32
+        Width:
+          type: integer
+          format: int32
+        Aspect:
+          type: string
+        FilePath:
+          type: string
+      description: VideoScreenCapture
+      type: object
+    ProgramAvailability:
+      title: ProgramAvailability
+      properties:
+        Provider:
+          type: string
+        OfferType:
+          type: string
+        DeliveryMethod:
+          type: string
+        Price:
           type: number
           format: double
-        Hits:
+        Currency:
+          type: string
+        PreSale:
+          type: boolean
+        Quality:
+          type: string
+        Country:
+          type: string
+        CountryDetail:
+          $ref: '#/components/schemas/CountryDetail'
+        Links:
           type: array
           items:
-            $ref: '#/components/schemas/SearchHit'
-        Message:
+            $ref: '#/components/schemas/OfferLink'
+        StartDate:
           type: string
-        NextPageToken:
+          format: date-time
+        ExpirationDate:
           type: string
-      description: SearchEntertainmentResponse
+          format: date-time
+      description: ProgramAvailability
       type: object
-    SearchHit:
-      title: SearchHit
+    ProgramContributor:
+      title: ProgramContributor
       properties:
-        Score:
-          type: number
-          format: double
-        Source:
-          $ref: '#/components/schemas/DiscoverProgram'
-        Id:
+        PersonId:
           type: string
-      description: SearchHit
+        PersonName:
+          type: string
+        Character:
+          type: string
+        Job:
+          type: string
+        Order:
+          type: integer
+          format: int32
+      description: ProgramContributor
+      type: object
+    ProgramVideo:
+      title: ProgramVideo
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Title:
+          type: string
+        Type:
+          type: string
+        StartDate:
+          type: string
+          format: date-time
+        ExpirationDate:
+          type: string
+          format: date-time
+        Mature:
+          type: boolean
+        CaptionID:
+          description: Closed Caption ID for a video, see the /Videos/ClosedCaption API for more details
+          type: integer
+          format: int64
+        Duration:
+          type: integer
+          format: int32
+        Language:
+          type: string
+        LanguageSubtitled:
+          type: string
+        Company:
+          type: string
+        Clean:
+          type: boolean
+        AllowAdvertising:
+          type: boolean
+        Certification:
+          type: boolean
+        Theatrical:
+          type: boolean
+        HomeVideo:
+          type: boolean
+        TuneIn:
+          type: boolean
+        SourceVideoWidth:
+          type: integer
+          format: int32
+        SourceVideoHeight:
+          type: integer
+          format: int32
+        Encoded:
+          type: string
+          format: date-time
+        ScreenCaptures:
+          type: array
+          items:
+            $ref: '#/components/schemas/VideoScreenCapture'
+        TargetCountries:
+          type: array
+          items:
+            type: string
+        TargetCountriesDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramVideoTargetCountry'
+        TargetLanguage:
+          type: string
+        TargetLanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramVideo
       type: object
     DiscoverProgram:
       title: DiscoverProgram
@@ -3559,8 +3638,7 @@ components:
           type: number
           format: double
         IvaRatingSort:
-          description: IVA Rating for program.  Applies to Show, Movie, and Game. Includes decimal places for accurate
-            sorting.
+          description: IVA Rating for program.  Applies to Show, Movie, and Game. Includes decimal places for accurate sorting.
           type: number
           format: double
         TimeStamp:
@@ -3583,266 +3661,86 @@ components:
           $ref: '#/components/schemas/Summary'
       description: DiscoverProgram
       type: object
-    ShowEpisode:
-      title: ShowEpisode
+    Summary:
+      title: Summary
       properties:
-        EpisodeId:
-          type: string
-        SeasonId:
-          type: string
-        Modified:
-          type: string
-          format: date-time
-        Action:
-          type: string
-      description: ShowEpisode
-      type: object
-    LanguageDetail:
-      title: LanguageDetail
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageDetail
-      type: object
-    CountryDetail:
-      title: CountryDetail
-      properties:
-        Id:
-          type: integer
-          format: int32
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IsoCode:
-          description: ISO code for a Country.
-          type: string
-        IsoCodeA3:
-          description: ISO 3 character code for a Country.
-          type: string
-        Name:
-          description: Name of the Country.
-          type: string
-        AlternateNames:
-          description: Alternate names of the Country.
-          type: array
-          items:
-            type: string
-      description: CountryDetail
-      type: object
-    ProgramRelease:
-      title: ProgramRelease
-      properties:
-        Date:
-          type: string
-          format: date-time
-        Certification:
-          type: string
-        Country:
-          type: string
-        CountryName:
-          type: string
-        CountryId:
-          type: integer
-          format: int32
-        FabricCountryId:
-          type: string
-        Type:
-          type: string
-      description: ProgramRelease
-      type: object
-    ProgramContributor:
-      title: ProgramContributor
-      properties:
-        PersonId:
-          type: string
-        PersonName:
-          type: string
-        Character:
-          type: string
-        Job:
-          type: string
-        Order:
-          type: integer
-          format: int32
-      description: ProgramContributor
-      type: object
-    ProgramAlternateTitle:
-      title: ProgramAlternateTitle
-      properties:
-        Title:
-          type: string
-        Country:
-          type: string
-        CountryName:
-          type: string
-        CountryId:
-          type: integer
-          format: int32
-        CountryFabricId:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramAlternateTitle
-      type: object
-    ProgramDescription:
-      title: ProgramDescription
-      properties:
+        Video:
+          $ref: '#/components/schemas/ProgramVideo'
+        Image:
+          $ref: '#/components/schemas/ProgramImage'
         Description:
-          type: string
-        DescriptionType:
-          type: string
-        Attribution:
-          type: string
-        Language:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramDescription
+          $ref: '#/components/schemas/ProgramDescription'
+        Contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramContributor'
+        ContributorCount:
+          type: integer
+          format: int32
+        AvailabilityCount:
+          type: integer
+          format: int32
+        ImageCount:
+          type: integer
+          format: int32
+        VideoCount:
+          type: integer
+          format: int32
+        ProgramTrendCount:
+          type: integer
+          format: int32
+        AwardCount:
+          type: integer
+          format: int32
+        ReleaseCount:
+          type: integer
+          format: int32
+        TitleCount:
+          type: integer
+          format: int32
+        ExternalIdCount:
+          type: integer
+          format: int32
+        TagCount:
+          type: integer
+          format: int32
+        ThemeCount:
+          type: integer
+          format: int32
+      description: Summary
       type: object
-    Company:
-      title: Company
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
       properties:
-        Id:
-          description: ID of Company object.
-          type: integer
-          format: int64
-        CompanyId:
-          description: ID of Company.
-          type: integer
-          format: int64
-        Name:
-          description: Name of the Company.
+        ProgramId:
+          description: ID of program in collection.
           type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
         Modified:
+          description: DateTime collection item was last modified.
           type: string
           format: date-time
-        NormalizedName:
-          type: string
-        ParentCompany:
-          type: string
-      description: Company
+      description: EntertainmentCollectionItem
       type: object
-    ExternalId:
-      title: ExternalId
+    EntertainmentMatchCandidatesResponse:
+      title: EntertainmentMatchCandidatesResponse
       properties:
-        Name:
-          type: string
-        Id:
-          type: string
-      description: ExternalId
-      type: object
-    ProgramVideo:
-      title: ProgramVideo
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Title:
-          type: string
-        Type:
-          type: string
-        StartDate:
-          type: string
-          format: date-time
-        ExpirationDate:
-          type: string
-          format: date-time
-        Mature:
-          type: boolean
-        CaptionID:
-          description: Closed Caption ID for a video, see the /Videos/ClosedCaption API for more details
-          type: integer
-          format: int64
-        Duration:
-          type: integer
-          format: int32
-        Language:
-          type: string
-        LanguageSubtitled:
-          type: string
-        Company:
-          type: string
-        Clean:
-          type: boolean
-        AllowAdvertising:
-          type: boolean
-        Certification:
-          type: boolean
-        Theatrical:
-          type: boolean
-        HomeVideo:
-          type: boolean
-        TuneIn:
-          type: boolean
-        SourceVideoWidth:
-          type: integer
-          format: int32
-        SourceVideoHeight:
-          type: integer
-          format: int32
-        Encoded:
-          type: string
-          format: date-time
-        ScreenCaptures:
+        MatchCandidates:
+          description: List of possible matches.
           type: array
           items:
-            $ref: '#/components/schemas/VideoScreenCapture'
-        TargetCountries:
-          type: array
-          items:
-            type: string
-        TargetCountriesDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProgramVideoTargetCountry'
-        TargetLanguage:
+            $ref: '#/components/schemas/MatchCandidate'
+        TitleMods:
+          $ref: '#/components/schemas/TitleMods'
+        Success:
+          description: Status of match operation.
+          type: boolean
+        Message:
           type: string
-        TargetLanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramVideo
-      type: object
-    VideoScreenCapture:
-      title: VideoScreenCapture
-      properties:
-        Height:
-          type: integer
-          format: int32
-        Width:
-          type: integer
-          format: int32
-        Aspect:
-          type: string
-        FilePath:
-          type: string
-      description: VideoScreenCapture
-      type: object
-    ProgramVideoTargetCountry:
-      title: ProgramVideoTargetCountry
-      properties:
-        CountryId:
-          type: integer
-          format: int32
-        Country:
-          type: string
-        CountryName:
-          type: string
-        FabricId:
-          type: string
-      description: ProgramVideoTargetCountry
+      description: EntertainmentMatchCandidatesResponse
       type: object
     ProgramImage:
       title: ProgramImage
@@ -3883,39 +3781,26 @@ components:
           format: date-time
       description: ProgramImage
       type: object
-    ProgramAvailability:
-      title: ProgramAvailability
+    LanguageDetail:
+      title: LanguageDetail
       properties:
-        Provider:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
           type: string
-        OfferType:
+        Name:
+          description: Name of the Language.
           type: string
-        DeliveryMethod:
+        FabricId:
+          description: Fabric Language Id.
           type: string
-        Price:
-          type: number
-          format: double
-        Currency:
+        IETFCode:
+          description: IETF BCP 47 code for this language.
           type: string
-        PreSale:
-          type: boolean
-        Quality:
-          type: string
-        Country:
-          type: string
-        CountryDetail:
-          $ref: '#/components/schemas/CountryDetail'
-        Links:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfferLink'
-        StartDate:
-          type: string
-          format: date-time
-        ExpirationDate:
-          type: string
-          format: date-time
-      description: ProgramAvailability
+      description: LanguageDetail
       type: object
     OfferLink:
       title: OfferLink
@@ -3926,42 +3811,32 @@ components:
           type: string
       description: OfferLink
       type: object
-    ProgramTrend:
-      title: ProgramTrend
+    DataComparison:
+      title: DataComparison
       properties:
-        Id:
-          description: Trend Source Id.
+        Score:
           type: integer
           format: int32
-        Name:
-          description: Name of the trend list.
+        SubmittedValue:
           type: string
-        Brand:
-          description: Brand associated with trend list.
+        IndexValue:
           type: string
-        Country:
-          description: Specific country trend list is associated with.
+      description: DataComparison
+      type: object
+    ProgramDescription:
+      title: ProgramDescription
+      properties:
+        Description:
           type: string
-        Classifiers:
-          description: List of characteristics of the list.
-          type: array
-          items:
-            type: string
-        Modified:
-          description: Date the list was last updated.
+        DescriptionType:
           type: string
-          format: date-time
-        Rank:
-          description: Position in the list.  1 is first/top of the list.
-          type: integer
-          format: int32
-        ListUrl:
-          description: URL of the list.
+        Attribution:
           type: string
-        TitleUrl:
-          description: URL of title on trend list.
+        Language:
           type: string
-      description: ProgramTrend
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramDescription
       type: object
     Award:
       title: Award
@@ -3988,12 +3863,118 @@ components:
           format: date-time
       description: Award
       type: object
+    SearchEntertainmentResponse:
+      title: SearchEntertainmentResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchEntertainmentResponse
+      type: object
+    ProgramAlternateTitle:
+      title: ProgramAlternateTitle
+      properties:
+        Title:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        CountryFabricId:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramAlternateTitle
+      type: object
+    MatchToEntertainmentEpisodeBySequenceResponse:
+      title: MatchToEntertainmentEpisodeBySequenceResponse
+      properties:
+        Success:
+          type: boolean
+        EpisodeId:
+          type: integer
+          format: int64
+        Title:
+          type: string
+        Year:
+          type: integer
+          format: int32
+        Score:
+          type: integer
+          format: int32
+        Message:
+          type: string
+      description: MatchToEntertainmentEpisodeBySequenceResponse
+      type: object
+    ProgramRelease:
+      title: ProgramRelease
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Certification:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        FabricCountryId:
+          type: string
+        Type:
+          type: string
+      description: ProgramRelease
+      type: object
+    SearchHit:
+      title: SearchHit
+      properties:
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/DiscoverProgram'
+        Id:
+          type: string
+      description: SearchHit
+      type: object
+    ShowEpisode:
+      title: ShowEpisode
+      properties:
+        EpisodeId:
+          type: string
+        SeasonId:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Action:
+          type: string
+      description: ShowEpisode
+      type: object
     EntertainmentCollection:
       title: EntertainmentCollection
       properties:
         Id:
-          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could
-            be ID or ParentID.
+          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
           type: string
         Name:
           description: Name of collection.
@@ -4047,99 +4028,33 @@ components:
           format: date-time
       description: EntertainmentCollection
       type: object
-    EntertainmentCollectionItem:
-      title: EntertainmentCollectionItem
+    TitleMods:
+      title: TitleMods
       properties:
-        ProgramId:
-          description: ID of program in collection.
+        TitleSubmitted:
           type: string
-        Sequence:
-          description: Nullable sequence used to order some collections.
-          type: integer
-          format: int32
-        Modified:
-          description: DateTime collection item was last modified.
+        TitleApplied:
           type: string
-          format: date-time
-      description: EntertainmentCollectionItem
+        Removals:
+          type: array
+          items:
+            type: string
+      description: TitleMods
       type: object
-    ProgramChangeHistory:
-      title: ProgramChangeHistory
+    MatchToEntertainmentSeasonBySequenceResponse:
+      title: MatchToEntertainmentSeasonBySequenceResponse
       properties:
-        Id:
+        Success:
+          type: boolean
+        SeasonId:
           type: integer
           format: int64
-        Entity:
-          type: string
-        Modified:
-          type: string
-          format: date-time
-      description: ProgramChangeHistory
-      type: object
-    Summary:
-      title: Summary
-      properties:
-        Video:
-          $ref: '#/components/schemas/ProgramVideo'
-        Image:
-          $ref: '#/components/schemas/ProgramImage'
-        Description:
-          $ref: '#/components/schemas/ProgramDescription'
-        Contributors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProgramContributor'
-        ContributorCount:
+        Score:
           type: integer
           format: int32
-        AvailabilityCount:
-          type: integer
-          format: int32
-        ImageCount:
-          type: integer
-          format: int32
-        VideoCount:
-          type: integer
-          format: int32
-        ProgramTrendCount:
-          type: integer
-          format: int32
-        AwardCount:
-          type: integer
-          format: int32
-        ReleaseCount:
-          type: integer
-          format: int32
-        TitleCount:
-          type: integer
-          format: int32
-        ExternalIdCount:
-          type: integer
-          format: int32
-        TagCount:
-          type: integer
-          format: int32
-        ThemeCount:
-          type: integer
-          format: int32
-      description: Summary
-      type: object
-    EntertainmentMatchCandidatesResponse:
-      title: EntertainmentMatchCandidatesResponse
-      properties:
-        MatchCandidates:
-          description: List of possible matches.
-          type: array
-          items:
-            $ref: '#/components/schemas/MatchCandidate'
-        TitleMods:
-          $ref: '#/components/schemas/TitleMods'
-        Success:
-          description: Status of match operation.
-          type: boolean
         Message:
           type: string
-      description: EntertainmentMatchCandidatesResponse
+      description: MatchToEntertainmentSeasonBySequenceResponse
       type: object
     MatchCandidate:
       title: MatchCandidate
@@ -4195,30 +4110,69 @@ components:
           description: THeme match result.
       description: MatchCandidate
       type: object
-    DataComparison:
-      title: DataComparison
+    ProgramTrend:
+      title: ProgramTrend
       properties:
-        Score:
+        Id:
+          description: Trend Source Id.
           type: integer
           format: int32
-        SubmittedValue:
+        Name:
+          description: Name of the trend list.
           type: string
-        IndexValue:
+        Brand:
+          description: Brand associated with trend list.
           type: string
-      description: DataComparison
-      type: object
-    TitleMods:
-      title: TitleMods
-      properties:
-        TitleSubmitted:
+        Country:
+          description: Specific country trend list is associated with.
           type: string
-        TitleApplied:
-          type: string
-        Removals:
+        Classifiers:
+          description: List of characteristics of the list.
           type: array
           items:
             type: string
-      description: TitleMods
+        Modified:
+          description: Date the list was last updated.
+          type: string
+          format: date-time
+        Rank:
+          description: Position in the list.  1 is first/top of the list.
+          type: integer
+          format: int32
+        ListUrl:
+          description: URL of the list.
+          type: string
+        TitleUrl:
+          description: URL of title on trend list.
+          type: string
+      description: ProgramTrend
+      type: object
+    ProgramChangeHistory:
+      title: ProgramChangeHistory
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Entity:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+      description: ProgramChangeHistory
+      type: object
+    ProgramVideoTargetCountry:
+      title: ProgramVideoTargetCountry
+      properties:
+        CountryId:
+          type: integer
+          format: int32
+        Country:
+          type: string
+        CountryName:
+          type: string
+        FabricId:
+          type: string
+      description: ProgramVideoTargetCountry
       type: object
     MatchToEntertainmentProgramResponse:
       title: MatchToEntertainmentProgramResponse
@@ -4256,38 +4210,37 @@ components:
             $ref: '#/components/schemas/DiscoverProgram'
       description: MatchToEntertainmentProgramResponse
       type: object
-    MatchToEntertainmentEpisodeBySequenceResponse:
-      title: MatchToEntertainmentEpisodeBySequenceResponse
+    CountryDetail:
+      title: CountryDetail
       properties:
-        Success:
-          type: boolean
-        EpisodeId:
-          type: integer
-          format: int64
-        Title:
-          type: string
-        Year:
+        Id:
           type: integer
           format: int32
-        Score:
-          type: integer
-          format: int32
-        Message:
+        FabricId:
+          description: Fabric Language Id.
           type: string
-      description: MatchToEntertainmentEpisodeBySequenceResponse
+        IsoCode:
+          description: ISO code for a Country.
+          type: string
+        IsoCodeA3:
+          description: ISO 3 character code for a Country.
+          type: string
+        Name:
+          description: Name of the Country.
+          type: string
+        AlternateNames:
+          description: Alternate names of the Country.
+          type: array
+          items:
+            type: string
+      description: CountryDetail
       type: object
-    MatchToEntertainmentSeasonBySequenceResponse:
-      title: MatchToEntertainmentSeasonBySequenceResponse
+    ExternalId:
+      title: ExternalId
       properties:
-        Success:
-          type: boolean
-        SeasonId:
-          type: integer
-          format: int64
-        Score:
-          type: integer
-          format: int32
-        Message:
+        Name:
           type: string
-      description: MatchToEntertainmentSeasonBySequenceResponse
+        Id:
+          type: string
+      description: ExternalId
       type: object

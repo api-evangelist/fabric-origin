@@ -1,12 +1,12 @@
-generated: '2026-09-07'
+generated: '2026-09-19'
 method: probed
 source: direct HTTPS probe of the named /.well-known/ paths on every host in this record
 provider: Fabric Origin
 providerId: fabric-origin
-description: 'Probe log of the named /.well-known/ discovery paths across every host Fabric Origin is known to operate.
-  Four real documents were returned: RFC 8414 authorization-server metadata and RFC 9728 protected-resource metadata
-  on both of the Origin MCP servers. Every other path 404s, 403s at the Azure API Management gateway, or redirects
-  into the GitBook auth wall.'
+description: 'Probe log of the named /.well-known/ discovery paths across every host Fabric Origin is
+  known to operate. Four real documents were returned: RFC 8414 authorization-server metadata and RFC
+  9728 protected-resource metadata on both of the Origin MCP servers. Every other path 404s, 403s at the
+  Azure API Management gateway, or redirects into the GitBook auth wall.'
 summary:
   hosts_probed: 14
   paths_probed: 9
@@ -207,6 +207,15 @@ hosts:
     status: 404
   - path: /.well-known/aauth-resource.json
     status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: fabric-origin-mcp-api-oauth-protected-resource.json
+    bytes: 192
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: fabric-origin-mcp-api-oauth-authorization-server.json
+    bytes: 518
+  path_echo_control: passed
 - host: insights.fabric-mcp.link
   documents:
   - path: /.well-known/security.txt
@@ -372,3 +381,19 @@ hosts:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp-api.studio.fabricdata.com
+    path: /.well-known/oauth-protected-resource
+    file: fabric-origin-mcp-api-oauth-protected-resource.json
+  - host: https://mcp-api.studio.fabricdata.com
+    path: /.well-known/oauth-authorization-server
+    file: fabric-origin-mcp-api-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'

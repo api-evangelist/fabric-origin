@@ -1,11 +1,11 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Tv Grid API
+  title: Tv Grid Tvgrid API
   version: '1.0'
-tags:
-- name: tvgrid
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: tvgrid
 paths:
   /TvGrid/genres/movies:
     get:
@@ -31,6 +31,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaGenreResponse'
       deprecated: false
+      summary: Get tv media movie genresgenresmovies get
+      x-summary-source: derived
   /TvGrid/genres/shows:
     get:
       tags:
@@ -55,6 +57,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaGenreResponse'
       deprecated: false
+      summary: Get tv media show genresgenresshows get
+      x-summary-source: derived
   /TvGrid/genres/sports:
     get:
       tags:
@@ -79,6 +83,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaGenreResponse'
       deprecated: false
+      summary: Get tv media sport genresgenressports get
+      x-summary-source: derived
   /TvGrid/leagues:
     get:
       tags:
@@ -103,6 +109,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaLeagueResponse'
       deprecated: false
+      summary: Get tv media leaguesleagues get
+      x-summary-source: derived
   /TvGrid/leagues/{LeagueID}/listings:
     get:
       tags:
@@ -147,10 +155,7 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: array
@@ -160,9 +165,7 @@ paths:
         explode: true
         name: Channel
         in: query
-        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers
-          can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number
-          property , NOT channel.channelNumber property).'
+        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -172,9 +175,7 @@ paths:
         explode: true
         name: ExcludeChan
         in: query
-        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated
-          to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT
-          the channel.channelNumber property).'
+        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -184,8 +185,7 @@ paths:
         explode: true
         name: StartChan
         in: query
-        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for
-          sub channel 2 of channel 1.'
+        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.'
         required: false
       - schema:
           type: array
@@ -195,9 +195,7 @@ paths:
         explode: true
         name: EndChan
         in: query
-        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2
-          for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid
-          size see the ''maxchan'' parameter.'
+        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the ''maxchan'' parameter.'
         required: false
       - schema:
           type: array
@@ -208,8 +206,7 @@ paths:
         explode: true
         name: Station
         in: query
-        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: array
@@ -220,15 +217,13 @@ paths:
         explode: true
         name: ExcludeStation
         in: query
-        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -238,9 +233,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -250,9 +243,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -262,8 +253,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: boolean
@@ -281,8 +271,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -300,8 +289,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -310,8 +298,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -324,6 +311,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaListingResponse'
       deprecated: false
+      summary: Get tv media league listingsleagues league IDlistings get
+      x-summary-source: derived
   /TvGrid/leagues/{LeagueID}/teams:
     get:
       tags:
@@ -354,11 +343,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaTeamResponse'
       deprecated: false
+      summary: Get tv media teamsleagues league IDteams get
+      x-summary-source: derived
   /TvGrid/lineups:
     get:
       tags:
       - tvgrid
-      summary: ''
+      summary: Get tv media lineups by postal codelineups get
       description: Get lineups by postal code.
       operationId: GetTvMediaLineupsByPostalCodelineups_Get
       parameters:
@@ -398,8 +389,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -412,6 +402,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaLineupResponse'
       deprecated: false
+      x-summary-source: derived
   /TvGrid/lineups/{LineupID}:
     get:
       tags:
@@ -438,8 +429,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -449,12 +439,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/TvMediaLineupResponse'
       deprecated: false
+      summary: Get tv media lineup by IDlineups lineup ID get
+      x-summary-source: derived
   /TvGrid/lineups/{LineupID}/listings:
     get:
       tags:
       - tvgrid
-      description: Retrieve individual listings for a given lineup ordered by start time (listDateTime) and channel
-        number; unless using the search parameter, in which case they will be ordered by search term relevance.
+      description: Retrieve individual listings for a given lineup ordered by start time (listDateTime) and channel number; unless using the search parameter, in which case they will be ordered by search term relevance.
       operationId: GetTvMediaLineupListingslineupsLineupIDlistings_Get
       parameters:
       - schema:
@@ -488,10 +479,7 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: array
@@ -501,9 +489,7 @@ paths:
         explode: true
         name: Channel
         in: query
-        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers
-          can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number
-          property , NOT channel.channelNumber property).'
+        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -513,9 +499,7 @@ paths:
         explode: true
         name: ExcludeChan
         in: query
-        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated
-          to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT
-          the channel.channelNumber property).'
+        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -525,8 +509,7 @@ paths:
         explode: true
         name: StartChan
         in: query
-        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for
-          sub channel 2 of channel 1.'
+        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.'
         required: false
       - schema:
           type: array
@@ -536,9 +519,7 @@ paths:
         explode: true
         name: EndChan
         in: query
-        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2
-          for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid
-          size see the ''maxchan'' parameter.'
+        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the ''maxchan'' parameter.'
         required: false
       - schema:
           type: array
@@ -549,8 +530,7 @@ paths:
         explode: true
         name: Station
         in: query
-        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: array
@@ -561,15 +541,13 @@ paths:
         explode: true
         name: ExcludeStation
         in: query
-        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -579,9 +557,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -591,9 +567,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -603,8 +577,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: array
@@ -614,8 +587,7 @@ paths:
         explode: true
         name: SportType
         in: query
-        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of
-          possible values see /genres/sports.
+        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.
         required: false
       - schema:
           type: array
@@ -625,8 +597,7 @@ paths:
         explode: true
         name: League
         in: query
-        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a
-          list of possible values see /leagues.
+        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.
         required: false
       - schema:
           type: array
@@ -636,8 +607,7 @@ paths:
         explode: true
         name: Team
         in: query
-        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list
-          of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
+        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
         required: false
       - schema:
           type: boolean
@@ -655,8 +625,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -680,8 +649,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -690,8 +658,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -704,13 +671,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaListingResponse'
       deprecated: false
+      summary: Get tv media lineup listingslineups lineup IDlistings get
+      x-summary-source: derived
   /TvGrid/lineups/{LineupID}/listings/grid:
     get:
       tags:
       - tvgrid
-      description: A collection of listings grouped by channel and ordered by listDateTime. The grid dimensions
-        ( time x channels ) can be modified by using the start, end, startchan and maxchan parameters. Channels
-        without any listings will be returned with an empty listings collection.
+      description: A collection of listings grouped by channel and ordered by listDateTime. The grid dimensions ( time x channels ) can be modified by using the start, end, startchan and maxchan parameters. Channels without any listings will be returned with an empty listings collection.
       operationId: GetTvMediaLineupListingsGridlineupsLineupIDlistingsgrid_Get
       parameters:
       - schema:
@@ -744,10 +711,7 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: array
@@ -757,9 +721,7 @@ paths:
         explode: true
         name: Channel
         in: query
-        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers
-          can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number
-          property , NOT channel.channelNumber property).'
+        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -769,9 +731,7 @@ paths:
         explode: true
         name: ExcludeChan
         in: query
-        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated
-          to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT
-          the channel.channelNumber property).'
+        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -781,8 +741,7 @@ paths:
         explode: true
         name: StartChan
         in: query
-        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for
-          sub channel 2 of channel 1.'
+        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.'
         required: false
       - schema:
           type: array
@@ -792,9 +751,7 @@ paths:
         explode: true
         name: EndChan
         in: query
-        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2
-          for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid
-          size see the ''maxchan'' parameter.'
+        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the ''maxchan'' parameter.'
         required: false
       - schema:
           type: array
@@ -805,8 +762,7 @@ paths:
         explode: true
         name: Station
         in: query
-        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: array
@@ -817,15 +773,13 @@ paths:
         explode: true
         name: ExcludeStation
         in: query
-        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -835,9 +789,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -847,9 +799,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -859,8 +809,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: array
@@ -870,8 +819,7 @@ paths:
         explode: true
         name: Show
         in: query
-        description: "Get listings for a specific showID, or array of showID's. ShowID's represent a single episode,\
-          \ movie, or event. a showID, episodeID and movieID are all valid parameters.\t"
+        description: "Get listings for a specific showID, or array of showID's. ShowID's represent a single episode, movie, or event. a showID, episodeID and movieID are all valid parameters.\t"
         required: false
       - schema:
           type: array
@@ -881,8 +829,7 @@ paths:
         explode: true
         name: Series
         in: query
-        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection
-          of showID's, such as a TV Series.
+        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.
         required: false
       - schema:
           type: array
@@ -892,8 +839,7 @@ paths:
         explode: true
         name: SportType
         in: query
-        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of
-          possible values see /genres/sports.
+        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.
         required: false
       - schema:
           type: array
@@ -903,8 +849,7 @@ paths:
         explode: true
         name: League
         in: query
-        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a
-          list of possible values see /leagues.
+        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.
         required: false
       - schema:
           type: array
@@ -914,8 +859,7 @@ paths:
         explode: true
         name: Team
         in: query
-        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list
-          of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
+        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
         required: false
       - schema:
           type: boolean
@@ -933,8 +877,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -958,8 +901,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -968,8 +910,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -982,6 +923,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaGridResponse'
       deprecated: false
+      summary: Get tv media lineup listings gridlineups lineup IDlistingsgrid get
+      x-summary-source: derived
   /TvGrid/lineups/{LineupID}/listings/highlights:
     get:
       tags:
@@ -1020,10 +963,7 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: array
@@ -1033,9 +973,7 @@ paths:
         explode: true
         name: Channel
         in: query
-        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers
-          can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number
-          property , NOT channel.channelNumber property).'
+        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -1045,9 +983,7 @@ paths:
         explode: true
         name: ExcludeChan
         in: query
-        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated
-          to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT
-          the channel.channelNumber property).'
+        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -1057,8 +993,7 @@ paths:
         explode: true
         name: StartChan
         in: query
-        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for
-          sub channel 2 of channel 1.'
+        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.'
         required: false
       - schema:
           type: array
@@ -1068,9 +1003,7 @@ paths:
         explode: true
         name: EndChan
         in: query
-        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2
-          for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid
-          size see the ''maxchan'' parameter.'
+        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the ''maxchan'' parameter.'
         required: false
       - schema:
           type: array
@@ -1081,8 +1014,7 @@ paths:
         explode: true
         name: Station
         in: query
-        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: array
@@ -1093,15 +1025,13 @@ paths:
         explode: true
         name: ExcludeStation
         in: query
-        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -1111,9 +1041,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1123,9 +1051,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1135,8 +1061,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: array
@@ -1146,8 +1071,7 @@ paths:
         explode: true
         name: Series
         in: query
-        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection
-          of showID's, such as a TV Series.
+        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.
         required: false
       - schema:
           type: boolean
@@ -1165,8 +1089,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -1190,8 +1113,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -1200,8 +1122,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1214,6 +1135,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaListingResponse'
       deprecated: false
+      summary: Get tv media lineup listings highlightslineups lineup IDlistingshighlights get
+      x-summary-source: derived
   /TvGrid/lineups/browse:
     get:
       tags:
@@ -1238,6 +1161,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaCountryResponse'
       deprecated: false
+      summary: Get tv media countrieslineupsbrowse get
+      x-summary-source: derived
   /TvGrid/lineups/browse/{CountryID}:
     get:
       tags:
@@ -1268,6 +1193,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaRegionResponse'
       deprecated: false
+      summary: Get tv media regionslineupsbrowse country ID get
+      x-summary-source: derived
   /TvGrid/lineups/browse/{CountryID}/{RegionID}:
     get:
       tags:
@@ -1304,6 +1231,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaServiceAreaResponse'
       deprecated: false
+      summary: Get tv media service areaslineupsbrowse country ID region ID get
+      x-summary-source: derived
   /TvGrid/lineups/browse/{CountryID}/{RegionID}/{AreaID}:
     get:
       tags:
@@ -1359,8 +1288,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1373,6 +1301,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaLineupResponse'
       deprecated: false
+      summary: Get tv media lineups by area IDlineupsbrowse country ID region ID area ID get
+      x-summary-source: derived
   /TvGrid/lineups/geo:
     get:
       tags:
@@ -1424,8 +1354,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1438,14 +1367,14 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaLineupResponse'
       deprecated: false
+      summary: Get tv media lineups by latitude longitudelineupsgeo get
+      x-summary-source: derived
   /TvGrid/reference/lineups:
     get:
       tags:
       - tvgrid
-      summary: ''
-      description: Get list of generic lineup IDs that can be used.  A 'generic' lineup is not a real lineup, but
-        a collection of stations defined by TV Media.  Any listing retrieved using a generic lineup will not return
-        any channel number information, as it is irrelevant.
+      summary: Get tv media generic lineupsreferencelineups get
+      description: Get list of generic lineup IDs that can be used. A 'generic' lineup is not a real lineup, but a collection of stations defined by TV Media. Any listing retrieved using a generic lineup will not return any channel number information, as it is irrelevant.
       operationId: GetTvMediaGenericLineupsreferencelineups_Get
       parameters:
       - schema:
@@ -1461,8 +1390,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'brief'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1475,6 +1403,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaLineupResponse'
       deprecated: false
+      x-summary-source: derived
   /TvGrid/stations/{StationID}:
     get:
       tags:
@@ -1503,12 +1432,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/TvMediaStationResponse'
       deprecated: false
+      summary: Get tv media stationstations station ID get
+      x-summary-source: derived
   /TvGrid/stations/{StationID}/listings:
     get:
       tags:
       - tvgrid
-      summary: Stations are not tied to lineups, therefore no channel numbers will be present in the response, unlike
-        most other listing operations.
+      summary: Stations are not tied to lineups, therefore no channel numbers will be present…
       description: Get listings for a given station.
       operationId: GetTvMediaListingsByStationstationsStationIDlistings_Get
       parameters:
@@ -1544,17 +1474,13 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -1564,9 +1490,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1576,9 +1500,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1588,8 +1510,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: array
@@ -1599,8 +1520,7 @@ paths:
         explode: true
         name: Show
         in: query
-        description: Get listings for a specific showID, or array of showID's. ShowID's represent a single episode,
-          movie, or event. a showID, episodeID and movieID are all valid parameters.
+        description: Get listings for a specific showID, or array of showID's. ShowID's represent a single episode, movie, or event. a showID, episodeID and movieID are all valid parameters.
         required: false
       - schema:
           type: array
@@ -1610,8 +1530,7 @@ paths:
         explode: true
         name: Series
         in: query
-        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection
-          of showID's, such as a TV Series.
+        description: Get listings for a specific seriesID or array of seriesID's. A seriesID represents a collection of showID's, such as a TV Series.
         required: false
       - schema:
           type: array
@@ -1621,8 +1540,7 @@ paths:
         explode: true
         name: SportType
         in: query
-        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of
-          possible values see /genres/sports.
+        description: Get only sports listings of type sportTypeID. Array or single values accepted. For a list of possible values see /genres/sports.
         required: false
       - schema:
           type: array
@@ -1632,8 +1550,7 @@ paths:
         explode: true
         name: League
         in: query
-        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a
-          list of possible values see /leagues.
+        description: Get only sports listings in the given league ID(s). Array or single values accepted. For a list of possible values see /leagues.
         required: false
       - schema:
           type: array
@@ -1643,8 +1560,7 @@ paths:
         explode: true
         name: Team
         in: query
-        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list
-          of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
+        description: 'Filter by teams playing by name(teams.longName). Array or single values accepted, for a list of possible values see /leagues/teams. (NOTE: league parameter is required when using this parameter).'
         required: false
       - schema:
           type: boolean
@@ -1662,8 +1578,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -1687,8 +1602,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -1697,8 +1611,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1742,6 +1655,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaTeamResponse'
       deprecated: false
+      summary: Get tv media team by idteams team ID get
+      x-summary-source: derived
   /TvGrid/teams/{TeamID}/listings:
     get:
       tags:
@@ -1787,10 +1702,7 @@ paths:
           format: int32
         name: TimeZone
         in: query
-        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC,
-          accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value
-          is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start
-          and end times must still be provided in UTC.'
+        description: 'Set a timezone or time offset for listing times (listDateTime property). Defaults to UTC, accepts time offsets (+/-HH:MM) or named time zones (see IANA Time Zone Database). If an invalid value is set, listDateTime will be returned as empty. NOTE: this parameter does not affect input values; start and end times must still be provided in UTC.'
         required: false
       - schema:
           type: array
@@ -1800,9 +1712,7 @@ paths:
         explode: true
         name: Channel
         in: query
-        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers
-          can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number
-          property , NOT channel.channelNumber property).'
+        description: 'Include only channel(s) with this number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property , NOT channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -1812,9 +1722,7 @@ paths:
         explode: true
         name: ExcludeChan
         in: query
-        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated
-          to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT
-          the channel.channelNumber property).'
+        description: 'Exclude channels by number, single or array values accepted. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1 (use the channel.number property, NOT the channel.channelNumber property).'
         required: false
       - schema:
           type: array
@@ -1824,8 +1732,7 @@ paths:
         explode: true
         name: StartChan
         in: query
-        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for
-          sub channel 2 of channel 1.'
+        description: 'Lowest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1.'
         required: false
       - schema:
           type: array
@@ -1835,9 +1742,7 @@ paths:
         explode: true
         name: EndChan
         in: query
-        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2
-          for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid
-          size see the ''maxchan'' parameter.'
+        description: 'Highest channel. sub channel numbers can be hyphenated to the end of the string: e.g. 1-2 for sub channel 2 of channel 1. In general this parameter should rarely be used, for shaping the grid size see the ''maxchan'' parameter.'
         required: false
       - schema:
           type: array
@@ -1848,8 +1753,7 @@ paths:
         explode: true
         name: Station
         in: query
-        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter by station ID. Array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: array
@@ -1860,15 +1764,13 @@ paths:
         explode: true
         name: ExcludeStation
         in: query
-        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings,
-          or by using the /lineups Entertainment.
+        description: Filter out station IDs; array or single value accepted. Station ID's can be found in listings, or by using the /lineups Entertainment.
         required: false
       - schema:
           type: string
         name: Search
         in: query
-        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted
-          by relevance rather than time.'
+        description: 'search value: can be a show, episode, movie, team, league, person, etc. Results will be sorted by relevance rather than time.'
         required: false
       - schema:
           type: array
@@ -1878,9 +1780,7 @@ paths:
         explode: true
         name: ShowType
         in: query
-        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Include only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1890,9 +1790,7 @@ paths:
         explode: true
         name: ExcludeShowType
         in: query
-        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For
-          a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing
-          object.
+        description: Exclude only these show type ID(s), array or single values accepted. Must be URL encoded. For a list of possible show type's and their ID's see /genres/shows, or the showTypeID property of a listing object.
         required: false
       - schema:
           type: array
@@ -1902,8 +1800,7 @@ paths:
         explode: true
         name: Id
         in: query
-        description: ListingID, array or single values accepted. to return a single listing it should be used in
-          combination with a stationID (station parameter).
+        description: ListingID, array or single values accepted. to return a single listing it should be used in combination with a stationID (station parameter).
         required: false
       - schema:
           type: boolean
@@ -1921,8 +1818,7 @@ paths:
           type: boolean
         name: DescriptiveVideoOnly
         in: query
-        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value
-          necessary.
+        description: Only displays listings which are flagged as being broadcast with Descriptive Video. No value necessary.
         required: false
       - schema:
           type: boolean
@@ -1940,8 +1836,7 @@ paths:
           type: boolean
         name: DisplayArtwork
         in: query
-        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve
-          performance).
+        description: Displays the Artwork information. Set to 1 to include, 1 is default. 0 to hide (will improve performance).
         required: false
       - schema:
           type: string
@@ -1950,8 +1845,7 @@ paths:
           - brief
         name: Detail
         in: query
-        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full'
-          will include all properties, 'brief' will exclude optional properties.
+        description: Set level of detail for response. values are 'full' or 'brief', defaults to 'full'. 'full' will include all properties, 'brief' will exclude optional properties.
         required: false
       responses:
         '200':
@@ -1964,8 +1858,14 @@ paths:
                 items:
                   $ref: '#/components/schemas/TvMediaListingResponse'
       deprecated: false
+      summary: Get tv media team listingsteams team IDlistings get
+      x-summary-source: derived
 components:
   schemas:
+    Object:
+      properties: {}
+      description: Object
+      type: object
     TvMediaLineupResponse:
       title: TvMediaLineupResponse
       properties:
@@ -1988,38 +1888,6 @@ components:
           items:
             $ref: '#/components/schemas/Station'
       description: TvMediaLineupResponse
-      type: object
-    Station:
-      title: Station
-      properties:
-        _CallSign:
-          type: string
-        _ID:
-          type: integer
-          format: int32
-        _Type:
-          type: string
-        _Affiliate:
-          type: string
-        _LogoPathURL:
-          type: string
-        _Media:
-          $ref: '#/components/schemas/Object'
-        _MediaInfoSpecified:
-          type: boolean
-        _StationDetailsSpecified:
-          type: boolean
-        _StationDetails:
-          $ref: '#/components/schemas/Object'
-        _AiringsSpecified:
-          type: boolean
-        _Airings:
-          $ref: '#/components/schemas/Object'
-      description: Station
-      type: object
-    Object:
-      properties: {}
-      description: Object
       type: object
     TvMediaStationResponse:
       title: TvMediaStationResponse
@@ -2050,4 +1918,32 @@ components:
         stationHD:
           type: boolean
       description: TvMediaStationResponse
+      type: object
+    Station:
+      title: Station
+      properties:
+        _CallSign:
+          type: string
+        _ID:
+          type: integer
+          format: int32
+        _Type:
+          type: string
+        _Affiliate:
+          type: string
+        _LogoPathURL:
+          type: string
+        _Media:
+          $ref: '#/components/schemas/Object'
+        _MediaInfoSpecified:
+          type: boolean
+        _StationDetailsSpecified:
+          type: boolean
+        _StationDetails:
+          $ref: '#/components/schemas/Object'
+        _AiringsSpecified:
+          type: boolean
+        _Airings:
+          $ref: '#/components/schemas/Object'
+      description: Station
       type: object

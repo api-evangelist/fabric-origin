@@ -1,11 +1,11 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Rotten Tomatoes API
+  title: Rotten Tomatoes Rottentomatoes API
   version: '1.0'
-tags:
-- name: rottentomatoes
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: rottentomatoes
 paths:
   /RottenTomatoes/Episode:
     get:
@@ -33,7 +33,6 @@ paths:
       tags:
       - rottentomatoes
       summary: Get Rotten Tomatoes reviews and scores for movie
-      description: Get Rotten Tomatoes reviews and scores for movie
       operationId: GetRottenTomatoesMovieMovie_Get
       parameters:
       - schema:
@@ -54,7 +53,6 @@ paths:
       tags:
       - rottentomatoes
       summary: GetRottenTomatoesSeason
-      description: GetRottenTomatoesSeason
       operationId: GetRottenTomatoesSeasonSeason_Get
       parameters:
       - schema:
@@ -75,7 +73,6 @@ paths:
       tags:
       - rottentomatoes
       summary: Get Rotten Tomatoes reviews and scores for Show
-      description: Get Rotten Tomatoes reviews and scores for Show
       operationId: GetRottenTomatoesShowShow_Get
       parameters:
       - schema:
@@ -93,101 +90,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    ReviewData:
-      title: ReviewData
-      properties:
-        FanSummary:
-          $ref: '#/components/schemas/FanSummary'
-        CriticSummary:
-          $ref: '#/components/schemas/CriticSummary'
-        Reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/RottenTomatoesReview'
-        Ratings:
-          type: array
-          items:
-            $ref: '#/components/schemas/RottenTomatoesRating'
-      description: ReviewData
-      type: object
-    FanSummary:
-      title: FanSummary
-      properties:
-        Url:
-          type: string
-        Score:
-          $ref: '#/components/schemas/SummaryScore'
-      description: FanSummary
-      type: object
-    SummaryScore:
-      title: SummaryScore
-      properties:
-        Value:
-          type: string
-        AvgScore:
-          type: string
-        Count:
-          type: string
-        PreRelease:
-          type: string
-        AudienceRating:
-          type: string
-      description: SummaryScore
-      type: object
-    CriticSummary:
-      title: CriticSummary
-      properties:
-        Url:
-          type: string
-        CriticRating:
-          type: string
-        Score:
-          $ref: '#/components/schemas/SummaryScore'
-        Freshness:
-          $ref: '#/components/schemas/SummaryFreshness'
-      description: CriticSummary
-      type: object
-    SummaryFreshness:
-      title: SummaryFreshness
-      properties:
-        Value:
-          type: string
-        Certified:
-          type: string
-        Rotten:
-          type: string
-      description: SummaryFreshness
-      type: object
-    RottenTomatoesReview:
-      title: RottenTomatoesReview
-      properties:
-        Id:
-          type: string
-        Url:
-          type: string
-        TopReview:
-          type: string
-        Date:
-          type: string
-        Quote:
-          type: string
-        Freshness:
-          $ref: '#/components/schemas/ReviewFreshness'
-        Critic:
-          $ref: '#/components/schemas/Critic'
-        Publication:
-          $ref: '#/components/schemas/Publication'
-      description: RottenTomatoesReview
-      type: object
-    ReviewFreshness:
-      title: ReviewFreshness
-      properties:
-        OriginalScore:
-          type: string
-        Text:
-          type: string
-      description: ReviewFreshness
-      type: object
     Critic:
       title: Critic
       properties:
@@ -214,6 +116,26 @@ components:
           type: string
       description: Publication
       type: object
+    SummaryFreshness:
+      title: SummaryFreshness
+      properties:
+        Value:
+          type: string
+        Certified:
+          type: string
+        Rotten:
+          type: string
+      description: SummaryFreshness
+      type: object
+    ReviewFreshness:
+      title: ReviewFreshness
+      properties:
+        OriginalScore:
+          type: string
+        Text:
+          type: string
+      description: ReviewFreshness
+      type: object
     RottenTomatoesRating:
       title: RottenTomatoesRating
       properties:
@@ -228,6 +150,81 @@ components:
         Comment:
           type: string
       description: RottenTomatoesRating
+      type: object
+    FanSummary:
+      title: FanSummary
+      properties:
+        Url:
+          type: string
+        Score:
+          $ref: '#/components/schemas/SummaryScore'
+      description: FanSummary
+      type: object
+    ReviewData:
+      title: ReviewData
+      properties:
+        FanSummary:
+          $ref: '#/components/schemas/FanSummary'
+        CriticSummary:
+          $ref: '#/components/schemas/CriticSummary'
+        Reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/RottenTomatoesReview'
+        Ratings:
+          type: array
+          items:
+            $ref: '#/components/schemas/RottenTomatoesRating'
+      description: ReviewData
+      type: object
+    RottenTomatoesReview:
+      title: RottenTomatoesReview
+      properties:
+        Id:
+          type: string
+        Url:
+          type: string
+        TopReview:
+          type: string
+        Date:
+          type: string
+        Quote:
+          type: string
+        Freshness:
+          $ref: '#/components/schemas/ReviewFreshness'
+        Critic:
+          $ref: '#/components/schemas/Critic'
+        Publication:
+          $ref: '#/components/schemas/Publication'
+      description: RottenTomatoesReview
+      type: object
+    CriticSummary:
+      title: CriticSummary
+      properties:
+        Url:
+          type: string
+        CriticRating:
+          type: string
+        Score:
+          $ref: '#/components/schemas/SummaryScore'
+        Freshness:
+          $ref: '#/components/schemas/SummaryFreshness'
+      description: CriticSummary
+      type: object
+    SummaryScore:
+      title: SummaryScore
+      properties:
+        Value:
+          type: string
+        AvgScore:
+          type: string
+        Count:
+          type: string
+        PreRelease:
+          type: string
+        AudienceRating:
+          type: string
+      description: SummaryScore
       type: object
     RatingScore:
       title: RatingScore

@@ -1,17 +1,17 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Rev Caption API
+  title: Caption Rev API
   version: '1.0'
-tags:
-- name: rev
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: rev
 paths:
   /Rev/{Id}/Attachments/{Type}/content:
     get:
       tags:
       - rev
-      summary: Caption text.
+      summary: Caption text
       description: Requires caption OrderId and Type of caption.
       operationId: GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get
       parameters:
@@ -55,7 +55,7 @@ paths:
     post:
       tags:
       - rev
-      summary: Creates a caption order for given Video Ids.
+      summary: Creates a caption order for given Video Ids
       description: Requires at least one Video ID.
       operationId: CreateRevCaptionOrderOrders_Post
       responses:
@@ -77,9 +77,7 @@ paths:
                   description: This is a secret key specific to each partner that wishes to use the Rev Entertainment.
                 UserApiKey:
                   type: string
-                  description: This is a secret key specific to a Rev user, which identifies the user account under
-                    whose privileges the requested operation executes. This key can be obtained by logging in to
-                    Rev as the user in question and going to the Rev Account Settings page.
+                  description: This is a secret key specific to a Rev user, which identifies the user account under whose privileges the requested operation executes. This key can be obtained by logging in to Rev as the user in question and going to the Rev Account Settings page.
                 ReferenceId:
                   type: string
                   description: Optional order reference number.
@@ -101,7 +99,7 @@ paths:
     get:
       tags:
       - rev
-      summary: List of Caption Orders.
+      summary: List of Caption Orders
       description: Orders are paged. Use Order ID to retrieve the caption attachment.
       operationId: GetRevCaptionsOrdersAll_Get
       parameters:
@@ -138,27 +136,6 @@ components:
         Status:
           type: string
       description: CaptionOrderResponse
-      type: object
-    AllRevCaptionsResponse:
-      title: AllRevCaptionsResponse
-      properties:
-        TotalCount:
-          description: Total count of captions.
-          type: integer
-          format: int64
-        Skip:
-          description: Records to skip used with paging.
-          type: integer
-          format: int32
-        Take:
-          description: Page size.
-          type: integer
-          format: int32
-        Result:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevCaptionsResponse'
-      description: AllRevCaptionsResponse
       type: object
     RevCaptionsResponse:
       title: RevCaptionsResponse
@@ -214,6 +191,27 @@ components:
         text:
           type: string
       description: RevOrderComment
+      type: object
+    AllRevCaptionsResponse:
+      title: AllRevCaptionsResponse
+      properties:
+        TotalCount:
+          description: Total count of captions.
+          type: integer
+          format: int64
+        Skip:
+          description: Records to skip used with paging.
+          type: integer
+          format: int32
+        Take:
+          description: Page size.
+          type: integer
+          format: int32
+        Result:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevCaptionsResponse'
+      description: AllRevCaptionsResponse
       type: object
     RevCaptionItem:
       title: RevCaptionItem

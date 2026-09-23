@@ -1,19 +1,18 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: fabric Origin API
+  title: fabric Origin Images API
   version: '3.0'
-tags:
-- name: images
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: Images
 paths:
   /Images/{FilePath}/Redirect:
     get:
       tags:
-      - images
-      summary: Redirect to an Image.
-      description: 'Images should be downloaded and stored on the client server. Use /Common/ImageTypes to see a
-        list of available image types. Note: The swagger U/I does not support redirects.'
+      - Images
+      summary: Redirect to an Image
+      description: 'Images should be downloaded and stored on the client server. Use /Common/ImageTypes to see a list of available image types. Note: The swagger U/I does not support redirects.'
       operationId: GetImageRedirectFilePathRedirect_Get
       parameters:
       - schema:
@@ -45,8 +44,8 @@ paths:
   /Images/Batch:
     post:
       tags:
-      - images
-      summary: List of Batch Image.
+      - Images
+      summary: List of Batch Image
       description: Requires a list filepath.
       operationId: GetImageBatchBatch_Post
       responses:
@@ -73,8 +72,8 @@ paths:
   /Images/ScreenCaptures/Batch:
     post:
       tags:
-      - images
-      summary: List of Screen Capture Responses.
+      - Images
+      summary: List of Screen Capture Responses
       description: Requires a list of filepaths.
       operationId: GetScreenCaptureBatchScreenCapturesBatch_Post
       responses:
@@ -101,10 +100,9 @@ paths:
   /Images/ScreenCaptures/Redirect:
     get:
       tags:
-      - images
-      summary: Redirect to a Screen Capture.
-      description: 'Requires a valid filepath of a video asset screen capture. Note: The swagger U/I does not support
-        redirects.'
+      - Images
+      summary: Redirect to a Screen Capture
+      description: 'Requires a valid filepath of a video asset screen capture. Note: The swagger U/I does not support redirects.'
       operationId: GetScreenCaptureRedirectScreenCapturesRedirect_Get
       parameters:
       - schema:
@@ -135,18 +133,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    ImageRedirectResponse:
-      title: ImageRedirectResponse
-      properties:
-        Url:
-          description: URL to image request.
-          type: string
-        Expires:
-          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
-          type: string
-          format: date-time
-      description: ImageRedirectResponse
-      type: object
     ScreenCaptureRedirectResponse:
       title: ScreenCaptureRedirectResponse
       properties:
@@ -158,4 +144,16 @@ components:
           type: string
           format: date-time
       description: ScreenCaptureRedirectResponse
+      type: object
+    ImageRedirectResponse:
+      title: ImageRedirectResponse
+      properties:
+        Url:
+          description: URL to image request.
+          type: string
+        Expires:
+          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
+          type: string
+          format: date-time
+      description: ImageRedirectResponse
       type: object

@@ -1,18 +1,17 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Common Metadata API
+  title: Metadata Common API
   version: '1.0'
-tags:
-- name: common
 servers:
 - url: https://api.origin.fabricdata.com
+tags:
+- name: Common
 paths:
   /Common/Characteristics/BasedOn:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Based On
-      description: Get characteristic types for the Based On
       operationId: GetBasedOnCharacteristicsBasedOn_Get
       responses:
         '200':
@@ -25,9 +24,8 @@ paths:
   /Common/Characteristics/FilmingLocations:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Filming Location
-      description: Get characteristic types for the Filming Location
       operationId: GetFilmingLocationsCharacteristicsFilmingLocations_Get
       responses:
         '200':
@@ -40,9 +38,8 @@ paths:
   /Common/Characteristics/MoodAndTone:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Mood And Tone
-      description: Get characteristic types for the Mood And Tone
       operationId: GetMoodAndToneCharacteristicsMoodAndTone_Get
       responses:
         '200':
@@ -55,9 +52,8 @@ paths:
   /Common/Characteristics/NarrativeLocations:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Narrative Location
-      description: Get characteristic types for the Narrative Location
       operationId: GetNarrativeLocationsCharacteristicsNarrativeLocations_Get
       responses:
         '200':
@@ -70,9 +66,8 @@ paths:
   /Common/Characteristics/SettingAndContext:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Setting And Context
-      description: Get characteristic types for the Setting And Context
       operationId: GetSettingAndContextCharacteristicsSettingAndContext_Get
       responses:
         '200':
@@ -85,9 +80,8 @@ paths:
   /Common/Characteristics/SubjectAndTrope:
     get:
       tags:
-      - common
+      - Common
       summary: Get characteristic types for the Subject And Trope
-      description: Get characteristic types for the Subject And Trope
       operationId: GetSubjectAndTropeCharacteristicsSubjectAndTrope_Get
       responses:
         '200':
@@ -100,8 +94,8 @@ paths:
   /Common/Collections/{CollectionId}/Items/:
     get:
       tags:
-      - common
-      summary: Gets DbCollectionItems by CollectionId.
+      - Common
+      summary: Gets DbCollectionItems by CollectionId
       description: Gets DbCollectionItems by CollectionId.
       operationId: GetDbCollectionItemsCollectionsCollectionIdItems_Get
       parameters:
@@ -125,8 +119,8 @@ paths:
   /Common/Collections/Children:
     get:
       tags:
-      - common
-      summary: Gets all Child Collections of a given Collection.
+      - Common
+      summary: Gets all Child Collections of a given Collection
       description: Gets all Child Collections of a given Collection.
       operationId: GetCollectionChildrenCollectionsChildren_Get
       parameters:
@@ -149,8 +143,8 @@ paths:
   /Common/Collections/Program:
     get:
       tags:
-      - common
-      summary: Gets all Collections containing a specific program.
+      - Common
+      summary: Gets all Collections containing a specific program
       description: Gets all Collections containing a specific program.
       operationId: GetProgramCollectionsCollectionsProgram_Get
       parameters:
@@ -172,8 +166,8 @@ paths:
   /Common/Collections/Search/:
     get:
       tags:
-      - common
-      summary: Search collections.
+      - Common
+      summary: Search collections
       description: Search collection data.
       operationId: SearchCollectionCollectionsSearch_Get
       parameters:
@@ -261,9 +255,7 @@ paths:
           type: string
         name: NextPageToken
         in: query
-        description: Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned from search
-          results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored
-          when this parameter is provided.
+        description: Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided.
         required: false
       - schema:
           type: string
@@ -288,8 +280,8 @@ paths:
       deprecated: false
     post:
       tags:
-      - common
-      summary: Search collections.
+      - Common
+      summary: Search collections
       description: Search collection data.
       operationId: SearchCollectionCollectionsSearch_Post
       responses:
@@ -337,9 +329,7 @@ paths:
                   description: Search collections across all data points for recommendations.
                 NextPageToken:
                   type: string
-                  description: Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned
-                    from search results when using Timestamp sorting for optimal performance while paging large
-                    result sets. Skip is ignored when this parameter is provided.
+                  description: Used for deep paging of record (beyond 10,000). Provide the NextPageToken returned from search results when using Timestamp sorting for optimal performance while paging large result sets. Skip is ignored when this parameter is provided.
                 SortBy:
                   type: string
                   description: Sort order of results.
@@ -351,8 +341,8 @@ paths:
   /Common/Collections/Suggestions:
     get:
       tags:
-      - common
-      summary: Gets Collection suggestions for a specific program.
+      - Common
+      summary: Gets Collection suggestions for a specific program
       description: Gets Collection suggestions for a specific program.
       operationId: GetCollectionSuggestionsCollectionsSuggestions_Get
       parameters:
@@ -376,8 +366,8 @@ paths:
   /Common/CollectionTypes:
     get:
       tags:
-      - common
-      summary: Returns Collection Types.
+      - Common
+      summary: Returns Collection Types
       description: Returns Collection Types.
       operationId: GetCollectionTypesCollectionTypes_Get
       responses:
@@ -394,8 +384,8 @@ paths:
   /Common/Countries/:
     get:
       tags:
-      - common
-      summary: List of Countries.
+      - Common
+      summary: List of Countries
       description: List of Countries, ISO codes and Country IDs used throughout the API.
       operationId: GetCountriesCountries_Get
       responses:
@@ -412,8 +402,8 @@ paths:
   /Common/Countries/{Id}:
     get:
       tags:
-      - common
-      summary: Get Country by ID.
+      - Common
+      summary: Get Country by ID
       description: Requires a valid Country ID.
       operationId: GetCountryCountriesId_Get
       parameters:
@@ -434,8 +424,8 @@ paths:
   /Common/DataDemoFilters:
     get:
       tags:
-      - common
-      summary: List of filter options available in data demo.
+      - Common
+      summary: List of filter options available in data demo
       description: List of filter options available in data demo.
       operationId: GetDataDemoFiltersDataDemoFilters_Get
       responses:
@@ -449,8 +439,8 @@ paths:
   /Common/EncodeTypes/:
     get:
       tags:
-      - common
-      summary: Gets all EncodeTypes.
+      - Common
+      summary: Gets all EncodeTypes
       description: Videos are encoded in various formats and bitrates to reach any screen and work with any player.
       operationId: GetEncodeTypesEncodeTypes_Get
       responses:
@@ -467,8 +457,8 @@ paths:
   /Common/GetCommonEnumerators:
     get:
       tags:
-      - common
-      summary: List of Common Enumerators.
+      - Common
+      summary: List of Common Enumerators
       description: Provider enumerator has values added regularly. Update your SDK to refresh these values.
       operationId: GetCommonEnumeratorsGetCommonEnumerators_Get
       responses:
@@ -482,8 +472,8 @@ paths:
   /Common/GetCurrencyTypes:
     get:
       tags:
-      - common
-      summary: List of CurrencyTypes.
+      - Common
+      summary: List of CurrencyTypes
       description: List of CurrencyTypes.
       operationId: GetCurrencyTypesGetCurrencyTypes_Get
       responses:
@@ -500,8 +490,8 @@ paths:
   /Common/GetDeliveryMethods:
     get:
       tags:
-      - common
-      summary: List of DeliveryMethods.
+      - Common
+      summary: List of DeliveryMethods
       description: List of DeliveryMethods.
       operationId: GetDeliveryMethodsGetDeliveryMethods_Get
       responses:
@@ -518,8 +508,8 @@ paths:
   /Common/GetOfferTypes:
     get:
       tags:
-      - common
-      summary: List of OfferTypes.
+      - Common
+      summary: List of OfferTypes
       description: List of OfferTypes.
       operationId: GetOfferTypesGetOfferTypes_Get
       responses:
@@ -536,8 +526,8 @@ paths:
   /Common/GetProviders:
     get:
       tags:
-      - common
-      summary: List of Providers.
+      - Common
+      summary: List of Providers
       description: List of Providers.
       operationId: GetProvidersGetProviders_Get
       responses:
@@ -554,8 +544,8 @@ paths:
   /Common/GetVideoQualities:
     get:
       tags:
-      - common
-      summary: List of VideoQualities.
+      - Common
+      summary: List of VideoQualities
       description: Returns Providers.
       operationId: GetVideoQualitiesGetVideoQualities_Get
       responses:
@@ -572,8 +562,8 @@ paths:
   /Common/Images/{Id}/Changes:
     get:
       tags:
-      - common
-      summary: Returns full history of the Images Changes, or partial history when FromDate is included.
+      - Common
+      summary: Returns full history of the Images Changes, or partial history when FromDate is…
       description: Requires a valid ImageId, with optional FromDate.
       operationId: GetDbImageChangesImagesIdChanges_Get
       parameters:
@@ -589,8 +579,7 @@ paths:
           format: date-time
         name: FromDate
         in: query
-        description: 'Optional FromDate to return partial history of Image changes. ISO 8601 Format: yyyy-mm-dd
-          hh:mm:ss.ffffff0Z'
+        description: 'Optional FromDate to return partial history of Image changes. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z'
         required: false
       responses:
         '200':
@@ -606,8 +595,8 @@ paths:
   /Common/Images/{Id}/Tags:
     get:
       tags:
-      - common
-      summary: Returns Tags for an Image.
+      - Common
+      summary: Returns Tags for an Image
       description: Requires a valid Image Id.
       operationId: GetDbImageTagsImagesIdTags_Get
       parameters:
@@ -632,8 +621,8 @@ paths:
   /Common/ImageTypes/:
     get:
       tags:
-      - common
-      summary: List of Image Types.
+      - Common
+      summary: List of Image Types
       description: 'A list of image types available in the IVA database. EX: Poster.'
       operationId: GetImageTypesImageTypes_Get
       responses:
@@ -650,8 +639,8 @@ paths:
   /Common/Languages/:
     get:
       tags:
-      - common
-      summary: List of Languages.
+      - Common
+      summary: List of Languages
       description: Returns a list of languages used in the API as well as the ISO code and language ID.
       operationId: GetLanguagesLanguages_Get
       responses:
@@ -668,8 +657,8 @@ paths:
   /Common/Languages/{Id}:
     get:
       tags:
-      - common
-      summary: Get Language by ID.
+      - Common
+      summary: Get Language by ID
       description: Requires a valid Language ID.
       operationId: GetLanguageLanguagesId_Get
       parameters:
@@ -690,7 +679,7 @@ paths:
   /Common/MovieAlternateIdTypes:
     get:
       tags:
-      - common
+      - Common
       summary: Returns all MovieAlternateIdTypes
       description: No parameters
       operationId: GetMovieAlternateIdTypesMovieAlternateIdTypes_Get
@@ -708,8 +697,8 @@ paths:
   /Common/MovieCertifications:
     get:
       tags:
-      - common
-      summary: List of Movie Certifications.
+      - Common
+      summary: List of Movie Certifications
       description: Returns all Movie Certifications used in a movie response with the Releases object.
       operationId: GetMovieCertificationsMovieCertifications_Get
       responses:
@@ -726,8 +715,8 @@ paths:
   /Common/MovieGenres:
     get:
       tags:
-      - common
-      summary: List of Movie Genres.
+      - Common
+      summary: List of Movie Genres
       description: List of all movie genres used in the API.
       operationId: GetMovieGenresMovieGenres_Get
       responses:
@@ -744,7 +733,7 @@ paths:
   /Common/MovieReleaseTypes:
     get:
       tags:
-      - common
+      - Common
       summary: List of Movie Release Types
       description: No parameters
       operationId: GetMovieReleaseTypesMovieReleaseTypes_Get
@@ -762,8 +751,8 @@ paths:
   /Common/OriginatingNetworks/:
     get:
       tags:
-      - common
-      summary: List of Originating Networks.
+      - Common
+      summary: List of Originating Networks
       description: Returns a list of originating networks associated with shows in the IVA database.
       operationId: GetOriginatingNetworksOriginatingNetworks_Get
       responses:
@@ -780,7 +769,7 @@ paths:
   /Common/ShowAlternateIdTypes:
     get:
       tags:
-      - common
+      - Common
       summary: List of External Id Types
       description: No parameters
       operationId: GetShowAlternateIdTypesShowAlternateIdTypes_Get
@@ -798,8 +787,8 @@ paths:
   /Common/ShowCertifications:
     get:
       tags:
-      - common
-      summary: List of Show Certifications.
+      - Common
+      summary: List of Show Certifications
       description: List of Show Certifications and definitions.
       operationId: GetDbShowCertificationsShowCertifications_Get
       responses:
@@ -816,8 +805,8 @@ paths:
   /Common/ShowGenres:
     get:
       tags:
-      - common
-      summary: List of Show Genres.
+      - Common
+      summary: List of Show Genres
       description: Returns a list of all the show genres used in the IVA database.
       operationId: GetShowGenresShowGenres_Get
       responses:
@@ -834,7 +823,7 @@ paths:
   /Common/ShowReleaseTypes:
     get:
       tags:
-      - common
+      - Common
       summary: List of Show Release Types
       description: No parameters
       operationId: GetDbShowReleaseTypesShowReleaseTypes_Get
@@ -852,8 +841,8 @@ paths:
   /Common/Tags/:
     get:
       tags:
-      - common
-      summary: List of Tags (with paging).
+      - Common
+      summary: List of Tags (with paging)
       description: Paged list of all tags used in the API.
       operationId: GetTagsTags_Get
       parameters:
@@ -885,8 +874,8 @@ paths:
   /Common/TrendSources:
     get:
       tags:
-      - common
-      summary: List of Trend Sources.
+      - Common
+      summary: List of Trend Sources
       description: List of Trend Sources.
       operationId: GetTrendSourcesTrendSources_Get
       responses:
@@ -903,8 +892,8 @@ paths:
   /Common/VideoTypes/:
     get:
       tags:
-      - common
-      summary: List of Video Types.
+      - Common
+      summary: List of Video Types
       description: Returns a list of the types of videos that can be associated to a title.
       operationId: GetVideoTypesVideoTypes_Get
       responses:
@@ -920,37 +909,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    CharacteristicsResponse:
-      title: CharacteristicsResponse
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-      description: CharacteristicsResponse
-      type: object
-    SearchCollectionResponse:
-      title: SearchCollectionResponse
-      properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionHit'
-        Message:
-          type: string
-        NextPageToken:
-          type: string
-      description: SearchCollectionResponse
-      type: object
     CollectionHit:
       title: CollectionHit
       properties:
@@ -967,8 +925,7 @@ components:
       title: EntertainmentCollection
       properties:
         Id:
-          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could
-            be ID or ParentID.
+          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
           type: string
         Name:
           description: Name of collection.
@@ -1021,47 +978,6 @@ components:
           type: string
           format: date-time
       description: EntertainmentCollection
-      type: object
-    EntertainmentCollectionItem:
-      title: EntertainmentCollectionItem
-      properties:
-        ProgramId:
-          description: ID of program in collection.
-          type: string
-        Sequence:
-          description: Nullable sequence used to order some collections.
-          type: integer
-          format: int32
-        Modified:
-          description: DateTime collection item was last modified.
-          type: string
-          format: date-time
-      description: EntertainmentCollectionItem
-      type: object
-    CountryResponse:
-      title: CountryResponse
-      properties:
-        Id:
-          type: integer
-          format: int32
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IsoCode:
-          description: ISO code for a Country.
-          type: string
-        IsoCodeA3:
-          description: ISO 3 character code for a Country.
-          type: string
-        Name:
-          description: Name of the Country.
-          type: string
-        AlternateNames:
-          description: Alternate names of the Country.
-          type: array
-          items:
-            type: string
-      description: CountryResponse
       type: object
     DataDemoFilters:
       title: DataDemoFilters
@@ -1176,14 +1092,67 @@ components:
           type: string
       description: DataDemoFilters
       type: object
-    NameValueFilter:
-      title: NameValueFilter
+    LanguageResponse:
+      title: LanguageResponse
       properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
         Name:
+          description: Name of the Language.
           type: string
-        Value:
+        FabricId:
+          description: Fabric Language Id.
           type: string
-      description: NameValueFilter
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageResponse
+      type: object
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
+      properties:
+        ProgramId:
+          description: ID of program in collection.
+          type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
+        Modified:
+          description: DateTime collection item was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollectionItem
+      type: object
+    CountryResponse:
+      title: CountryResponse
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IsoCode:
+          description: ISO code for a Country.
+          type: string
+        IsoCodeA3:
+          description: ISO 3 character code for a Country.
+          type: string
+        Name:
+          description: Name of the Country.
+          type: string
+        AlternateNames:
+          description: Alternate names of the Country.
+          type: array
+          items:
+            type: string
+      description: CountryResponse
       type: object
     CommonEnumerators:
       title: CommonEnumerators
@@ -1210,24 +1179,43 @@ components:
             type: string
       description: CommonEnumerators
       type: object
-    LanguageResponse:
-      title: LanguageResponse
+    SearchCollectionResponse:
+      title: SearchCollectionResponse
       properties:
-        Id:
-          description: Unique ID of a Language.
+        Took:
           type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionHit'
+        Message:
           type: string
+        NextPageToken:
+          type: string
+      description: SearchCollectionResponse
+      type: object
+    NameValueFilter:
+      title: NameValueFilter
+      properties:
         Name:
-          description: Name of the Language.
           type: string
-        FabricId:
-          description: Fabric Language Id.
+        Value:
           type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
+      description: NameValueFilter
+      type: object
+    CharacteristicsResponse:
+      title: CharacteristicsResponse
+      properties:
+        Name:
           type: string
-      description: LanguageResponse
+        Description:
+          type: string
+      description: CharacteristicsResponse
       type: object

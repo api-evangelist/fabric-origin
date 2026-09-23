@@ -1,0 +1,32 @@
+# Front Door AI Index — fabric-origin — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: fabric-origin
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.fabricdata.com
+  final_host: www.fabricdata.com
+  ownership: own
+  owner: fabric-origin
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 21
+  host_score: 21
+  density: 5.83
+  words: 3599
+  tiers:
+    agentic: 10
+    core: 8
+    model: 3
+  ambiguous: 43
+  top_terms:
+    intelligence: 30
+    agent: 10
+    AI: 8
+    MCP: 8
+    Claude: 3
+    automation: 3
+    autonomous agent: 1
+    llms.txt: 1
