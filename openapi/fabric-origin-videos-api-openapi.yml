@@ -201,6 +201,16 @@ paths:
       deprecated: false
 components:
   schemas:
+    VideoResponse:
+      title: VideoResponse
+      properties:
+        Url:
+          type: string
+        Expires:
+          type: string
+          format: date-time
+      description: VideoResponse
+      type: object
     ClosedCaption:
       title: ClosedCaption
       properties:
@@ -218,14 +228,4 @@ components:
           type: integer
           format: int32
       description: ClosedCaption
-      type: object
-    VideoResponse:
-      title: VideoResponse
-      properties:
-        Url:
-          type: string
-        Expires:
-          type: string
-          format: date-time
-      description: VideoResponse
       type: object

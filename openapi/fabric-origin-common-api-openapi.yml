@@ -909,17 +909,55 @@ paths:
       deprecated: false
 components:
   schemas:
-    CollectionHit:
-      title: CollectionHit
+    NameValueFilter:
+      title: NameValueFilter
       properties:
-        Score:
-          type: number
-          format: double
-        Source:
-          $ref: '#/components/schemas/EntertainmentCollection'
-        Id:
+        Name:
           type: string
-      description: CollectionHit
+        Value:
+          type: string
+      description: NameValueFilter
+      type: object
+    CountryResponse:
+      title: CountryResponse
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IsoCode:
+          description: ISO code for a Country.
+          type: string
+        IsoCodeA3:
+          description: ISO 3 character code for a Country.
+          type: string
+        Name:
+          description: Name of the Country.
+          type: string
+        AlternateNames:
+          description: Alternate names of the Country.
+          type: array
+          items:
+            type: string
+      description: CountryResponse
+      type: object
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
+      properties:
+        ProgramId:
+          description: ID of program in collection.
+          type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
+        Modified:
+          description: DateTime collection item was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollectionItem
       type: object
     EntertainmentCollection:
       title: EntertainmentCollection
@@ -978,6 +1016,58 @@ components:
           type: string
           format: date-time
       description: EntertainmentCollection
+      type: object
+    LanguageResponse:
+      title: LanguageResponse
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageResponse
+      type: object
+    SearchCollectionResponse:
+      title: SearchCollectionResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchCollectionResponse
+      type: object
+    CharacteristicsResponse:
+      title: CharacteristicsResponse
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+      description: CharacteristicsResponse
       type: object
     DataDemoFilters:
       title: DataDemoFilters
@@ -1092,68 +1182,6 @@ components:
           type: string
       description: DataDemoFilters
       type: object
-    LanguageResponse:
-      title: LanguageResponse
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageResponse
-      type: object
-    EntertainmentCollectionItem:
-      title: EntertainmentCollectionItem
-      properties:
-        ProgramId:
-          description: ID of program in collection.
-          type: string
-        Sequence:
-          description: Nullable sequence used to order some collections.
-          type: integer
-          format: int32
-        Modified:
-          description: DateTime collection item was last modified.
-          type: string
-          format: date-time
-      description: EntertainmentCollectionItem
-      type: object
-    CountryResponse:
-      title: CountryResponse
-      properties:
-        Id:
-          type: integer
-          format: int32
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IsoCode:
-          description: ISO code for a Country.
-          type: string
-        IsoCodeA3:
-          description: ISO 3 character code for a Country.
-          type: string
-        Name:
-          description: Name of the Country.
-          type: string
-        AlternateNames:
-          description: Alternate names of the Country.
-          type: array
-          items:
-            type: string
-      description: CountryResponse
-      type: object
     CommonEnumerators:
       title: CommonEnumerators
       properties:
@@ -1179,43 +1207,15 @@ components:
             type: string
       description: CommonEnumerators
       type: object
-    SearchCollectionResponse:
-      title: SearchCollectionResponse
+    CollectionHit:
+      title: CollectionHit
       properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
+        Score:
           type: number
           format: double
-        Hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionHit'
-        Message:
+        Source:
+          $ref: '#/components/schemas/EntertainmentCollection'
+        Id:
           type: string
-        NextPageToken:
-          type: string
-      description: SearchCollectionResponse
-      type: object
-    NameValueFilter:
-      title: NameValueFilter
-      properties:
-        Name:
-          type: string
-        Value:
-          type: string
-      description: NameValueFilter
-      type: object
-    CharacteristicsResponse:
-      title: CharacteristicsResponse
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-      description: CharacteristicsResponse
+      description: CollectionHit
       type: object

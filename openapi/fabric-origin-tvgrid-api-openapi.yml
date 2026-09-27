@@ -1862,33 +1862,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Object:
-      properties: {}
-      description: Object
-      type: object
-    TvMediaLineupResponse:
-      title: TvMediaLineupResponse
-      properties:
-        lineupID:
-          type: string
-        lineupName:
-          type: string
-        lineupType:
-          type: string
-        providerID:
-          type: string
-        providerName:
-          type: string
-        serviceArea:
-          type: string
-        country:
-          type: string
-        stations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Station'
-      description: TvMediaLineupResponse
-      type: object
     TvMediaStationResponse:
       title: TvMediaStationResponse
       properties:
@@ -1919,6 +1892,29 @@ components:
           type: boolean
       description: TvMediaStationResponse
       type: object
+    TvMediaLineupResponse:
+      title: TvMediaLineupResponse
+      properties:
+        lineupID:
+          type: string
+        lineupName:
+          type: string
+        lineupType:
+          type: string
+        providerID:
+          type: string
+        providerName:
+          type: string
+        serviceArea:
+          type: string
+        country:
+          type: string
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'
+      description: TvMediaLineupResponse
+      type: object
     Station:
       title: Station
       properties:
@@ -1946,4 +1942,8 @@ components:
         _Airings:
           $ref: '#/components/schemas/Object'
       description: Station
+      type: object
+    Object:
+      properties: {}
+      description: Object
       type: object

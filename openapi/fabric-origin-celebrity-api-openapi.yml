@@ -816,6 +816,179 @@ paths:
               required: []
 components:
   schemas:
+    PersonSummary:
+      title: PersonSummary
+      properties:
+        Image:
+          $ref: '#/components/schemas/ProgramPersonImage'
+        Description:
+          $ref: '#/components/schemas/ProgramDescription'
+        ImageCount:
+          type: integer
+          format: int32
+        AwardCount:
+          type: integer
+          format: int32
+        ExternalIdCount:
+          type: integer
+          format: int32
+        DescriptionCount:
+          type: integer
+          format: int32
+        AlternateNameCount:
+          type: integer
+          format: int32
+      description: PersonSummary
+      type: object
+    FaceDetailsEyeglasses:
+      title: FaceDetailsEyeglasses
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has glasses.
+          type: boolean
+      description: FaceDetailsEyeglasses
+      type: object
+    FaceDetailsPose:
+      title: FaceDetailsPose
+      properties:
+        Pitch:
+          description: Pitch of face.
+          type: number
+          format: float
+        Roll:
+          description: Roll of face.
+          type: number
+          format: float
+        Yaw:
+          description: Yaw of face.
+          type: number
+          format: float
+      description: FaceDetailsPose
+      type: object
+    LanguageDetail:
+      title: LanguageDetail
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageDetail
+      type: object
+    SearchCelebrityResponse:
+      title: SearchCelebrityResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonSearchHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchCelebrityResponse
+      type: object
+    FaceDetailsAgerange:
+      title: FaceDetailsAgerange
+      properties:
+        High:
+          description: Upper age estimate.
+          type: integer
+          format: int32
+        Low:
+          description: Lower age estimate.
+          type: integer
+          format: int32
+      description: FaceDetailsAgerange
+      type: object
+    FaceDetailsGender:
+      title: FaceDetailsGender
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: Estimated gender.
+          type: string
+      description: FaceDetailsGender
+      type: object
+    Award:
+      title: Award
+      properties:
+        Year:
+          type: integer
+          format: int32
+        Type:
+          type: string
+        Category:
+          type: string
+        CategoryType:
+          type: string
+        ProgramId:
+          type: string
+        PersonIds:
+          type: array
+          items:
+            type: string
+        Winner:
+          type: boolean
+        Modified:
+          type: string
+          format: date-time
+      description: Award
+      type: object
+    ProgramDescription:
+      title: ProgramDescription
+      properties:
+        Description:
+          type: string
+        DescriptionType:
+          type: string
+        Attribution:
+          type: string
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramDescription
+      type: object
+    FaceDetailsSunglasses:
+      title: FaceDetailsSunglasses
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has sunglasses.
+          type: boolean
+      description: FaceDetailsSunglasses
+      type: object
     FaceDetails:
       title: FaceDetails
       properties:
@@ -878,18 +1051,6 @@ components:
           description: Details on whether the person is wearing sunglasses.
       description: FaceDetails
       type: object
-    FaceDetailsEmotion:
-      title: FaceDetailsEmotion
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Type:
-          description: Type of emotion.
-          type: string
-      description: FaceDetailsEmotion
-      type: object
     FaceDetailsSmile:
       title: FaceDetailsSmile
       properties:
@@ -902,26 +1063,29 @@ components:
           type: boolean
       description: FaceDetailsSmile
       type: object
-    FaceDetailsBoundingboxPixel:
-      title: FaceDetailsBoundingboxPixel
+    PersonSearchHit:
+      title: PersonSearchHit
       properties:
-        Height:
-          description: Height of face box.
-          type: integer
-          format: int32
-        Left:
-          description: How far from left of image to start face box.
-          type: integer
-          format: int32
-        Top:
-          description: How far from top of image to start face box.
-          type: integer
-          format: int32
-        Width:
-          description: Width of face box.
-          type: integer
-          format: int32
-      description: FaceDetailsBoundingboxPixel
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/DiscoverPerson'
+        Id:
+          type: string
+      description: PersonSearchHit
+      type: object
+    FaceDetailsEmotion:
+      title: FaceDetailsEmotion
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Type:
+          description: Type of emotion.
+          type: string
+      description: FaceDetailsEmotion
       type: object
     FaceDetailsLandmarkPixel:
       title: FaceDetailsLandmarkPixel
@@ -938,355 +1102,6 @@ components:
           type: integer
           format: int32
       description: FaceDetailsLandmarkPixel
-      type: object
-    FaceDetailsEyesopen:
-      title: FaceDetailsEyesopen
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has eyes open.
-          type: boolean
-      description: FaceDetailsEyesopen
-      type: object
-    FaceDetailsBoundingbox:
-      title: FaceDetailsBoundingbox
-      properties:
-        Height:
-          description: Height of face box.
-          type: number
-          format: float
-        Left:
-          description: How far from left of image to start face box.
-          type: number
-          format: float
-        Top:
-          description: How far from top of image to start face box.
-          type: number
-          format: float
-        Width:
-          description: Width of face box.
-          type: number
-          format: float
-      description: FaceDetailsBoundingbox
-      type: object
-    LanguageDetail:
-      title: LanguageDetail
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageDetail
-      type: object
-    FaceDetailsGender:
-      title: FaceDetailsGender
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: Estimated gender.
-          type: string
-      description: FaceDetailsGender
-      type: object
-    FaceDetailsPose:
-      title: FaceDetailsPose
-      properties:
-        Pitch:
-          description: Pitch of face.
-          type: number
-          format: float
-        Roll:
-          description: Roll of face.
-          type: number
-          format: float
-        Yaw:
-          description: Yaw of face.
-          type: number
-          format: float
-      description: FaceDetailsPose
-      type: object
-    ProgramPersonImage:
-      title: ProgramPersonImage
-      properties:
-        FaceDetails:
-          $ref: '#/components/schemas/FaceDetails'
-          description: Details of the person's face in the image.
-        EntertainmentId:
-          description: Entertainment ID of the movie, show, episode this image is promoting.  If you are doing editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film, TV show or game so as to be promotional.
-          type: string
-        ImageType:
-          type: string
-        Attribution:
-          type: string
-        Width:
-          type: integer
-          format: int32
-        Height:
-          type: integer
-          format: int32
-        Violence:
-          type: integer
-          format: int32
-        Sexuality:
-          type: integer
-          format: int32
-        Language:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-        Tags:
-          type: array
-          items:
-            type: string
-        Official:
-          type: boolean
-        FilePath:
-          type: string
-        Modified:
-          type: string
-          format: date-time
-        Created:
-          type: string
-          format: date-time
-      description: ProgramPersonImage
-      type: object
-    SearchCelebrityResponse:
-      title: SearchCelebrityResponse
-      properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/PersonSearchHit'
-        Message:
-          type: string
-        NextPageToken:
-          type: string
-      description: SearchCelebrityResponse
-      type: object
-    ProgramDescription:
-      title: ProgramDescription
-      properties:
-        Description:
-          type: string
-        DescriptionType:
-          type: string
-        Attribution:
-          type: string
-        Language:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramDescription
-      type: object
-    FaceDetailsMouthopen:
-      title: FaceDetailsMouthopen
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has mouth open.
-          type: boolean
-      description: FaceDetailsMouthopen
-      type: object
-    Award:
-      title: Award
-      properties:
-        Year:
-          type: integer
-          format: int32
-        Type:
-          type: string
-        Category:
-          type: string
-        CategoryType:
-          type: string
-        ProgramId:
-          type: string
-        PersonIds:
-          type: array
-          items:
-            type: string
-        Winner:
-          type: boolean
-        Modified:
-          type: string
-          format: date-time
-      description: Award
-      type: object
-    FaceDetailsMustache:
-      title: FaceDetailsMustache
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has mustache.
-          type: boolean
-      description: FaceDetailsMustache
-      type: object
-    ExternalId:
-      title: ExternalId
-      properties:
-        Name:
-          type: string
-        Id:
-          type: string
-      description: ExternalId
-      type: object
-    PersonSearchHit:
-      title: PersonSearchHit
-      properties:
-        Score:
-          type: number
-          format: double
-        Source:
-          $ref: '#/components/schemas/DiscoverPerson'
-        Id:
-          type: string
-      description: PersonSearchHit
-      type: object
-    FaceDetailsSunglasses:
-      title: FaceDetailsSunglasses
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has sunglasses.
-          type: boolean
-      description: FaceDetailsSunglasses
-      type: object
-    FaceDetailsQuality:
-      title: FaceDetailsQuality
-      properties:
-        Brightness:
-          description: Brightness of image.
-          type: number
-          format: float
-        Sharpness:
-          description: Sharpness of image.
-          type: number
-          format: float
-      description: FaceDetailsQuality
-      type: object
-    FaceDetailsLandmark:
-      title: FaceDetailsLandmark
-      properties:
-        Type:
-          description: Type of facial landmark.
-          type: string
-        X:
-          description: Position from left of image.
-          type: number
-          format: float
-        Y:
-          description: Position from top of image.
-          type: number
-          format: float
-      description: FaceDetailsLandmark
-      type: object
-    FaceDetailsAgerange:
-      title: FaceDetailsAgerange
-      properties:
-        High:
-          description: Upper age estimate.
-          type: integer
-          format: int32
-        Low:
-          description: Lower age estimate.
-          type: integer
-          format: int32
-      description: FaceDetailsAgerange
-      type: object
-    FlexDate:
-      title: FlexDate
-      properties:
-        Date:
-          type: string
-          format: date-time
-        Type:
-          type: string
-        Estimated:
-          type: boolean
-      description: FlexDate
-      type: object
-    FaceDetailsBeard:
-      title: FaceDetailsBeard
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has beard.
-          type: boolean
-      description: FaceDetailsBeard
-      type: object
-    PersonSummary:
-      title: PersonSummary
-      properties:
-        Image:
-          $ref: '#/components/schemas/ProgramPersonImage'
-        Description:
-          $ref: '#/components/schemas/ProgramDescription'
-        ImageCount:
-          type: integer
-          format: int32
-        AwardCount:
-          type: integer
-          format: int32
-        ExternalIdCount:
-          type: integer
-          format: int32
-        DescriptionCount:
-          type: integer
-          format: int32
-        AlternateNameCount:
-          type: integer
-          format: int32
-      description: PersonSummary
-      type: object
-    FaceDetailsEyeglasses:
-      title: FaceDetailsEyeglasses
-      properties:
-        Confidence:
-          description: Confidence rating of Value.
-          type: number
-          format: float
-        Value:
-          description: True/False whether person has glasses.
-          type: boolean
-      description: FaceDetailsEyeglasses
       type: object
     DiscoverPerson:
       title: DiscoverPerson
@@ -1385,4 +1200,189 @@ components:
         Summary:
           $ref: '#/components/schemas/PersonSummary'
       description: DiscoverPerson
+      type: object
+    FaceDetailsBoundingboxPixel:
+      title: FaceDetailsBoundingboxPixel
+      properties:
+        Height:
+          description: Height of face box.
+          type: integer
+          format: int32
+        Left:
+          description: How far from left of image to start face box.
+          type: integer
+          format: int32
+        Top:
+          description: How far from top of image to start face box.
+          type: integer
+          format: int32
+        Width:
+          description: Width of face box.
+          type: integer
+          format: int32
+      description: FaceDetailsBoundingboxPixel
+      type: object
+    FaceDetailsBoundingbox:
+      title: FaceDetailsBoundingbox
+      properties:
+        Height:
+          description: Height of face box.
+          type: number
+          format: float
+        Left:
+          description: How far from left of image to start face box.
+          type: number
+          format: float
+        Top:
+          description: How far from top of image to start face box.
+          type: number
+          format: float
+        Width:
+          description: Width of face box.
+          type: number
+          format: float
+      description: FaceDetailsBoundingbox
+      type: object
+    FaceDetailsLandmark:
+      title: FaceDetailsLandmark
+      properties:
+        Type:
+          description: Type of facial landmark.
+          type: string
+        X:
+          description: Position from left of image.
+          type: number
+          format: float
+        Y:
+          description: Position from top of image.
+          type: number
+          format: float
+      description: FaceDetailsLandmark
+      type: object
+    FaceDetailsEyesopen:
+      title: FaceDetailsEyesopen
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has eyes open.
+          type: boolean
+      description: FaceDetailsEyesopen
+      type: object
+    FaceDetailsQuality:
+      title: FaceDetailsQuality
+      properties:
+        Brightness:
+          description: Brightness of image.
+          type: number
+          format: float
+        Sharpness:
+          description: Sharpness of image.
+          type: number
+          format: float
+      description: FaceDetailsQuality
+      type: object
+    FaceDetailsMouthopen:
+      title: FaceDetailsMouthopen
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has mouth open.
+          type: boolean
+      description: FaceDetailsMouthopen
+      type: object
+    FlexDate:
+      title: FlexDate
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Type:
+          type: string
+        Estimated:
+          type: boolean
+      description: FlexDate
+      type: object
+    ProgramPersonImage:
+      title: ProgramPersonImage
+      properties:
+        FaceDetails:
+          $ref: '#/components/schemas/FaceDetails'
+          description: Details of the person's face in the image.
+        EntertainmentId:
+          description: Entertainment ID of the movie, show, episode this image is promoting.  If you are doing editorial about another topic and use an image from IVA, you need to reference or otherwise indicate the title of the film, TV show or game so as to be promotional.
+          type: string
+        ImageType:
+          type: string
+        Attribution:
+          type: string
+        Width:
+          type: integer
+          format: int32
+        Height:
+          type: integer
+          format: int32
+        Violence:
+          type: integer
+          format: int32
+        Sexuality:
+          type: integer
+          format: int32
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+        Tags:
+          type: array
+          items:
+            type: string
+        Official:
+          type: boolean
+        FilePath:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Created:
+          type: string
+          format: date-time
+      description: ProgramPersonImage
+      type: object
+    FaceDetailsMustache:
+      title: FaceDetailsMustache
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has mustache.
+          type: boolean
+      description: FaceDetailsMustache
+      type: object
+    FaceDetailsBeard:
+      title: FaceDetailsBeard
+      properties:
+        Confidence:
+          description: Confidence rating of Value.
+          type: number
+          format: float
+        Value:
+          description: True/False whether person has beard.
+          type: boolean
+      description: FaceDetailsBeard
+      type: object
+    ExternalId:
+      title: ExternalId
+      properties:
+        Name:
+          type: string
+        Id:
+          type: string
+      description: ExternalId
       type: object
