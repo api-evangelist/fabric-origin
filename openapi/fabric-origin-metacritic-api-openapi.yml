@@ -62,13 +62,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    MetacriticTvResponseObj:
-      title: MetacriticTvResponseObj
-      properties:
-        Product:
-          $ref: '#/components/schemas/MetacriticTvResponseProduct'
-      description: MetacriticTvResponseObj
-      type: object
     MetacriticMovieResponseProduct:
       title: MetacriticMovieResponseProduct
       properties:
@@ -89,94 +82,6 @@ components:
         Reviews:
           $ref: '#/components/schemas/MetacriticMovieResponseProductReviews'
       description: MetacriticMovieResponseProduct
-      type: object
-    MetacriticMovieResponseProductMetascore:
-      title: MetacriticMovieResponseProductMetascore
-      properties:
-        Score:
-          type: integer
-          format: int32
-        ReviewCount:
-          type: integer
-          format: int32
-        PositiveCount:
-          type: integer
-          format: int32
-        NeutralCount:
-          type: integer
-          format: int32
-        NegativeCount:
-          type: integer
-          format: int32
-      description: MetacriticMovieResponseProductMetascore
-      type: object
-    MetacriticMovieResponseProductReviews:
-      title: MetacriticMovieResponseProductReviews
-      properties:
-        Review:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReview'
-      description: MetacriticMovieResponseProductReviews
-      type: object
-    MetacriticTvResponseProductReviewsReviewPublication:
-      title: MetacriticTvResponseProductReviewsReviewPublication
-      properties:
-        Name:
-          type: string
-      description: MetacriticTvResponseProductReviewsReviewPublication
-      type: object
-    MetacriticMovieResponseObj:
-      title: MetacriticMovieResponseObj
-      properties:
-        Product:
-          $ref: '#/components/schemas/MetacriticMovieResponseProduct'
-      description: MetacriticMovieResponseObj
-      type: object
-    MetacriticMovieResponse:
-      title: MetacriticMovieResponse
-      properties:
-        response:
-          $ref: '#/components/schemas/MetacriticMovieResponseObj'
-      description: MetacriticMovieResponse
-      type: object
-    MetacriticTvResponseProductReviewsReview:
-      title: MetacriticTvResponseProductReviewsReview
-      properties:
-        Date:
-          type: string
-          format: date-time
-        Url:
-          type: string
-        Quote:
-          type: string
-        Score:
-          type: integer
-          format: int32
-        Publication:
-          $ref: '#/components/schemas/MetacriticTvResponseProductReviewsReviewPublication'
-        Critic:
-          $ref: '#/components/schemas/MetacriticTvResponseProductReviewsReviewCritic'
-      description: MetacriticTvResponseProductReviewsReview
-      type: object
-    MetacriticMovieResponseProductReviewsReview:
-      title: MetacriticMovieResponseProductReviewsReview
-      properties:
-        Date:
-          type: string
-          format: date-time
-        Url:
-          type: string
-        Quote:
-          type: string
-        Score:
-          type: integer
-          format: int32
-        Publication:
-          $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReviewPublication'
-        Critic:
-          $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReviewCritic'
-      description: MetacriticMovieResponseProductReviewsReview
       type: object
     MetacriticTvResponseProduct:
       title: MetacriticTvResponseProduct
@@ -203,52 +108,24 @@ components:
           type: string
       description: MetacriticMovieResponseProductReviewsReviewCritic
       type: object
-    MetacriticTvResponseProductUserscore:
-      title: MetacriticTvResponseProductUserscore
+    MetacriticTvResponseProductReviewsReview:
+      title: MetacriticTvResponseProductReviewsReview
       properties:
-        Score:
-          type: number
-          format: double
-        RatingCount:
-          type: integer
-          format: int32
-        PositiveCount:
-          type: integer
-          format: int32
-        NeutralCount:
-          type: integer
-          format: int32
-        NegativeCount:
-          type: integer
-          format: int32
-      description: MetacriticTvResponseProductUserscore
-      type: object
-    MetacriticMovieResponseProductUserscore:
-      title: MetacriticMovieResponseProductUserscore
-      properties:
-        Score:
-          type: number
-          format: double
-        RatingCount:
-          type: integer
-          format: int32
-        PositiveCount:
-          type: integer
-          format: int32
-        NeutralCount:
-          type: integer
-          format: int32
-        NegativeCount:
-          type: integer
-          format: int32
-      description: MetacriticMovieResponseProductUserscore
-      type: object
-    MetacriticMovieResponseProductReviewsReviewPublication:
-      title: MetacriticMovieResponseProductReviewsReviewPublication
-      properties:
-        Name:
+        Date:
           type: string
-      description: MetacriticMovieResponseProductReviewsReviewPublication
+          format: date-time
+        Url:
+          type: string
+        Quote:
+          type: string
+        Score:
+          type: integer
+          format: int32
+        Publication:
+          $ref: '#/components/schemas/MetacriticTvResponseProductReviewsReviewPublication'
+        Critic:
+          $ref: '#/components/schemas/MetacriticTvResponseProductReviewsReviewCritic'
+      description: MetacriticTvResponseProductReviewsReview
       type: object
     MetacriticTvResponseProductMetascore:
       title: MetacriticTvResponseProductMetascore
@@ -270,12 +147,135 @@ components:
           format: int32
       description: MetacriticTvResponseProductMetascore
       type: object
+    MetacriticMovieResponseProductReviews:
+      title: MetacriticMovieResponseProductReviews
+      properties:
+        Review:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReview'
+      description: MetacriticMovieResponseProductReviews
+      type: object
+    MetacriticTvResponseProductUserscore:
+      title: MetacriticTvResponseProductUserscore
+      properties:
+        Score:
+          type: number
+          format: double
+        RatingCount:
+          type: integer
+          format: int32
+        PositiveCount:
+          type: integer
+          format: int32
+        NeutralCount:
+          type: integer
+          format: int32
+        NegativeCount:
+          type: integer
+          format: int32
+      description: MetacriticTvResponseProductUserscore
+      type: object
+    MetacriticMovieResponseProductReviewsReview:
+      title: MetacriticMovieResponseProductReviewsReview
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Url:
+          type: string
+        Quote:
+          type: string
+        Score:
+          type: integer
+          format: int32
+        Publication:
+          $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReviewPublication'
+        Critic:
+          $ref: '#/components/schemas/MetacriticMovieResponseProductReviewsReviewCritic'
+      description: MetacriticMovieResponseProductReviewsReview
+      type: object
+    MetacriticTvResponse:
+      title: MetacriticTvResponse
+      properties:
+        response:
+          $ref: '#/components/schemas/MetacriticTvResponseObj'
+      description: MetacriticTvResponse
+      type: object
+    MetacriticMovieResponseProductReviewsReviewPublication:
+      title: MetacriticMovieResponseProductReviewsReviewPublication
+      properties:
+        Name:
+          type: string
+      description: MetacriticMovieResponseProductReviewsReviewPublication
+      type: object
+    MetacriticMovieResponseObj:
+      title: MetacriticMovieResponseObj
+      properties:
+        Product:
+          $ref: '#/components/schemas/MetacriticMovieResponseProduct'
+      description: MetacriticMovieResponseObj
+      type: object
+    MetacriticMovieResponseProductUserscore:
+      title: MetacriticMovieResponseProductUserscore
+      properties:
+        Score:
+          type: number
+          format: double
+        RatingCount:
+          type: integer
+          format: int32
+        PositiveCount:
+          type: integer
+          format: int32
+        NeutralCount:
+          type: integer
+          format: int32
+        NegativeCount:
+          type: integer
+          format: int32
+      description: MetacriticMovieResponseProductUserscore
+      type: object
+    MetacriticTvResponseProductReviewsReviewPublication:
+      title: MetacriticTvResponseProductReviewsReviewPublication
+      properties:
+        Name:
+          type: string
+      description: MetacriticTvResponseProductReviewsReviewPublication
+      type: object
     MetacriticTvResponseProductReviewsReviewCritic:
       title: MetacriticTvResponseProductReviewsReviewCritic
       properties:
         Name:
           type: string
       description: MetacriticTvResponseProductReviewsReviewCritic
+      type: object
+    MetacriticMovieResponse:
+      title: MetacriticMovieResponse
+      properties:
+        response:
+          $ref: '#/components/schemas/MetacriticMovieResponseObj'
+      description: MetacriticMovieResponse
+      type: object
+    MetacriticMovieResponseProductMetascore:
+      title: MetacriticMovieResponseProductMetascore
+      properties:
+        Score:
+          type: integer
+          format: int32
+        ReviewCount:
+          type: integer
+          format: int32
+        PositiveCount:
+          type: integer
+          format: int32
+        NeutralCount:
+          type: integer
+          format: int32
+        NegativeCount:
+          type: integer
+          format: int32
+      description: MetacriticMovieResponseProductMetascore
       type: object
     MetacriticTvResponseProductReviews:
       title: MetacriticTvResponseProductReviews
@@ -286,10 +286,10 @@ components:
             $ref: '#/components/schemas/MetacriticTvResponseProductReviewsReview'
       description: MetacriticTvResponseProductReviews
       type: object
-    MetacriticTvResponse:
-      title: MetacriticTvResponse
+    MetacriticTvResponseObj:
+      title: MetacriticTvResponseObj
       properties:
-        response:
-          $ref: '#/components/schemas/MetacriticTvResponseObj'
-      description: MetacriticTvResponse
+        Product:
+          $ref: '#/components/schemas/MetacriticTvResponseProduct'
+      description: MetacriticTvResponseObj
       type: object

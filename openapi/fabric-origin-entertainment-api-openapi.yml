@@ -3322,126 +3322,6 @@ components:
             type: string
       description: CountryDetail
       type: object
-    VideoScreenCapture:
-      title: VideoScreenCapture
-      properties:
-        Height:
-          type: integer
-          format: int32
-        Width:
-          type: integer
-          format: int32
-        Aspect:
-          type: string
-        FilePath:
-          type: string
-      description: VideoScreenCapture
-      type: object
-    ProgramRelease:
-      title: ProgramRelease
-      properties:
-        Date:
-          type: string
-          format: date-time
-        Certification:
-          type: string
-        Country:
-          type: string
-        CountryName:
-          type: string
-        CountryId:
-          type: integer
-          format: int32
-        FabricCountryId:
-          type: string
-        Type:
-          type: string
-      description: ProgramRelease
-      type: object
-    ProgramVideoTargetCountry:
-      title: ProgramVideoTargetCountry
-      properties:
-        CountryId:
-          type: integer
-          format: int32
-        Country:
-          type: string
-        CountryName:
-          type: string
-        FabricId:
-          type: string
-      description: ProgramVideoTargetCountry
-      type: object
-    SearchEntertainmentResponse:
-      title: SearchEntertainmentResponse
-      properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchHit'
-        Message:
-          type: string
-        NextPageToken:
-          type: string
-      description: SearchEntertainmentResponse
-      type: object
-    Summary:
-      title: Summary
-      properties:
-        Video:
-          $ref: '#/components/schemas/ProgramVideo'
-        Image:
-          $ref: '#/components/schemas/ProgramImage'
-        Description:
-          $ref: '#/components/schemas/ProgramDescription'
-        Contributors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProgramContributor'
-        ContributorCount:
-          type: integer
-          format: int32
-        AvailabilityCount:
-          type: integer
-          format: int32
-        ImageCount:
-          type: integer
-          format: int32
-        VideoCount:
-          type: integer
-          format: int32
-        ProgramTrendCount:
-          type: integer
-          format: int32
-        AwardCount:
-          type: integer
-          format: int32
-        ReleaseCount:
-          type: integer
-          format: int32
-        TitleCount:
-          type: integer
-          format: int32
-        ExternalIdCount:
-          type: integer
-          format: int32
-        TagCount:
-          type: integer
-          format: int32
-        ThemeCount:
-          type: integer
-          format: int32
-      description: Summary
-      type: object
     DiscoverProgram:
       title: DiscoverProgram
       required:
@@ -3648,162 +3528,6 @@ components:
           $ref: '#/components/schemas/Summary'
       description: DiscoverProgram
       type: object
-    OfferLink:
-      title: OfferLink
-      properties:
-        Platform:
-          type: string
-        Url:
-          type: string
-      description: OfferLink
-      type: object
-    ProgramTrend:
-      title: ProgramTrend
-      properties:
-        Id:
-          description: Trend Source Id.
-          type: integer
-          format: int32
-        Name:
-          description: Name of the trend list.
-          type: string
-        Brand:
-          description: Brand associated with trend list.
-          type: string
-        Country:
-          description: Specific country trend list is associated with.
-          type: string
-        Classifiers:
-          description: List of characteristics of the list.
-          type: array
-          items:
-            type: string
-        Modified:
-          description: Date the list was last updated.
-          type: string
-          format: date-time
-        Rank:
-          description: Position in the list.  1 is first/top of the list.
-          type: integer
-          format: int32
-        ListUrl:
-          description: URL of the list.
-          type: string
-        TitleUrl:
-          description: URL of title on trend list.
-          type: string
-      description: ProgramTrend
-      type: object
-    EntertainmentMatchCandidatesResponse:
-      title: EntertainmentMatchCandidatesResponse
-      properties:
-        MatchCandidates:
-          description: List of possible matches.
-          type: array
-          items:
-            $ref: '#/components/schemas/MatchCandidate'
-        TitleMods:
-          $ref: '#/components/schemas/TitleMods'
-        Success:
-          description: Status of match operation.
-          type: boolean
-        Message:
-          type: string
-      description: EntertainmentMatchCandidatesResponse
-      type: object
-    LanguageDetail:
-      title: LanguageDetail
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageDetail
-      type: object
-    MatchCandidate:
-      title: MatchCandidate
-      properties:
-        Score:
-          description: Score of the match to Entertainment.
-          type: integer
-          format: int32
-        ProgramType:
-          description: Program Type of the match to Entertainment.
-          type: string
-        EntertainmentId:
-          description: Entertainment Index program ID on successful match.
-          type: string
-        TitleMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Title match result.
-        YearMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Year match result.
-        ReleaseDateMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Release Date match result.
-        CertificationMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Certification match result.
-        RuntimeMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Runtime match result.
-        OriginatingNetworkMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Originating Network match result.
-        DescriptionMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Description match result.
-        CastMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Cast match result.
-        DirectorsMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Directors match result.
-        ProducersMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Producers match result.
-        CompanyMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Company match result.
-        GenreMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: Genre match result.
-        ThemeMatch:
-          $ref: '#/components/schemas/DataComparison'
-          description: THeme match result.
-      description: MatchCandidate
-      type: object
-    ProgramAlternateTitle:
-      title: ProgramAlternateTitle
-      properties:
-        Title:
-          type: string
-        Country:
-          type: string
-        CountryName:
-          type: string
-        CountryId:
-          type: integer
-          format: int32
-        CountryFabricId:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramAlternateTitle
-      type: object
     SearchHit:
       title: SearchHit
       properties:
@@ -3815,133 +3539,6 @@ components:
         Id:
           type: string
       description: SearchHit
-      type: object
-    Award:
-      title: Award
-      properties:
-        Year:
-          type: integer
-          format: int32
-        Type:
-          type: string
-        Category:
-          type: string
-        CategoryType:
-          type: string
-        ProgramId:
-          type: string
-        PersonIds:
-          type: array
-          items:
-            type: string
-        Winner:
-          type: boolean
-        Modified:
-          type: string
-          format: date-time
-      description: Award
-      type: object
-    TitleMods:
-      title: TitleMods
-      properties:
-        TitleSubmitted:
-          type: string
-        TitleApplied:
-          type: string
-        Removals:
-          type: array
-          items:
-            type: string
-      description: TitleMods
-      type: object
-    ProgramContributor:
-      title: ProgramContributor
-      properties:
-        PersonId:
-          type: string
-        PersonName:
-          type: string
-        Character:
-          type: string
-        Job:
-          type: string
-        Order:
-          type: integer
-          format: int32
-      description: ProgramContributor
-      type: object
-    EntertainmentCollection:
-      title: EntertainmentCollection
-      properties:
-        Id:
-          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
-          type: string
-        Name:
-          description: Name of collection.
-          type: string
-        Description:
-          description: Description of collection.
-          type: string
-        Types:
-          description: List of Types of collection.
-          type: array
-          items:
-            type: string
-        ParentCollectionIds:
-          description: List of collection ParentIds.
-          type: array
-          items:
-            type: string
-        Items:
-          description: Programs in the collection.
-          type: array
-          items:
-            $ref: '#/components/schemas/EntertainmentCollectionItem'
-        Tags:
-          description: Significant Term tags from programs in the collection.
-          type: array
-          items:
-            type: string
-        MicroGenres:
-          description: Micro genres from programs in the collection.
-          type: array
-          items:
-            type: string
-        Subjects:
-          description: Subjects from programs in the collection.
-          type: array
-          items:
-            type: string
-        BasedOns:
-          description: Based Ons from programs in the collection.
-          type: array
-          items:
-            type: string
-        Characters:
-          description: Characters from programs in the collection.
-          type: array
-          items:
-            type: string
-        Timestamp:
-          description: DateTime where collection was last modified.
-          type: string
-          format: date-time
-      description: EntertainmentCollection
-      type: object
-    ProgramDescription:
-      title: ProgramDescription
-      properties:
-        Description:
-          type: string
-        DescriptionType:
-          type: string
-        Attribution:
-          type: string
-        Language:
-          type: string
-        LanguageDetail:
-          $ref: '#/components/schemas/LanguageDetail'
-      description: ProgramDescription
       type: object
     ProgramVideo:
       title: ProgramVideo
@@ -4013,48 +3610,274 @@ components:
           $ref: '#/components/schemas/LanguageDetail'
       description: ProgramVideo
       type: object
-    Company:
-      title: Company
+    ProgramVideoTargetCountry:
+      title: ProgramVideoTargetCountry
       properties:
-        Id:
-          description: ID of Company object.
+        CountryId:
           type: integer
-          format: int64
-        CompanyId:
-          description: ID of Company.
-          type: integer
-          format: int64
-        Name:
-          description: Name of the Company.
+          format: int32
+        Country:
           type: string
-        Modified:
+        CountryName:
           type: string
-          format: date-time
-        NormalizedName:
+        FabricId:
           type: string
-        ParentCompany:
-          type: string
-      description: Company
+      description: ProgramVideoTargetCountry
       type: object
-    MatchToEntertainmentEpisodeBySequenceResponse:
-      title: MatchToEntertainmentEpisodeBySequenceResponse
+    MatchToEntertainmentSeasonBySequenceResponse:
+      title: MatchToEntertainmentSeasonBySequenceResponse
       properties:
         Success:
           type: boolean
-        EpisodeId:
+        SeasonId:
           type: integer
           format: int64
-        Title:
-          type: string
-        Year:
-          type: integer
-          format: int32
         Score:
           type: integer
           format: int32
         Message:
           type: string
-      description: MatchToEntertainmentEpisodeBySequenceResponse
+      description: MatchToEntertainmentSeasonBySequenceResponse
+      type: object
+    ShowEpisode:
+      title: ShowEpisode
+      properties:
+        EpisodeId:
+          type: string
+        SeasonId:
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        Action:
+          type: string
+      description: ShowEpisode
+      type: object
+    Summary:
+      title: Summary
+      properties:
+        Video:
+          $ref: '#/components/schemas/ProgramVideo'
+        Image:
+          $ref: '#/components/schemas/ProgramImage'
+        Description:
+          $ref: '#/components/schemas/ProgramDescription'
+        Contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramContributor'
+        ContributorCount:
+          type: integer
+          format: int32
+        AvailabilityCount:
+          type: integer
+          format: int32
+        ImageCount:
+          type: integer
+          format: int32
+        VideoCount:
+          type: integer
+          format: int32
+        ProgramTrendCount:
+          type: integer
+          format: int32
+        AwardCount:
+          type: integer
+          format: int32
+        ReleaseCount:
+          type: integer
+          format: int32
+        TitleCount:
+          type: integer
+          format: int32
+        ExternalIdCount:
+          type: integer
+          format: int32
+        TagCount:
+          type: integer
+          format: int32
+        ThemeCount:
+          type: integer
+          format: int32
+      description: Summary
+      type: object
+    ProgramAvailability:
+      title: ProgramAvailability
+      properties:
+        Provider:
+          type: string
+        OfferType:
+          type: string
+        DeliveryMethod:
+          type: string
+        Price:
+          type: number
+          format: double
+        Currency:
+          type: string
+        PreSale:
+          type: boolean
+        Quality:
+          type: string
+        Country:
+          type: string
+        CountryDetail:
+          $ref: '#/components/schemas/CountryDetail'
+        Links:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferLink'
+        StartDate:
+          type: string
+          format: date-time
+        ExpirationDate:
+          type: string
+          format: date-time
+      description: ProgramAvailability
+      type: object
+    ProgramRelease:
+      title: ProgramRelease
+      properties:
+        Date:
+          type: string
+          format: date-time
+        Certification:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        FabricCountryId:
+          type: string
+        Type:
+          type: string
+      description: ProgramRelease
+      type: object
+    ExternalId:
+      title: ExternalId
+      properties:
+        Name:
+          type: string
+        Id:
+          type: string
+      description: ExternalId
+      type: object
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
+      properties:
+        ProgramId:
+          description: ID of program in collection.
+          type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
+        Modified:
+          description: DateTime collection item was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollectionItem
+      type: object
+    ProgramContributor:
+      title: ProgramContributor
+      properties:
+        PersonId:
+          type: string
+        PersonName:
+          type: string
+        Character:
+          type: string
+        Job:
+          type: string
+        Order:
+          type: integer
+          format: int32
+      description: ProgramContributor
+      type: object
+    LanguageDetail:
+      title: LanguageDetail
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageDetail
+      type: object
+    TitleMods:
+      title: TitleMods
+      properties:
+        TitleSubmitted:
+          type: string
+        TitleApplied:
+          type: string
+        Removals:
+          type: array
+          items:
+            type: string
+      description: TitleMods
+      type: object
+    DataComparison:
+      title: DataComparison
+      properties:
+        Score:
+          type: integer
+          format: int32
+        SubmittedValue:
+          type: string
+        IndexValue:
+          type: string
+      description: DataComparison
+      type: object
+    MatchToEntertainmentProgramResponse:
+      title: MatchToEntertainmentProgramResponse
+      properties:
+        Score:
+          description: Score of the match to Entertainment.
+          type: integer
+          format: int32
+        Success:
+          description: Status of match operation.
+          type: boolean
+        AltTitleMatch:
+          description: Status of match operation.
+          type: boolean
+        FUzzyTtleMatch:
+          description: Status of match operation.
+          type: boolean
+        TitleMods:
+          $ref: '#/components/schemas/TitleMods'
+        EntertainmentId:
+          description: Entertainment program ID on successful match.
+          type: integer
+          format: int64
+        Description:
+          description: Description of match operation result.
+          type: string
+        Took:
+          description: Elastic search time elapsed.
+          type: integer
+          format: int64
+        ProgramMatches:
+          description: List of matched Programs.
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscoverProgram'
+      description: MatchToEntertainmentProgramResponse
       type: object
     ProgramImage:
       title: ProgramImage
@@ -4095,81 +3918,140 @@ components:
           format: date-time
       description: ProgramImage
       type: object
-    EntertainmentCollectionItem:
-      title: EntertainmentCollectionItem
+    EntertainmentCollection:
+      title: EntertainmentCollection
       properties:
-        ProgramId:
-          description: ID of program in collection.
+        Id:
+          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
           type: string
-        Sequence:
-          description: Nullable sequence used to order some collections.
-          type: integer
-          format: int32
-        Modified:
-          description: DateTime collection item was last modified.
+        Name:
+          description: Name of collection.
           type: string
-          format: date-time
-      description: EntertainmentCollectionItem
-      type: object
-    DataComparison:
-      title: DataComparison
-      properties:
-        Score:
-          type: integer
-          format: int32
-        SubmittedValue:
+        Description:
+          description: Description of collection.
           type: string
-        IndexValue:
-          type: string
-      description: DataComparison
-      type: object
-    ProgramAvailability:
-      title: ProgramAvailability
-      properties:
-        Provider:
-          type: string
-        OfferType:
-          type: string
-        DeliveryMethod:
-          type: string
-        Price:
-          type: number
-          format: double
-        Currency:
-          type: string
-        PreSale:
-          type: boolean
-        Quality:
-          type: string
-        Country:
-          type: string
-        CountryDetail:
-          $ref: '#/components/schemas/CountryDetail'
-        Links:
+        Types:
+          description: List of Types of collection.
           type: array
           items:
-            $ref: '#/components/schemas/OfferLink'
-        StartDate:
+            type: string
+        ParentCollectionIds:
+          description: List of collection ParentIds.
+          type: array
+          items:
+            type: string
+        Items:
+          description: Programs in the collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/EntertainmentCollectionItem'
+        Tags:
+          description: Significant Term tags from programs in the collection.
+          type: array
+          items:
+            type: string
+        MicroGenres:
+          description: Micro genres from programs in the collection.
+          type: array
+          items:
+            type: string
+        Subjects:
+          description: Subjects from programs in the collection.
+          type: array
+          items:
+            type: string
+        BasedOns:
+          description: Based Ons from programs in the collection.
+          type: array
+          items:
+            type: string
+        Characters:
+          description: Characters from programs in the collection.
+          type: array
+          items:
+            type: string
+        Timestamp:
+          description: DateTime where collection was last modified.
           type: string
           format: date-time
-        ExpirationDate:
-          type: string
-          format: date-time
-      description: ProgramAvailability
+      description: EntertainmentCollection
       type: object
-    ShowEpisode:
-      title: ShowEpisode
+    ProgramTrend:
+      title: ProgramTrend
       properties:
-        EpisodeId:
+        Id:
+          description: Trend Source Id.
+          type: integer
+          format: int32
+        Name:
+          description: Name of the trend list.
           type: string
-        SeasonId:
+        Brand:
+          description: Brand associated with trend list.
           type: string
+        Country:
+          description: Specific country trend list is associated with.
+          type: string
+        Classifiers:
+          description: List of characteristics of the list.
+          type: array
+          items:
+            type: string
+        Modified:
+          description: Date the list was last updated.
+          type: string
+          format: date-time
+        Rank:
+          description: Position in the list.  1 is first/top of the list.
+          type: integer
+          format: int32
+        ListUrl:
+          description: URL of the list.
+          type: string
+        TitleUrl:
+          description: URL of title on trend list.
+          type: string
+      description: ProgramTrend
+      type: object
+    Award:
+      title: Award
+      properties:
+        Year:
+          type: integer
+          format: int32
+        Type:
+          type: string
+        Category:
+          type: string
+        CategoryType:
+          type: string
+        ProgramId:
+          type: string
+        PersonIds:
+          type: array
+          items:
+            type: string
+        Winner:
+          type: boolean
         Modified:
           type: string
           format: date-time
-        Action:
+      description: Award
+      type: object
+    ProgramDescription:
+      title: ProgramDescription
+      properties:
+        Description:
           type: string
-      description: ShowEpisode
+        DescriptionType:
+          type: string
+        Attribution:
+          type: string
+        Language:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramDescription
       type: object
     ProgramChangeHistory:
       title: ProgramChangeHistory
@@ -4184,63 +4066,181 @@ components:
           format: date-time
       description: ProgramChangeHistory
       type: object
-    MatchToEntertainmentProgramResponse:
-      title: MatchToEntertainmentProgramResponse
+    ProgramAlternateTitle:
+      title: ProgramAlternateTitle
+      properties:
+        Title:
+          type: string
+        Country:
+          type: string
+        CountryName:
+          type: string
+        CountryId:
+          type: integer
+          format: int32
+        CountryFabricId:
+          type: string
+        LanguageDetail:
+          $ref: '#/components/schemas/LanguageDetail'
+      description: ProgramAlternateTitle
+      type: object
+    MatchCandidate:
+      title: MatchCandidate
       properties:
         Score:
           description: Score of the match to Entertainment.
           type: integer
           format: int32
+        ProgramType:
+          description: Program Type of the match to Entertainment.
+          type: string
+        EntertainmentId:
+          description: Entertainment Index program ID on successful match.
+          type: string
+        TitleMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Title match result.
+        YearMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Year match result.
+        ReleaseDateMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Release Date match result.
+        CertificationMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Certification match result.
+        RuntimeMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Runtime match result.
+        OriginatingNetworkMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Originating Network match result.
+        DescriptionMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Description match result.
+        CastMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Cast match result.
+        DirectorsMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Directors match result.
+        ProducersMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Producers match result.
+        CompanyMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Company match result.
+        GenreMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: Genre match result.
+        ThemeMatch:
+          $ref: '#/components/schemas/DataComparison'
+          description: THeme match result.
+      description: MatchCandidate
+      type: object
+    EntertainmentMatchCandidatesResponse:
+      title: EntertainmentMatchCandidatesResponse
+      properties:
+        MatchCandidates:
+          description: List of possible matches.
+          type: array
+          items:
+            $ref: '#/components/schemas/MatchCandidate'
+        TitleMods:
+          $ref: '#/components/schemas/TitleMods'
         Success:
           description: Status of match operation.
           type: boolean
-        AltTitleMatch:
-          description: Status of match operation.
-          type: boolean
-        FUzzyTtleMatch:
-          description: Status of match operation.
-          type: boolean
-        TitleMods:
-          $ref: '#/components/schemas/TitleMods'
-        EntertainmentId:
-          description: Entertainment program ID on successful match.
-          type: integer
-          format: int64
-        Description:
-          description: Description of match operation result.
+        Message:
           type: string
-        Took:
-          description: Elastic search time elapsed.
+      description: EntertainmentMatchCandidatesResponse
+      type: object
+    Company:
+      title: Company
+      properties:
+        Id:
+          description: ID of Company object.
           type: integer
           format: int64
-        ProgramMatches:
-          description: List of matched Programs.
-          type: array
-          items:
-            $ref: '#/components/schemas/DiscoverProgram'
-      description: MatchToEntertainmentProgramResponse
+        CompanyId:
+          description: ID of Company.
+          type: integer
+          format: int64
+        Name:
+          description: Name of the Company.
+          type: string
+        Modified:
+          type: string
+          format: date-time
+        NormalizedName:
+          type: string
+        ParentCompany:
+          type: string
+      description: Company
       type: object
-    MatchToEntertainmentSeasonBySequenceResponse:
-      title: MatchToEntertainmentSeasonBySequenceResponse
+    VideoScreenCapture:
+      title: VideoScreenCapture
+      properties:
+        Height:
+          type: integer
+          format: int32
+        Width:
+          type: integer
+          format: int32
+        Aspect:
+          type: string
+        FilePath:
+          type: string
+      description: VideoScreenCapture
+      type: object
+    MatchToEntertainmentEpisodeBySequenceResponse:
+      title: MatchToEntertainmentEpisodeBySequenceResponse
       properties:
         Success:
           type: boolean
-        SeasonId:
+        EpisodeId:
           type: integer
           format: int64
+        Title:
+          type: string
+        Year:
+          type: integer
+          format: int32
         Score:
           type: integer
           format: int32
         Message:
           type: string
-      description: MatchToEntertainmentSeasonBySequenceResponse
+      description: MatchToEntertainmentEpisodeBySequenceResponse
       type: object
-    ExternalId:
-      title: ExternalId
+    OfferLink:
+      title: OfferLink
       properties:
-        Name:
+        Platform:
           type: string
-        Id:
+        Url:
           type: string
-      description: ExternalId
+      description: OfferLink
+      type: object
+    SearchEntertainmentResponse:
+      title: SearchEntertainmentResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchEntertainmentResponse
       type: object

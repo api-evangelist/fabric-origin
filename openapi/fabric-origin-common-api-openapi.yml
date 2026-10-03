@@ -909,6 +909,58 @@ paths:
       deprecated: false
 components:
   schemas:
+    CharacteristicsResponse:
+      title: CharacteristicsResponse
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+      description: CharacteristicsResponse
+      type: object
+    LanguageResponse:
+      title: LanguageResponse
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageResponse
+      type: object
+    SearchCollectionResponse:
+      title: SearchCollectionResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchCollectionResponse
+      type: object
     NameValueFilter:
       title: NameValueFilter
       properties:
@@ -917,6 +969,18 @@ components:
         Value:
           type: string
       description: NameValueFilter
+      type: object
+    CollectionHit:
+      title: CollectionHit
+      properties:
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/EntertainmentCollection'
+        Id:
+          type: string
+      description: CollectionHit
       type: object
     CountryResponse:
       title: CountryResponse
@@ -1017,57 +1081,30 @@ components:
           format: date-time
       description: EntertainmentCollection
       type: object
-    LanguageResponse:
-      title: LanguageResponse
+    CommonEnumerators:
+      title: CommonEnumerators
       properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageResponse
-      type: object
-    SearchCollectionResponse:
-      title: SearchCollectionResponse
-      properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
+        Provider:
           type: array
           items:
-            $ref: '#/components/schemas/CollectionHit'
-        Message:
-          type: string
-        NextPageToken:
-          type: string
-      description: SearchCollectionResponse
-      type: object
-    CharacteristicsResponse:
-      title: CharacteristicsResponse
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-      description: CharacteristicsResponse
+            type: string
+        DeliveryMethod:
+          type: array
+          items:
+            type: string
+        OfferType:
+          type: array
+          items:
+            type: string
+        VideoQuality:
+          type: array
+          items:
+            type: string
+        CurrencyType:
+          type: array
+          items:
+            type: string
+      description: CommonEnumerators
       type: object
     DataDemoFilters:
       title: DataDemoFilters
@@ -1181,41 +1218,4 @@ components:
         RemoteIp:
           type: string
       description: DataDemoFilters
-      type: object
-    CommonEnumerators:
-      title: CommonEnumerators
-      properties:
-        Provider:
-          type: array
-          items:
-            type: string
-        DeliveryMethod:
-          type: array
-          items:
-            type: string
-        OfferType:
-          type: array
-          items:
-            type: string
-        VideoQuality:
-          type: array
-          items:
-            type: string
-        CurrencyType:
-          type: array
-          items:
-            type: string
-      description: CommonEnumerators
-      type: object
-    CollectionHit:
-      title: CollectionHit
-      properties:
-        Score:
-          type: number
-          format: double
-        Source:
-          $ref: '#/components/schemas/EntertainmentCollection'
-        Id:
-          type: string
-      description: CollectionHit
       type: object

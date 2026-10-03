@@ -49,6 +49,19 @@ paths:
       deprecated: false
 components:
   schemas:
+    Explanation:
+      title: Explanation
+      properties:
+        originator:
+          description: Origination of the explanation.
+          type: string
+        type:
+          description: The granularity of recommendation match.
+          type: string
+        message:
+          type: string
+      description: Explanation
+      type: object
     XRoadMediaRecommendationResponse:
       title: XRoadMediaRecommendationResponse
       properties:
@@ -57,6 +70,18 @@ components:
           items:
             $ref: '#/components/schemas/Recommendation'
       description: XRoadMediaRecommendationResponse
+      type: object
+    Program:
+      title: Program
+      properties:
+        Id:
+          description: The ID of the program (show or movie)
+          type: integer
+          format: int64
+        Type:
+          description: The type of IVA program (show or movie).
+          type: string
+      description: Program
       type: object
     Recommendation:
       title: Recommendation
@@ -74,29 +99,4 @@ components:
           $ref: '#/components/schemas/Program'
           description: The ID and Type of IVA Program.
       description: Recommendation
-      type: object
-    Explanation:
-      title: Explanation
-      properties:
-        originator:
-          description: Origination of the explanation.
-          type: string
-        type:
-          description: The granularity of recommendation match.
-          type: string
-        message:
-          type: string
-      description: Explanation
-      type: object
-    Program:
-      title: Program
-      properties:
-        Id:
-          description: The ID of the program (show or movie)
-          type: integer
-          format: int64
-        Type:
-          description: The type of IVA program (show or movie).
-          type: string
-      description: Program
       type: object

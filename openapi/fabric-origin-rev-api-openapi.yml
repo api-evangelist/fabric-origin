@@ -127,6 +127,28 @@ paths:
       deprecated: false
 components:
   schemas:
+    RevOrderComment:
+      title: RevOrderComment
+      properties:
+        by:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        text:
+          type: string
+      description: RevOrderComment
+      type: object
+    CaptionOrderResponse:
+      title: CaptionOrderResponse
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Status:
+          type: string
+      description: CaptionOrderResponse
+      type: object
     RevCaptionsResponse:
       title: RevCaptionsResponse
       properties:
@@ -191,16 +213,6 @@ components:
             $ref: '#/components/schemas/RevCaptionsResponse'
       description: AllRevCaptionsResponse
       type: object
-    CaptionOrderResponse:
-      title: CaptionOrderResponse
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Status:
-          type: string
-      description: CaptionOrderResponse
-      type: object
     RevCaptionItem:
       title: RevCaptionItem
       properties:
@@ -211,16 +223,4 @@ components:
         Content_Type:
           type: string
       description: RevCaptionItem
-      type: object
-    RevOrderComment:
-      title: RevOrderComment
-      properties:
-        by:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        text:
-          type: string
-      description: RevOrderComment
       type: object
