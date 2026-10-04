@@ -42,6 +42,10 @@ specificationVersion: '0.23'
 type: Index
 position: Producing
 access: 3rd-Party
+x-docs-platform: gitbook
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: aws-cloudfront
 tags:
 - Entertainment
 - Metadata
