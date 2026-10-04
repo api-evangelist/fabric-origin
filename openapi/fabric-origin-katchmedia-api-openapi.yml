@@ -30,6 +30,15 @@ paths:
       deprecated: false
 components:
   schemas:
+    Organization:
+      title: Organization
+      properties:
+        type:
+          type: string
+        organization:
+          type: string
+      description: Organization
+      type: object
     KattchProgram:
       title: KattchProgram
       properties:
@@ -79,6 +88,17 @@ components:
             $ref: '#/components/schemas/Cast'
       description: KattchProgram
       type: object
+    Datum:
+      title: Datum
+      properties:
+        internal_id:
+          type: string
+        top_clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopClusters'
+      description: Datum
+      type: object
     TopClusters:
       title: TopClusters
       properties:
@@ -96,6 +116,15 @@ components:
           type: string
       description: TopClusters
       type: object
+    Cast:
+      title: Cast
+      properties:
+        character:
+          type: string
+        individual:
+          type: string
+      description: Cast
+      type: object
     UniversalTraits:
       title: UniversalTraits
       properties:
@@ -110,24 +139,6 @@ components:
           format: int32
       description: UniversalTraits
       type: object
-    Organization:
-      title: Organization
-      properties:
-        type:
-          type: string
-        organization:
-          type: string
-      description: Organization
-      type: object
-    Cast:
-      title: Cast
-      properties:
-        character:
-          type: string
-        individual:
-          type: string
-      description: Cast
-      type: object
     Crew:
       title: Crew
       properties:
@@ -137,16 +148,9 @@ components:
           type: string
       description: Crew
       type: object
-    Datum:
-      title: Datum
-      properties:
-        internal_id:
-          type: string
-        top_clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/TopClusters'
-      description: Datum
+    Object:
+      properties: {}
+      description: Object
       type: object
     KatchProgramData:
       title: KatchProgramData
@@ -160,8 +164,4 @@ components:
         Clusters:
           $ref: '#/components/schemas/Datum'
       description: KatchProgramData
-      type: object
-    Object:
-      properties: {}
-      description: Object
       type: object

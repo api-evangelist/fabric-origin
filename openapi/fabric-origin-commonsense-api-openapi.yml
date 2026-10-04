@@ -103,6 +103,140 @@ paths:
               $ref: '#/components/schemas/GetCommonSenseTV'
 components:
   schemas:
+    Avg:
+      title: Avg
+      properties:
+        adult:
+          type: number
+          format: float
+        child:
+          type: number
+          format: float
+      description: Avg
+      type: object
+    Video:
+      title: Video
+      properties:
+        thumbnail:
+          $ref: '#/components/schemas/Thumbnail'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+      description: Video
+      type: object
+    Violence:
+      title: Violence
+      properties:
+        rating:
+          type: integer
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: Violence
+      type: object
+    Thumbnail:
+      title: Thumbnail
+      properties:
+        FileName:
+          type: string
+        Height:
+          type: integer
+          format: int32
+        Width:
+          type: integer
+          format: int32
+        Url:
+          type: string
+      description: Thumbnail
+      type: object
+    Message:
+      title: Message
+      properties:
+        rating:
+          type: integer
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: Message
+      type: object
+    Rating:
+      title: Rating
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        explanation:
+          type: string
+      description: Rating
+      type: object
+    UserReviewCount:
+      title: UserReviewCount
+      properties:
+        count:
+          $ref: '#/components/schemas/Count'
+      description: UserReviewCount
+      type: object
+    Alternative:
+      title: Alternative
+      properties:
+        title:
+          type: string
+        id:
+          type: integer
+          format: int32
+        uuid:
+          type: string
+        url:
+          type: string
+      description: Alternative
+      type: object
+    RoleModel:
+      title: RoleModel
+      properties:
+        rating:
+          type: integer
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: RoleModel
+      type: object
+    Language:
+      title: Language
+      properties:
+        rating:
+          type: integer
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: Language
+      type: object
+    Dictionary_String_String_:
+      title: Dictionary<String,String>
+      additionalProperties:
+        type: string
+      description: Dictionary<String,String>
+      type: object
+    File:
+      title: File
+      properties:
+        lang:
+          type: string
+        type:
+          type: string
+        uri:
+          type: string
+      description: File
+      type: object
     Sex:
       title: Sex
       properties:
@@ -115,17 +249,44 @@ components:
           type: string
       description: Sex
       type: object
-    Drugs:
-      title: Drugs
+    ReleaseDate:
+      title: ReleaseDate
       properties:
-        rating:
+        Country:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Note:
+          type: string
+        ReleaseTypeId:
           type: integer
           format: int32
-        text:
+      description: ReleaseDate
+      type: object
+    Reference:
+      title: Reference
+      properties:
+        type:
           type: string
-        label:
+        value:
           type: string
-      description: Drugs
+      description: Reference
+      type: object
+    RecommendedAge:
+      title: RecommendedAge
+      properties:
+        avg:
+          $ref: '#/components/schemas/Avg1'
+      description: RecommendedAge
+      type: object
+    GetCommonSenseTV:
+      title: GetCommonSenseTV
+      properties:
+        Id:
+          type: integer
+          format: int64
+      description: GetCommonSenseTV
       type: object
     Contentgrid:
       title: Contentgrid
@@ -150,173 +311,6 @@ components:
           $ref: '#/components/schemas/Diversity'
       description: Contentgrid
       type: object
-    Alternative:
-      title: Alternative
-      properties:
-        title:
-          type: string
-        id:
-          type: integer
-          format: int32
-        uuid:
-          type: string
-        url:
-          type: string
-      description: Alternative
-      type: object
-    Violence:
-      title: Violence
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: Violence
-      type: object
-    Count:
-      title: Count
-      properties:
-        adult:
-          type: integer
-          format: int32
-        child:
-          type: integer
-          format: int32
-      description: Count
-      type: object
-    Reference:
-      title: Reference
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      description: Reference
-      type: object
-    Avg:
-      title: Avg
-      properties:
-        adult:
-          type: number
-          format: float
-        child:
-          type: number
-          format: float
-      description: Avg
-      type: object
-    Dictionary_String_String_:
-      title: Dictionary<String,String>
-      additionalProperties:
-        type: string
-      description: Dictionary<String,String>
-      type: object
-    Video:
-      title: Video
-      properties:
-        thumbnail:
-          $ref: '#/components/schemas/Thumbnail'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
-      description: Video
-      type: object
-    Thumbnail:
-      title: Thumbnail
-      properties:
-        FileName:
-          type: string
-        Height:
-          type: integer
-          format: int32
-        Width:
-          type: integer
-          format: int32
-        Url:
-          type: string
-      description: Thumbnail
-      type: object
-    File:
-      title: File
-      properties:
-        lang:
-          type: string
-        type:
-          type: string
-        uri:
-          type: string
-      description: File
-      type: object
-    ReleaseDate:
-      title: ReleaseDate
-      properties:
-        Country:
-          type: string
-        Date:
-          type: string
-          format: date-time
-        Note:
-          type: string
-        ReleaseTypeId:
-          type: integer
-          format: int32
-      description: ReleaseDate
-      type: object
-    Diversity:
-      title: Diversity
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: Diversity
-      type: object
-    Consumerism:
-      title: Consumerism
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: Consumerism
-      type: object
-    Stars:
-      title: Stars
-      properties:
-        avg:
-          $ref: '#/components/schemas/Avg'
-      description: Stars
-      type: object
-    Image:
-      title: Image
-      properties:
-        type:
-          type: string
-        url:
-          type: string
-      description: Image
-      type: object
-    Message:
-      title: Message
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: Message
-      type: object
     Educational:
       title: Educational
       properties:
@@ -328,6 +322,13 @@ components:
         label:
           type: string
       description: Educational
+      type: object
+    Stars:
+      title: Stars
+      properties:
+        avg:
+          $ref: '#/components/schemas/Avg'
+      description: Stars
       type: object
     Product:
       title: Product
@@ -374,46 +375,29 @@ components:
             $ref: '#/components/schemas/Object'
       description: Product
       type: object
-    GetCommonSenseTV:
-      title: GetCommonSenseTV
+    Drugs:
+      title: Drugs
       properties:
-        Id:
+        rating:
           type: integer
-          format: int64
-      description: GetCommonSenseTV
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: Drugs
       type: object
-    UserReviewCount:
-      title: UserReviewCount
+    Consumerism:
+      title: Consumerism
       properties:
-        count:
-          $ref: '#/components/schemas/Count'
-      description: UserReviewCount
-      type: object
-    Avg1:
-      title: Avg1
-      properties:
-        adult:
-          type: number
-          format: float
-        child:
-          type: number
-          format: float
-      description: Avg1
-      type: object
-    GetCommonSenseMovie:
-      title: GetCommonSenseMovie
-      properties:
-        Id:
+        rating:
           type: integer
-          format: int64
-      description: GetCommonSenseMovie
-      type: object
-    RecommendedAge:
-      title: RecommendedAge
-      properties:
-        avg:
-          $ref: '#/components/schemas/Avg1'
-      description: RecommendedAge
+          format: int32
+        text:
+          type: string
+        label:
+          type: string
+      description: Consumerism
       type: object
     ReviewTopPicks:
       title: ReviewTopPicks
@@ -427,16 +411,71 @@ components:
           type: string
       description: ReviewTopPicks
       type: object
-    Rating:
-      title: Rating
+    Image:
+      title: Image
       properties:
         type:
           type: string
-        value:
+        url:
           type: string
-        explanation:
+      description: Image
+      type: object
+    Count:
+      title: Count
+      properties:
+        adult:
+          type: integer
+          format: int32
+        child:
+          type: integer
+          format: int32
+      description: Count
+      type: object
+    GetCommonSenseMovie:
+      title: GetCommonSenseMovie
+      properties:
+        Id:
+          type: integer
+          format: int64
+      description: GetCommonSenseMovie
+      type: object
+    Avg1:
+      title: Avg1
+      properties:
+        adult:
+          type: number
+          format: float
+        child:
+          type: number
+          format: float
+      description: Avg1
+      type: object
+    Stats:
+      title: Stats
+      properties:
+        stars:
+          $ref: '#/components/schemas/Stars'
+        user_review_count:
+          $ref: '#/components/schemas/UserReviewCount'
+        recommended_age:
+          $ref: '#/components/schemas/RecommendedAge'
+      description: Stats
+      type: object
+    Object:
+      properties: {}
+      description: Object
+      type: object
+    Diversity:
+      title: Diversity
+      properties:
+        rating:
+          type: integer
+          format: int32
+        text:
           type: string
-      description: Rating
+        label:
+          type: string
+      description: Diversity
       type: object
     CommonSenseProgram:
       title: CommonSenseProgram
@@ -513,43 +552,4 @@ components:
           type: integer
           format: int32
       description: CommonSenseProgram
-      type: object
-    Language:
-      title: Language
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: Language
-      type: object
-    Stats:
-      title: Stats
-      properties:
-        stars:
-          $ref: '#/components/schemas/Stars'
-        user_review_count:
-          $ref: '#/components/schemas/UserReviewCount'
-        recommended_age:
-          $ref: '#/components/schemas/RecommendedAge'
-      description: Stats
-      type: object
-    Object:
-      properties: {}
-      description: Object
-      type: object
-    RoleModel:
-      title: RoleModel
-      properties:
-        rating:
-          type: integer
-          format: int32
-        text:
-          type: string
-        label:
-          type: string
-      description: RoleModel
       type: object

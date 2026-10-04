@@ -909,67 +909,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    CharacteristicsResponse:
-      title: CharacteristicsResponse
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-      description: CharacteristicsResponse
-      type: object
-    LanguageResponse:
-      title: LanguageResponse
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageResponse
-      type: object
-    SearchCollectionResponse:
-      title: SearchCollectionResponse
-      properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionHit'
-        Message:
-          type: string
-        NextPageToken:
-          type: string
-      description: SearchCollectionResponse
-      type: object
-    NameValueFilter:
-      title: NameValueFilter
-      properties:
-        Name:
-          type: string
-        Value:
-          type: string
-      description: NameValueFilter
-      type: object
     CollectionHit:
       title: CollectionHit
       properties:
@@ -1007,79 +946,35 @@ components:
             type: string
       description: CountryResponse
       type: object
-    EntertainmentCollectionItem:
-      title: EntertainmentCollectionItem
+    NameValueFilter:
+      title: NameValueFilter
       properties:
-        ProgramId:
-          description: ID of program in collection.
+        Name:
           type: string
-        Sequence:
-          description: Nullable sequence used to order some collections.
-          type: integer
-          format: int32
-        Modified:
-          description: DateTime collection item was last modified.
+        Value:
           type: string
-          format: date-time
-      description: EntertainmentCollectionItem
+      description: NameValueFilter
       type: object
-    EntertainmentCollection:
-      title: EntertainmentCollection
+    LanguageResponse:
+      title: LanguageResponse
       properties:
         Id:
-          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
           type: string
         Name:
-          description: Name of collection.
+          description: Name of the Language.
           type: string
-        Description:
-          description: Description of collection.
+        FabricId:
+          description: Fabric Language Id.
           type: string
-        Types:
-          description: List of Types of collection.
-          type: array
-          items:
-            type: string
-        ParentCollectionIds:
-          description: List of collection ParentIds.
-          type: array
-          items:
-            type: string
-        Items:
-          description: Programs in the collection.
-          type: array
-          items:
-            $ref: '#/components/schemas/EntertainmentCollectionItem'
-        Tags:
-          description: Significant Term tags from programs in the collection.
-          type: array
-          items:
-            type: string
-        MicroGenres:
-          description: Micro genres from programs in the collection.
-          type: array
-          items:
-            type: string
-        Subjects:
-          description: Subjects from programs in the collection.
-          type: array
-          items:
-            type: string
-        BasedOns:
-          description: Based Ons from programs in the collection.
-          type: array
-          items:
-            type: string
-        Characters:
-          description: Characters from programs in the collection.
-          type: array
-          items:
-            type: string
-        Timestamp:
-          description: DateTime where collection was last modified.
+        IETFCode:
+          description: IETF BCP 47 code for this language.
           type: string
-          format: date-time
-      description: EntertainmentCollection
+      description: LanguageResponse
       type: object
     CommonEnumerators:
       title: CommonEnumerators
@@ -1218,4 +1113,109 @@ components:
         RemoteIp:
           type: string
       description: DataDemoFilters
+      type: object
+    CharacteristicsResponse:
+      title: CharacteristicsResponse
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+      description: CharacteristicsResponse
+      type: object
+    EntertainmentCollectionItem:
+      title: EntertainmentCollectionItem
+      properties:
+        ProgramId:
+          description: ID of program in collection.
+          type: string
+        Sequence:
+          description: Nullable sequence used to order some collections.
+          type: integer
+          format: int32
+        Modified:
+          description: DateTime collection item was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollectionItem
+      type: object
+    EntertainmentCollection:
+      title: EntertainmentCollection
+      properties:
+        Id:
+          description: ID of the Collection. This is used in EntertainmentSearch to locate programs in this collection.  Could be ID or ParentID.
+          type: string
+        Name:
+          description: Name of collection.
+          type: string
+        Description:
+          description: Description of collection.
+          type: string
+        Types:
+          description: List of Types of collection.
+          type: array
+          items:
+            type: string
+        ParentCollectionIds:
+          description: List of collection ParentIds.
+          type: array
+          items:
+            type: string
+        Items:
+          description: Programs in the collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/EntertainmentCollectionItem'
+        Tags:
+          description: Significant Term tags from programs in the collection.
+          type: array
+          items:
+            type: string
+        MicroGenres:
+          description: Micro genres from programs in the collection.
+          type: array
+          items:
+            type: string
+        Subjects:
+          description: Subjects from programs in the collection.
+          type: array
+          items:
+            type: string
+        BasedOns:
+          description: Based Ons from programs in the collection.
+          type: array
+          items:
+            type: string
+        Characters:
+          description: Characters from programs in the collection.
+          type: array
+          items:
+            type: string
+        Timestamp:
+          description: DateTime where collection was last modified.
+          type: string
+          format: date-time
+      description: EntertainmentCollection
+      type: object
+    SearchCollectionResponse:
+      title: SearchCollectionResponse
+      properties:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionHit'
+        Message:
+          type: string
+        NextPageToken:
+          type: string
+      description: SearchCollectionResponse
       type: object

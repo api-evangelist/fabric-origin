@@ -1862,38 +1862,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Station:
-      title: Station
-      properties:
-        _CallSign:
-          type: string
-        _ID:
-          type: integer
-          format: int32
-        _Type:
-          type: string
-        _Affiliate:
-          type: string
-        _LogoPathURL:
-          type: string
-        _Media:
-          $ref: '#/components/schemas/Object'
-        _MediaInfoSpecified:
-          type: boolean
-        _StationDetailsSpecified:
-          type: boolean
-        _StationDetails:
-          $ref: '#/components/schemas/Object'
-        _AiringsSpecified:
-          type: boolean
-        _Airings:
-          $ref: '#/components/schemas/Object'
-      description: Station
-      type: object
-    Object:
-      properties: {}
-      description: Object
-      type: object
     TvMediaStationResponse:
       title: TvMediaStationResponse
       properties:
@@ -1946,4 +1914,36 @@ components:
           items:
             $ref: '#/components/schemas/Station'
       description: TvMediaLineupResponse
+      type: object
+    Station:
+      title: Station
+      properties:
+        _CallSign:
+          type: string
+        _ID:
+          type: integer
+          format: int32
+        _Type:
+          type: string
+        _Affiliate:
+          type: string
+        _LogoPathURL:
+          type: string
+        _Media:
+          $ref: '#/components/schemas/Object'
+        _MediaInfoSpecified:
+          type: boolean
+        _StationDetailsSpecified:
+          type: boolean
+        _StationDetails:
+          $ref: '#/components/schemas/Object'
+        _AiringsSpecified:
+          type: boolean
+        _Airings:
+          $ref: '#/components/schemas/Object'
+      description: Station
+      type: object
+    Object:
+      properties: {}
+      description: Object
       type: object

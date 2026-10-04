@@ -62,6 +62,23 @@ components:
           type: string
       description: Explanation
       type: object
+    Recommendation:
+      title: Recommendation
+      properties:
+        explanations:
+          description: List of reasons for recommendation.
+          type: array
+          items:
+            $ref: '#/components/schemas/Explanation'
+        score:
+          description: Quality of the recommendation relative to other recommendations.
+          type: number
+          format: float
+        program:
+          $ref: '#/components/schemas/Program'
+          description: The ID and Type of IVA Program.
+      description: Recommendation
+      type: object
     XRoadMediaRecommendationResponse:
       title: XRoadMediaRecommendationResponse
       properties:
@@ -82,21 +99,4 @@ components:
           description: The type of IVA program (show or movie).
           type: string
       description: Program
-      type: object
-    Recommendation:
-      title: Recommendation
-      properties:
-        explanations:
-          description: List of reasons for recommendation.
-          type: array
-          items:
-            $ref: '#/components/schemas/Explanation'
-        score:
-          description: Quality of the recommendation relative to other recommendations.
-          type: number
-          format: float
-        program:
-          $ref: '#/components/schemas/Program'
-          description: The ID and Type of IVA Program.
-      description: Recommendation
       type: object

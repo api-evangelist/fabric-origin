@@ -133,18 +133,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    ImageRedirectResponse:
-      title: ImageRedirectResponse
-      properties:
-        Url:
-          description: URL to image request.
-          type: string
-        Expires:
-          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
-          type: string
-          format: date-time
-      description: ImageRedirectResponse
-      type: object
     ScreenCaptureRedirectResponse:
       title: ScreenCaptureRedirectResponse
       properties:
@@ -156,4 +144,16 @@ components:
           type: string
           format: date-time
       description: ScreenCaptureRedirectResponse
+      type: object
+    ImageRedirectResponse:
+      title: ImageRedirectResponse
+      properties:
+        Url:
+          description: URL to image request.
+          type: string
+        Expires:
+          description: 'Image URLs are hashed and expire. ISO 8601 Format: yyyy-mm-dd hh:mm:ss.ffffff0Z '
+          type: string
+          format: date-time
+      description: ImageRedirectResponse
       type: object

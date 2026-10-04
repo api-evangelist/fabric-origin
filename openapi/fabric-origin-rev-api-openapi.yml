@@ -127,6 +127,16 @@ paths:
       deprecated: false
 components:
   schemas:
+    CaptionOrderResponse:
+      title: CaptionOrderResponse
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Status:
+          type: string
+      description: CaptionOrderResponse
+      type: object
     RevOrderComment:
       title: RevOrderComment
       properties:
@@ -139,15 +149,37 @@ components:
           type: string
       description: RevOrderComment
       type: object
-    CaptionOrderResponse:
-      title: CaptionOrderResponse
+    AllRevCaptionsResponse:
+      title: AllRevCaptionsResponse
       properties:
-        Id:
+        TotalCount:
+          description: Total count of captions.
           type: integer
           format: int64
-        Status:
+        Skip:
+          description: Records to skip used with paging.
+          type: integer
+          format: int32
+        Take:
+          description: Page size.
+          type: integer
+          format: int32
+        Result:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevCaptionsResponse'
+      description: AllRevCaptionsResponse
+      type: object
+    RevCaptionItem:
+      title: RevCaptionItem
+      properties:
+        Kind:
           type: string
-      description: CaptionOrderResponse
+        Text:
+          type: string
+        Content_Type:
+          type: string
+      description: RevCaptionItem
       type: object
     RevCaptionsResponse:
       title: RevCaptionsResponse
@@ -191,36 +223,4 @@ components:
           description: 'Determines if order was placed using Rev''s testing environment. '
           type: boolean
       description: RevCaptionsResponse
-      type: object
-    AllRevCaptionsResponse:
-      title: AllRevCaptionsResponse
-      properties:
-        TotalCount:
-          description: Total count of captions.
-          type: integer
-          format: int64
-        Skip:
-          description: Records to skip used with paging.
-          type: integer
-          format: int32
-        Take:
-          description: Page size.
-          type: integer
-          format: int32
-        Result:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevCaptionsResponse'
-      description: AllRevCaptionsResponse
-      type: object
-    RevCaptionItem:
-      title: RevCaptionItem
-      properties:
-        Kind:
-          type: string
-        Text:
-          type: string
-        Content_Type:
-          type: string
-      description: RevCaptionItem
       type: object
