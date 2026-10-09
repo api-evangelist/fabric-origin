@@ -343,3 +343,17 @@ x-evidence:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+rfc9728:
+  endpoint: https://mcp-api.studio.fabricdata.com
+  metadata_url: https://mcp-api.studio.fabricdata.com/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp-api.studio.fabricdata.com
+    authorization_servers:
+    - https://mcp-api.studio.fabricdata.com
+    bearer_methods_supported:
+    - header
+    resource_name: studio-mcp-server

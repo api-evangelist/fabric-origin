@@ -1,57 +1,29 @@
-generated: '2026-09-07'
+generated: '2026-09-23'
 method: generated
-source: openapi/fabric-origin-captions-translations-api-openapi.yml, openapi/fabric-origin-celebrity-api-openapi.yml,
-  openapi/fabric-origin-common-metadata-api-openapi.yml, openapi/fabric-origin-common-sense-media-api-openapi.yml,
+source: openapi/fabric-origin-analytics-api-openapi.yml, openapi/fabric-origin-celebrity-api-openapi.yml,
+  openapi/fabric-origin-common-api-openapi.yml, openapi/fabric-origin-commonsense-api-openapi.yml,
   openapi/fabric-origin-entertainment-api-openapi.yml, openapi/fabric-origin-fandango-api-openapi.yml,
-  openapi/fabric-origin-images-api-openapi.yml, openapi/fabric-origin-katch-media-api-openapi.yml,
-  openapi/fabric-origin-metacritic-api-openapi.yml, openapi/fabric-origin-rabbit-recommendations-api-openapi.yml,
-  openapi/fabric-origin-rotten-tomatoes-api-openapi.yml, openapi/fabric-origin-tv-grid-online-api-openapi.yml,
-  openapi/fabric-origin-video-analytics-api-openapi.yml, openapi/fabric-origin-videos-api-openapi.yml
+  openapi/fabric-origin-images-api-openapi.yml, openapi/fabric-origin-katchmedia-api-openapi.yml,
+  openapi/fabric-origin-metacritic-api-openapi.yml, openapi/fabric-origin-rabbitrecommendations-api-openapi.yml,
+  openapi/fabric-origin-rev-api-openapi.yml, openapi/fabric-origin-rottentomatoes-api-openapi.yml,
+  openapi/fabric-origin-tvgrid-api-openapi.yml, openapi/fabric-origin-videos-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 121
   by_action_class:
-    connected: 109
-    acting: 12
+    connected: 117
+    acting: 4
   by_consequence:
-    read: 109
+    read: 117
+    write: 3
     physical: 1
-    write: 11
   human_in_the_loop_required: 0
 operations:
-- path: /Rev/{Id}/Attachments/{Type}/content
+- path: /Analytics/GBUsage/
   method: get
-  operationId: GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Rev/Orders
-  method: post
-  operationId: CreateRevCaptionOrderOrders_Post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /Rev/Orders/All
-  method: get
-  operationId: GetRevCaptionsOrdersAll_Get
+  operationId: GetGBUsageGBUsage_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -83,18 +55,12 @@ operations:
   method: post
   operationId: SearchCelebritySearch_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Common/Characteristics/BasedOn
   method: get
   operationId: GetBasedOnCharacteristicsBasedOn_Get
@@ -199,18 +165,12 @@ operations:
   method: post
   operationId: SearchCollectionCollectionsSearch_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Common/Collections/Suggestions
   method: get
   operationId: GetCollectionSuggestionsCollectionsSuggestions_Get
@@ -515,18 +475,12 @@ operations:
   method: post
   operationId: GetCommonSenseMovieMovieId_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /CommonSense/TV/{Id}
   method: get
   operationId: GetCommonSenseTVTVId_Get
@@ -541,18 +495,12 @@ operations:
   method: post
   operationId: GetCommonSenseTVTVId_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Entertainment/Search/
   method: get
   operationId: SearchEntertainmentSearch_Get
@@ -567,18 +515,12 @@ operations:
   method: post
   operationId: SearchEntertainmentSearch_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Entertainment/Autocomplete/
   method: get
   operationId: SearchEntertainmentAutoCompleteAutocomplete_Get
@@ -703,18 +645,12 @@ operations:
   method: post
   operationId: GetEntertainmentMatchCandidatesGetEntertainmentMatchCandidates_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Entertainment/Match/
   method: get
   operationId: MatchToEntertainmentProgramMatch_Get
@@ -947,34 +883,22 @@ operations:
   method: post
   operationId: GetImageBatchBatch_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Images/ScreenCaptures/Batch
   method: post
   operationId: GetScreenCaptureBatchScreenCapturesBatch_Post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /Images/ScreenCaptures/Redirect
   method: get
   operationId: GetScreenCaptureRedirectScreenCapturesRedirect_Get
@@ -1018,6 +942,44 @@ operations:
 - path: /RabbitRecommendations/recommendations
   method: get
   operationId: GetXroadMediaRecommendationsrecommendations_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Rev/{Id}/Attachments/{Type}/content
+  method: get
+  operationId: GetRevCaptionAttachmentContentIdAttachmentsTypecontent_Get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Rev/Orders
+  method: post
+  operationId: CreateRevCaptionOrderOrders_Post
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Rev/Orders/All
+  method: get
+  operationId: GetRevCaptionsOrdersAll_Get
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1268,16 +1230,6 @@ operations:
 - path: /TvGrid/teams/{TeamID}/listings
   method: get
   operationId: GetTvMediaTeamListingsteamsTeamIDlistings_Get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /Analytics/GBUsage/
-  method: get
-  operationId: GetGBUsageGBUsage_Get
   x-agentic-access:
     action-class: connected
     consequence: read
