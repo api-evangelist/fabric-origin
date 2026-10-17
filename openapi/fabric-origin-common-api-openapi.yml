@@ -909,97 +909,14 @@ paths:
       deprecated: false
 components:
   schemas:
-    CollectionHit:
-      title: CollectionHit
-      properties:
-        Score:
-          type: number
-          format: double
-        Source:
-          $ref: '#/components/schemas/EntertainmentCollection'
-        Id:
-          type: string
-      description: CollectionHit
-      type: object
-    CountryResponse:
-      title: CountryResponse
-      properties:
-        Id:
-          type: integer
-          format: int32
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IsoCode:
-          description: ISO code for a Country.
-          type: string
-        IsoCodeA3:
-          description: ISO 3 character code for a Country.
-          type: string
-        Name:
-          description: Name of the Country.
-          type: string
-        AlternateNames:
-          description: Alternate names of the Country.
-          type: array
-          items:
-            type: string
-      description: CountryResponse
-      type: object
-    NameValueFilter:
-      title: NameValueFilter
+    CharacteristicsResponse:
+      title: CharacteristicsResponse
       properties:
         Name:
           type: string
-        Value:
+        Description:
           type: string
-      description: NameValueFilter
-      type: object
-    LanguageResponse:
-      title: LanguageResponse
-      properties:
-        Id:
-          description: Unique ID of a Language.
-          type: integer
-          format: int32
-        IsoCode:
-          description: ISO code for this Language.
-          type: string
-        Name:
-          description: Name of the Language.
-          type: string
-        FabricId:
-          description: Fabric Language Id.
-          type: string
-        IETFCode:
-          description: IETF BCP 47 code for this language.
-          type: string
-      description: LanguageResponse
-      type: object
-    CommonEnumerators:
-      title: CommonEnumerators
-      properties:
-        Provider:
-          type: array
-          items:
-            type: string
-        DeliveryMethod:
-          type: array
-          items:
-            type: string
-        OfferType:
-          type: array
-          items:
-            type: string
-        VideoQuality:
-          type: array
-          items:
-            type: string
-        CurrencyType:
-          type: array
-          items:
-            type: string
-      description: CommonEnumerators
+      description: CharacteristicsResponse
       type: object
     DataDemoFilters:
       title: DataDemoFilters
@@ -1114,14 +1031,27 @@ components:
           type: string
       description: DataDemoFilters
       type: object
-    CharacteristicsResponse:
-      title: CharacteristicsResponse
+    SearchCollectionResponse:
+      title: SearchCollectionResponse
       properties:
-        Name:
+        Took:
+          type: integer
+          format: int64
+        Total:
+          type: integer
+          format: int64
+        MaxScore:
+          type: number
+          format: double
+        Hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionHit'
+        Message:
           type: string
-        Description:
+        NextPageToken:
           type: string
-      description: CharacteristicsResponse
+      description: SearchCollectionResponse
       type: object
     EntertainmentCollectionItem:
       title: EntertainmentCollectionItem
@@ -1138,6 +1068,15 @@ components:
           type: string
           format: date-time
       description: EntertainmentCollectionItem
+      type: object
+    NameValueFilter:
+      title: NameValueFilter
+      properties:
+        Name:
+          type: string
+        Value:
+          type: string
+      description: NameValueFilter
       type: object
     EntertainmentCollection:
       title: EntertainmentCollection
@@ -1197,25 +1136,86 @@ components:
           format: date-time
       description: EntertainmentCollection
       type: object
-    SearchCollectionResponse:
-      title: SearchCollectionResponse
+    CommonEnumerators:
+      title: CommonEnumerators
       properties:
-        Took:
-          type: integer
-          format: int64
-        Total:
-          type: integer
-          format: int64
-        MaxScore:
-          type: number
-          format: double
-        Hits:
+        Provider:
           type: array
           items:
-            $ref: '#/components/schemas/CollectionHit'
-        Message:
+            type: string
+        DeliveryMethod:
+          type: array
+          items:
+            type: string
+        OfferType:
+          type: array
+          items:
+            type: string
+        VideoQuality:
+          type: array
+          items:
+            type: string
+        CurrencyType:
+          type: array
+          items:
+            type: string
+      description: CommonEnumerators
+      type: object
+    CollectionHit:
+      title: CollectionHit
+      properties:
+        Score:
+          type: number
+          format: double
+        Source:
+          $ref: '#/components/schemas/EntertainmentCollection'
+        Id:
           type: string
-        NextPageToken:
+      description: CollectionHit
+      type: object
+    CountryResponse:
+      title: CountryResponse
+      properties:
+        Id:
+          type: integer
+          format: int32
+        FabricId:
+          description: Fabric Language Id.
           type: string
-      description: SearchCollectionResponse
+        IsoCode:
+          description: ISO code for a Country.
+          type: string
+        IsoCodeA3:
+          description: ISO 3 character code for a Country.
+          type: string
+        Name:
+          description: Name of the Country.
+          type: string
+        AlternateNames:
+          description: Alternate names of the Country.
+          type: array
+          items:
+            type: string
+      description: CountryResponse
+      type: object
+    LanguageResponse:
+      title: LanguageResponse
+      properties:
+        Id:
+          description: Unique ID of a Language.
+          type: integer
+          format: int32
+        IsoCode:
+          description: ISO code for this Language.
+          type: string
+        Name:
+          description: Name of the Language.
+          type: string
+        FabricId:
+          description: Fabric Language Id.
+          type: string
+        IETFCode:
+          description: IETF BCP 47 code for this language.
+          type: string
+      description: LanguageResponse
       type: object

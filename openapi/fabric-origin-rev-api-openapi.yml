@@ -127,16 +127,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    CaptionOrderResponse:
-      title: CaptionOrderResponse
-      properties:
-        Id:
-          type: integer
-          format: int64
-        Status:
-          type: string
-      description: CaptionOrderResponse
-      type: object
     RevOrderComment:
       title: RevOrderComment
       properties:
@@ -148,6 +138,16 @@ components:
         text:
           type: string
       description: RevOrderComment
+      type: object
+    CaptionOrderResponse:
+      title: CaptionOrderResponse
+      properties:
+        Id:
+          type: integer
+          format: int64
+        Status:
+          type: string
+      description: CaptionOrderResponse
       type: object
     AllRevCaptionsResponse:
       title: AllRevCaptionsResponse

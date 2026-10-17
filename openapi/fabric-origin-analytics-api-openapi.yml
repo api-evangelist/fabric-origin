@@ -57,6 +57,22 @@ paths:
       deprecated: false
 components:
   schemas:
+    GBUsageResponse:
+      title: GBUsageResponse
+      properties:
+        TotalGB:
+          type: number
+          format: double
+        MonthlyStorageInMinutes:
+          type: string
+        MonthEncodeMinutes:
+          type: string
+        Detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/GBUsageDay'
+      description: GBUsageResponse
+      type: object
     GBUsageDay:
       title: GBUsageDay
       properties:
@@ -76,20 +92,4 @@ components:
           type: number
           format: double
       description: GBUsageDay
-      type: object
-    GBUsageResponse:
-      title: GBUsageResponse
-      properties:
-        TotalGB:
-          type: number
-          format: double
-        MonthlyStorageInMinutes:
-          type: string
-        MonthEncodeMinutes:
-          type: string
-        Detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/GBUsageDay'
-      description: GBUsageResponse
       type: object

@@ -1862,35 +1862,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TvMediaStationResponse:
-      title: TvMediaStationResponse
-      properties:
-        stationID:
-          type: integer
-          format: int32
-        name:
-          type: string
-        callsign:
-          type: string
-        network:
-          type: string
-        stationType:
-          type: string
-        NTSC_TSID:
-          type: integer
-          format: int32
-        DTV_TSID:
-          type: integer
-          format: int32
-        Twitter:
-          type: string
-        webLink:
-          type: string
-        logoFilename:
-          type: string
-        stationHD:
-          type: boolean
-      description: TvMediaStationResponse
+    Object:
+      properties: {}
+      description: Object
       type: object
     TvMediaLineupResponse:
       title: TvMediaLineupResponse
@@ -1943,7 +1917,33 @@ components:
           $ref: '#/components/schemas/Object'
       description: Station
       type: object
-    Object:
-      properties: {}
-      description: Object
+    TvMediaStationResponse:
+      title: TvMediaStationResponse
+      properties:
+        stationID:
+          type: integer
+          format: int32
+        name:
+          type: string
+        callsign:
+          type: string
+        network:
+          type: string
+        stationType:
+          type: string
+        NTSC_TSID:
+          type: integer
+          format: int32
+        DTV_TSID:
+          type: integer
+          format: int32
+        Twitter:
+          type: string
+        webLink:
+          type: string
+        logoFilename:
+          type: string
+        stationHD:
+          type: boolean
+      description: TvMediaStationResponse
       type: object

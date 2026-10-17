@@ -697,65 +697,48 @@ paths:
       deprecated: false
 components:
   schemas:
-    FandangoAmenitygroup:
-      title: FandangoAmenitygroup
+    FandangoShowtimeItems:
+      title: FandangoShowtimeItems
       properties:
-        amenities:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoAmenity'
         showtimes:
           type: array
           items:
-            $ref: '#/components/schemas/FandangoShowtime'
-      description: FandangoAmenitygroup
+            $ref: '#/components/schemas/ShowtimeItemDetail'
+      description: FandangoShowtimeItems
       type: object
-    FandangoMovieid:
-      title: FandangoMovieid
+    FandangoPage:
+      title: FandangoPage
       properties:
-        idProvider:
-          type: string
-        value:
-          type: string
-      description: FandangoMovieid
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int32
+      description: FandangoPage
       type: object
-    FandangoMovieidGroup:
-      title: FandangoMovieidGroup
+    FandangoGeoCity:
+      title: FandangoGeoCity
       properties:
-        idProvider:
+        country:
           type: string
-        value:
+        city:
           type: string
-      description: FandangoMovieidGroup
-      type: object
-    FandangoTheaters:
-      title: FandangoTheaters
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoTheaterItems'
-        page:
-          $ref: '#/components/schemas/FandangoPage'
-      description: FandangoTheaters
-      type: object
-    FandangoMovieDisplaydate:
-      title: FandangoMovieDisplaydate
-      properties:
-        displayDate:
+        state:
           type: string
-        movies:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoMovieItem'
-      description: FandangoMovieDisplaydate
-      type: object
-    FandangoMovieData:
-      title: FandangoMovieData
-      properties:
-        movies:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoMovieItem'
-      description: FandangoMovieData
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: integer
+          format: int32
+      description: FandangoGeoCity
       type: object
     ShowtimeItemDetail:
       title: ShowtimeItemDetail
@@ -800,56 +783,43 @@ components:
           type: string
       description: ShowtimeItemDetail
       type: object
-    FandangoDisplayDatesData:
-      title: FandangoDisplayDatesData
+    FandangoDisplayDates:
+      title: FandangoDisplayDates
       properties:
-        displayDates:
+        data:
+          $ref: '#/components/schemas/FandangoDisplayDatesData'
+      description: FandangoDisplayDates
+      type: object
+    FandangoTheaterItems:
+      title: FandangoTheaterItems
+      properties:
+        theaters:
           type: array
           items:
-            type: string
-      description: FandangoDisplayDatesData
+            $ref: '#/components/schemas/FandangoTheater'
+      description: FandangoTheaterItems
       type: object
-    FandangoPerson:
-      title: FandangoPerson
+    FandangoMovie:
+      title: FandangoMovie
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoMovieItem'
+      description: FandangoMovie
+      type: object
+    FandangoImage:
+      title: FandangoImage
       properties:
         id:
           type: string
-        name:
+        imageUrl:
           type: string
-        IvaPersonId:
+        title:
           type: string
-      description: FandangoPerson
-      type: object
-    FandangoMovies:
-      title: FandangoMovies
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoMovieData'
-        page:
-          $ref: '#/components/schemas/FandangoPage'
-      description: FandangoMovies
-      type: object
-    FandangoGeoPostalCode:
-      title: FandangoGeoPostalCode
-      properties:
-        postalCode:
+        copyright:
           type: string
-        country:
+        caption:
           type: string
-        city:
-          type: string
-        state:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        radius:
-          type: integer
-          format: int32
-      description: FandangoGeoPostalCode
+      description: FandangoImage
       type: object
     FandangoShowtimeGroupingsData:
       title: FandangoShowtimeGroupingsData
@@ -864,16 +834,71 @@ components:
             $ref: '#/components/schemas/FandangoMovieidGroup'
       description: FandangoShowtimeGroupingsData
       type: object
-    FandangoTheaterDisplaydate:
-      title: FandangoTheaterDisplaydate
+    FandangoTheaterGroup:
+      title: FandangoTheaterGroup
+      properties:
+        id:
+          type: string
+        theaterIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoTheaterid'
+        name:
+          type: string
+        chainCode:
+          type: string
+        distance:
+          type: integer
+          format: int32
+        isTicketing:
+          type: boolean
+        movieVariants:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoMovievariant'
+      description: FandangoTheaterGroup
+      type: object
+    FandangoMovieDisplaydate:
+      title: FandangoMovieDisplaydate
       properties:
         displayDate:
           type: string
-        theaters:
+        movies:
           type: array
           items:
-            $ref: '#/components/schemas/FandangoTheaterGroup'
-      description: FandangoTheaterDisplaydate
+            $ref: '#/components/schemas/FandangoMovieItem'
+      description: FandangoMovieDisplaydate
+      type: object
+    FandangoMovies:
+      title: FandangoMovies
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoMovieData'
+        page:
+          $ref: '#/components/schemas/FandangoPage'
+      description: FandangoMovies
+      type: object
+    FandangoTheaters:
+      title: FandangoTheaters
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoTheaterItems'
+        page:
+          $ref: '#/components/schemas/FandangoPage'
+      description: FandangoTheaters
+      type: object
+    FandangoAmenity:
+      title: FandangoAmenity
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        description:
+          type: string
+      description: FandangoAmenity
       type: object
     FandangoMovieItem:
       title: FandangoMovieItem
@@ -921,25 +946,195 @@ components:
             $ref: '#/components/schemas/FandangoMovievariant'
       description: FandangoMovieItem
       type: object
-    FandangoAmenity:
-      title: FandangoAmenity
+    FandangoTheaterDisplaydate:
+      title: FandangoTheaterDisplaydate
+      properties:
+        displayDate:
+          type: string
+        theaters:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoTheaterGroup'
+      description: FandangoTheaterDisplaydate
+      type: object
+    FandangoTheaterid:
+      title: FandangoTheaterid
+      properties:
+        idProvider:
+          type: string
+        value:
+          type: string
+      description: FandangoTheaterid
+      type: object
+    FandangoTheaterResponse:
+      title: FandangoTheaterResponse
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoTheater'
+      description: FandangoTheaterResponse
+      type: object
+    FandangoGeoLocationCity:
+      title: FandangoGeoLocationCity
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoGeoCity'
+      description: FandangoGeoLocationCity
+      type: object
+    FandangoDisplayDatesData:
+      title: FandangoDisplayDatesData
+      properties:
+        displayDates:
+          type: array
+          items:
+            type: string
+      description: FandangoDisplayDatesData
+      type: object
+    FandangoMovieidGroup:
+      title: FandangoMovieidGroup
+      properties:
+        idProvider:
+          type: string
+        value:
+          type: string
+      description: FandangoMovieidGroup
+      type: object
+    FandangoLink:
+      title: FandangoLink
+      properties:
+        rel:
+          type: string
+        href:
+          type: string
+      description: FandangoLink
+      type: object
+    FandangoMovieData:
+      title: FandangoMovieData
+      properties:
+        movies:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoMovieItem'
+      description: FandangoMovieData
+      type: object
+    FandangoPoster:
+      title: FandangoPoster
+      properties:
+        contentUrl:
+          type: string
+        thumbnailUrl:
+          type: string
+      description: FandangoPoster
+      type: object
+    FandangoMovievariant:
+      title: FandangoMovievariant
+      properties:
+        formatId:
+          type: string
+        formatName:
+          type: string
+        movieVariantId:
+          type: string
+        amenityGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoAmenitygroup'
+      description: FandangoMovievariant
+      type: object
+    FandangoTheaterShowtimeGroupings:
+      title: FandangoTheaterShowtimeGroupings
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoTheaterShowtimeGroupingsData'
+      description: FandangoTheaterShowtimeGroupings
+      type: object
+    FandangoShowtimeGroupings:
+      title: FandangoShowtimeGroupings
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoShowtimeGroupingsData'
+      description: FandangoShowtimeGroupings
+      type: object
+    FandangoShowtime:
+      title: FandangoShowtime
+      properties:
+        id:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoLink'
+        type:
+          type: string
+        message:
+          type: string
+        dateTime:
+          $ref: '#/components/schemas/FandangoDatetime'
+      description: FandangoShowtime
+      type: object
+    FandangoMovieid:
+      title: FandangoMovieid
+      properties:
+        idProvider:
+          type: string
+        value:
+          type: string
+      description: FandangoMovieid
+      type: object
+    FandangoShowtimeDetails:
+      title: FandangoShowtimeDetails
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoShowtimeDetailsData'
+      description: FandangoShowtimeDetails
+      type: object
+    FandangoDatetime:
+      title: FandangoDatetime
+      properties:
+        local:
+          type: string
+        utc:
+          type: string
+      description: FandangoDatetime
+      type: object
+    FandangoGeoLocationPostalCode:
+      title: FandangoGeoLocationPostalCode
+      properties:
+        data:
+          $ref: '#/components/schemas/FandangoGeoPostalCode'
+      description: FandangoGeoLocationPostalCode
+      type: object
+    FandangoPerson:
+      title: FandangoPerson
       properties:
         id:
           type: string
         name:
           type: string
-        shortDescription:
+        IvaPersonId:
           type: string
-        description:
-          type: string
-      description: FandangoAmenity
+      description: FandangoPerson
       type: object
-    FandangoMovie:
-      title: FandangoMovie
+    FandangoGeoPostalCode:
+      title: FandangoGeoPostalCode
       properties:
-        data:
-          $ref: '#/components/schemas/FandangoMovieItem'
-      description: FandangoMovie
+        postalCode:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: integer
+          format: int32
+      description: FandangoGeoPostalCode
       type: object
     FandangoShowtimes:
       title: FandangoShowtimes
@@ -950,32 +1145,42 @@ components:
           $ref: '#/components/schemas/FandangoPage'
       description: FandangoShowtimes
       type: object
-    FandangoShowtimeItems:
-      title: FandangoShowtimeItems
+    FandangoTheaterShowtimeGroupingsData:
+      title: FandangoTheaterShowtimeGroupingsData
       properties:
+        displayDates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoMovieDisplaydate'
+        theaterIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoTheaterid'
+      description: FandangoTheaterShowtimeGroupingsData
+      type: object
+    FandangoGeo:
+      title: FandangoGeo
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      description: FandangoGeo
+      type: object
+    FandangoAmenitygroup:
+      title: FandangoAmenitygroup
+      properties:
+        amenities:
+          type: array
+          items:
+            $ref: '#/components/schemas/FandangoAmenity'
         showtimes:
           type: array
           items:
-            $ref: '#/components/schemas/ShowtimeItemDetail'
-      description: FandangoShowtimeItems
-      type: object
-    FandangoTheaterItems:
-      title: FandangoTheaterItems
-      properties:
-        theaters:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoTheater'
-      description: FandangoTheaterItems
-      type: object
-    FandangoDatetime:
-      title: FandangoDatetime
-      properties:
-        local:
-          type: string
-        utc:
-          type: string
-      description: FandangoDatetime
+            $ref: '#/components/schemas/FandangoShowtime'
+      description: FandangoAmenitygroup
       type: object
     FandangoTheater:
       title: FandangoTheater
@@ -1021,58 +1226,6 @@ components:
           type: string
       description: FandangoTheater
       type: object
-    FandangoTheaterGroup:
-      title: FandangoTheaterGroup
-      properties:
-        id:
-          type: string
-        theaterIds:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoTheaterid'
-        name:
-          type: string
-        chainCode:
-          type: string
-        distance:
-          type: integer
-          format: int32
-        isTicketing:
-          type: boolean
-        movieVariants:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoMovievariant'
-      description: FandangoTheaterGroup
-      type: object
-    FandangoShowtimeDetails:
-      title: FandangoShowtimeDetails
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoShowtimeDetailsData'
-      description: FandangoShowtimeDetails
-      type: object
-    FandangoPage:
-      title: FandangoPage
-      properties:
-        limit:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int32
-      description: FandangoPage
-      type: object
-    FandangoGeoLocationPostalCode:
-      title: FandangoGeoLocationPostalCode
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoGeoPostalCode'
-      description: FandangoGeoLocationPostalCode
-      type: object
     FandangoShowtimeDetailsData:
       title: FandangoShowtimeDetailsData
       properties:
@@ -1115,157 +1268,4 @@ components:
         message:
           type: string
       description: FandangoShowtimeDetailsData
-      type: object
-    FandangoGeoCity:
-      title: FandangoGeoCity
-      properties:
-        country:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        radius:
-          type: integer
-          format: int32
-      description: FandangoGeoCity
-      type: object
-    FandangoShowtimeGroupings:
-      title: FandangoShowtimeGroupings
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoShowtimeGroupingsData'
-      description: FandangoShowtimeGroupings
-      type: object
-    FandangoTheaterShowtimeGroupingsData:
-      title: FandangoTheaterShowtimeGroupingsData
-      properties:
-        displayDates:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoMovieDisplaydate'
-        theaterIds:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoTheaterid'
-      description: FandangoTheaterShowtimeGroupingsData
-      type: object
-    FandangoMovievariant:
-      title: FandangoMovievariant
-      properties:
-        formatId:
-          type: string
-        formatName:
-          type: string
-        movieVariantId:
-          type: string
-        amenityGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoAmenitygroup'
-      description: FandangoMovievariant
-      type: object
-    FandangoShowtime:
-      title: FandangoShowtime
-      properties:
-        id:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/FandangoLink'
-        type:
-          type: string
-        message:
-          type: string
-        dateTime:
-          $ref: '#/components/schemas/FandangoDatetime'
-      description: FandangoShowtime
-      type: object
-    FandangoLink:
-      title: FandangoLink
-      properties:
-        rel:
-          type: string
-        href:
-          type: string
-      description: FandangoLink
-      type: object
-    FandangoTheaterid:
-      title: FandangoTheaterid
-      properties:
-        idProvider:
-          type: string
-        value:
-          type: string
-      description: FandangoTheaterid
-      type: object
-    FandangoGeo:
-      title: FandangoGeo
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-      description: FandangoGeo
-      type: object
-    FandangoDisplayDates:
-      title: FandangoDisplayDates
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoDisplayDatesData'
-      description: FandangoDisplayDates
-      type: object
-    FandangoImage:
-      title: FandangoImage
-      properties:
-        id:
-          type: string
-        imageUrl:
-          type: string
-        title:
-          type: string
-        copyright:
-          type: string
-        caption:
-          type: string
-      description: FandangoImage
-      type: object
-    FandangoGeoLocationCity:
-      title: FandangoGeoLocationCity
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoGeoCity'
-      description: FandangoGeoLocationCity
-      type: object
-    FandangoPoster:
-      title: FandangoPoster
-      properties:
-        contentUrl:
-          type: string
-        thumbnailUrl:
-          type: string
-      description: FandangoPoster
-      type: object
-    FandangoTheaterShowtimeGroupings:
-      title: FandangoTheaterShowtimeGroupings
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoTheaterShowtimeGroupingsData'
-      description: FandangoTheaterShowtimeGroupings
-      type: object
-    FandangoTheaterResponse:
-      title: FandangoTheaterResponse
-      properties:
-        data:
-          $ref: '#/components/schemas/FandangoTheater'
-      description: FandangoTheaterResponse
       type: object

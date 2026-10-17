@@ -30,14 +30,22 @@ paths:
       deprecated: false
 components:
   schemas:
-    Organization:
-      title: Organization
+    TopClusters:
+      title: TopClusters
       properties:
-        type:
+        rank:
+          type: integer
+          format: int32
+        cluster_id:
           type: string
-        organization:
+        cluster_name:
           type: string
-      description: Organization
+        proximity_score:
+          type: number
+          format: float
+        cluster_definition:
+          type: string
+      description: TopClusters
       type: object
     KattchProgram:
       title: KattchProgram
@@ -88,6 +96,15 @@ components:
             $ref: '#/components/schemas/Cast'
       description: KattchProgram
       type: object
+    Crew:
+      title: Crew
+      properties:
+        job:
+          type: string
+        individual:
+          type: string
+      description: Crew
+      type: object
     Datum:
       title: Datum
       properties:
@@ -98,55 +115,6 @@ components:
           items:
             $ref: '#/components/schemas/TopClusters'
       description: Datum
-      type: object
-    TopClusters:
-      title: TopClusters
-      properties:
-        rank:
-          type: integer
-          format: int32
-        cluster_id:
-          type: string
-        cluster_name:
-          type: string
-        proximity_score:
-          type: number
-          format: float
-        cluster_definition:
-          type: string
-      description: TopClusters
-      type: object
-    Cast:
-      title: Cast
-      properties:
-        character:
-          type: string
-        individual:
-          type: string
-      description: Cast
-      type: object
-    UniversalTraits:
-      title: UniversalTraits
-      properties:
-        category:
-          type: string
-        subcategory:
-          type: string
-        universal_trait:
-          type: string
-        activation_score:
-          type: integer
-          format: int32
-      description: UniversalTraits
-      type: object
-    Crew:
-      title: Crew
-      properties:
-        job:
-          type: string
-        individual:
-          type: string
-      description: Crew
       type: object
     Object:
       properties: {}
@@ -164,4 +132,36 @@ components:
         Clusters:
           $ref: '#/components/schemas/Datum'
       description: KatchProgramData
+      type: object
+    Cast:
+      title: Cast
+      properties:
+        character:
+          type: string
+        individual:
+          type: string
+      description: Cast
+      type: object
+    Organization:
+      title: Organization
+      properties:
+        type:
+          type: string
+        organization:
+          type: string
+      description: Organization
+      type: object
+    UniversalTraits:
+      title: UniversalTraits
+      properties:
+        category:
+          type: string
+        subcategory:
+          type: string
+        universal_trait:
+          type: string
+        activation_score:
+          type: integer
+          format: int32
+      description: UniversalTraits
       type: object

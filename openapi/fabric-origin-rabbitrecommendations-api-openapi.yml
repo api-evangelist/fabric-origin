@@ -49,6 +49,27 @@ paths:
       deprecated: false
 components:
   schemas:
+    Program:
+      title: Program
+      properties:
+        Id:
+          description: The ID of the program (show or movie)
+          type: integer
+          format: int64
+        Type:
+          description: The type of IVA program (show or movie).
+          type: string
+      description: Program
+      type: object
+    XRoadMediaRecommendationResponse:
+      title: XRoadMediaRecommendationResponse
+      properties:
+        recommendations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recommendation'
+      description: XRoadMediaRecommendationResponse
+      type: object
     Explanation:
       title: Explanation
       properties:
@@ -78,25 +99,4 @@ components:
           $ref: '#/components/schemas/Program'
           description: The ID and Type of IVA Program.
       description: Recommendation
-      type: object
-    XRoadMediaRecommendationResponse:
-      title: XRoadMediaRecommendationResponse
-      properties:
-        recommendations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Recommendation'
-      description: XRoadMediaRecommendationResponse
-      type: object
-    Program:
-      title: Program
-      properties:
-        Id:
-          description: The ID of the program (show or movie)
-          type: integer
-          format: int64
-        Type:
-          description: The type of IVA program (show or movie).
-          type: string
-      description: Program
       type: object
