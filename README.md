@@ -1,4 +1,4 @@
-# Fabric Origin (fabric-origin)
+# Fabric Origin
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,138 +64,184 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Fabric Origin (formerly IVA) is the entertainment data platform powering content discovery experiences for movies, television, games, and trailers. Fabric Origin offers comprehensive entertainment data solutions including metadata, images, trailers, TV listings, and celebrity information through a family of REST APIs. With 30 percent more coverage than other providers and tailored products for every stage of the release cycle, Fabric Origin is an affordable, scalable solution trusted by startups and Fortune 50 companies alike.
+Fabric Origin is the entertainment metadata and market-intelligence arm of Fabric, the media software company formed from Xytech and IVA. Origin spans three products: Nexus, a family of 14 REST APIs serving movie, television, game and celebrity metadata plus images, trailers, TV listings, showtimes and licensed third-party ratings from Metacritic, Rotten Tomatoes, Common Sense Media and Katch; Studio, a JSON:API 1.1 metadata management platform with an SNS event surface; and Insights, streaming market intelligence across 1,000+ platforms and 249 countries. Fabric publishes machine-readable OpenAPI 3.1.1 for the whole Nexus surface, an llms.txt index at the company root, and two OAuth-governed hosted MCP servers — Origin Studio and Origin Insights — making it one of the more deliberately agent-ready entertainment-data providers in the catalog.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fabric-origin/refs/heads/main/apis.yml)
+**Areas:** Entertainment · Metadata · Movies · Television · Games · Celebrities · Trailers · Image · TV Listings · Market Intelligence · Media · MCP
 
-## Scope
+## Fabric Origin on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Fabric Origin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fabric-origin/](https://apis.io/providers/fabric-origin/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (20)
 
-- Entertainment
-- Movies
-- Television
-- Games
-- Trailers
-- Metadata
+- [Fabric Origin Entertainment API](https://apis.io/apis/fabric-origin/entertainment-api/) — The Entertainment API ingests and serves metadata for movies, television shows, and games, including identifiers used to retrieve associated videos and…
+- [Fabric Origin Celebrity API](https://apis.io/apis/fabric-origin/celebrity-api/) — The Celebrity API serves metadata about celebrities, including actors, directors, and other entertainment industry figures, with cross references to titles…
+- [Fabric Origin Video API](https://apis.io/apis/fabric-origin/video-api/) — The Video API generates playable links for trailers and other video assets using video identifiers returned from the Entertainment API, allowing customers…
+- [Fabric Origin Image API](https://apis.io/apis/fabric-origin/image-api/) — The Image API provides access to images hosted on Fabric Origin's servers, including posters, stills, and promotional artwork referenced from the…
+- [Fabric Origin Entertainment API](https://apis.io/apis/fabric-origin/fabric-origin-entertainment-api/) — The Entertainment API from Fabric Origin — 14 operation(s) for entertainment.
+- [Fabric Origin Images API](https://apis.io/apis/fabric-origin/fabric-origin-images-api/) — The Images API from Fabric Origin — 4 operation(s) for images.
+- [Fabric Origin Videos API](https://apis.io/apis/fabric-origin/fabric-origin-videos-api/) — The Videos API from Fabric Origin — 2 operation(s) for videos.
+- [Fabric Origin Fandango API](https://apis.io/apis/fabric-origin/fandango-api/) — Theatrical showtimes and ticketing — geolocation lookup, nearby theaters, movies playing, and showtime groupings by date, theater, format and amenities,…
+- [Fabric Origin Metacritic API](https://apis.io/apis/fabric-origin/metacritic-api/) — Metascores and Metacritic reviews for movies and TV, keyed on Origin identifiers.
+- [Origin Studio Production API](https://apis.io/apis/fabric-origin/origin-studio-api/) — The Origin Studio metadata management API — records, record lifecycles, fields, datasets, media, credits, contributors, data deliveries, data ingress,…
+- [Origin Studio MCP Server](https://apis.io/apis/fabric-origin/origin-studio-mcp/) — A hosted Model Context Protocol server over Origin Studio — metadata records, catalog operations and availability. Streamable HTTP on the root path, OAuth…
+- [Origin Insights MCP Server](https://apis.io/apis/fabric-origin/origin-insights-mcp/) — A hosted Model Context Protocol server over Origin Insights streaming market intelligence — availability, demand, TVOD pricing, subscription plans,…
+- [Fabric Origin Analytics API](https://apis.io/apis/fabric-origin/fabric-origin-analytics-api/) — The analytics API from Fabric Origin — 1 operation(s) for analytics.
+- [Fabric Origin Common API](https://apis.io/apis/fabric-origin/fabric-origin-common-api/) — The common API from Fabric Origin — 39 operation(s) for common.
+- [Fabric Origin Commonsense API](https://apis.io/apis/fabric-origin/fabric-origin-commonsense-api/) — The commonsense API from Fabric Origin — 2 operation(s) for commonsense.
+- [Fabric Origin Katchmedia API](https://apis.io/apis/fabric-origin/fabric-origin-katchmedia-api/) — The katchmedia API from Fabric Origin — 1 operation(s) for katchmedia.
+- [Fabric Origin Rabbitrecommendations API](https://apis.io/apis/fabric-origin/fabric-origin-rabbitrecommendations-api/) — The rabbitrecommendations API from Fabric Origin — 1 operation(s) for rabbitrecommendations.
+- [Fabric Origin Rev API](https://apis.io/apis/fabric-origin/fabric-origin-rev-api/) — The rev API from Fabric Origin — 3 operation(s) for rev.
+- [Fabric Origin Rottentomatoes API](https://apis.io/apis/fabric-origin/fabric-origin-rottentomatoes-api/) — The rottentomatoes API from Fabric Origin — 4 operation(s) for rottentomatoes.
+- [Fabric Origin Tvgrid API](https://apis.io/apis/fabric-origin/fabric-origin-tvgrid-api/) — The tvgrid API from Fabric Origin — 21 operation(s) for tvgrid.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Fabric Origin Entertainment API
+Event-driven and webhook contracts.
 
-The Entertainment API ingests and serves metadata for movies, television shows, and games, including identifiers used to retrieve associated videos and images from sibling APIs. Responses are available in JSON, XML, CSV, and HTML formats via Accept headers or the format query parameter.
+- [Fabric Origin Events Webhooks](https://apis.io/asyncapis/fabric-origin/fabric-origin-events-webhooks/)
 
-- **Human URL:** [https://knowledgebase.fabricdata.com/origin/apis-all/](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- **Base URL:** `https://ee.iva-api.com/api/`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Entertainment
-- Metadata
-- Movies
-- Television
-- Games
+- [Fabric Origin MCP Servers](https://apis.io/servers/fabric-origin/fabric-origin-mcp-servers/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- [Knowledge  Base](https://knowledgebase.fabricdata.com/origin)
-- [Postman Collection](collections/fabric-origin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fabric-origin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Fabric Origin Celebrity API
+- [Fabric Origin Agentic Access](https://apis.io/agentic-access/fabric-origin/fabric-origin-agentic-access/)
 
-The Celebrity API serves metadata about celebrities, including actors, directors, and other entertainment industry figures, with cross references to titles served by the Entertainment API.
+#### Collections (4)
 
-- **Human URL:** [https://knowledgebase.fabricdata.com/origin/apis-all/](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- **Base URL:** `https://ee.iva-api.com/api/`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Fabric Origin Entertainment Data APIs](https://apis.io/collections/fabric-origin/open-fabric-origin/)
+- [Fabric Origin Data APIs Entertainment API](https://apis.io/collections/fabric-origin/open-fabric-origin-entertainment-api/)
+- [Fabric Origin Data APIs Entertainment Images API](https://apis.io/collections/fabric-origin/open-fabric-origin-images-api/)
+- [Fabric Origin Data APIs Entertainment Videos API](https://apis.io/collections/fabric-origin/open-fabric-origin-videos-api/)
 
-- Celebrities
-- People
-- Metadata
+#### Overlays (14)
 
-#### Properties
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- [Postman Collection](collections/fabric-origin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fabric-origin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Fabric Origin Captions Translations Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-captions-translations-api-overlay/)
+- [Fabric Origin Celebrity Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-celebrity-api-overlay/)
+- [Fabric Origin Common Metadata Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-common-metadata-api-overlay/)
+- [Fabric Origin Common Sense Media Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-common-sense-media-api-overlay/)
+- [Fabric Origin Entertainment Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-entertainment-api-overlay/)
+- [Fabric Origin Fandango Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-fandango-api-overlay/)
+- [Fabric Origin Images Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-images-api-overlay/)
+- [Fabric Origin Katch Media Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-katch-media-api-overlay/)
+- [Fabric Origin Metacritic Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-metacritic-api-overlay/)
+- [Fabric Origin Rabbit Recommendations Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-rabbit-recommendations-api-overlay/)
+- [Fabric Origin Rotten Tomatoes Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-rotten-tomatoes-api-overlay/)
+- [Fabric Origin Tv Grid Online Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-tv-grid-online-api-overlay/)
+- [Fabric Origin Video Analytics Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-video-analytics-api-overlay/)
+- [Fabric Origin Videos Api Overlay](https://apis.io/overlays/fabric-origin/fabric-origin-videos-api-overlay/)
 
-### Fabric Origin Video API
+#### Security (2)
 
-The Video API generates playable links for trailers and other video assets using video identifiers returned from the Entertainment API, allowing customers to embed Fabric Origin video content into their content discovery experiences.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://knowledgebase.fabricdata.com/origin/apis-all/](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- **Base URL:** `https://ee.iva-api.com/api/`
+- [Fabric Origin Authentication](https://apis.io/security/fabric-origin/fabric-origin-authentication/)
+- [Fabric Origin Domain Security](https://apis.io/security/fabric-origin/fabric-origin-domain-security/)
 
-#### Tags
+#### OAuth scopes (1)
 
-- Video
-- Trailers
-- Streaming
+The permissions the API asks for.
 
-#### Properties
+- [Fabric Origin Scopes](https://apis.io/scopes/fabric-origin/fabric-origin-scopes/)
 
-- [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- [Postman Collection](collections/fabric-origin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fabric-origin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Fabric Origin Image API
+Published plans, tiers and prices.
 
-The Image API provides access to images hosted on Fabric Origin's servers, including posters, stills, and promotional artwork referenced from the Entertainment and Celebrity APIs. Customers are encouraged to host and serve images from their own infrastructure for production use.
+- [Fabric Origin Plans Pricing](https://apis.io/plans/fabric-origin/fabric-origin-plans-pricing/)
 
-- **Human URL:** [https://knowledgebase.fabricdata.com/origin/apis-all/](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- **Base URL:** `https://ee.iva-api.com/api/`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Images
-- Posters
-- Artwork
+- [Fabric Origin Rate Limits](https://apis.io/rate-limits/fabric-origin/fabric-origin-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- [Postman Collection](collections/fabric-origin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fabric-origin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Fabric Origin Common Data API
+- [Fabric Origin Finops](https://apis.io/finops/fabric-origin/fabric-origin-finops/)
 
-The Common Data API exposes reference data used across the Fabric Origin product family, including country codes, image type lookups, and video type lookups required when working with the Entertainment, Celebrity, Video, and Image APIs.
+## Where to find this API
 
-- **Human URL:** [https://knowledgebase.fabricdata.com/origin/apis-all/](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- **Base URL:** `https://ee.iva-api.com/api/`
-
-#### Tags
-
-- Reference Data
-- Lookups
-
-#### Properties
-
-- [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
-- [Postman Collection](collections/fabric-origin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fabric-origin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.fabricdata.com/)
-- [Knowledge  Base](https://knowledgebase.fabricdata.com/origin)
-- [Solutions](https://knowledgebase.fabricdata.com/origin/solutions)
-- [Developer  Portal](https://developer.origin.fabricdata.com/portal/login)
 - [Documentation](https://knowledgebase.fabricdata.com/origin/apis-all/)
+- [Getting started](https://knowledgebase.fabricdata.com/origin/getting-started)
+- [API reference](https://knowledgebase.fabricdata.com/origin/apis-all)
+- [Pricing](https://www.fabricdata.com/pricing-models)
+- [Sign up](https://www.fabricdata.com/contact-us)
+- [Support](https://metahive.atlassian.net/servicedesk/customer/portal/2)
+- [Blog](https://www.fabricdata.com/trends)
+- [Privacy policy](https://www.fabricdata.com/privacy-policy)
+- [Status](https://status.fabricdata.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 55.8** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.0 |
+| Contract quality | 49.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 71.1 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 49.8** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fabric-origin/](https://apis.io/providers/fabric-origin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fabric Origin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fabric-origin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
